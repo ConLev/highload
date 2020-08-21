@@ -1,0 +1,30 @@
+vagrant init
+vagrant up
+sudo vi /etc/ssh/sshd_config
+shift i -> esc :w :q
+ssh vagrant@127.0.0.1 -p 2222
+sudo yum install epel-release
+sudo rpm -Uvh http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+sudo yum install nginx nano php72 php72-php-fpm
+sudo ln -s /usr/bin/php72 /usr/bin/php
+ls -lah /usr/bin | grep php
+sudo nano /etc/opt/remi/php72/php-fpm.d/www.conf
+sudo nano /etc/selinux/config
+cat /etc/selinux/config
+scp -P 2222 vagrant@127.0.0.1:/etc/opt/remi/php72/php-fpm.d/www.conf /Users/konstantinlevchenko/Documents/programing/web_developer/highload/hw_1/
+sudo mkdir /var/www/
+sudo mkdir /var/www/mysite.local/
+sudo chown -R vagrant:nginx /var/www/mysite.local/
+ls -la
+chmod 0775 -R /var/www/mysite.local/
+ls -la
+sudo nano /etc/nginx/conf.d/mysite.local.conf
+scp -P 2222 vagrant@127.0.0.1:/etc/nginx/conf.d/mysite.local.conf /Users/konstantinlevchenko/Documents/programing/web_developer/highload/hw_1/
+sudo chown -R vagrant:nginx /etc/nginx/conf.d/
+sudo systemctl restart nginx
+sudo nginx -t
+sudo nano /var/www/mysite.local/index.php
+systemctl restart php72-php-fpm
+systemctl restart nginx
+systemctl status php72-php-fpm.service
+systemctl status nginx
