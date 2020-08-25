@@ -1,0 +1,969 @@
+konstantinlevchenko@Konstantin ~ % ssh admin@192.168.56.80
+admin@192.168.56.80's password: 
+Last login: Sat Aug 22 06:24:55 2020 from 192.168.56.1
+[admin@web ~]$ sudo yum install epel-release
+[sudo] пароль для admin: 
+Загружены модули: fastestmirror
+Determining fastest mirrors
+ * base: mirror.yandex.ru
+ * extras: mirror.logol.ru
+ * updates: mirror.logol.ru
+base                                                     | 3.6 kB     00:00     
+extras                                                   | 2.9 kB     00:00     
+updates                                                  | 2.9 kB     00:00     
+(1/4): base/7/x86_64/group_gz                              | 153 kB   00:00     
+(2/4): extras/7/x86_64/primary_db                          | 206 kB   00:00     
+(3/4): base/7/x86_64/primary_db                            | 6.1 MB   00:01     
+(4/4): updates/7/x86_64/primary_db                         | 3.8 MB   00:03     
+Разрешение зависимостей
+--> Проверка сценария
+---> Пакет epel-release.noarch 0:7-11 помечен для установки
+--> Проверка зависимостей окончена
+
+Зависимости определены
+
+================================================================================
+ Package                Архитектура      Версия          Репозиторий      Размер
+================================================================================
+Установка:
+ epel-release           noarch           7-11            extras            15 k
+
+Итого за операцию
+================================================================================
+Установить  1 пакет
+
+Объем загрузки: 15 k
+Объем изменений: 24 k
+Is this ok [y/d/N]: y
+Downloading packages:
+предупреждение: /var/cache/yum/x86_64/7/extras/packages/epel-release-7-11.noarch.rpm: Заголовок V3 RSA/SHA256 Signature, key ID f4a80eb5: NOKEY
+Публичный ключ для epel-release-7-11.noarch.rpm не установлен
+epel-release-7-11.noarch.rpm                               |  15 kB   00:00     
+Получение ключа из file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+Импорт GPG ключа 0xF4A80EB5:
+ Владелец   : "CentOS-7 Key (CentOS 7 Official Signing Key) <security@centos.org>"
+ Отпечаток  : 6341 ab27 53d7 8a78 a7c2 7bb1 24c6 a8a7 f4a8 0eb5
+ Пакет      : centos-release-7-8.2003.0.el7.centos.x86_64 (@anaconda)
+ Источник   : /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+Продолжить? [y/N]: y
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Установка   : epel-release-7-11.noarch                                    1/1 
+  Проверка    : epel-release-7-11.noarch                                    1/1 
+
+Установлено:
+  epel-release.noarch 0:7-11                                                    
+
+Выполнено!
+[admin@web ~]$ date
+Сб авг 22 06:27:26 EDT 2020
+[admin@web ~]$ sudo yum -y update tzdata
+Загружены модули: fastestmirror
+Loading mirror speeds from cached hostfile
+epel/x86_64/metalink                                     |  15 kB     00:00     
+ * base: mirror.yandex.ru
+ * epel: mirror.nsc.liu.se
+ * extras: mirror.logol.ru
+ * updates: mirror.logol.ru
+epel                                                     | 4.7 kB     00:00     
+(1/3): epel/x86_64/group_gz                                |  95 kB   00:00     
+(2/3): epel/x86_64/updateinfo                              | 1.0 MB   00:01     
+(3/3): epel/x86_64/primary_db                              | 6.9 MB   00:09     
+Разрешение зависимостей
+--> Проверка сценария
+---> Пакет tzdata.noarch 0:2019c-1.el7 помечен для обновления
+---> Пакет tzdata.noarch 0:2020a-1.el7 помечен как обновление
+--> Проверка зависимостей окончена
+
+Зависимости определены
+
+================================================================================
+ Package         Архитектура     Версия                  Репозиторий      Размер
+================================================================================
+Обновление:
+ tzdata          noarch          2020a-1.el7             updates          495 k
+
+Итого за операцию
+================================================================================
+Обновить  1 пакет
+
+Объем загрузки: 495 k
+Downloading packages:
+Delta RPMs disabled because /usr/bin/applydeltarpm not installed.
+tzdata-2020a-1.el7.noarch.rpm                              | 495 kB   00:00     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Обновление  : tzdata-2020a-1.el7.noarch                                   1/2 
+  Очистка     : tzdata-2019c-1.el7.noarch                                   2/2 
+  Проверка    : tzdata-2020a-1.el7.noarch                                   1/2 
+  Проверка    : tzdata-2019c-1.el7.noarch                                   2/2 
+
+Обновлено:
+  tzdata.noarch 0:2020a-1.el7                                                   
+
+Выполнено!
+[admin@web ~]$ ln -s /usr/share/zoneinfo/Europe/Moscow /etc/localtime
+ln: не удалось создать символьную ссылку «/etc/localtime»: Файл существует
+[admin@web ~]$ ls -la /etc/localtime
+lrwxrwxrwx. 1 root root 38 авг 22 06:13 /etc/localtime -> ../usr/share/zoneinfo/America/New_York
+[admin@web ~]$ sudo rm -f /etc/localtime
+[admin@web ~]$ sudo ln -s /usr/share/zoneinfo/Europe/Moscow /etc/localtime
+[admin@web ~]$ ls -la /etc/localtime
+lrwxrwxrwx. 1 root root 33 авг 22 13:32 /etc/localtime -> /usr/share/zoneinfo/Europe/Moscow
+[admin@web ~]$ date
+Сб авг 22 13:32:39 MSK 2020
+[admin@web ~]$ sudo yum -y install chrony
+[sudo] пароль для admin: 
+Загружены модули: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirror.yandex.ru
+ * epel: mirror.cherryservers.com
+ * extras: mirror.logol.ru
+ * updates: mirror.logol.ru
+Пакет chrony-3.4-1.el7.x86_64 уже установлен, и это последняя версия.
+Выполнять нечего
+[admin@web ~]$ systemctl enable chronyd
+==== AUTHENTICATING FOR org.freedesktop.systemd1.manage-unit-files ===
+Для управления файлами конфигурации системных служб и юнитов, необходимо пройти аутентификацию.
+Authenticating as: admin
+Password: 
+==== AUTHENTICATION COMPLETE ===
+==== AUTHENTICATING FOR org.freedesktop.systemd1.reload-daemon ===
+Чтобы заставить systemd перечитать конфигурацию, необходимо пройти аутентификацию.
+Authenticating as: admin
+Password: 
+==== AUTHENTICATION COMPLETE ===
+[admin@web ~]$ systemctl start chronyd
+==== AUTHENTICATING FOR org.freedesktop.systemd1.manage-units ===
+Для управления системными службами и юнитами, необходимо пройти аутентификацию.
+Authenticating as: admin
+Password: 
+==== AUTHENTICATION COMPLETE ===
+[admin@web ~]$ systemctl status chronyd -l
+● chronyd.service - NTP client/server
+   Loaded: loaded (/usr/lib/systemd/system/chronyd.service; enabled; vendor preset: enabled)
+   Active: active (running) since Сб 2020-08-22 13:16:04 MSK; 35min ago
+     Docs: man:chronyd(8)
+           man:chrony.conf(5)
+ Main PID: 678 (chronyd)
+   CGroup: /system.slice/chronyd.service
+           └─678 /usr/sbin/chronyd
+
+авг 22 13:16:04 web.local systemd[1]: Started NTP client/server.
+авг 22 13:16:16 web.local chronyd[678]: Selected source 185.189.12.50
+авг 22 13:16:17 web.local chronyd[678]: Source 195.210.189.106 replaced with 46.17.46.226
+авг 22 13:16:18 web.local chronyd[678]: Selected source 89.109.251.22
+авг 22 13:19:31 web.local chronyd[678]: Selected source 46.17.46.226
+авг 22 13:19:31 web.local chronyd[678]: System clock wrong by 129.942211 seconds, adjustment started
+авг 22 13:21:41 web.local chronyd[678]: System clock was stepped by 129.942211 seconds
+авг 22 13:26:00 web.local chronyd[678]: Selected source 89.109.251.22
+авг 22 13:31:27 web.local chronyd[678]: Selected source 89.109.251.22
+авг 22 13:31:27 web.local chronyd[678]: System clock wrong by 174.770687 seconds, adjustment started
+[admin@web ~]$ sudo rpm -Uvh http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+Загружается http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+предупреждение: /var/tmp/rpm-tmp.XNB0TR: Заголовок V4 DSA/SHA1 Signature, key ID 00f97f56: NOKEY
+Подготовка...               ################################# [100%]
+Обновление / установка...
+   1:remi-release-7.8-1.el7.remi      ################################# [100%]
+[admin@web ~]$ sudo yum install nginx nano php72 php72-php-fpm
+Загружены модули: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirror.yandex.ru
+ * epel: mirror.nsc.liu.se
+ * extras: mirror.logol.ru
+ * remi-safe: remi.mirror.karneval.cz
+ * updates: mirror.logol.ru
+remi-safe                                                | 3.0 kB     00:00     
+remi-safe/primary_db                                       | 1.8 MB   00:01     
+Разрешение зависимостей
+--> Проверка сценария
+---> Пакет nano.x86_64 0:2.3.1-10.el7 помечен для установки
+---> Пакет nginx.x86_64 1:1.16.1-1.el7 помечен для установки
+--> Обработка зависимостей: nginx-all-modules = 1:1.16.1-1.el7 пакета: 1:nginx-1.16.1-1.el7.x86_64
+--> Обработка зависимостей: nginx-filesystem = 1:1.16.1-1.el7 пакета: 1:nginx-1.16.1-1.el7.x86_64
+--> Обработка зависимостей: nginx-filesystem пакета: 1:nginx-1.16.1-1.el7.x86_64
+--> Обработка зависимостей: redhat-indexhtml пакета: 1:nginx-1.16.1-1.el7.x86_64
+--> Обработка зависимостей: libprofiler.so.0()(64bit) пакета: 1:nginx-1.16.1-1.el7.x86_64
+---> Пакет php72.x86_64 0:2.0-1.el7.remi помечен для установки
+--> Обработка зависимостей: php72-runtime(x86-64) = 2.0-1.el7.remi пакета: php72-2.0-1.el7.remi.x86_64
+--> Обработка зависимостей: php72-runtime пакета: php72-2.0-1.el7.remi.x86_64
+--> Обработка зависимостей: php72-php-common(x86-64) пакета: php72-2.0-1.el7.remi.x86_64
+--> Обработка зависимостей: php72-php-cli(x86-64) пакета: php72-2.0-1.el7.remi.x86_64
+---> Пакет php72-php-fpm.x86_64 0:7.2.33-1.el7.remi помечен для установки
+--> Обработка зависимостей: libargon2.so.0()(64bit) пакета: php72-php-fpm-7.2.33-1.el7.remi.x86_64
+--> Проверка сценария
+---> Пакет centos-indexhtml.noarch 0:7-9.el7.centos помечен для установки
+---> Пакет gperftools-libs.x86_64 0:2.6.1-1.el7 помечен для установки
+---> Пакет libargon2.x86_64 0:20161029-3.el7 помечен для установки
+---> Пакет nginx-all-modules.noarch 1:1.16.1-1.el7 помечен для установки
+--> Обработка зависимостей: nginx-mod-http-image-filter = 1:1.16.1-1.el7 пакета: 1:nginx-all-modules-1.16.1-1.el7.noarch
+--> Обработка зависимостей: nginx-mod-http-perl = 1:1.16.1-1.el7 пакета: 1:nginx-all-modules-1.16.1-1.el7.noarch
+--> Обработка зависимостей: nginx-mod-http-xslt-filter = 1:1.16.1-1.el7 пакета: 1:nginx-all-modules-1.16.1-1.el7.noarch
+--> Обработка зависимостей: nginx-mod-mail = 1:1.16.1-1.el7 пакета: 1:nginx-all-modules-1.16.1-1.el7.noarch
+--> Обработка зависимостей: nginx-mod-stream = 1:1.16.1-1.el7 пакета: 1:nginx-all-modules-1.16.1-1.el7.noarch
+---> Пакет nginx-filesystem.noarch 1:1.16.1-1.el7 помечен для установки
+---> Пакет php72-php-cli.x86_64 0:7.2.33-1.el7.remi помечен для установки
+---> Пакет php72-php-common.x86_64 0:7.2.33-1.el7.remi помечен для установки
+--> Обработка зависимостей: php72-php-json(x86-64) = 7.2.33-1.el7.remi пакета: php72-php-common-7.2.33-1.el7.remi.x86_64
+---> Пакет php72-runtime.x86_64 0:2.0-1.el7.remi помечен для установки
+--> Обработка зависимостей: /usr/sbin/semanage пакета: php72-runtime-2.0-1.el7.remi.x86_64
+--> Обработка зависимостей: environment-modules пакета: php72-runtime-2.0-1.el7.remi.x86_64
+--> Обработка зависимостей: scl-utils пакета: php72-runtime-2.0-1.el7.remi.x86_64
+--> Проверка сценария
+---> Пакет environment-modules.x86_64 0:3.2.10-10.el7 помечен для установки
+--> Обработка зависимостей: libtcl8.5.so()(64bit) пакета: environment-modules-3.2.10-10.el7.x86_64
+--> Обработка зависимостей: libX11.so.6()(64bit) пакета: environment-modules-3.2.10-10.el7.x86_64
+---> Пакет nginx-mod-http-image-filter.x86_64 1:1.16.1-1.el7 помечен для установки
+--> Обработка зависимостей: gd пакета: 1:nginx-mod-http-image-filter-1.16.1-1.el7.x86_64
+--> Обработка зависимостей: libgd.so.2()(64bit) пакета: 1:nginx-mod-http-image-filter-1.16.1-1.el7.x86_64
+---> Пакет nginx-mod-http-perl.x86_64 1:1.16.1-1.el7 помечен для установки
+--> Обработка зависимостей: perl >= 5.006001 пакета: 1:nginx-mod-http-perl-1.16.1-1.el7.x86_64
+--> Обработка зависимостей: perl(:MODULE_COMPAT_5.16.3) пакета: 1:nginx-mod-http-perl-1.16.1-1.el7.x86_64
+--> Обработка зависимостей: perl(Exporter) пакета: 1:nginx-mod-http-perl-1.16.1-1.el7.x86_64
+--> Обработка зависимостей: perl(XSLoader) пакета: 1:nginx-mod-http-perl-1.16.1-1.el7.x86_64
+--> Обработка зависимостей: perl(constant) пакета: 1:nginx-mod-http-perl-1.16.1-1.el7.x86_64
+--> Обработка зависимостей: perl(strict) пакета: 1:nginx-mod-http-perl-1.16.1-1.el7.x86_64
+--> Обработка зависимостей: perl(warnings) пакета: 1:nginx-mod-http-perl-1.16.1-1.el7.x86_64
+--> Обработка зависимостей: libperl.so()(64bit) пакета: 1:nginx-mod-http-perl-1.16.1-1.el7.x86_64
+---> Пакет nginx-mod-http-xslt-filter.x86_64 1:1.16.1-1.el7 помечен для установки
+--> Обработка зависимостей: libxslt.so.1(LIBXML2_1.0.11)(64bit) пакета: 1:nginx-mod-http-xslt-filter-1.16.1-1.el7.x86_64
+--> Обработка зависимостей: libxslt.so.1(LIBXML2_1.0.18)(64bit) пакета: 1:nginx-mod-http-xslt-filter-1.16.1-1.el7.x86_64
+--> Обработка зависимостей: libexslt.so.0()(64bit) пакета: 1:nginx-mod-http-xslt-filter-1.16.1-1.el7.x86_64
+--> Обработка зависимостей: libxslt.so.1()(64bit) пакета: 1:nginx-mod-http-xslt-filter-1.16.1-1.el7.x86_64
+---> Пакет nginx-mod-mail.x86_64 1:1.16.1-1.el7 помечен для установки
+---> Пакет nginx-mod-stream.x86_64 1:1.16.1-1.el7 помечен для установки
+---> Пакет php72-php-json.x86_64 0:7.2.33-1.el7.remi помечен для установки
+---> Пакет policycoreutils-python.x86_64 0:2.5-34.el7 помечен для установки
+--> Обработка зависимостей: setools-libs >= 3.3.8-4 пакета: policycoreutils-python-2.5-34.el7.x86_64
+--> Обработка зависимостей: libsemanage-python >= 2.5-14 пакета: policycoreutils-python-2.5-34.el7.x86_64
+--> Обработка зависимостей: audit-libs-python >= 2.1.3-4 пакета: policycoreutils-python-2.5-34.el7.x86_64
+--> Обработка зависимостей: python-IPy пакета: policycoreutils-python-2.5-34.el7.x86_64
+--> Обработка зависимостей: libqpol.so.1(VERS_1.4)(64bit) пакета: policycoreutils-python-2.5-34.el7.x86_64
+--> Обработка зависимостей: libqpol.so.1(VERS_1.2)(64bit) пакета: policycoreutils-python-2.5-34.el7.x86_64
+--> Обработка зависимостей: libcgroup пакета: policycoreutils-python-2.5-34.el7.x86_64
+--> Обработка зависимостей: libapol.so.4(VERS_4.0)(64bit) пакета: policycoreutils-python-2.5-34.el7.x86_64
+--> Обработка зависимостей: checkpolicy пакета: policycoreutils-python-2.5-34.el7.x86_64
+--> Обработка зависимостей: libqpol.so.1()(64bit) пакета: policycoreutils-python-2.5-34.el7.x86_64
+--> Обработка зависимостей: libapol.so.4()(64bit) пакета: policycoreutils-python-2.5-34.el7.x86_64
+---> Пакет scl-utils.x86_64 0:20130529-19.el7 помечен для установки
+--> Проверка сценария
+---> Пакет audit-libs-python.x86_64 0:2.8.5-4.el7 помечен для установки
+---> Пакет checkpolicy.x86_64 0:2.5-8.el7 помечен для установки
+---> Пакет gd.x86_64 0:2.0.35-26.el7 помечен для установки
+--> Обработка зависимостей: libjpeg.so.62(LIBJPEG_6.2)(64bit) пакета: gd-2.0.35-26.el7.x86_64
+--> Обработка зависимостей: libjpeg.so.62()(64bit) пакета: gd-2.0.35-26.el7.x86_64
+--> Обработка зависимостей: libfontconfig.so.1()(64bit) пакета: gd-2.0.35-26.el7.x86_64
+--> Обработка зависимостей: libXpm.so.4()(64bit) пакета: gd-2.0.35-26.el7.x86_64
+---> Пакет libX11.x86_64 0:1.6.7-2.el7 помечен для установки
+--> Обработка зависимостей: libX11-common >= 1.6.7-2.el7 пакета: libX11-1.6.7-2.el7.x86_64
+--> Обработка зависимостей: libxcb.so.1()(64bit) пакета: libX11-1.6.7-2.el7.x86_64
+---> Пакет libcgroup.x86_64 0:0.41-21.el7 помечен для установки
+---> Пакет libsemanage-python.x86_64 0:2.5-14.el7 помечен для установки
+---> Пакет libxslt.x86_64 0:1.1.28-5.el7 помечен для установки
+---> Пакет perl.x86_64 4:5.16.3-295.el7 помечен для установки
+--> Обработка зависимостей: perl(Socket) >= 1.3 пакета: 4:perl-5.16.3-295.el7.x86_64
+--> Обработка зависимостей: perl(Scalar::Util) >= 1.10 пакета: 4:perl-5.16.3-295.el7.x86_64
+--> Обработка зависимостей: perl-macros пакета: 4:perl-5.16.3-295.el7.x86_64
+--> Обработка зависимостей: perl(threads::shared) пакета: 4:perl-5.16.3-295.el7.x86_64
+--> Обработка зависимостей: perl(threads) пакета: 4:perl-5.16.3-295.el7.x86_64
+--> Обработка зависимостей: perl(Time::Local) пакета: 4:perl-5.16.3-295.el7.x86_64
+--> Обработка зависимостей: perl(Time::HiRes) пакета: 4:perl-5.16.3-295.el7.x86_64
+--> Обработка зависимостей: perl(Storable) пакета: 4:perl-5.16.3-295.el7.x86_64
+--> Обработка зависимостей: perl(Socket) пакета: 4:perl-5.16.3-295.el7.x86_64
+--> Обработка зависимостей: perl(Scalar::Util) пакета: 4:perl-5.16.3-295.el7.x86_64
+--> Обработка зависимостей: perl(Pod::Simple::XHTML) пакета: 4:perl-5.16.3-295.el7.x86_64
+--> Обработка зависимостей: perl(Pod::Simple::Search) пакета: 4:perl-5.16.3-295.el7.x86_64
+--> Обработка зависимостей: perl(Getopt::Long) пакета: 4:perl-5.16.3-295.el7.x86_64
+--> Обработка зависимостей: perl(Filter::Util::Call) пакета: 4:perl-5.16.3-295.el7.x86_64
+--> Обработка зависимостей: perl(File::Temp) пакета: 4:perl-5.16.3-295.el7.x86_64
+--> Обработка зависимостей: perl(File::Spec::Unix) пакета: 4:perl-5.16.3-295.el7.x86_64
+--> Обработка зависимостей: perl(File::Spec::Functions) пакета: 4:perl-5.16.3-295.el7.x86_64
+--> Обработка зависимостей: perl(File::Spec) пакета: 4:perl-5.16.3-295.el7.x86_64
+--> Обработка зависимостей: perl(File::Path) пакета: 4:perl-5.16.3-295.el7.x86_64
+--> Обработка зависимостей: perl(Cwd) пакета: 4:perl-5.16.3-295.el7.x86_64
+--> Обработка зависимостей: perl(Carp) пакета: 4:perl-5.16.3-295.el7.x86_64
+---> Пакет perl-Exporter.noarch 0:5.68-3.el7 помечен для установки
+---> Пакет perl-constant.noarch 0:1.27-2.el7 помечен для установки
+---> Пакет perl-libs.x86_64 4:5.16.3-295.el7 помечен для установки
+---> Пакет python-IPy.noarch 0:0.75-6.el7 помечен для установки
+---> Пакет setools-libs.x86_64 0:3.3.8-4.el7 помечен для установки
+---> Пакет tcl.x86_64 1:8.5.13-8.el7 помечен для установки
+--> Проверка сценария
+---> Пакет fontconfig.x86_64 0:2.13.0-4.3.el7 помечен для установки
+--> Обработка зависимостей: fontpackages-filesystem пакета: fontconfig-2.13.0-4.3.el7.x86_64
+--> Обработка зависимостей: dejavu-sans-fonts пакета: fontconfig-2.13.0-4.3.el7.x86_64
+---> Пакет libX11-common.noarch 0:1.6.7-2.el7 помечен для установки
+---> Пакет libXpm.x86_64 0:3.5.12-1.el7 помечен для установки
+---> Пакет libjpeg-turbo.x86_64 0:1.2.90-8.el7 помечен для установки
+---> Пакет libxcb.x86_64 0:1.13-1.el7 помечен для установки
+--> Обработка зависимостей: libXau.so.6()(64bit) пакета: libxcb-1.13-1.el7.x86_64
+---> Пакет perl-Carp.noarch 0:1.26-244.el7 помечен для установки
+---> Пакет perl-File-Path.noarch 0:2.09-2.el7 помечен для установки
+---> Пакет perl-File-Temp.noarch 0:0.23.01-3.el7 помечен для установки
+---> Пакет perl-Filter.x86_64 0:1.49-3.el7 помечен для установки
+---> Пакет perl-Getopt-Long.noarch 0:2.40-3.el7 помечен для установки
+--> Обработка зависимостей: perl(Pod::Usage) >= 1.14 пакета: perl-Getopt-Long-2.40-3.el7.noarch
+--> Обработка зависимостей: perl(Text::ParseWords) пакета: perl-Getopt-Long-2.40-3.el7.noarch
+---> Пакет perl-PathTools.x86_64 0:3.40-5.el7 помечен для установки
+---> Пакет perl-Pod-Simple.noarch 1:3.28-4.el7 помечен для установки
+--> Обработка зависимостей: perl(Pod::Escapes) >= 1.04 пакета: 1:perl-Pod-Simple-3.28-4.el7.noarch
+--> Обработка зависимостей: perl(Encode) пакета: 1:perl-Pod-Simple-3.28-4.el7.noarch
+---> Пакет perl-Scalar-List-Utils.x86_64 0:1.27-248.el7 помечен для установки
+---> Пакет perl-Socket.x86_64 0:2.010-5.el7 помечен для установки
+---> Пакет perl-Storable.x86_64 0:2.45-3.el7 помечен для установки
+---> Пакет perl-Time-HiRes.x86_64 4:1.9725-3.el7 помечен для установки
+---> Пакет perl-Time-Local.noarch 0:1.2300-2.el7 помечен для установки
+---> Пакет perl-macros.x86_64 4:5.16.3-295.el7 помечен для установки
+---> Пакет perl-threads.x86_64 0:1.87-4.el7 помечен для установки
+---> Пакет perl-threads-shared.x86_64 0:1.43-6.el7 помечен для установки
+--> Проверка сценария
+---> Пакет dejavu-sans-fonts.noarch 0:2.33-6.el7 помечен для установки
+--> Обработка зависимостей: dejavu-fonts-common = 2.33-6.el7 пакета: dejavu-sans-fonts-2.33-6.el7.noarch
+---> Пакет fontpackages-filesystem.noarch 0:1.44-8.el7 помечен для установки
+---> Пакет libXau.x86_64 0:1.0.8-2.1.el7 помечен для установки
+---> Пакет perl-Encode.x86_64 0:2.51-7.el7 помечен для установки
+---> Пакет perl-Pod-Escapes.noarch 1:1.04-295.el7 помечен для установки
+---> Пакет perl-Pod-Usage.noarch 0:1.63-3.el7 помечен для установки
+--> Обработка зависимостей: perl(Pod::Text) >= 3.15 пакета: perl-Pod-Usage-1.63-3.el7.noarch
+--> Обработка зависимостей: perl-Pod-Perldoc пакета: perl-Pod-Usage-1.63-3.el7.noarch
+---> Пакет perl-Text-ParseWords.noarch 0:3.29-4.el7 помечен для установки
+--> Проверка сценария
+---> Пакет dejavu-fonts-common.noarch 0:2.33-6.el7 помечен для установки
+---> Пакет perl-Pod-Perldoc.noarch 0:3.20-4.el7 помечен для установки
+--> Обработка зависимостей: perl(parent) пакета: perl-Pod-Perldoc-3.20-4.el7.noarch
+--> Обработка зависимостей: perl(HTTP::Tiny) пакета: perl-Pod-Perldoc-3.20-4.el7.noarch
+---> Пакет perl-podlators.noarch 0:2.5.1-3.el7 помечен для установки
+--> Проверка сценария
+---> Пакет perl-HTTP-Tiny.noarch 0:0.033-3.el7 помечен для установки
+---> Пакет perl-parent.noarch 1:0.225-244.el7 помечен для установки
+--> Проверка зависимостей окончена
+
+Зависимости определены
+
+================================================================================
+ Package                       Архитектура
+                                        Версия                Репозиторий 
+                                                                          Размер
+================================================================================
+Установка:
+ nano                          x86_64   2.3.1-10.el7          base        440 k
+ nginx                         x86_64   1:1.16.1-1.el7        epel        562 k
+ php72                         x86_64   2.0-1.el7.remi        remi-safe   2.4 k
+ php72-php-fpm                 x86_64   7.2.33-1.el7.remi     remi-safe   1.7 M
+Установка зависимостей:
+ audit-libs-python             x86_64   2.8.5-4.el7           base         76 k
+ centos-indexhtml              noarch   7-9.el7.centos        base         92 k
+ checkpolicy                   x86_64   2.5-8.el7             base        295 k
+ dejavu-fonts-common           noarch   2.33-6.el7            base         64 k
+ dejavu-sans-fonts             noarch   2.33-6.el7            base        1.4 M
+ environment-modules           x86_64   3.2.10-10.el7         base        107 k
+ fontconfig                    x86_64   2.13.0-4.3.el7        base        254 k
+ fontpackages-filesystem       noarch   1.44-8.el7            base        9.9 k
+ gd                            x86_64   2.0.35-26.el7         base        146 k
+ gperftools-libs               x86_64   2.6.1-1.el7           base        272 k
+ libX11                        x86_64   1.6.7-2.el7           base        607 k
+ libX11-common                 noarch   1.6.7-2.el7           base        164 k
+ libXau                        x86_64   1.0.8-2.1.el7         base         29 k
+ libXpm                        x86_64   3.5.12-1.el7          base         55 k
+ libargon2                     x86_64   20161029-3.el7        epel         23 k
+ libcgroup                     x86_64   0.41-21.el7           base         66 k
+ libjpeg-turbo                 x86_64   1.2.90-8.el7          base        135 k
+ libsemanage-python            x86_64   2.5-14.el7            base        113 k
+ libxcb                        x86_64   1.13-1.el7            base        214 k
+ libxslt                       x86_64   1.1.28-5.el7          base        242 k
+ nginx-all-modules             noarch   1:1.16.1-1.el7        epel         19 k
+ nginx-filesystem              noarch   1:1.16.1-1.el7        epel         21 k
+ nginx-mod-http-image-filter   x86_64   1:1.16.1-1.el7        epel         30 k
+ nginx-mod-http-perl           x86_64   1:1.16.1-1.el7        epel         39 k
+ nginx-mod-http-xslt-filter    x86_64   1:1.16.1-1.el7        epel         29 k
+ nginx-mod-mail                x86_64   1:1.16.1-1.el7        epel         57 k
+ nginx-mod-stream              x86_64   1:1.16.1-1.el7        epel         84 k
+ perl                          x86_64   4:5.16.3-295.el7      base        8.0 M
+ perl-Carp                     noarch   1.26-244.el7          base         19 k
+ perl-Encode                   x86_64   2.51-7.el7            base        1.5 M
+ perl-Exporter                 noarch   5.68-3.el7            base         28 k
+ perl-File-Path                noarch   2.09-2.el7            base         26 k
+ perl-File-Temp                noarch   0.23.01-3.el7         base         56 k
+ perl-Filter                   x86_64   1.49-3.el7            base         76 k
+ perl-Getopt-Long              noarch   2.40-3.el7            base         56 k
+ perl-HTTP-Tiny                noarch   0.033-3.el7           base         38 k
+ perl-PathTools                x86_64   3.40-5.el7            base         82 k
+ perl-Pod-Escapes              noarch   1:1.04-295.el7        base         51 k
+ perl-Pod-Perldoc              noarch   3.20-4.el7            base         87 k
+ perl-Pod-Simple               noarch   1:3.28-4.el7          base        216 k
+ perl-Pod-Usage                noarch   1.63-3.el7            base         27 k
+ perl-Scalar-List-Utils        x86_64   1.27-248.el7          base         36 k
+ perl-Socket                   x86_64   2.010-5.el7           base         49 k
+ perl-Storable                 x86_64   2.45-3.el7            base         77 k
+ perl-Text-ParseWords          noarch   3.29-4.el7            base         14 k
+ perl-Time-HiRes               x86_64   4:1.9725-3.el7        base         45 k
+ perl-Time-Local               noarch   1.2300-2.el7          base         24 k
+ perl-constant                 noarch   1.27-2.el7            base         19 k
+ perl-libs                     x86_64   4:5.16.3-295.el7      base        689 k
+ perl-macros                   x86_64   4:5.16.3-295.el7      base         44 k
+ perl-parent                   noarch   1:0.225-244.el7       base         12 k
+ perl-podlators                noarch   2.5.1-3.el7           base        112 k
+ perl-threads                  x86_64   1.87-4.el7            base         49 k
+ perl-threads-shared           x86_64   1.43-6.el7            base         39 k
+ php72-php-cli                 x86_64   7.2.33-1.el7.remi     remi-safe   3.2 M
+ php72-php-common              x86_64   7.2.33-1.el7.remi     remi-safe   643 k
+ php72-php-json                x86_64   7.2.33-1.el7.remi     remi-safe    70 k
+ php72-runtime                 x86_64   2.0-1.el7.remi        remi-safe   1.1 M
+ policycoreutils-python        x86_64   2.5-34.el7            base        457 k
+ python-IPy                    noarch   0.75-6.el7            base         32 k
+ scl-utils                     x86_64   20130529-19.el7       base         24 k
+ setools-libs                  x86_64   3.3.8-4.el7           base        620 k
+ tcl                           x86_64   1:8.5.13-8.el7        base        1.9 M
+
+Итого за операцию
+================================================================================
+Установить  4 пакета (+63 зависимых)
+
+Объем загрузки: 27 M
+Объем изменений: 83 M
+Is this ok [y/d/N]: y
+Downloading packages:
+(1/67): audit-libs-python-2.8.5-4.el7.x86_64.rpm           |  76 kB   00:00     
+(2/67): centos-indexhtml-7-9.el7.centos.noarch.rpm         |  92 kB   00:00     
+(3/67): dejavu-fonts-common-2.33-6.el7.noarch.rpm          |  64 kB   00:00     
+(4/67): checkpolicy-2.5-8.el7.x86_64.rpm                   | 295 kB   00:00     
+(5/67): environment-modules-3.2.10-10.el7.x86_64.rpm       | 107 kB   00:00     
+(6/67): fontconfig-2.13.0-4.3.el7.x86_64.rpm               | 254 kB   00:00     
+(7/67): fontpackages-filesystem-1.44-8.el7.noarch.rpm      | 9.9 kB   00:00     
+(8/67): gd-2.0.35-26.el7.x86_64.rpm                        | 146 kB   00:00     
+(9/67): dejavu-sans-fonts-2.33-6.el7.noarch.rpm            | 1.4 MB   00:00     
+(10/67): gperftools-libs-2.6.1-1.el7.x86_64.rpm            | 272 kB   00:00     
+(11/67): libX11-common-1.6.7-2.el7.noarch.rpm              | 164 kB   00:00     
+(12/67): libXau-1.0.8-2.1.el7.x86_64.rpm                   |  29 kB   00:00     
+(13/67): libX11-1.6.7-2.el7.x86_64.rpm                     | 607 kB   00:00     
+(14/67): libXpm-3.5.12-1.el7.x86_64.rpm                    |  55 kB   00:00     
+(15/67): libcgroup-0.41-21.el7.x86_64.rpm                  |  66 kB   00:00     
+(16/67): libjpeg-turbo-1.2.90-8.el7.x86_64.rpm             | 135 kB   00:00     
+(17/67): libsemanage-python-2.5-14.el7.x86_64.rpm          | 113 kB   00:00     
+(18/67): libxcb-1.13-1.el7.x86_64.rpm                      | 214 kB   00:00     
+(19/67): libxslt-1.1.28-5.el7.x86_64.rpm                   | 242 kB   00:00     
+(20/67): nano-2.3.1-10.el7.x86_64.rpm                      | 440 kB   00:00     
+warning: /var/cache/yum/x86_64/7/epel/packages/libargon2-20161029-3.el7.x86_64.rpm: Header V3 RSA/SHA256 Signature, key ID 352c64e5: NOKEY
+Публичный ключ для libargon2-20161029-3.el7.x86_64.rpm не установлен
+(21/67): libargon2-20161029-3.el7.x86_64.rpm               |  23 kB   00:00     
+(22/67): nginx-all-modules-1.16.1-1.el7.noarch.rpm         |  19 kB   00:00     
+(23/67): nginx-filesystem-1.16.1-1.el7.noarch.rpm          |  21 kB   00:00     
+(24/67): nginx-mod-http-xslt-filter-1.16.1-1.el7.x86_64.rp |  29 kB   00:00     
+(25/67): nginx-mod-mail-1.16.1-1.el7.x86_64.rpm            |  57 kB   00:00     
+(26/67): nginx-mod-http-perl-1.16.1-1.el7.x86_64.rpm       |  39 kB   00:00     
+(27/67): nginx-mod-http-image-filter-1.16.1-1.el7.x86_64.r |  30 kB   00:00     
+(28/67): nginx-mod-stream-1.16.1-1.el7.x86_64.rpm          |  84 kB   00:00     
+(29/67): perl-Carp-1.26-244.el7.noarch.rpm                 |  19 kB   00:00     
+(30/67): perl-5.16.3-295.el7.x86_64.rpm                    | 8.0 MB   00:01     
+(31/67): perl-Encode-2.51-7.el7.x86_64.rpm                 | 1.5 MB   00:00     
+(32/67): perl-Exporter-5.68-3.el7.noarch.rpm               |  28 kB   00:00     
+(33/67): perl-File-Path-2.09-2.el7.noarch.rpm              |  26 kB   00:00     
+(34/67): perl-File-Temp-0.23.01-3.el7.noarch.rpm           |  56 kB   00:00     
+(35/67): perl-Filter-1.49-3.el7.x86_64.rpm                 |  76 kB   00:00     
+(36/67): perl-Getopt-Long-2.40-3.el7.noarch.rpm            |  56 kB   00:00     
+(37/67): perl-HTTP-Tiny-0.033-3.el7.noarch.rpm             |  38 kB   00:00     
+(38/67): perl-PathTools-3.40-5.el7.x86_64.rpm              |  82 kB   00:00     
+(39/67): perl-Pod-Perldoc-3.20-4.el7.noarch.rpm            |  87 kB   00:00     
+(40/67): nginx-1.16.1-1.el7.x86_64.rpm                     | 562 kB   00:02     
+(41/67): perl-Pod-Escapes-1.04-295.el7.noarch.rpm          |  51 kB   00:00     
+(42/67): perl-Pod-Usage-1.63-3.el7.noarch.rpm              |  27 kB   00:00     
+(43/67): perl-Pod-Simple-3.28-4.el7.noarch.rpm             | 216 kB   00:00     
+(44/67): perl-Socket-2.010-5.el7.x86_64.rpm                |  49 kB   00:00     
+(45/67): perl-Scalar-List-Utils-1.27-248.el7.x86_64.rpm    |  36 kB   00:00     
+(46/67): perl-Storable-2.45-3.el7.x86_64.rpm               |  77 kB   00:00     
+(47/67): perl-Text-ParseWords-3.29-4.el7.noarch.rpm        |  14 kB   00:00     
+(48/67): perl-Time-HiRes-1.9725-3.el7.x86_64.rpm           |  45 kB   00:00     
+(49/67): perl-Time-Local-1.2300-2.el7.noarch.rpm           |  24 kB   00:00     
+(50/67): perl-constant-1.27-2.el7.noarch.rpm               |  19 kB   00:00     
+(51/67): perl-macros-5.16.3-295.el7.x86_64.rpm             |  44 kB   00:00     
+(52/67): perl-parent-0.225-244.el7.noarch.rpm              |  12 kB   00:00     
+(53/67): perl-podlators-2.5.1-3.el7.noarch.rpm             | 112 kB   00:00     
+(54/67): perl-threads-1.87-4.el7.x86_64.rpm                |  49 kB   00:00     
+(55/67): perl-threads-shared-1.43-6.el7.x86_64.rpm         |  39 kB   00:00     
+(56/67): perl-libs-5.16.3-295.el7.x86_64.rpm               | 689 kB   00:00     
+warning: /var/cache/yum/x86_64/7/remi-safe/packages/php72-2.0-1.el7.remi.x86_64.rpm: Header V4 DSA/SHA1 Signature, key ID 00f97f56: NOKEY
+Публичный ключ для php72-2.0-1.el7.remi.x86_64.rpm не установлен
+(57/67): php72-2.0-1.el7.remi.x86_64.rpm                   | 2.4 kB   00:00     
+(58/67): php72-php-fpm-7.2.33-1.el7.remi.x86_64.rpm        | 1.7 MB   00:01     
+(59/67): php72-php-common-7.2.33-1.el7.remi.x86_64.rpm     | 643 kB   00:01     
+(60/67): policycoreutils-python-2.5-34.el7.x86_64.rpm      | 457 kB   00:00     
+(61/67): scl-utils-20130529-19.el7.x86_64.rpm              |  24 kB   00:00     
+(62/67): python-IPy-0.75-6.el7.noarch.rpm                  |  32 kB   00:00     
+(63/67): php72-runtime-2.0-1.el7.remi.x86_64.rpm           | 1.1 MB   00:01     
+(64/67): setools-libs-3.3.8-4.el7.x86_64.rpm               | 620 kB   00:00     
+(65/67): tcl-8.5.13-8.el7.x86_64.rpm                       | 1.9 MB   00:00     
+(66/67): php72-php-json-7.2.33-1.el7.remi.x86_64.rpm       |  70 kB   00:02     
+(67/67): php72-php-cli-7.2.33-1.el7.remi.x86_64.rpm        | 3.2 MB   00:02     
+--------------------------------------------------------------------------------
+Общий размер                                       4.1 MB/s |  27 MB  00:06     
+Получение ключа из file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
+Импорт GPG ключа 0x352C64E5:
+ Владелец   : "Fedora EPEL (7) <epel@fedoraproject.org>"
+ Отпечаток  : 91e9 7d7c 4a5e 96f1 7f3e 888f 6a2f aea2 352c 64e5
+ Пакет      : epel-release-7-11.noarch (@extras)
+ Источник   : /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
+Продолжить? [y/N]: y
+Получение ключа из file:///etc/pki/rpm-gpg/RPM-GPG-KEY-remi
+Импорт GPG ключа 0x00F97F56:
+ Владелец   : "Remi Collet <RPMS@FamilleCollet.com>"
+ Отпечаток  : 1ee0 4cce 88a4 ae4a a29a 5df5 004e 6f47 00f9 7f56
+ Пакет      : remi-release-7.8-1.el7.remi.noarch (installed)
+ Источник   : /etc/pki/rpm-gpg/RPM-GPG-KEY-remi
+Продолжить? [y/N]: y
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+ПРЕДУПРЕЖДЕНИЕ: база данных RPM была изменена вне Yum.
+  Установка   : fontpackages-filesystem-1.44-8.el7.noarch                  1/67 
+  Установка   : libargon2-20161029-3.el7.x86_64                            2/67 
+  Установка   : dejavu-fonts-common-2.33-6.el7.noarch                      3/67 
+  Установка   : dejavu-sans-fonts-2.33-6.el7.noarch                        4/67 
+  Установка   : fontconfig-2.13.0-4.3.el7.x86_64                           5/67 
+  Установка   : 1:perl-parent-0.225-244.el7.noarch                         6/67 
+  Установка   : perl-HTTP-Tiny-0.033-3.el7.noarch                          7/67 
+  Установка   : perl-podlators-2.5.1-3.el7.noarch                          8/67 
+  Установка   : perl-Pod-Perldoc-3.20-4.el7.noarch                         9/67 
+  Установка   : 1:perl-Pod-Escapes-1.04-295.el7.noarch                    10/67 
+  Установка   : perl-Text-ParseWords-3.29-4.el7.noarch                    11/67 
+  Установка   : perl-Encode-2.51-7.el7.x86_64                             12/67 
+  Установка   : perl-Pod-Usage-1.63-3.el7.noarch                          13/67 
+  Установка   : 4:perl-libs-5.16.3-295.el7.x86_64                         14/67 
+  Установка   : 4:perl-macros-5.16.3-295.el7.x86_64                       15/67 
+  Установка   : 4:perl-Time-HiRes-1.9725-3.el7.x86_64                     16/67 
+  Установка   : perl-Exporter-5.68-3.el7.noarch                           17/67 
+  Установка   : perl-constant-1.27-2.el7.noarch                           18/67 
+  Установка   : perl-Socket-2.010-5.el7.x86_64                            19/67 
+  Установка   : perl-Filter-1.49-3.el7.x86_64                             20/67 
+  Установка   : perl-Time-Local-1.2300-2.el7.noarch                       21/67 
+  Установка   : perl-Carp-1.26-244.el7.noarch                             22/67 
+  Установка   : perl-Storable-2.45-3.el7.x86_64                           23/67 
+  Установка   : perl-PathTools-3.40-5.el7.x86_64                          24/67 
+  Установка   : perl-Scalar-List-Utils-1.27-248.el7.x86_64                25/67 
+  Установка   : perl-File-Temp-0.23.01-3.el7.noarch                       26/67 
+  Установка   : perl-File-Path-2.09-2.el7.noarch                          27/67 
+  Установка   : perl-threads-shared-1.43-6.el7.x86_64                     28/67 
+  Установка   : perl-threads-1.87-4.el7.x86_64                            29/67 
+  Установка   : 1:perl-Pod-Simple-3.28-4.el7.noarch                       30/67 
+  Установка   : perl-Getopt-Long-2.40-3.el7.noarch                        31/67 
+  Установка   : 4:perl-5.16.3-295.el7.x86_64                              32/67 
+  Установка   : libcgroup-0.41-21.el7.x86_64                              33/67 
+  Установка   : gperftools-libs-2.6.1-1.el7.x86_64                        34/67 
+  Установка   : libXau-1.0.8-2.1.el7.x86_64                               35/67 
+  Установка   : libxcb-1.13-1.el7.x86_64                                  36/67 
+  Установка   : centos-indexhtml-7-9.el7.centos.noarch                    37/67 
+  Установка   : libjpeg-turbo-1.2.90-8.el7.x86_64                         38/67 
+  Установка   : libxslt-1.1.28-5.el7.x86_64                               39/67 
+  Установка   : libsemanage-python-2.5-14.el7.x86_64                      40/67 
+  Установка   : setools-libs-3.3.8-4.el7.x86_64                           41/67 
+  Установка   : libX11-common-1.6.7-2.el7.noarch                          42/67 
+  Установка   : libX11-1.6.7-2.el7.x86_64                                 43/67 
+  Установка   : libXpm-3.5.12-1.el7.x86_64                                44/67 
+  Установка   : gd-2.0.35-26.el7.x86_64                                   45/67 
+  Установка   : python-IPy-0.75-6.el7.noarch                              46/67 
+  Установка   : scl-utils-20130529-19.el7.x86_64                          47/67 
+  Установка   : checkpolicy-2.5-8.el7.x86_64                              48/67 
+  Установка   : audit-libs-python-2.8.5-4.el7.x86_64                      49/67 
+  Установка   : policycoreutils-python-2.5-34.el7.x86_64                  50/67 
+  Установка   : 1:nginx-filesystem-1.16.1-1.el7.noarch                    51/67 
+  Установка   : 1:nginx-mod-mail-1.16.1-1.el7.x86_64                      52/67 
+  Установка   : 1:nginx-mod-stream-1.16.1-1.el7.x86_64                    53/67 
+  Установка   : 1:nginx-mod-http-xslt-filter-1.16.1-1.el7.x86_64          54/67 
+  Установка   : 1:nginx-mod-http-image-filter-1.16.1-1.el7.x86_64         55/67 
+  Установка   : 1:nginx-1.16.1-1.el7.x86_64                               56/67 
+  Установка   : 1:nginx-mod-http-perl-1.16.1-1.el7.x86_64                 57/67 
+  Установка   : 1:nginx-all-modules-1.16.1-1.el7.noarch                   58/67 
+  Установка   : 1:tcl-8.5.13-8.el7.x86_64                                 59/67 
+  Установка   : environment-modules-3.2.10-10.el7.x86_64                  60/67 
+  Установка   : php72-runtime-2.0-1.el7.remi.x86_64                       61/67 
+  Установка   : php72-php-json-7.2.33-1.el7.remi.x86_64                   62/67 
+  Установка   : php72-php-common-7.2.33-1.el7.remi.x86_64                 63/67 
+  Установка   : php72-php-cli-7.2.33-1.el7.remi.x86_64                    64/67 
+  Установка   : php72-2.0-1.el7.remi.x86_64                               65/67 
+  Установка   : php72-php-fpm-7.2.33-1.el7.remi.x86_64                    66/67 
+  Установка   : nano-2.3.1-10.el7.x86_64                                  67/67 
+  Проверка    : perl-HTTP-Tiny-0.033-3.el7.noarch                          1/67 
+  Проверка    : 1:tcl-8.5.13-8.el7.x86_64                                  2/67 
+  Проверка    : fontconfig-2.13.0-4.3.el7.x86_64                           3/67 
+  Проверка    : 1:nginx-filesystem-1.16.1-1.el7.noarch                     4/67 
+  Проверка    : perl-Pod-Perldoc-3.20-4.el7.noarch                         5/67 
+  Проверка    : perl-threads-shared-1.43-6.el7.x86_64                      6/67 
+  Проверка    : 4:perl-Time-HiRes-1.9725-3.el7.x86_64                      7/67 
+  Проверка    : environment-modules-3.2.10-10.el7.x86_64                   8/67 
+  Проверка    : perl-Exporter-5.68-3.el7.noarch                            9/67 
+  Проверка    : perl-constant-1.27-2.el7.noarch                           10/67 
+  Проверка    : perl-PathTools-3.40-5.el7.x86_64                          11/67 
+  Проверка    : 1:nginx-mod-mail-1.16.1-1.el7.x86_64                      12/67 
+  Проверка    : libargon2-20161029-3.el7.x86_64                           13/67 
+  Проверка    : 1:nginx-mod-http-perl-1.16.1-1.el7.x86_64                 14/67 
+  Проверка    : perl-Socket-2.010-5.el7.x86_64                            15/67 
+  Проверка    : fontpackages-filesystem-1.44-8.el7.noarch                 16/67 
+  Проверка    : audit-libs-python-2.8.5-4.el7.x86_64                      17/67 
+  Проверка    : 1:perl-Pod-Escapes-1.04-295.el7.noarch                    18/67 
+  Проверка    : 1:perl-parent-0.225-244.el7.noarch                        19/67 
+  Проверка    : checkpolicy-2.5-8.el7.x86_64                              20/67 
+  Проверка    : scl-utils-20130529-19.el7.x86_64                          21/67 
+  Проверка    : 1:perl-Pod-Simple-3.28-4.el7.noarch                       22/67 
+  Проверка    : perl-Pod-Usage-1.63-3.el7.noarch                          23/67 
+  Проверка    : perl-Text-ParseWords-3.29-4.el7.noarch                    24/67 
+  Проверка    : 4:perl-libs-5.16.3-295.el7.x86_64                         25/67 
+  Проверка    : perl-Filter-1.49-3.el7.x86_64                             26/67 
+  Проверка    : perl-File-Temp-0.23.01-3.el7.noarch                       27/67 
+  Проверка    : python-IPy-0.75-6.el7.noarch                              28/67 
+  Проверка    : libX11-1.6.7-2.el7.x86_64                                 29/67 
+  Проверка    : libX11-common-1.6.7-2.el7.noarch                          30/67 
+  Проверка    : libxcb-1.13-1.el7.x86_64                                  31/67 
+  Проверка    : policycoreutils-python-2.5-34.el7.x86_64                  32/67 
+  Проверка    : perl-Time-Local-1.2300-2.el7.noarch                       33/67 
+  Проверка    : 4:perl-macros-5.16.3-295.el7.x86_64                       34/67 
+  Проверка    : 4:perl-5.16.3-295.el7.x86_64                              35/67 
+  Проверка    : setools-libs-3.3.8-4.el7.x86_64                           36/67 
+  Проверка    : libXpm-3.5.12-1.el7.x86_64                                37/67 
+  Проверка    : php72-php-fpm-7.2.33-1.el7.remi.x86_64                    38/67 
+  Проверка    : perl-Carp-1.26-244.el7.noarch                             39/67 
+  Проверка    : perl-podlators-2.5.1-3.el7.noarch                         40/67 
+  Проверка    : libsemanage-python-2.5-14.el7.x86_64                      41/67 
+  Проверка    : libxslt-1.1.28-5.el7.x86_64                               42/67 
+  Проверка    : 1:nginx-mod-stream-1.16.1-1.el7.x86_64                    43/67 
+  Проверка    : perl-Storable-2.45-3.el7.x86_64                           44/67 
+  Проверка    : dejavu-sans-fonts-2.33-6.el7.noarch                       45/67 
+  Проверка    : perl-Scalar-List-Utils-1.27-248.el7.x86_64                46/67 
+  Проверка    : 1:nginx-1.16.1-1.el7.x86_64                               47/67 
+  Проверка    : libjpeg-turbo-1.2.90-8.el7.x86_64                         48/67 
+  Проверка    : 1:nginx-all-modules-1.16.1-1.el7.noarch                   49/67 
+  Проверка    : 1:nginx-mod-http-xslt-filter-1.16.1-1.el7.x86_64          50/67 
+  Проверка    : centos-indexhtml-7-9.el7.centos.noarch                    51/67 
+  Проверка    : 1:nginx-mod-http-image-filter-1.16.1-1.el7.x86_64         52/67 
+  Проверка    : perl-Encode-2.51-7.el7.x86_64                             53/67 
+  Проверка    : php72-runtime-2.0-1.el7.remi.x86_64                       54/67 
+  Проверка    : php72-php-common-7.2.33-1.el7.remi.x86_64                 55/67 
+  Проверка    : libXau-1.0.8-2.1.el7.x86_64                               56/67 
+  Проверка    : perl-File-Path-2.09-2.el7.noarch                          57/67 
+  Проверка    : perl-threads-1.87-4.el7.x86_64                            58/67 
+  Проверка    : gperftools-libs-2.6.1-1.el7.x86_64                        59/67 
+  Проверка    : php72-php-json-7.2.33-1.el7.remi.x86_64                   60/67 
+  Проверка    : php72-2.0-1.el7.remi.x86_64                               61/67 
+  Проверка    : perl-Getopt-Long-2.40-3.el7.noarch                        62/67 
+  Проверка    : php72-php-cli-7.2.33-1.el7.remi.x86_64                    63/67 
+  Проверка    : gd-2.0.35-26.el7.x86_64                                   64/67 
+  Проверка    : nano-2.3.1-10.el7.x86_64                                  65/67 
+  Проверка    : dejavu-fonts-common-2.33-6.el7.noarch                     66/67 
+  Проверка    : libcgroup-0.41-21.el7.x86_64                              67/67 
+
+Установлено:
+  nano.x86_64 0:2.3.1-10.el7        nginx.x86_64 1:1.16.1-1.el7                 
+  php72.x86_64 0:2.0-1.el7.remi     php72-php-fpm.x86_64 0:7.2.33-1.el7.remi    
+
+Установлены зависимости:
+  audit-libs-python.x86_64 0:2.8.5-4.el7                                        
+  centos-indexhtml.noarch 0:7-9.el7.centos                                      
+  checkpolicy.x86_64 0:2.5-8.el7                                                
+  dejavu-fonts-common.noarch 0:2.33-6.el7                                       
+  dejavu-sans-fonts.noarch 0:2.33-6.el7                                         
+  environment-modules.x86_64 0:3.2.10-10.el7                                    
+  fontconfig.x86_64 0:2.13.0-4.3.el7                                            
+  fontpackages-filesystem.noarch 0:1.44-8.el7                                   
+  gd.x86_64 0:2.0.35-26.el7                                                     
+  gperftools-libs.x86_64 0:2.6.1-1.el7                                          
+  libX11.x86_64 0:1.6.7-2.el7                                                   
+  libX11-common.noarch 0:1.6.7-2.el7                                            
+  libXau.x86_64 0:1.0.8-2.1.el7                                                 
+  libXpm.x86_64 0:3.5.12-1.el7                                                  
+  libargon2.x86_64 0:20161029-3.el7                                             
+  libcgroup.x86_64 0:0.41-21.el7                                                
+  libjpeg-turbo.x86_64 0:1.2.90-8.el7                                           
+  libsemanage-python.x86_64 0:2.5-14.el7                                        
+  libxcb.x86_64 0:1.13-1.el7                                                    
+  libxslt.x86_64 0:1.1.28-5.el7                                                 
+  nginx-all-modules.noarch 1:1.16.1-1.el7                                       
+  nginx-filesystem.noarch 1:1.16.1-1.el7                                        
+  nginx-mod-http-image-filter.x86_64 1:1.16.1-1.el7                             
+  nginx-mod-http-perl.x86_64 1:1.16.1-1.el7                                     
+  nginx-mod-http-xslt-filter.x86_64 1:1.16.1-1.el7                              
+  nginx-mod-mail.x86_64 1:1.16.1-1.el7                                          
+  nginx-mod-stream.x86_64 1:1.16.1-1.el7                                        
+  perl.x86_64 4:5.16.3-295.el7                                                  
+  perl-Carp.noarch 0:1.26-244.el7                                               
+  perl-Encode.x86_64 0:2.51-7.el7                                               
+  perl-Exporter.noarch 0:5.68-3.el7                                             
+  perl-File-Path.noarch 0:2.09-2.el7                                            
+  perl-File-Temp.noarch 0:0.23.01-3.el7                                         
+  perl-Filter.x86_64 0:1.49-3.el7                                               
+  perl-Getopt-Long.noarch 0:2.40-3.el7                                          
+  perl-HTTP-Tiny.noarch 0:0.033-3.el7                                           
+  perl-PathTools.x86_64 0:3.40-5.el7                                            
+  perl-Pod-Escapes.noarch 1:1.04-295.el7                                        
+  perl-Pod-Perldoc.noarch 0:3.20-4.el7                                          
+  perl-Pod-Simple.noarch 1:3.28-4.el7                                           
+  perl-Pod-Usage.noarch 0:1.63-3.el7                                            
+  perl-Scalar-List-Utils.x86_64 0:1.27-248.el7                                  
+  perl-Socket.x86_64 0:2.010-5.el7                                              
+  perl-Storable.x86_64 0:2.45-3.el7                                             
+  perl-Text-ParseWords.noarch 0:3.29-4.el7                                      
+  perl-Time-HiRes.x86_64 4:1.9725-3.el7                                         
+  perl-Time-Local.noarch 0:1.2300-2.el7                                         
+  perl-constant.noarch 0:1.27-2.el7                                             
+  perl-libs.x86_64 4:5.16.3-295.el7                                             
+  perl-macros.x86_64 4:5.16.3-295.el7                                           
+  perl-parent.noarch 1:0.225-244.el7                                            
+  perl-podlators.noarch 0:2.5.1-3.el7                                           
+  perl-threads.x86_64 0:1.87-4.el7                                              
+  perl-threads-shared.x86_64 0:1.43-6.el7                                       
+  php72-php-cli.x86_64 0:7.2.33-1.el7.remi                                      
+  php72-php-common.x86_64 0:7.2.33-1.el7.remi                                   
+  php72-php-json.x86_64 0:7.2.33-1.el7.remi                                     
+  php72-runtime.x86_64 0:2.0-1.el7.remi                                         
+  policycoreutils-python.x86_64 0:2.5-34.el7                                    
+  python-IPy.noarch 0:0.75-6.el7                                                
+  scl-utils.x86_64 0:20130529-19.el7                                            
+  setools-libs.x86_64 0:3.3.8-4.el7                                             
+  tcl.x86_64 1:8.5.13-8.el7                                                     
+
+Выполнено!
+[admin@web ~]$ sudo ln -s /usr/bin/php72 /usr/bin/php
+[admin@web ~]$ ls -lah /usr/bin | grep php
+lrwxrwxrwx.  1 root root      14 авг 22 14:10 php -> /usr/bin/php72
+lrwxrwxrwx.  1 root root      32 авг 22 14:09 php72 -> /opt/remi/php72/root/usr/bin/php
+lrwxrwxrwx.  1 root root      36 авг 22 14:09 php72-cgi -> /opt/remi/php72/root/usr/bin/php-cgi
+lrwxrwxrwx.  1 root root      38 авг 22 14:09 php72-phar -> /opt/remi/php72/root/usr/bin/phar.phar
+[admin@web ~]$ php -v
+PHP 7.2.33 (cli) (built: Aug  4 2020 10:15:02) ( NTS )
+Copyright (c) 1997-2018 The PHP Group
+Zend Engine v3.2.0, Copyright (c) 1998-2018 Zend Technologies
+[admin@web ~]$ sudo nano /etc/opt/remi/php72/php-fpm.d/www.conf
+[admin@web ~]$ sudo nano /etc/selinux/config
+[sudo] пароль для admin: 
+[admin@web ~]$ cat /etc/selinux/config
+
+# This file controls the state of SELinux on the system.
+# SELINUX= can take one of these three values:
+#     enforcing - SELinux security policy is enforced.
+#     permissive - SELinux prints warnings instead of enforcing.
+#     disabled - No SELinux policy is loaded.
+SELINUX=disabled
+# SELINUXTYPE= can take one of three values:
+#     targeted - Targeted processes are protected,
+#     minimum - Modification of targeted policy. Only selected processes are protected. 
+#     mls - Multi Level Security protection.
+SELINUXTYPE=targeted
+konstantinlevchenko@Konstantin ~ % scp admin@192.168.56.80:/etc/opt/remi/php72/php-fpm.d/www.conf /Users/konstantinlevchenko/Documents/programing/web_developer/highload/hw_1/
+admin@192.168.56.80's password: 
+www.conf                                      100%   19KB   8.0MB/s   00:00  
+[admin@web ~]$ sudo mkdir /var/www/
+[admin@web ~]$ sudo mkdir /var/www/mysite.local/
+[admin@web ~]$ sudo chown -R admin:nginx /var/www/mysite.local/
+[admin@web ~]$ ls -la /var/www/
+итого 0
+drwxr-xr-x   3 root  root   26 авг 22 14:33 .
+drwxr-xr-x. 20 root  root  278 авг 22 14:33 ..
+drwxr-xr-x   2 admin nginx   6 авг 22 14:33 mysite.local
+[admin@web ~]$ chmod 0775 -R /var/www/mysite.local/
+[admin@web ~]$ ls -la /var/www/
+итого 0
+drwxr-xr-x   3 root  root   26 авг 22 14:33 .
+drwxr-xr-x. 20 root  root  278 авг 22 14:33 ..
+drwxrwxr-x   2 admin nginx   6 авг 22 14:33 mysite.local
+[admin@web ~]$ sudo nano /etc/nginx/conf.d/mysite.local.conf
+[admin@web ~]$ cat /etc/nginx/conf.d/mysite.local.conf
+server {
+    listen 80;
+    server_name mysite.local;
+
+    root /var/www/mysite.local;
+
+    location / {
+      index index.php index.html;
+    }
+
+    location ~* .php$ {
+      fastcgi_split_path_info ^(.*.php)(/.*)$;
+      fastcgi_pass unix:/var/run/php-fpm.sock;
+      fastcgi_index index.php;
+      fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+      include fastcgi_params;
+        fastcgi_param PHP_VALUE "
+	max_execution_time = 300
+	memory_limit = 128M
+	post_max_size = 16M
+	upload_max_filesize = 2M
+	max_input_time = 300
+	date.timezone = Europe/Moscow
+	always_populate_raw_post_data = -1";
+	fastcgi_buffers 8 256k;
+	fastcgi_buffer_size 128k;
+	fastcgi_intercept_errors on;
+	fastcgi_busy_buffers_size 256k;
+	fastcgi_temp_file_write_size 256k;
+    }
+}
+konstantinlevchenko@Konstantin ~ % scp admin@192.168.56.80:/etc/nginx/conf.d/mysite.local.conf /Users/konstantinlevchenko/Documents/programing/web_developer/highload/hw_1/
+admin@192.168.56.80's password: 
+mysite.local.conf                             100%  775   866.9KB/s   00:00 
+[admin@web ~]$ sudo chown -R admin:nginx /etc/nginx/conf.d/
+[admin@web ~]$ chmod 0775 -R /etc/nginx/conf.d/
+[admin@web ~]$ ls -la /etc/nginx/conf.d/
+итого 8
+drwxrwxr-x. 2 admin nginx   31 авг 22 14:39 .
+drwxr-xr-x. 4 root  root  4096 авг 22 14:09 ..
+-rwxrwxr-x  1 admin nginx  775 авг 22 14:39 mysite.local.conf
+[admin@web ~]$ sudo systemctl restart nginx
+[sudo] пароль для admin: 
+[admin@web ~]$ sudo nginx -t
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+[admin@web ~]$ systemctl status nginx
+● nginx.service - The nginx HTTP and reverse proxy server
+   Loaded: loaded (/usr/lib/systemd/system/nginx.service; disabled; vendor preset: disabled)
+   Active: active (running) since Сб 2020-08-22 14:49:32 MSK; 53s ago
+  Process: 1384 ExecStart=/usr/sbin/nginx (code=exited, status=0/SUCCESS)
+  Process: 1381 ExecStartPre=/usr/sbin/nginx -t (code=exited, status=0/SUCCESS)
+  Process: 1380 ExecStartPre=/usr/bin/rm -f /run/nginx.pid (code=exited, status=0/SUCCESS)
+ Main PID: 1386 (nginx)
+   CGroup: /system.slice/nginx.service
+           ├─1386 nginx: master process /usr/sbin/nginx
+           └─1387 nginx: worker process
+
+авг 22 14:49:32 web.local systemd[1]: Starting The nginx HTTP and reverse....
+авг 22 14:49:32 web.local nginx[1381]: nginx: the configuration file /etc...k
+авг 22 14:49:32 web.local nginx[1381]: nginx: configuration file /etc/ngi...l
+авг 22 14:49:32 web.local systemd[1]: Failed to parse PID from file /run/...t
+авг 22 14:49:32 web.local systemd[1]: Started The nginx HTTP and reverse ....
+Hint: Some lines were ellipsized, use -l to show in full.
+[admin@web ~]$ systemctl status php72-php-fpm
+● php72-php-fpm.service - The PHP FastCGI Process Manager
+   Loaded: loaded (/usr/lib/systemd/system/php72-php-fpm.service; disabled; vendor preset: disabled)
+   Active: inactive (dead)
+[admin@web ~]$ systemctl start php72-php-fpm
+==== AUTHENTICATING FOR org.freedesktop.systemd1.manage-units ===
+Для управления системными службами и юнитами, необходимо пройти аутентификацию.
+Authenticating as: admin
+Password: 
+==== AUTHENTICATION COMPLETE ===
+[admin@web ~]$ systemctl status php72-php-fpm
+● php72-php-fpm.service - The PHP FastCGI Process Manager
+   Loaded: loaded (/usr/lib/systemd/system/php72-php-fpm.service; disabled; vendor preset: disabled)
+   Active: active (running) since Сб 2020-08-22 14:51:51 MSK; 3s ago
+ Main PID: 1407 (php-fpm)
+   Status: "Ready to handle connections"
+   CGroup: /system.slice/php72-php-fpm.service
+           ├─1407 php-fpm: master process (/etc/opt/remi/php72/php-fpm.conf)
+           ├─1408 php-fpm: pool www
+           ├─1409 php-fpm: pool www
+           ├─1410 php-fpm: pool www
+           ├─1411 php-fpm: pool www
+           └─1412 php-fpm: pool www
+
+авг 22 14:51:51 web.local systemd[1]: Starting The PHP FastCGI Process Ma....
+авг 22 14:51:51 web.local systemd[1]: Started The PHP FastCGI Process Man....
+Hint: Some lines were ellipsized, use -l to show in full.
+[admin@web ~]$ sudo firewall-cmd --zone=public --permanent --add-service=http
+[sudo] пароль для admin: 
+success
+[admin@web ~]$ sudo firewall-cmd --zone=public --permanent --add-service=https
+success
+[admin@web ~]$ sudo firewall-cmd --reload
+success
+[admin@web ~]$ cat /etc/nginx/nginx.conf
+# For more information on configuration, see:
+#   * Official English Documentation: http://nginx.org/en/docs/
+#   * Official Russian Documentation: http://nginx.org/ru/docs/
+
+user nginx;
+worker_processes auto;
+error_log /var/log/nginx/error.log;
+pid /run/nginx.pid;
+
+# Load dynamic modules. See /usr/share/doc/nginx/README.dynamic.
+include /usr/share/nginx/modules/*.conf;
+
+events {
+    worker_connections 1024;
+}
+
+http {
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+
+    access_log  /var/log/nginx/access.log  main;
+
+    sendfile            on;
+    tcp_nopush          on;
+    tcp_nodelay         on;
+    keepalive_timeout   65;
+    types_hash_max_size 2048;
+
+    include             /etc/nginx/mime.types;
+    default_type        application/octet-stream;
+
+    # Load modular configuration files from the /etc/nginx/conf.d directory.
+    # See http://nginx.org/en/docs/ngx_core_module.html#include
+    # for more information.
+    include /etc/nginx/conf.d/*.conf;
+
+    server {
+        listen       80 default_server;
+        listen       [::]:80 default_server;
+        server_name  _;
+        root         /usr/share/nginx/html;
+
+        # Load configuration files for the default server block.
+        include /etc/nginx/default.d/*.conf;
+
+        location / {
+        }
+
+        error_page 404 /404.html;
+            location = /40x.html {
+        }
+
+        error_page 500 502 503 504 /50x.html;
+            location = /50x.html {
+        }
+    }
+
+# Settings for a TLS enabled server.
+#
+#    server {
+#        listen       443 ssl http2 default_server;
+#        listen       [::]:443 ssl http2 default_server;
+#        server_name  _;
+#        root         /usr/share/nginx/html;
+#
+#        ssl_certificate "/etc/pki/nginx/server.crt";
+#        ssl_certificate_key "/etc/pki/nginx/private/server.key";
+#        ssl_session_cache shared:SSL:1m;
+#        ssl_session_timeout  10m;
+#        ssl_ciphers HIGH:!aNULL:!MD5;
+#        ssl_prefer_server_ciphers on;
+#
+#        # Load configuration files for the default server block.
+#        include /etc/nginx/default.d/*.conf;
+#
+#        location / {
+#        }
+#
+#        error_page 404 /404.html;
+#            location = /40x.html {
+#        }
+#
+#        error_page 500 502 503 504 /50x.html;
+#            location = /50x.html {
+#        }
+#    }
+
+}
+[admin@web html]$ sudo nano /etc/nginx/nginx.conf
+[admin@web html]$ systemctl restart nginx
+==== AUTHENTICATING FOR org.freedesktop.systemd1.manage-units ===
+Для управления системными службами и юнитами, необходимо пройти аутентификацию.
+Authenticating as: admin
+Password: 
+==== AUTHENTICATION COMPLETE ===
+konstantinlevchenko@Konstantin ~ % scp admin@192.168.56.80:/etc/nginx/nginx.conf /Users/konstantinlevchenko/Documents/programing/web_developer/highload/hw_1/
+admin@192.168.56.80's password: 
+nginx.conf                                    100% 2491     1.7MB/s   00:00

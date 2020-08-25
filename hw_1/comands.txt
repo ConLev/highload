@@ -1,0 +1,46 @@
+sudo vi /etc/ssh/sshd_config
+shift i -> esc :w :q
+ssh admin@192.168.56.80
+sudo yum install epel-release
+date
+sudo yum -y update tzdata
+sudo rm -f /etc/localtime
+ln -s /usr/share/zoneinfo/Europe/Moscow /etc/localtime
+yum -y install chrony
+systemctl enable chronyd
+systemctl start chronyd
+systemctl status chronyd -l
+sudo rpm -Uvh http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+sudo yum install nginx nano php72 php72-php-fpm
+sudo ln -s /usr/bin/php72 /usr/bin/php
+ls -lah /usr/bin | grep php
+sudo nano /etc/opt/remi/php72/php-fpm.d/www.conf
+sudo nano /etc/selinux/config
+cat /etc/selinux/config
+scp admin@192.168.56.80:/etc/opt/remi/php72/php-fpm.d/www.conf /Users/konstantinlevchenko/Documents/programing/web_developer/highload/hw_1/
+sudo mkdir /var/www/
+sudo mkdir /var/www/mysite.local/
+sudo chown -R admin:nginx /var/www/mysite.local/
+ls -la /var/www/mysite.local/
+chmod 0775 -R /var/www/mysite.local/
+ls -la /var/www/mysite.local/
+sudo nano /etc/nginx/conf.d/mysite.local.conf
+scp admin@192.168.56.80:/etc/nginx/conf.d/mysite.local.conf /Users/konstantinlevchenko/Documents/programing/web_developer/highload/hw_1/
+sudo chown -R admin:nginx /etc/nginx/conf.d/
+chmod 0775 -R /etc/nginx/conf.d/
+ls -la /etc/nginx/conf.d/
+sudo systemctl restart nginx
+sudo nginx -t
+sudo nano /var/www/mysite.local/index.php
+systemctl restart php72-php-fpm
+sudo systemctl enable php72-php-fpm
+systemctl restart nginx
+sudo systemctl enable nginx
+systemctl status php72-php-fpm.service
+systemctl status nginx
+sudo firewall-cmd --zone=public --permanent --add-service=http
+sudo firewall-cmd --zone=public --permanent --add-service=https
+sudo firewall-cmd --reload
+sudo nano /etc/nginx/nginx.conf
+systemctl restart nginx
+scp admin@192.168.56.80:/etc/nginx/nginx.conf /Users/konstantinlevchenko/Documents/programing/web_developer/highload/hw_1/
