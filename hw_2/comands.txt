@@ -1,0 +1,65 @@
+sudo yum install composer
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
+sudo mv composer.phar /usr/bin/composer
+sudo yum install zip unzip
+cd /var/www/mysite.local
+ls -la
+composer require monolog/monolog
+sudo nano /var/www/mysite.local/index.php
+[admin@web mysite.local]$ mkdir /var/www/mysite.local/log
+# FTP
+yum -y install vsftpd
+rm -rf /etc/vsftpd/*
+sudo nano /etc/vsftpd/vsftpd.conf
+mkdir /etc/vsftpd/users
+touch /etc/vsftpd/users/admin
+echo 'local_root=/' >> /etc/vsftpd/users/admin
+touch /etc/vsftpd/chroot_list
+echo 'root' >> /etc/vsftpd/chroot_list
+echo 'admin' >> /etc/vsftpd/chroot_list
+touch /etc/vsftpd/user_list
+echo 'root' >> /etc/vsftpd/user_list && echo 'admin' >> /etc/vsftpd/user_list
+touch /var/log/vsftpd.log && chmod 600 /var/log/vsftpd.log
+systemctl enable vsftpd
+systemctl start vsftpd
+yum install net-tools
+netstat -tulnp | grep vsftpd
+sudo firewall-cmd --permanent --add-port=20-21/tcp
+sudo firewall-cmd --permanent --add-port=40900-40999/tcp
+sudo firewall-cmd --reload
+sudo yum install mariadb mariadb-server
+sudo systemctl enable mariadb
+sudo systemctl start mariadb
+sudo mysqladmin -u root password
+sudo yum install php72-php-mysqlnd
+sudo systemctl reload nginx
+sudo systemctl restart php72-php-fpm
+sudo yum install wget
+sudo wget https://files.phpmyadmin.net/phpMyAdmin/5.0.2/phpMyAdmin-5.0.2-all-languages.zip
+unzip phpMyAdmin-5.0.2-all-languages.zip
+sudo mkdir /usr/share/phpMyAdmin/
+sudo chown -R admin:nginx /usr/share/phpMyAdmin/
+sudo mv phpMyAdmin-5.0.2-all-languages/* /usr/share/phpMyAdmin/
+sudo systemctl restart php72-php-fpm
+sudo nano /etc/nginx/conf.d/phpMyAdmin.conf
+sudo yum install php72-php-mbstring
+sudo tail -f /var/log/nginx/error.log
+ps -ef | php
+sudo nano /etc/opt/remi/php72/php-fpm.d/www.conf
+cd /var/www/mysite.local/
+sudo chmod -R 777 log/
+sudo chown -R nginx:nginx log/
+echo -n > /var/log/nginx/error.log
+sudo yum install php72-php-pecl-xdebug
+cat /var/www/mysite.local/log/debug.log
+sudo nano /etc/opt/remi/php72/php.d/15-xdebug.ini
+php72 -i | grep xdebug
+php72 -i | grep show_mem_delta
+php72 -i | grep xdebug
+sudo systemctl restart php72-php-fpm
+php72 -i | grep trace_output_dir
+sudo mkdir /var/www/mysite.local/traces
+sudo chmod a+rwx /var/www/mysite.local/traces
+ll /var/www/mysite.local/traces
