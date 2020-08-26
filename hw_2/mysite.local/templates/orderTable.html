@@ -1,0 +1,72 @@
+{% for order in orders %}
+<h3>Заказ #{{order.id}} оформлен&nbsp;{{order.dateCreate}} пользователем&nbsp;"{{order.user.name}}"</h3>
+<table class="order_table">
+    <thead>
+    <tr>
+        <td class="order_thead">Название</td>
+        <td class="order_thead">Стоимость</td>
+        <td class="order_thead">Скидка</td>
+        <td class="order_thead">Количество</td>
+        <td class="order_thead">Сумма</td>
+        {% if admin %}
+        <td class="order_thead"></td>
+        {% endif %}
+    </tr>
+    </thead>
+    <tbody>
+    {% for orderProduct in ordersProducts %}
+    {% if orderProduct.order_id == order.id %}
+    <tr>
+        <td class="order_td">{{orderProduct.product.name}}</td>
+        <td class="order_td">$ {{orderProduct.product.price}}</td>
+        <td class="order_td">{{100 - orderProduct.product.discount * 100}} %</td>
+        <td class="order_td">{{orderProduct.amount}}</td>
+        <td class="order_td">$ {{orderProduct.product.price * orderProduct.product.discount * orderProduct.amount}}</td>
+        {% if admin %}
+        <td class="order_td">
+            <button class='remove_product_of_order' data-order_id='{{orderProduct.order_id}}'
+                    data-product_id='{{orderProduct.product_id}}'>Удалить
+            </button>
+        </td>
+        {% endif %}
+    </tr>
+    {% endif %}
+    {% endfor %}
+    <!--    <tr>-->
+    <!--        <td class="order_thead" colspan="4">Итого</td>-->
+    <!--        <td class="order_thead">$ {{sum}}</td>-->
+    <!--    </tr>-->
+    <tr>
+        {% if order.status == 1 %}
+        <td class="order_thead">Статус заказа: Заказ оформлен</td>
+        {% endif %}
+        {% if order.status == 2 %}
+        <td class="order_thead">Статус заказа: Заказ собирается</td>
+        {% endif %}
+        {% if order.status == 3 %}
+        <td class="order_thead">Статус заказа: Заказ готов</td>
+        {% endif %}
+        {% if order.status == 4 %}
+        <td class="order_thead">Статус заказа: Заказ завершен</td>
+        {% endif %}
+        {% if order.status == 5 %}
+        <td class="order_thead">Статус заказа: Заказ отменен</td>
+        {% endif %}
+        {% if admin %}
+        <td class="order_thead" colspan="5"><label class='user_order_status_label'><input
+                class='order_status_value' type='number' min='1' max='5' data-id='{{order.id}}' value='{{order.status}}'
+                data-user_id='{{order.user_id}}' data-address='{{order.address}}'
+                data-date_create='{{order.dateCreate}}'/></label>
+            <button class='remove_order' data-order_id='{{order.id}}'>Удалить</button>
+        </td>
+        {% else %}
+        <td class="order_thead" colspan="5">
+            <button class='user_order_cancel' data-id='{{order.id}}' data-user_id='{{order.user_id}}'
+                    data-address='{{order.address}}' data-status='5' data-date_create='{{order.dateCreate}}'>Отменить
+            </button>
+        </td>
+        {% endif %}
+    </tr>
+    </tbody>
+</table>
+{% endfor %}

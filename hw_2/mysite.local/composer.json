@@ -1,0 +1,13 @@
+{
+    "autoload": {
+    "psr-4": {
+      "App\\": "App/"
+    }
+  },
+    "require": {
+        "monolog/monolog": "^1.25",
+        "twig/twig": "^1.42",
+        "ext-json": "^1.2",
+        "ext-PDO": "1.0.4dev"
+    }
+}

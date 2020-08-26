@@ -1,0 +1,1351 @@
+Last login: Sat Aug 22 14:23:48 on ttys001
+konstantinlevchenko@Konstantin ~ % ssh admin@192.168.56.80
+admin@192.168.56.80's password: 
+Last login: Sat Aug 22 16:34:12 2020 from 192.168.56.1
+[admin@web ~]$ sudo yum install composer
+[sudo] пароль для admin: 
+Загружены модули: fastestmirror
+Loading mirror speeds from cached hostfile
+epel/x86_64/metalink                                     |  17 kB     00:00     
+ * base: mirror.yandex.ru
+ * epel: mirror.logol.ru
+ * extras: mirror.logol.ru
+ * remi-safe: mirror.awanti.com
+ * updates: mirror.logol.ru
+base                                                     | 3.6 kB     00:00     
+epel                                                     | 4.7 kB     00:00     
+extras                                                   | 2.9 kB     00:00     
+remi-safe                                                | 3.0 kB     00:00     
+updates                                                  | 2.9 kB     00:00     
+(1/2): epel/x86_64/updateinfo                              | 1.0 MB   00:00     
+(2/2): epel/x86_64/primary_db                              | 6.9 MB   00:05     
+Разрешение зависимостей
+--> Проверка сценария
+---> Пакет composer.noarch 0:1.10.9-1.el7 помечен для установки
+--> Обработка зависимостей: php(language) >= 5.3.2 пакета: composer-1.10.9-1.el7.noarch
+--> Обработка зависимостей: php-PsrLog >= 1.0.0-8 пакета: composer-1.10.9-1.el7.noarch
+--> Обработка зависимостей: php-composer-spdx-licenses >= 1.2 пакета: composer-1.10.9-1.el7.noarch
+--> Обработка зависимостей: php-composer-xdebug-handler >= 1.1 пакета: composer-1.10.9-1.el7.noarch
+--> Обработка зависимостей: php-jsonlint >= 1.4 пакета: composer-1.10.9-1.el7.noarch
+--> Обработка зависимостей: php-justinrainbow-json-schema5 >= 5.2.10 пакета: composer-1.10.9-1.el7.noarch
+--> Обработка зависимостей: php-seld-phar-utils >= 1.0.1 пакета: composer-1.10.9-1.el7.noarch
+--> Обработка зависимостей: php-PsrLog пакета: composer-1.10.9-1.el7.noarch
+--> Обработка зависимостей: php-cli пакета: composer-1.10.9-1.el7.noarch
+--> Обработка зависимостей: php-composer(fedora/autoloader) пакета: composer-1.10.9-1.el7.noarch
+--> Обработка зависимостей: php-composer-ca-bundle пакета: composer-1.10.9-1.el7.noarch
+--> Обработка зависимостей: php-composer-semver пакета: composer-1.10.9-1.el7.noarch
+--> Обработка зависимостей: php-curl пакета: composer-1.10.9-1.el7.noarch
+--> Обработка зависимостей: php-date пакета: composer-1.10.9-1.el7.noarch
+--> Обработка зависимостей: php-dom пакета: composer-1.10.9-1.el7.noarch
+--> Обработка зависимостей: php-filter пакета: composer-1.10.9-1.el7.noarch
+--> Обработка зависимостей: php-hash пакета: composer-1.10.9-1.el7.noarch
+--> Обработка зависимостей: php-iconv пакета: composer-1.10.9-1.el7.noarch
+--> Обработка зависимостей: php-intl пакета: composer-1.10.9-1.el7.noarch
+--> Обработка зависимостей: php-json пакета: composer-1.10.9-1.el7.noarch
+--> Обработка зависимостей: php-libxml пакета: composer-1.10.9-1.el7.noarch
+--> Обработка зависимостей: php-mbstring пакета: composer-1.10.9-1.el7.noarch
+--> Обработка зависимостей: php-openssl пакета: composer-1.10.9-1.el7.noarch
+--> Обработка зависимостей: php-pcre пакета: composer-1.10.9-1.el7.noarch
+--> Обработка зависимостей: php-phar пакета: composer-1.10.9-1.el7.noarch
+--> Обработка зависимостей: php-reflection пакета: composer-1.10.9-1.el7.noarch
+--> Обработка зависимостей: php-seld-phar-utils пакета: composer-1.10.9-1.el7.noarch
+--> Обработка зависимостей: php-simplexml пакета: composer-1.10.9-1.el7.noarch
+--> Обработка зависимостей: php-spl пакета: composer-1.10.9-1.el7.noarch
+--> Обработка зависимостей: php-symfony-console пакета: composer-1.10.9-1.el7.noarch
+--> Обработка зависимостей: php-symfony-filesystem пакета: composer-1.10.9-1.el7.noarch
+--> Обработка зависимостей: php-symfony-finder пакета: composer-1.10.9-1.el7.noarch
+--> Обработка зависимостей: php-symfony-process пакета: composer-1.10.9-1.el7.noarch
+--> Обработка зависимостей: php-tokenizer пакета: composer-1.10.9-1.el7.noarch
+--> Обработка зависимостей: php-xsl пакета: composer-1.10.9-1.el7.noarch
+--> Обработка зависимостей: php-zip пакета: composer-1.10.9-1.el7.noarch
+--> Обработка зависимостей: php-zlib пакета: composer-1.10.9-1.el7.noarch
+--> Проверка сценария
+---> Пакет php-PsrLog.noarch 0:1.1.3-1.el7 помечен для установки
+---> Пакет php-cli.x86_64 0:5.4.16-48.el7 помечен для установки
+---> Пакет php-common.x86_64 0:5.4.16-48.el7 помечен для установки
+--> Обработка зависимостей: libzip.so.2()(64bit) пакета: php-common-5.4.16-48.el7.x86_64
+---> Пакет php-composer-ca-bundle.noarch 0:1.2.7-1.el7 помечен для установки
+---> Пакет php-composer-semver.noarch 0:1.5.1-1.el7 помечен для установки
+---> Пакет php-composer-spdx-licenses.noarch 0:1.5.4-1.el7 помечен для установки
+---> Пакет php-composer-xdebug-handler.noarch 0:1.4.2-1.el7 помечен для установки
+--> Обработка зависимостей: php-posix пакета: php-composer-xdebug-handler-1.4.2-1.el7.noarch
+---> Пакет php-fedora-autoloader.noarch 0:1.0.1-2.el7 помечен для установки
+---> Пакет php-intl.x86_64 0:5.4.16-48.el7 помечен для установки
+--> Обработка зависимостей: libicuuc.so.50()(64bit) пакета: php-intl-5.4.16-48.el7.x86_64
+--> Обработка зависимостей: libicuio.so.50()(64bit) пакета: php-intl-5.4.16-48.el7.x86_64
+--> Обработка зависимостей: libicui18n.so.50()(64bit) пакета: php-intl-5.4.16-48.el7.x86_64
+--> Обработка зависимостей: libicudata.so.50()(64bit) пакета: php-intl-5.4.16-48.el7.x86_64
+---> Пакет php-jsonlint.noarch 0:1.6.1-1.el7 помечен для установки
+---> Пакет php-justinrainbow-json-schema5.noarch 0:5.2.10-1.el7 помечен для установки
+---> Пакет php-mbstring.x86_64 0:5.4.16-48.el7 помечен для установки
+---> Пакет php-seld-phar-utils.noarch 0:1.1.0-1.el7 помечен для установки
+---> Пакет php-symfony-console.noarch 0:2.8.12-2.el7 помечен для установки
+--> Обработка зависимостей: php-composer(symfony/event-dispatcher) = 2.8.12 пакета: php-symfony-console-2.8.12-2.el7.noarch
+---> Пакет php-symfony-filesystem.noarch 0:2.8.12-2.el7 помечен для установки
+--> Обработка зависимостей: php-symfony-common = 2.8.12-2.el7 пакета: php-symfony-filesystem-2.8.12-2.el7.noarch
+---> Пакет php-symfony-finder.noarch 0:2.8.12-2.el7 помечен для установки
+---> Пакет php-symfony-process.noarch 0:2.8.12-2.el7 помечен для установки
+---> Пакет php-xml.x86_64 0:5.4.16-48.el7 помечен для установки
+--> Проверка сценария
+---> Пакет libicu.x86_64 0:50.2-4.el7_7 помечен для установки
+---> Пакет libzip.x86_64 0:0.10.1-8.el7 помечен для установки
+---> Пакет php-process.x86_64 0:5.4.16-48.el7 помечен для установки
+---> Пакет php-symfony-common.noarch 0:2.8.12-2.el7 помечен для установки
+--> Обработка зависимостей: php-symfony-class-loader = 2.8.12-2.el7 пакета: php-symfony-common-2.8.12-2.el7.noarch
+---> Пакет php-symfony-event-dispatcher.noarch 0:2.8.12-2.el7 помечен для установки
+--> Обработка зависимостей: php-composer(symfony/dependency-injection) = 2.8.12 пакета: php-symfony-event-dispatcher-2.8.12-2.el7.noarch
+--> Обработка зависимостей: php-composer(symfony/http-kernel) = 2.8.12 пакета: php-symfony-event-dispatcher-2.8.12-2.el7.noarch
+--> Проверка сценария
+---> Пакет php-symfony-class-loader.noarch 0:2.8.12-2.el7 помечен для установки
+---> Пакет php-symfony-dependency-injection.noarch 0:2.8.12-2.el7 помечен для установки
+--> Обработка зависимостей: php-composer(symfony/config) = 2.8.12 пакета: php-symfony-dependency-injection-2.8.12-2.el7.noarch
+--> Обработка зависимостей: php-composer(symfony/expression-language) = 2.8.12 пакета: php-symfony-dependency-injection-2.8.12-2.el7.noarch
+--> Обработка зависимостей: php-composer(symfony/yaml) = 2.8.12 пакета: php-symfony-dependency-injection-2.8.12-2.el7.noarch
+---> Пакет php-symfony-http-kernel.noarch 0:2.8.12-2.el7 помечен для установки
+--> Обработка зависимостей: php-composer(symfony/browser-kit) = 2.8.12 пакета: php-symfony-http-kernel-2.8.12-2.el7.noarch
+--> Обработка зависимостей: php-composer(symfony/debug) = 2.8.12 пакета: php-symfony-http-kernel-2.8.12-2.el7.noarch
+--> Обработка зависимостей: php-composer(symfony/http-foundation) = 2.8.12 пакета: php-symfony-http-kernel-2.8.12-2.el7.noarch
+--> Обработка зависимостей: php-composer(symfony/var-dumper) = 2.8.12 пакета: php-symfony-http-kernel-2.8.12-2.el7.noarch
+--> Обработка зависимостей: php-pdo пакета: php-symfony-http-kernel-2.8.12-2.el7.noarch
+--> Обработка зависимостей: php-sqlite3 пакета: php-symfony-http-kernel-2.8.12-2.el7.noarch
+--> Проверка сценария
+---> Пакет php-pdo.x86_64 0:5.4.16-48.el7 помечен для установки
+---> Пакет php-symfony-browser-kit.noarch 0:2.8.12-2.el7 помечен для установки
+--> Обработка зависимостей: php-composer(symfony/dom-crawler) = 2.8.12 пакета: php-symfony-browser-kit-2.8.12-2.el7.noarch
+---> Пакет php-symfony-config.noarch 0:2.8.12-2.el7 помечен для установки
+---> Пакет php-symfony-debug.noarch 0:2.8.12-2.el7 помечен для установки
+---> Пакет php-symfony-expression-language.noarch 0:2.8.12-2.el7 помечен для установки
+---> Пакет php-symfony-http-foundation.noarch 0:2.8.12-2.el7 помечен для установки
+--> Обработка зависимостей: php-composer(symfony/polyfill-php54) < 2.0 пакета: php-symfony-http-foundation-2.8.12-2.el7.noarch
+--> Обработка зависимостей: php-composer(symfony/polyfill-php55) < 2.0 пакета: php-symfony-http-foundation-2.8.12-2.el7.noarch
+--> Обработка зависимостей: php-composer(symfony/polyfill-php54) >= 1.0 пакета: php-symfony-http-foundation-2.8.12-2.el7.noarch
+--> Обработка зависимостей: php-composer(symfony/polyfill-php55) >= 1.0 пакета: php-symfony-http-foundation-2.8.12-2.el7.noarch
+---> Пакет php-symfony-var-dumper.noarch 0:2.8.12-2.el7 помечен для установки
+--> Обработка зависимостей: php-gd пакета: php-symfony-var-dumper-2.8.12-2.el7.noarch
+---> Пакет php-symfony-yaml.noarch 0:2.8.12-2.el7 помечен для установки
+--> Проверка сценария
+---> Пакет php-gd.x86_64 0:5.4.16-48.el7 помечен для установки
+--> Обработка зависимостей: libt1.so.5()(64bit) пакета: php-gd-5.4.16-48.el7.x86_64
+---> Пакет php-symfony-dom-crawler.noarch 0:2.8.12-2.el7 помечен для установки
+--> Обработка зависимостей: php-composer(symfony/css-selector) = 2.8.12 пакета: php-symfony-dom-crawler-2.8.12-2.el7.noarch
+---> Пакет php-symfony-polyfill.noarch 0:1.5.0-1.el7 помечен для установки
+--> Обработка зависимостей: php-composer(ircmaxell/password-compat) < 2.0 пакета: php-symfony-polyfill-1.5.0-1.el7.noarch
+--> Обработка зависимостей: php-composer(paragonie/random_compat) < 3.0 пакета: php-symfony-polyfill-1.5.0-1.el7.noarch
+--> Обработка зависимостей: php-composer(ircmaxell/password-compat) >= 1.0 пакета: php-symfony-polyfill-1.5.0-1.el7.noarch
+--> Обработка зависимостей: php-composer(paragonie/random_compat) >= 1.0 пакета: php-symfony-polyfill-1.5.0-1.el7.noarch
+--> Проверка сценария
+---> Пакет php-paragonie-random-compat.noarch 0:2.0.18-1.el7 помечен для установки
+---> Пакет php-password-compat.noarch 0:1.0.4-1.el7 помечен для установки
+---> Пакет php-symfony-css-selector.noarch 0:2.8.12-2.el7 помечен для установки
+---> Пакет t1lib.x86_64 0:5.1.2-14.el7 помечен для установки
+--> Проверка зависимостей окончена
+
+Зависимости определены
+
+================================================================================
+ Package                            Архитектура
+                                             Версия             Репозиторий 
+                                                                          Размер
+================================================================================
+Установка:
+ composer                           noarch   1.10.9-1.el7       epel      408 k
+Установка зависимостей:
+ libicu                             x86_64   50.2-4.el7_7       updates   6.9 M
+ libzip                             x86_64   0.10.1-8.el7       base       48 k
+ php-PsrLog                         noarch   1.1.3-1.el7        epel       14 k
+ php-cli                            x86_64   5.4.16-48.el7      base      2.7 M
+ php-common                         x86_64   5.4.16-48.el7      base      565 k
+ php-composer-ca-bundle             noarch   1.2.7-1.el7        epel       12 k
+ php-composer-semver                noarch   1.5.1-1.el7        epel       17 k
+ php-composer-spdx-licenses         noarch   1.5.4-1.el7        epel       18 k
+ php-composer-xdebug-handler        noarch   1.4.2-1.el7        epel       19 k
+ php-fedora-autoloader              noarch   1.0.1-2.el7        epel       11 k
+ php-gd                             x86_64   5.4.16-48.el7      base      128 k
+ php-intl                           x86_64   5.4.16-48.el7      base       98 k
+ php-jsonlint                       noarch   1.6.1-1.el7        epel       17 k
+ php-justinrainbow-json-schema5     noarch   5.2.10-1.el7       epel       41 k
+ php-mbstring                       x86_64   5.4.16-48.el7      base      506 k
+ php-paragonie-random-compat        noarch   2.0.18-1.el7       epel       28 k
+ php-password-compat                noarch   1.0.4-1.el7        epel       10 k
+ php-pdo                            x86_64   5.4.16-48.el7      base       99 k
+ php-process                        x86_64   5.4.16-48.el7      base       56 k
+ php-seld-phar-utils                noarch   1.1.0-1.el7        epel      8.4 k
+ php-symfony-browser-kit            noarch   2.8.12-2.el7       epel       23 k
+ php-symfony-class-loader           noarch   2.8.12-2.el7       epel       26 k
+ php-symfony-common                 noarch   2.8.12-2.el7       epel      124 k
+ php-symfony-config                 noarch   2.8.12-2.el7       epel       51 k
+ php-symfony-console                noarch   2.8.12-2.el7       epel       88 k
+ php-symfony-css-selector           noarch   2.8.12-2.el7       epel       37 k
+ php-symfony-debug                  noarch   2.8.12-2.el7       epel       36 k
+ php-symfony-dependency-injection   noarch   2.8.12-2.el7       epel       83 k
+ php-symfony-dom-crawler            noarch   2.8.12-2.el7       epel       30 k
+ php-symfony-event-dispatcher       noarch   2.8.12-2.el7       epel       24 k
+ php-symfony-expression-language    noarch   2.8.12-2.el7       epel       27 k
+ php-symfony-filesystem             noarch   2.8.12-2.el7       epel       22 k
+ php-symfony-finder                 noarch   2.8.12-2.el7       epel       38 k
+ php-symfony-http-foundation        noarch   2.8.12-2.el7       epel       93 k
+ php-symfony-http-kernel            noarch   2.8.12-2.el7       epel       99 k
+ php-symfony-polyfill               noarch   1.5.0-1.el7        epel       26 k
+ php-symfony-process                noarch   2.8.12-2.el7       epel       32 k
+ php-symfony-var-dumper             noarch   2.8.12-2.el7       epel       48 k
+ php-symfony-yaml                   noarch   2.8.12-2.el7       epel       28 k
+ php-xml                            x86_64   5.4.16-48.el7      base      126 k
+ t1lib                              x86_64   5.1.2-14.el7       base      166 k
+
+Итого за операцию
+================================================================================
+Установить  1 пакет (+41 зависимый)
+
+Объем загрузки: 13 M
+Объем изменений: 45 M
+Is this ok [y/d/N]: y
+Downloading packages:
+(1/42): composer-1.10.9-1.el7.noarch.rpm                   | 408 kB   00:00     
+(2/42): php-PsrLog-1.1.3-1.el7.noarch.rpm                  |  14 kB   00:00     
+(3/42): libzip-0.10.1-8.el7.x86_64.rpm                     |  48 kB   00:00     
+(4/42): php-composer-ca-bundle-1.2.7-1.el7.noarch.rpm      |  12 kB   00:00     
+(5/42): php-cli-5.4.16-48.el7.x86_64.rpm                   | 2.7 MB   00:01     
+(6/42): php-composer-semver-1.5.1-1.el7.noarch.rpm         |  17 kB   00:00     
+(7/42): php-fedora-autoloader-1.0.1-2.el7.noarch.rpm       |  11 kB   00:00     
+(8/42): php-composer-spdx-licenses-1.5.4-1.el7.noarch.rpm  |  18 kB   00:00     
+(9/42): php-gd-5.4.16-48.el7.x86_64.rpm                    | 128 kB   00:00     
+(10/42): libicu-50.2-4.el7_7.x86_64.rpm                    | 6.9 MB   00:02     
+(11/42): php-intl-5.4.16-48.el7.x86_64.rpm                 |  98 kB   00:00     
+(12/42): php-common-5.4.16-48.el7.x86_64.rpm               | 565 kB   00:00     
+(13/42): php-jsonlint-1.6.1-1.el7.noarch.rpm               |  17 kB   00:00     
+(14/42): php-password-compat-1.0.4-1.el7.noarch.rpm        |  10 kB   00:00     
+(15/42): php-composer-xdebug-handler-1.4.2-1.el7.noarch.rp |  19 kB   00:00     
+(16/42): php-mbstring-5.4.16-48.el7.x86_64.rpm             | 506 kB   00:00     
+(17/42): php-justinrainbow-json-schema5-5.2.10-1.el7.noarc |  41 kB   00:00     
+(18/42): php-seld-phar-utils-1.1.0-1.el7.noarch.rpm        | 8.4 kB   00:00     
+(19/42): php-process-5.4.16-48.el7.x86_64.rpm              |  56 kB   00:00     
+(20/42): php-symfony-class-loader-2.8.12-2.el7.noarch.rpm  |  26 kB   00:00     
+(21/42): php-symfony-browser-kit-2.8.12-2.el7.noarch.rpm   |  23 kB   00:00     
+(22/42): php-symfony-common-2.8.12-2.el7.noarch.rpm        | 124 kB   00:00     
+(23/42): php-symfony-config-2.8.12-2.el7.noarch.rpm        |  51 kB   00:00     
+(24/42): php-symfony-css-selector-2.8.12-2.el7.noarch.rpm  |  37 kB   00:00     
+(25/42): php-symfony-dependency-injection-2.8.12-2.el7.noa |  83 kB   00:00     
+(26/42): php-symfony-debug-2.8.12-2.el7.noarch.rpm         |  36 kB   00:00     
+(27/42): php-symfony-dom-crawler-2.8.12-2.el7.noarch.rpm   |  30 kB   00:00     
+(28/42): php-symfony-event-dispatcher-2.8.12-2.el7.noarch. |  24 kB   00:00     
+(29/42): php-symfony-expression-language-2.8.12-2.el7.noar |  27 kB   00:00     
+(30/42): php-symfony-filesystem-2.8.12-2.el7.noarch.rpm    |  22 kB   00:00     
+(31/42): php-symfony-finder-2.8.12-2.el7.noarch.rpm        |  38 kB   00:00     
+(32/42): php-symfony-http-kernel-2.8.12-2.el7.noarch.rpm   |  99 kB   00:00     
+(33/42): php-symfony-polyfill-1.5.0-1.el7.noarch.rpm       |  26 kB   00:00     
+(34/42): php-symfony-http-foundation-2.8.12-2.el7.noarch.r |  93 kB   00:00     
+(35/42): php-symfony-process-2.8.12-2.el7.noarch.rpm       |  32 kB   00:00     
+(36/42): php-symfony-var-dumper-2.8.12-2.el7.noarch.rpm    |  48 kB   00:00     
+(37/42): php-symfony-yaml-2.8.12-2.el7.noarch.rpm          |  28 kB   00:00     
+(38/42): php-symfony-console-2.8.12-2.el7.noarch.rpm       |  88 kB   00:00     
+(39/42): php-pdo-5.4.16-48.el7.x86_64.rpm                  |  99 kB   00:01     
+(40/42): php-xml-5.4.16-48.el7.x86_64.rpm                  | 126 kB   00:00     
+(41/42): php-paragonie-random-compat-2.0.18-1.el7.noarch.r |  28 kB   00:01     
+(42/42): t1lib-5.1.2-14.el7.x86_64.rpm                     | 166 kB   00:00     
+--------------------------------------------------------------------------------
+Общий размер                                       3.0 MB/s |  13 MB  00:04     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Установка   : t1lib-5.1.2-14.el7.x86_64                                  1/42 
+  Установка   : libzip-0.10.1-8.el7.x86_64                                 2/42 
+  Установка   : php-common-5.4.16-48.el7.x86_64                            3/42 
+  Установка   : php-fedora-autoloader-1.0.1-2.el7.noarch                   4/42 
+  Установка   : php-mbstring-5.4.16-48.el7.x86_64                          5/42 
+  Установка   : php-xml-5.4.16-48.el7.x86_64                               6/42 
+  Установка   : php-PsrLog-1.1.3-1.el7.noarch                              7/42 
+  Установка   : php-process-5.4.16-48.el7.x86_64                           8/42 
+  Установка   : php-cli-5.4.16-48.el7.x86_64                               9/42 
+  Установка   : php-pdo-5.4.16-48.el7.x86_64                              10/42 
+  Установка   : php-symfony-class-loader-2.8.12-2.el7.noarch              11/42 
+  Установка   : php-symfony-common-2.8.12-2.el7.noarch                    12/42 
+  Установка   : php-symfony-process-2.8.12-2.el7.noarch                   13/42 
+  Установка   : php-symfony-yaml-2.8.12-2.el7.noarch                      14/42 
+  Установка   : php-symfony-finder-2.8.12-2.el7.noarch                    15/42 
+  Установка   : php-symfony-filesystem-2.8.12-2.el7.noarch                16/42 
+  Установка   : php-symfony-config-2.8.12-2.el7.noarch                    17/42 
+  Установка   : php-symfony-css-selector-2.8.12-2.el7.noarch              18/42 
+  Установка   : php-symfony-dom-crawler-2.8.12-2.el7.noarch               19/42 
+  Установка   : php-symfony-browser-kit-2.8.12-2.el7.noarch               20/42 
+  Установка   : php-symfony-expression-language-2.8.12-2.el7.noarch       21/42 
+  Установка   : php-symfony-dependency-injection-2.8.12-2.el7.noarch      22/42 
+  Установка   : php-justinrainbow-json-schema5-5.2.10-1.el7.noarch        23/42 
+  Установка   : php-jsonlint-1.6.1-1.el7.noarch                           24/42 
+  Установка   : php-composer-xdebug-handler-1.4.2-1.el7.noarch            25/42 
+  Установка   : php-symfony-debug-2.8.12-2.el7.noarch                     26/42 
+  Установка   : php-password-compat-1.0.4-1.el7.noarch                    27/42 
+  Установка   : php-paragonie-random-compat-2.0.18-1.el7.noarch           28/42 
+  Установка   : php-symfony-polyfill-1.5.0-1.el7.noarch                   29/42 
+  Установка   : php-composer-ca-bundle-1.2.7-1.el7.noarch                 30/42 
+  Установка   : php-composer-semver-1.5.1-1.el7.noarch                    31/42 
+  Установка   : php-seld-phar-utils-1.1.0-1.el7.noarch                    32/42 
+  Установка   : php-composer-spdx-licenses-1.5.4-1.el7.noarch             33/42 
+  Установка   : php-gd-5.4.16-48.el7.x86_64                               34/42 
+  Установка   : php-symfony-var-dumper-2.8.12-2.el7.noarch                35/42 
+  Установка   : libicu-50.2-4.el7_7.x86_64                                36/42 
+  Установка   : php-intl-5.4.16-48.el7.x86_64                             37/42 
+  Установка   : php-symfony-http-foundation-2.8.12-2.el7.noarch           38/42 
+  Установка   : php-symfony-console-2.8.12-2.el7.noarch                   39/42 
+  Установка   : php-symfony-event-dispatcher-2.8.12-2.el7.noarch          40/42 
+  Установка   : php-symfony-http-kernel-2.8.12-2.el7.noarch               41/42 
+  Установка   : composer-1.10.9-1.el7.noarch                              42/42 
+  Проверка    : php-composer-ca-bundle-1.2.7-1.el7.noarch                  1/42 
+  Проверка    : php-intl-5.4.16-48.el7.x86_64                              2/42 
+  Проверка    : php-password-compat-1.0.4-1.el7.noarch                     3/42 
+  Проверка    : composer-1.10.9-1.el7.noarch                               4/42 
+  Проверка    : php-symfony-yaml-2.8.12-2.el7.noarch                       5/42 
+  Проверка    : php-symfony-finder-2.8.12-2.el7.noarch                     6/42 
+  Проверка    : php-symfony-css-selector-2.8.12-2.el7.noarch               7/42 
+  Проверка    : php-symfony-browser-kit-2.8.12-2.el7.noarch                8/42 
+  Проверка    : php-xml-5.4.16-48.el7.x86_64                               9/42 
+  Проверка    : php-pdo-5.4.16-48.el7.x86_64                              10/42 
+  Проверка    : php-justinrainbow-json-schema5-5.2.10-1.el7.noarch        11/42 
+  Проверка    : php-symfony-debug-2.8.12-2.el7.noarch                     12/42 
+  Проверка    : php-symfony-var-dumper-2.8.12-2.el7.noarch                13/42 
+  Проверка    : libicu-50.2-4.el7_7.x86_64                                14/42 
+  Проверка    : libzip-0.10.1-8.el7.x86_64                                15/42 
+  Проверка    : php-symfony-http-foundation-2.8.12-2.el7.noarch           16/42 
+  Проверка    : php-symfony-class-loader-2.8.12-2.el7.noarch              17/42 
+  Проверка    : php-symfony-process-2.8.12-2.el7.noarch                   18/42 
+  Проверка    : php-symfony-filesystem-2.8.12-2.el7.noarch                19/42 
+  Проверка    : php-composer-xdebug-handler-1.4.2-1.el7.noarch            20/42 
+  Проверка    : php-composer-semver-1.5.1-1.el7.noarch                    21/42 
+  Проверка    : php-PsrLog-1.1.3-1.el7.noarch                             22/42 
+  Проверка    : php-paragonie-random-compat-2.0.18-1.el7.noarch           23/42 
+  Проверка    : t1lib-5.1.2-14.el7.x86_64                                 24/42 
+  Проверка    : php-symfony-dom-crawler-2.8.12-2.el7.noarch               25/42 
+  Проверка    : php-cli-5.4.16-48.el7.x86_64                              26/42 
+  Проверка    : php-fedora-autoloader-1.0.1-2.el7.noarch                  27/42 
+  Проверка    : php-symfony-http-kernel-2.8.12-2.el7.noarch               28/42 
+  Проверка    : php-symfony-event-dispatcher-2.8.12-2.el7.noarch          29/42 
+  Проверка    : php-common-5.4.16-48.el7.x86_64                           30/42 
+  Проверка    : php-symfony-dependency-injection-2.8.12-2.el7.noarch      31/42 
+  Проверка    : php-symfony-console-2.8.12-2.el7.noarch                   32/42 
+  Проверка    : php-symfony-polyfill-1.5.0-1.el7.noarch                   33/42 
+  Проверка    : php-seld-phar-utils-1.1.0-1.el7.noarch                    34/42 
+  Проверка    : php-process-5.4.16-48.el7.x86_64                          35/42 
+  Проверка    : php-symfony-expression-language-2.8.12-2.el7.noarch       36/42 
+  Проверка    : php-symfony-common-2.8.12-2.el7.noarch                    37/42 
+  Проверка    : php-mbstring-5.4.16-48.el7.x86_64                         38/42 
+  Проверка    : php-gd-5.4.16-48.el7.x86_64                               39/42 
+  Проверка    : php-composer-spdx-licenses-1.5.4-1.el7.noarch             40/42 
+  Проверка    : php-jsonlint-1.6.1-1.el7.noarch                           41/42 
+  Проверка    : php-symfony-config-2.8.12-2.el7.noarch                    42/42 
+
+Установлено:
+  composer.noarch 0:1.10.9-1.el7                                                
+
+Установлены зависимости:
+  libicu.x86_64 0:50.2-4.el7_7                                                  
+  libzip.x86_64 0:0.10.1-8.el7                                                  
+  php-PsrLog.noarch 0:1.1.3-1.el7                                               
+  php-cli.x86_64 0:5.4.16-48.el7                                                
+  php-common.x86_64 0:5.4.16-48.el7                                             
+  php-composer-ca-bundle.noarch 0:1.2.7-1.el7                                   
+  php-composer-semver.noarch 0:1.5.1-1.el7                                      
+  php-composer-spdx-licenses.noarch 0:1.5.4-1.el7                               
+  php-composer-xdebug-handler.noarch 0:1.4.2-1.el7                              
+  php-fedora-autoloader.noarch 0:1.0.1-2.el7                                    
+  php-gd.x86_64 0:5.4.16-48.el7                                                 
+  php-intl.x86_64 0:5.4.16-48.el7                                               
+  php-jsonlint.noarch 0:1.6.1-1.el7                                             
+  php-justinrainbow-json-schema5.noarch 0:5.2.10-1.el7                          
+  php-mbstring.x86_64 0:5.4.16-48.el7                                           
+  php-paragonie-random-compat.noarch 0:2.0.18-1.el7                             
+  php-password-compat.noarch 0:1.0.4-1.el7                                      
+  php-pdo.x86_64 0:5.4.16-48.el7                                                
+  php-process.x86_64 0:5.4.16-48.el7                                            
+  php-seld-phar-utils.noarch 0:1.1.0-1.el7                                      
+  php-symfony-browser-kit.noarch 0:2.8.12-2.el7                                 
+  php-symfony-class-loader.noarch 0:2.8.12-2.el7                                
+  php-symfony-common.noarch 0:2.8.12-2.el7                                      
+  php-symfony-config.noarch 0:2.8.12-2.el7                                      
+  php-symfony-console.noarch 0:2.8.12-2.el7                                     
+  php-symfony-css-selector.noarch 0:2.8.12-2.el7                                
+  php-symfony-debug.noarch 0:2.8.12-2.el7                                       
+  php-symfony-dependency-injection.noarch 0:2.8.12-2.el7                        
+  php-symfony-dom-crawler.noarch 0:2.8.12-2.el7                                 
+  php-symfony-event-dispatcher.noarch 0:2.8.12-2.el7                            
+  php-symfony-expression-language.noarch 0:2.8.12-2.el7                         
+  php-symfony-filesystem.noarch 0:2.8.12-2.el7                                  
+  php-symfony-finder.noarch 0:2.8.12-2.el7                                      
+  php-symfony-http-foundation.noarch 0:2.8.12-2.el7                             
+  php-symfony-http-kernel.noarch 0:2.8.12-2.el7                                 
+  php-symfony-polyfill.noarch 0:1.5.0-1.el7                                     
+  php-symfony-process.noarch 0:2.8.12-2.el7                                     
+  php-symfony-var-dumper.noarch 0:2.8.12-2.el7                                  
+  php-symfony-yaml.noarch 0:2.8.12-2.el7                                        
+  php-xml.x86_64 0:5.4.16-48.el7                                                
+  t1lib.x86_64 0:5.1.2-14.el7                                                   
+
+Выполнено!
+[admin@web ~]$ 
+[admin@web ~]$ php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+[admin@web ~]$ php composer-setup.php
+All settings correct for using Composer
+Downloading...
+
+Composer (version 1.10.10) successfully installed to: /home/admin/composer.phar
+Use it: php composer.phar
+
+[admin@web ~]$ php -r "unlink('composer-setup.php');"
+[admin@web ~]$ sudo mv composer.phar /usr/bin/composer
+[sudo] пароль для admin: 
+[admin@web ~]$ sudo yum install zip unzip
+Загружены модули: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirror.yandex.ru
+ * epel: mirror.logol.ru
+ * extras: mirror.logol.ru
+ * remi-safe: remi.mirror.liteserver.nl
+ * updates: mirror.logol.ru
+Разрешение зависимостей
+--> Проверка сценария
+---> Пакет unzip.x86_64 0:6.0-21.el7 помечен для установки
+---> Пакет zip.x86_64 0:3.0-11.el7 помечен для установки
+--> Проверка зависимостей окончена
+
+Зависимости определены
+
+================================================================================
+ Package          Архитектура       Версия                Репозиторий     Размер
+================================================================================
+Установка:
+ unzip            x86_64            6.0-21.el7            base            171 k
+ zip              x86_64            3.0-11.el7            base            260 k
+
+Итого за операцию
+================================================================================
+Установить  2 пакета
+
+Объем загрузки: 431 k
+Объем изменений: 1.1 M
+Is this ok [y/d/N]: y
+Downloading packages:
+(1/2): zip-3.0-11.el7.x86_64.rpm                           | 260 kB   00:00     
+(2/2): unzip-6.0-21.el7.x86_64.rpm                         | 171 kB   00:02     
+--------------------------------------------------------------------------------
+Общий размер                                       190 kB/s | 431 kB  00:02     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Установка   : zip-3.0-11.el7.x86_64                                       1/2 
+  Установка   : unzip-6.0-21.el7.x86_64                                     2/2 
+  Проверка    : unzip-6.0-21.el7.x86_64                                     1/2 
+  Проверка    : zip-3.0-11.el7.x86_64                                       2/2 
+
+Установлено:
+  unzip.x86_64 0:6.0-21.el7               zip.x86_64 0:3.0-11.el7              
+
+Выполнено!
+[admin@web www]$ cd /var/www/mysite.local
+[admin@web mysite.local]$ ls -la
+итого 4
+drwxrwxr-x 2 admin nginx 23 авг 22 15:02 .
+drwxr-xr-x 3 root  root  26 авг 22 14:33 ..
+-rw-r--r-- 1 root  root  18 авг 22 15:02 index.php
+[admin@web mysite.local]$ composer require monolog/monolog
+Using version ^1.25 for monolog/monolog
+./composer.json has been created
+Loading composer repositories with package information
+Updating dependencies (including require-dev)
+Package operations: 2 installs, 0 updates, 0 removals
+  - Installing psr/log (1.1.3): Downloading (100%)         
+  - Installing monolog/monolog (1.25.5): Downloading (100%)         
+monolog/monolog suggests installing graylog2/gelf-php (Allow sending log messages to a GrayLog2 server)
+monolog/monolog suggests installing sentry/sentry (Allow sending log messages to a Sentry server)
+monolog/monolog suggests installing doctrine/couchdb (Allow sending log messages to a CouchDB server)
+monolog/monolog suggests installing ruflin/elastica (Allow sending log messages to an Elastic Search server)
+monolog/monolog suggests installing php-amqplib/php-amqplib (Allow sending log messages to an AMQP server using php-amqplib)
+monolog/monolog suggests installing ext-amqp (Allow sending log messages to an AMQP server (1.0+ required))
+monolog/monolog suggests installing ext-mongo (Allow sending log messages to a MongoDB server)
+monolog/monolog suggests installing mongodb/mongodb (Allow sending log messages to a MongoDB server via PHP Driver)
+monolog/monolog suggests installing aws/aws-sdk-php (Allow sending log messages to AWS services like DynamoDB)
+monolog/monolog suggests installing rollbar/rollbar (Allow sending log messages to Rollbar)
+monolog/monolog suggests installing php-console/php-console (Allow sending log messages to Google Chrome)
+Writing lock file
+Generating autoload files
+1 package you are using is looking for funding.
+Use the `composer fund` command to find out more!
+[admin@web mysite.local]$ ls -la
+итого 16
+drwxrwxr-x 3 admin nginx   79 авг 22 22:03 .
+drwxr-xr-x 3 root  root    26 авг 22 14:33 ..
+-rw-rw-r-- 1 admin admin   62 авг 22 22:03 composer.json
+-rw-rw-r-- 1 admin admin 5795 авг 22 22:03 composer.lock
+-rw-r--r-- 1 root  root    18 авг 22 15:02 index.php
+drwxrwxr-x 5 admin admin   68 авг 22 22:03 vendor
+[admin@web mysite.local]$ sudo nano /var/www/mysite.local/index.php
+[sudo] пароль для admin: 
+[admin@web mysite.local]$ mkdir /var/www/mysite.local/log
+[admin@web mysite.local]$ ls -la
+итого 16
+drwxrwxr-x 4 admin nginx   90 авг 22 22:28 .
+drwxr-xr-x 3 root  root    26 авг 22 14:33 ..
+-rw-rw-r-- 1 admin admin   62 авг 22 22:03 composer.json
+-rw-rw-r-- 1 admin admin 5795 авг 22 22:03 composer.lock
+-rw-r--r-- 1 root  root   292 авг 22 22:25 index.php
+drwxrwxr-x 2 admin admin    6 авг 22 22:28 log
+drwxrwxr-x 5 admin admin   68 авг 22 22:03 vendor
+[admin@web mysite.local]$ sudo yum -y install vsftpd
+[sudo] пароль для admin: 
+Загружены модули: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirror.yandex.ru
+ * epel: mirror.logol.ru
+ * extras: mirror.logol.ru
+ * remi-safe: remi.mirror.karneval.cz
+ * updates: mirror.logol.ru
+Разрешение зависимостей
+--> Проверка сценария
+---> Пакет vsftpd.x86_64 0:3.0.2-27.el7 помечен для установки
+--> Проверка зависимостей окончена
+
+Зависимости определены
+
+================================================================================
+ Package          Архитектура      Версия                  Репозиторий    Размер
+================================================================================
+Установка:
+ vsftpd           x86_64           3.0.2-27.el7            base           172 k
+
+Итого за операцию
+================================================================================
+Установить  1 пакет
+
+Объем загрузки: 172 k
+Объем изменений: 353 k
+Downloading packages:
+vsftpd-3.0.2-27.el7.x86_64.rpm                             | 172 kB   00:00     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Установка   : vsftpd-3.0.2-27.el7.x86_64                                  1/1 
+  Проверка    : vsftpd-3.0.2-27.el7.x86_64                                  1/1 
+
+Установлено:
+  vsftpd.x86_64 0:3.0.2-27.el7                                                  
+
+Выполнено!
+[admin@web mysite.local]$ sudo rm -rf /etc/vsftpd/*
+[admin@web mysite.local]$ sudo nano /etc/vsftpd/vsftpd.conf
+[root@web vsftpd]# mkdir /etc/vsftpd/users
+[root@web vsftpd]# ls -la /etc/vsftpd/
+итого 16
+drwxr-xr-x   3 root root   38 авг 24 14:09 .
+drwxr-xr-x. 80 root root 8192 авг 24 13:37 ..
+drwxr-xr-x   2 root root    6 авг 24 14:09 users
+-rw-r--r--   1 root root 2721 авг 24 13:47 vsftpd.conf
+[root@web vsftpd]# touch /etc/vsftpd/users/admin
+[root@web vsftpd]# echo 'local_root=/' >> /etc/vsftpd/users/admin
+[root@web vsftpd]# touch /etc/vsftpd/chroot_list
+[root@web vsftpd]# echo 'root' >> /etc/vsftpd/chroot_list
+[root@web vsftpd]# echo 'admin' >> /etc/vsftpd/chroot_list
+[root@web vsftpd]# touch /etc/vsftpd/user_list
+[root@web vsftpd]# echo 'root' >> /etc/vsftpd/user_list && echo 'admin' >> /etc/vsftpd/user_list
+[root@web vsftpd]# touch /var/log/vsftpd.log && chmod 600 /var/log/vsftpd.log
+[root@web mysite.local]# netstat -tulnp | grep vsftpd
+bash: netstat: команда не найдена
+[root@web mysite.local]# yum install net-tools
+Загружены модули: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirror.yandex.ru
+ * epel: mirror.logol.ru
+ * extras: mirror.logol.ru
+ * remi-safe: remi.mirror.karneval.cz
+ * updates: mirror.logol.ru
+Разрешение зависимостей
+--> Проверка сценария
+---> Пакет net-tools.x86_64 0:2.0-0.25.20131004git.el7 помечен для установки
+--> Проверка зависимостей окончена
+
+Зависимости определены
+
+================================================================================
+ Package         Архитектура  Версия                           Репозиторий 
+                                                                          Размер
+================================================================================
+Установка:
+ net-tools       x86_64       2.0-0.25.20131004git.el7         base       306 k
+
+Итого за операцию
+================================================================================
+Установить  1 пакет
+
+Объем загрузки: 306 k
+Объем изменений: 917 k
+Is this ok [y/d/N]: y
+Downloading packages:
+net-tools-2.0-0.25.20131004git.el7.x86_64.rpm              | 306 kB   00:00     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Установка   : net-tools-2.0-0.25.20131004git.el7.x86_64                   1/1 
+  Проверка    : net-tools-2.0-0.25.20131004git.el7.x86_64                   1/1 
+
+Установлено:
+  net-tools.x86_64 0:2.0-0.25.20131004git.el7                                   
+
+Выполнено!
+[root@web mysite.local]# netstat -tulnp | grep vsftpd
+tcp        0      0 0.0.0.0:21              0.0.0.0:*               LISTEN      2214/vsftpd         
+[root@web mysite.local]# exit
+exit
+[admin@web mysite.local]$ 
+[admin@web ~]$ sudo firewall-cmd --permanent --add-port=20-21/tcp
+[sudo] пароль для admin: 
+success
+[admin@web ~]$ sudo firewall-cmd --permanent --add-port=40900-40999/tcp
+success
+[admin@web ~]$ sudo firewall-cmd --reload
+success
+admin@web ~]$ sudo yum install mariadb mariadb-server
+[sudo] пароль для admin: 
+Загружены модули: fastestmirror
+Loading mirror speeds from cached hostfile
+epel/x86_64/metalink                                     |  23 kB     00:00     
+ * base: mirror.logol.ru
+ * epel: mirror.kinamo.be
+ * extras: mirror.yandex.ru
+ * remi-safe: remi.schlundtech.de
+ * updates: mirror.yandex.ru
+base                                                     | 3.6 kB     00:00     
+epel                                                     | 4.7 kB     00:00     
+extras                                                   | 2.9 kB     00:00     
+remi-safe                                                | 3.0 kB     00:00     
+updates                                                  | 2.9 kB     00:00     
+(1/2): epel/x86_64/updateinfo                              | 1.0 MB   00:00     
+(2/2): epel/x86_64/primary_db                              | 6.9 MB   00:02     
+Разрешение зависимостей
+--> Проверка сценария
+---> Пакет mariadb.x86_64 1:5.5.65-1.el7 помечен для установки
+---> Пакет mariadb-server.x86_64 1:5.5.65-1.el7 помечен для установки
+--> Обработка зависимостей: perl-DBI пакета: 1:mariadb-server-5.5.65-1.el7.x86_64
+--> Обработка зависимостей: perl-DBD-MySQL пакета: 1:mariadb-server-5.5.65-1.el7.x86_64
+--> Обработка зависимостей: perl(Data::Dumper) пакета: 1:mariadb-server-5.5.65-1.el7.x86_64
+--> Обработка зависимостей: perl(DBI) пакета: 1:mariadb-server-5.5.65-1.el7.x86_64
+--> Проверка сценария
+---> Пакет perl-DBD-MySQL.x86_64 0:4.023-6.el7 помечен для установки
+---> Пакет perl-DBI.x86_64 0:1.627-4.el7 помечен для установки
+--> Обработка зависимостей: perl(RPC::PlServer) >= 0.2001 пакета: perl-DBI-1.627-4.el7.x86_64
+--> Обработка зависимостей: perl(RPC::PlClient) >= 0.2000 пакета: perl-DBI-1.627-4.el7.x86_64
+---> Пакет perl-Data-Dumper.x86_64 0:2.145-3.el7 помечен для установки
+--> Проверка сценария
+---> Пакет perl-PlRPC.noarch 0:0.2020-14.el7 помечен для установки
+--> Обработка зависимостей: perl(Net::Daemon) >= 0.13 пакета: perl-PlRPC-0.2020-14.el7.noarch
+--> Обработка зависимостей: perl(Net::Daemon::Test) пакета: perl-PlRPC-0.2020-14.el7.noarch
+--> Обработка зависимостей: perl(Net::Daemon::Log) пакета: perl-PlRPC-0.2020-14.el7.noarch
+--> Обработка зависимостей: perl(Compress::Zlib) пакета: perl-PlRPC-0.2020-14.el7.noarch
+--> Проверка сценария
+---> Пакет perl-IO-Compress.noarch 0:2.061-2.el7 помечен для установки
+--> Обработка зависимостей: perl(Compress::Raw::Zlib) >= 2.061 пакета: perl-IO-Compress-2.061-2.el7.noarch
+--> Обработка зависимостей: perl(Compress::Raw::Bzip2) >= 2.061 пакета: perl-IO-Compress-2.061-2.el7.noarch
+---> Пакет perl-Net-Daemon.noarch 0:0.48-5.el7 помечен для установки
+--> Проверка сценария
+---> Пакет perl-Compress-Raw-Bzip2.x86_64 0:2.061-3.el7 помечен для установки
+---> Пакет perl-Compress-Raw-Zlib.x86_64 1:2.061-4.el7 помечен для установки
+--> Проверка зависимостей окончена
+
+Зависимости определены
+
+================================================================================
+ Package                      Архитектура Версия                Репозиторий 
+                                                                          Размер
+================================================================================
+Установка:
+ mariadb                      x86_64      1:5.5.65-1.el7        base      8.7 M
+ mariadb-server               x86_64      1:5.5.65-1.el7        base       11 M
+Установка зависимостей:
+ perl-Compress-Raw-Bzip2      x86_64      2.061-3.el7           base       32 k
+ perl-Compress-Raw-Zlib       x86_64      1:2.061-4.el7         base       57 k
+ perl-DBD-MySQL               x86_64      4.023-6.el7           base      140 k
+ perl-DBI                     x86_64      1.627-4.el7           base      802 k
+ perl-Data-Dumper             x86_64      2.145-3.el7           base       47 k
+ perl-IO-Compress             noarch      2.061-2.el7           base      260 k
+ perl-Net-Daemon              noarch      0.48-5.el7            base       51 k
+ perl-PlRPC                   noarch      0.2020-14.el7         base       36 k
+
+Итого за операцию
+================================================================================
+Установить  2 пакета (+8 зависимых)
+
+Объем загрузки: 21 M
+Объем изменений: 110 M
+Is this ok [y/d/N]: y
+Downloading packages:
+(1/10): perl-Compress-Raw-Zlib-2.061-4.el7.x86_64.rpm      |  57 kB   00:00     
+(2/10): perl-Compress-Raw-Bzip2-2.061-3.el7.x86_64.rpm     |  32 kB   00:00     
+(3/10): perl-Data-Dumper-2.145-3.el7.x86_64.rpm            |  47 kB   00:00     
+(4/10): perl-IO-Compress-2.061-2.el7.noarch.rpm            | 260 kB   00:00     
+(5/10): perl-Net-Daemon-0.48-5.el7.noarch.rpm              |  51 kB   00:00     
+(6/10): perl-DBI-1.627-4.el7.x86_64.rpm                    | 802 kB   00:00     
+(7/10): perl-DBD-MySQL-4.023-6.el7.x86_64.rpm              | 140 kB   00:00     
+(8/10): perl-PlRPC-0.2020-14.el7.noarch.rpm                |  36 kB   00:00     
+(9/10): mariadb-5.5.65-1.el7.x86_64.rpm                    | 8.7 MB   00:02     
+(10/10): mariadb-server-5.5.65-1.el7.x86_64.rpm            |  11 MB   00:10     
+--------------------------------------------------------------------------------
+Общий размер                                       2.0 MB/s |  21 MB  00:10     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Установка   : perl-Data-Dumper-2.145-3.el7.x86_64                        1/10 
+  Установка   : 1:mariadb-5.5.65-1.el7.x86_64                              2/10 
+  Установка   : perl-Compress-Raw-Bzip2-2.061-3.el7.x86_64                 3/10 
+  Установка   : 1:perl-Compress-Raw-Zlib-2.061-4.el7.x86_64                4/10 
+  Установка   : perl-IO-Compress-2.061-2.el7.noarch                        5/10 
+  Установка   : perl-Net-Daemon-0.48-5.el7.noarch                          6/10 
+  Установка   : perl-PlRPC-0.2020-14.el7.noarch                            7/10 
+  Установка   : perl-DBI-1.627-4.el7.x86_64                                8/10 
+  Установка   : perl-DBD-MySQL-4.023-6.el7.x86_64                          9/10 
+  Установка   : 1:mariadb-server-5.5.65-1.el7.x86_64                      10/10 
+  Проверка    : 1:mariadb-server-5.5.65-1.el7.x86_64                       1/10 
+  Проверка    : perl-Net-Daemon-0.48-5.el7.noarch                          2/10 
+  Проверка    : perl-Data-Dumper-2.145-3.el7.x86_64                        3/10 
+  Проверка    : perl-DBD-MySQL-4.023-6.el7.x86_64                          4/10 
+  Проверка    : perl-IO-Compress-2.061-2.el7.noarch                        5/10 
+  Проверка    : 1:perl-Compress-Raw-Zlib-2.061-4.el7.x86_64                6/10 
+  Проверка    : perl-DBI-1.627-4.el7.x86_64                                7/10 
+  Проверка    : perl-Compress-Raw-Bzip2-2.061-3.el7.x86_64                 8/10 
+  Проверка    : perl-PlRPC-0.2020-14.el7.noarch                            9/10 
+  Проверка    : 1:mariadb-5.5.65-1.el7.x86_64                             10/10 
+
+Установлено:
+  mariadb.x86_64 1:5.5.65-1.el7       mariadb-server.x86_64 1:5.5.65-1.el7      
+
+Установлены зависимости:
+  perl-Compress-Raw-Bzip2.x86_64 0:2.061-3.el7                                  
+  perl-Compress-Raw-Zlib.x86_64 1:2.061-4.el7                                   
+  perl-DBD-MySQL.x86_64 0:4.023-6.el7                                           
+  perl-DBI.x86_64 0:1.627-4.el7                                                 
+  perl-Data-Dumper.x86_64 0:2.145-3.el7                                         
+  perl-IO-Compress.noarch 0:2.061-2.el7                                         
+  perl-Net-Daemon.noarch 0:0.48-5.el7                                           
+  perl-PlRPC.noarch 0:0.2020-14.el7                                             
+
+Выполнено!
+[admin@web ~]$ sudo systemctl enable mariadb
+Created symlink from /etc/systemd/system/multi-user.target.wants/mariadb.service to /usr/lib/systemd/system/mariadb.service.
+[admin@web ~]$ sudo systemctl start mariadb
+[admin@web ~]$ sudo mysqladmin -u root password
+New password: 
+Confirm new password: 
+[admin@web ~]$ sudo yum install php72-php-mysqlnd
+Загружены модули: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirror.logol.ru
+ * epel: mirror.logol.ru
+ * extras: mirror.yandex.ru
+ * remi-safe: mirror.23media.com
+ * updates: mirror.yandex.ru
+Разрешение зависимостей
+--> Проверка сценария
+---> Пакет php72-php-mysqlnd.x86_64 0:7.2.33-1.el7.remi помечен для установки
+--> Обработка зависимостей: php72-php-pdo(x86-64) = 7.2.33-1.el7.remi пакета: php72-php-mysqlnd-7.2.33-1.el7.remi.x86_64
+--> Проверка сценария
+---> Пакет php72-php-pdo.x86_64 0:7.2.33-1.el7.remi помечен для установки
+--> Проверка зависимостей окончена
+
+Зависимости определены
+
+================================================================================
+ Package                Архитектура Версия                 Репозиторий    Размер
+================================================================================
+Установка:
+ php72-php-mysqlnd      x86_64      7.2.33-1.el7.remi      remi-safe      182 k
+Установка зависимостей:
+ php72-php-pdo          x86_64      7.2.33-1.el7.remi      remi-safe      116 k
+
+Итого за операцию
+================================================================================
+Установить  1 пакет (+1 зависимый)
+
+Объем загрузки: 298 k
+Объем изменений: 620 k
+Is this ok [y/d/N]: y
+Downloading packages:
+(1/2): php72-php-pdo-7.2.33-1.el7.remi.x86_64.rpm          | 116 kB   00:00     
+(2/2): php72-php-mysqlnd-7.2.33-1.el7.remi.x86_64.rpm      | 182 kB   00:00     
+--------------------------------------------------------------------------------
+Общий размер                                       367 kB/s | 298 kB  00:00     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Установка   : php72-php-pdo-7.2.33-1.el7.remi.x86_64                      1/2 
+  Установка   : php72-php-mysqlnd-7.2.33-1.el7.remi.x86_64                  2/2 
+  Проверка    : php72-php-pdo-7.2.33-1.el7.remi.x86_64                      1/2 
+  Проверка    : php72-php-mysqlnd-7.2.33-1.el7.remi.x86_64                  2/2 
+
+Установлено:
+  php72-php-mysqlnd.x86_64 0:7.2.33-1.el7.remi                                  
+
+Установлены зависимости:
+  php72-php-pdo.x86_64 0:7.2.33-1.el7.remi                                      
+
+Выполнено!
+[admin@web ~]$ sudo systemctl restart php72-php-fpm
+[admin@web ~]$ mysql
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 3
+Server version: 5.5.65-MariaDB MariaDB Server
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> exit
+Bye
+[admin@web ~]$ sudo yum install wget
+[sudo] пароль для admin: 
+Загружены модули: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirror.logol.ru
+ * epel: mirrors.dotsrc.org
+ * extras: mirror.yandex.ru
+ * remi-safe: rpms.remirepo.net
+ * updates: mirror.yandex.ru
+Разрешение зависимостей
+--> Проверка сценария
+---> Пакет wget.x86_64 0:1.14-18.el7_6.1 помечен для установки
+--> Проверка зависимостей окончена
+
+Зависимости определены
+
+================================================================================
+ Package        Архитектура      Версия                    Репозиторий    Размер
+================================================================================
+Установка:
+ wget           x86_64           1.14-18.el7_6.1           base           547 k
+
+Итого за операцию
+================================================================================
+Установить  1 пакет
+
+Объем загрузки: 547 k
+Объем изменений: 2.0 M
+Is this ok [y/d/N]: y
+Downloading packages:
+wget-1.14-18.el7_6.1.x86_64.rpm                            | 547 kB   00:00     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Установка   : wget-1.14-18.el7_6.1.x86_64                                 1/1 
+  Проверка    : wget-1.14-18.el7_6.1.x86_64                                 1/1 
+
+Установлено:
+  wget.x86_64 0:1.14-18.el7_6.1                                                 
+
+Выполнено!
+[admin@web ~]$ sudo wget https://files.phpmyadmin.net/phpMyAdmin/5.0.2/phpMyAdmin-5.0.2-all-languages.zip
+--2020-08-24 17:51:21--  https://files.phpmyadmin.net/phpMyAdmin/5.0.2/phpMyAdmin-5.0.2-all-languages.zip
+Распознаётся files.phpmyadmin.net (files.phpmyadmin.net)... 81.27.240.179
+Подключение к files.phpmyadmin.net (files.phpmyadmin.net)|81.27.240.179|:443... соединение установлено.
+HTTP-запрос отправлен. Ожидание ответа... 200 OK
+Длина: 14199213 (14M) [application/zip]
+Сохранение в: «phpMyAdmin-5.0.2-all-languages.zip»
+
+100%[======================================>] 14 199 213  7,41MB/s   за 1,8s   
+
+2020-08-24 17:51:23 (7,41 MB/s) - «phpMyAdmin-5.0.2-all-languages.zip» сохранён [14199213/14199213]
+
+[admin@web ~]$ unzip phpMyAdmin-5.0.2-all-languages.zip
+[admin@web ~]$ sudo mkdir /usr/share/phpMyAdmin/
+[admin@web ~]$ sudo chown -R admin:nginx /usr/share/phpMyAdmin/
+[admin@web ~]$ sudo mv phpMyAdmin-5.0.2-all-languages/* /usr/share/phpMyAdmin/
+[admin@web ~]$ sudo systemctl restart php72-php-fpm
+[admin@web ~]$ sudo nano /etc/nginx/conf.d/phpMyAdmin.conf
+[admin@web ~]$ sudo yum install php72-php-mbstring
+[sudo] пароль для admin: 
+Загружены модули: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirror.logol.ru
+ * epel: mirror.logol.ru
+ * extras: mirror.yandex.ru
+ * remi-safe: remi.mirror.liteserver.nl
+ * updates: mirror.yandex.ru
+Разрешение зависимостей
+--> Проверка сценария
+---> Пакет php72-php-mbstring.x86_64 0:7.2.33-1.el7.remi помечен для установки
+--> Обработка зависимостей: libonig.so.105()(64bit) пакета: php72-php-mbstring-7.2.33-1.el7.remi.x86_64
+--> Проверка сценария
+---> Пакет oniguruma5php.x86_64 0:6.9.5+rev1-2.el7.remi помечен для установки
+--> Проверка зависимостей окончена
+
+Зависимости определены
+
+================================================================================
+ Package               Архитектура
+                                 Версия                      Репозиторий  Размер
+================================================================================
+Установка:
+ php72-php-mbstring    x86_64    7.2.33-1.el7.remi           remi-safe    462 k
+Установка зависимостей:
+ oniguruma5php         x86_64    6.9.5+rev1-2.el7.remi       remi-safe    201 k
+
+Итого за операцию
+================================================================================
+Установить  1 пакет (+1 зависимый)
+
+Объем загрузки: 664 k
+Объем изменений: 1.7 M
+Is this ok [y/d/N]: y
+Downloading packages:
+(1/2): php72-php-mbstring-7.2.33-1.el7.remi.x86_64.rpm     | 462 kB   00:00     
+(2/2): oniguruma5php-6.9.5+rev1-2.el7.remi.x86_64.rpm      | 201 kB   00:00     
+--------------------------------------------------------------------------------
+Общий размер                                       812 kB/s | 664 kB  00:00     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Установка   : oniguruma5php-6.9.5+rev1-2.el7.remi.x86_64                  1/2 
+  Установка   : php72-php-mbstring-7.2.33-1.el7.remi.x86_64                 2/2 
+  Проверка    : php72-php-mbstring-7.2.33-1.el7.remi.x86_64                 1/2 
+  Проверка    : oniguruma5php-6.9.5+rev1-2.el7.remi.x86_64                  2/2 
+
+Установлено:
+  php72-php-mbstring.x86_64 0:7.2.33-1.el7.remi                                 
+
+Установлены зависимости:
+  oniguruma5php.x86_64 0:6.9.5+rev1-2.el7.remi                                  
+
+Выполнено!
+[admin@web ~]$ sudo tail -f /var/log/nginx/error.log
+[sudo] пароль для admin: 
+2020/08/24 23:06:55 [error] 2809#0: *3 FastCGI sent in stderr: "Passing INI directive through FastCGI: unable to set 'always_populate_raw_post_data'" while reading response header from upstream, client: 192.168.56.1, server: mysite.local, request: "GET / HTTP/1.1", upstream: "fastcgi://unix:/var/run/php-fpm.sock:", host: "mysite.local"
+2020/08/24 23:06:55 [error] 2809#0: *5 open() "/var/www/mysite.local/favicon.ico" failed (2: No such file or directory), client: 192.168.56.1, server: mysite.local, request: "GET /favicon.ico HTTP/1.1", host: "mysite.local", referrer: "http://mysite.local/"
+2020/08/24 23:13:29 [error] 1115#0: *1 FastCGI sent in stderr: "Passing INI directive through FastCGI: unable to set 'always_populate_raw_post_data'" while reading response header from upstream, client: 192.168.56.1, server: mysite.local, request: "GET / HTTP/1.1", upstream: "fastcgi://unix:/var/run/php-fpm.sock:", host: "mysite.local"
+2020/08/24 23:13:29 [error] 1115#0: *3 open() "/var/www/mysite.local/favicon.ico" failed (2: No such file or directory), client: 192.168.56.1, server: mysite.local, request: "GET /favicon.ico HTTP/1.1", host: "mysite.local", referrer: "http://mysite.local/"
+2020/08/24 23:36:22 [error] 1115#0: *85 FastCGI sent in stderr: "Passing INI directive through FastCGI: unable to set 'always_populate_raw_post_data'" while reading response header from upstream, client: 192.168.56.1, server: mysite.local, request: "GET / HTTP/1.1", upstream: "fastcgi://unix:/var/run/php-fpm.sock:", host: "mysite.local"
+2020/08/24 23:36:22 [error] 1115#0: *87 open() "/var/www/mysite.local/favicon.ico" failed (2: No such file or directory), client: 192.168.56.1, server: mysite.local, request: "GET /favicon.ico HTTP/1.1", host: "mysite.local", referrer: "http://mysite.local/"
+2020/08/24 23:37:08 [error] 1698#0: *1 FastCGI sent in stderr: "Passing INI directive through FastCGI: unable to set 'always_populate_raw_post_data'" while reading response header from upstream, client: 192.168.56.1, server: mysite.local, request: "GET / HTTP/1.1", upstream: "fastcgi://unix:/var/run/php-fpm.sock:", host: "mysite.local"
+2020/08/24 23:37:08 [error] 1698#0: *3 open() "/var/www/mysite.local/favicon.ico" failed (2: No such file or directory), client: 192.168.56.1, server: mysite.local, request: "GET /favicon.ico HTTP/1.1", host: "mysite.local", referrer: "http://mysite.local/"
+2020/08/25 01:17:35 [error] 1698#0: *38 FastCGI sent in stderr: "Passing INI directive through FastCGI: unable to set 'always_populate_raw_post_data'
+PHP message: PHP Parse error:  syntax error, unexpected '$log' (T_VARIABLE) in /var/www/mysite.local/index.php on line 12" while reading response header from upstream, client: 192.168.56.1, server: mysite.local, request: "GET / HTTP/1.1", upstream: "fastcgi://unix:/var/run/php-fpm.sock:", host: "mysite.local"
+[admin@web ~]$ ps -ef | php
+[admin@web ~]$ sudo nano /etc/opt/remi/php72/php-fpm.d/www.conf
+[admin@web ~]$ cd /var/www/mysite.local/
+[admin@web mysite.local]$ ls -la
+итого 16
+drwxrwxr-x 4 admin nginx   90 авг 22 22:28 .
+drwxr-xr-x 3 root  root    26 авг 22 14:33 ..
+-rw-rw-r-- 1 admin admin   62 авг 22 22:03 composer.json
+-rw-rw-r-- 1 admin admin 5795 авг 22 22:03 composer.lock
+-rw-r--r-- 1 root  root  1100 авг 25 01:27 index.php
+drwxrwxr-x 2 admin admin    6 авг 22 22:28 log
+drwxrwxr-x 5 admin admin   68 авг 22 22:03 vendor
+[admin@web mysite.local]$ sudo chmod -R 777 log/
+[admin@web mysite.local]$ ls -la
+итого 16
+drwxrwxr-x 4 admin nginx   90 авг 22 22:28 .
+drwxr-xr-x 3 root  root    26 авг 22 14:33 ..
+-rw-rw-r-- 1 admin admin   62 авг 22 22:03 composer.json
+-rw-rw-r-- 1 admin admin 5795 авг 22 22:03 composer.lock
+-rw-r--r-- 1 root  root  1100 авг 25 01:27 index.php
+drwxrwxrwx 2 admin admin    6 авг 22 22:28 log
+drwxrwxr-x 5 admin admin   68 авг 22 22:03 vendor
+[admin@web mysite.local]$ sudo chown -R nginx:nginx log/
+[admin@web mysite.local]$ ls -la
+итого 16
+drwxrwxr-x 4 admin nginx   90 авг 22 22:28 .
+drwxr-xr-x 3 root  root    26 авг 22 14:33 ..
+-rw-rw-r-- 1 admin admin   62 авг 22 22:03 composer.json
+-rw-rw-r-- 1 admin admin 5795 авг 22 22:03 composer.lock
+-rw-r--r-- 1 root  root  1100 авг 25 01:27 index.php
+drwxrwxrwx 2 nginx nginx    6 авг 22 22:28 log
+drwxrwxr-x 5 admin admin   68 авг 22 22:03 vendor
+[admin@web mysite.local]$ sudo chown -R admin:nginx index.php
+[admin@web mysite.local]$ ls -la
+итого 16
+drwxrwxr-x 4 admin nginx   90 авг 22 22:28 .
+drwxr-xr-x 3 root  root    26 авг 22 14:33 ..
+-rw-rw-r-- 1 admin admin   62 авг 22 22:03 composer.json
+-rw-rw-r-- 1 admin admin 5795 авг 22 22:03 composer.lock
+-rw-r--r-- 1 admin nginx 1100 авг 25 01:27 index.php
+drwxrwxrwx 2 nginx nginx    6 авг 22 22:28 log
+drwxrwxr-x 5 admin admin   68 авг 22 22:03 vendor
+[admin@web log]$ cat debug.log
+[2020-08-25 02:43:26] name.INFO: info [] []
+[2020-08-25 02:43:26] name.DEBUG: debug [] []
+[2020-08-25 02:43:26] name.ERROR: error [] []
+[2020-08-25 02:43:26] name.WARNING: warning [] []
+[2020-08-25 02:43:26] name.EMERGENCY: emergency [] []
+[2020-08-25 02:43:26] name.NOTICE: notice [] []
+[2020-08-25 02:43:26] name.ALERT: alert [] []
+[admin@web log]$ cat info.log
+[2020-08-25 02:43:26] name.INFO: info [] []
+[2020-08-25 02:43:26] name.ERROR: error [] []
+[2020-08-25 02:43:26] name.WARNING: warning [] []
+[2020-08-25 02:43:26] name.EMERGENCY: emergency [] []
+[2020-08-25 02:43:26] name.NOTICE: notice [] []
+[2020-08-25 02:43:26] name.ALERT: alert [] []
+[admin@web log]$ cat error.log
+[2020-08-25 02:43:26] name.ERROR: error [] []
+[2020-08-25 02:43:26] name.EMERGENCY: emergency [] []
+[2020-08-25 02:43:26] name.ALERT: alert [] []
+[admin@web log]$ cat alert.log
+[2020-08-25 02:43:26] name.EMERGENCY: emergency [] []
+[2020-08-25 02:43:26] name.ALERT: alert [] []
+[admin@web log]$ cat emergency.log
+[2020-08-25 02:43:26] name.EMERGENCY: emergency [] []
+[admin@web log]$ cat notice.log
+[2020-08-25 02:43:26] name.ERROR: error [] []
+[2020-08-25 02:43:26] name.WARNING: warning [] []
+[2020-08-25 02:43:26] name.EMERGENCY: emergency [] []
+[2020-08-25 02:43:26] name.NOTICE: notice [] []
+[2020-08-25 02:43:26] name.ALERT: alert [] []
+[admin@web log]$ cat warning.log
+[2020-08-25 02:43:26] name.ERROR: error [] []
+[2020-08-25 02:43:26] name.WARNING: warning [] []
+[2020-08-25 02:43:26] name.EMERGENCY: emergency [] []
+[2020-08-25 02:43:26] name.ALERT: alert [] []
+[admin@web log]$ cat /var/www/mysite.local/log/debug.log
+[2020-08-25 03:24:22] name.INFO: info [] []
+[2020-08-25 03:24:22] name.DEBUG: debug [] []
+[2020-08-25 03:24:22] name.ERROR: error [] []
+[2020-08-25 03:24:22] name.WARNING: warning [] []
+[2020-08-25 03:24:22] name.EMERGENCY: emergency [] []
+[2020-08-25 03:24:22] name.NOTICE: notice [] []
+[2020-08-25 03:24:22] name.ALERT: alert [] []
+[2020-08-25 03:24:22] name.DEBUG: 639352 [] []
+[2020-08-25 03:24:22] name.DEBUG: 0.0027921199798584 [] []
+[admin@web log]$ sudo yum install php72-php-pecl-xdebug
+[sudo] пароль для admin: 
+Загружены модули: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirror.logol.ru
+ * epel: mirror.logol.ru
+ * extras: mirror.yandex.ru
+ * remi-safe: mirror.awanti.com
+ * updates: mirror.yandex.ru
+Разрешение зависимостей
+--> Проверка сценария
+---> Пакет php72-php-pecl-xdebug.x86_64 0:2.9.6-1.el7.remi помечен для установки
+--> Проверка зависимостей окончена
+
+Зависимости определены
+
+================================================================================
+ Package                   Архитектура
+                                      Версия                Репозиторий   Размер
+================================================================================
+Установка:
+ php72-php-pecl-xdebug     x86_64     2.9.6-1.el7.remi      remi-safe     173 k
+
+Итого за операцию
+================================================================================
+Установить  1 пакет
+
+Объем загрузки: 173 k
+Объем изменений: 516 k
+Is this ok [y/d/N]: y
+Downloading packages:
+php72-php-pecl-xdebug-2.9.6-1.el7.remi.x86_64.rpm          | 173 kB   00:00     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Установка   : php72-php-pecl-xdebug-2.9.6-1.el7.remi.x86_64               1/1 
+  Проверка    : php72-php-pecl-xdebug-2.9.6-1.el7.remi.x86_64               1/1 
+
+Установлено:
+  php72-php-pecl-xdebug.x86_64 0:2.9.6-1.el7.remi                               
+
+Выполнено!
+[admin@web log]$ cat /var/www/mysite.local/log/debug.log
+[2020-08-25 03:24:22] name.INFO: info [] []
+[2020-08-25 03:24:22] name.DEBUG: debug [] []
+[2020-08-25 03:24:22] name.ERROR: error [] []
+[2020-08-25 03:24:22] name.WARNING: warning [] []
+[2020-08-25 03:24:22] name.EMERGENCY: emergency [] []
+[2020-08-25 03:24:22] name.NOTICE: notice [] []
+[2020-08-25 03:24:22] name.ALERT: alert [] []
+[2020-08-25 03:24:22] name.DEBUG: 639352 [] []
+[2020-08-25 03:24:22] name.DEBUG: 0.0027921199798584 [] []
+[2020-08-25 04:01:18] name.INFO: info [] []
+[2020-08-25 04:01:18] name.DEBUG: debug [] []
+[2020-08-25 04:01:18] name.ERROR: error [] []
+[2020-08-25 04:01:18] name.WARNING: warning [] []
+[2020-08-25 04:01:18] name.EMERGENCY: emergency [] []
+[2020-08-25 04:01:18] name.NOTICE: notice [] []
+[2020-08-25 04:01:18] name.ALERT: alert [] []
+[2020-08-25 04:01:18] name.DEBUG: 0 [] []
+[2020-08-25 04:01:18] name.DEBUG: 639696 [] []
+[2020-08-25 04:01:18] name.DEBUG: 0.0033349990844727 [] []
+Warning: A non-numeric value encountered in /var/www/mysite.local/index.php on line 46
+Fatal error: Allowed memory size of 134217728 bytes exhausted (tried to allocate 262144 bytes) in /var/www/mysite.local/index.php on line 50
+[admin@web log]$ sudo systemctl restart php72-php-fpm
+[admin@web log]$ php72 -i | grep xdebug
+Additional .ini files parsed => /etc/opt/remi/php72/php.d/15-xdebug.ini,
+xdebug
+xdebug support => enabled
+Support Xdebug on Patreon, GitHub, or as a business: https://xdebug.org/support
+xdebug.auto_trace => Off => Off
+xdebug.cli_color => 0 => 0
+xdebug.collect_assignments => Off => Off
+xdebug.collect_includes => On => On
+xdebug.collect_params => 0 => 0
+xdebug.collect_return => Off => Off
+xdebug.collect_vars => Off => Off
+xdebug.coverage_enable => On => On
+xdebug.default_enable => On => On
+xdebug.dump.COOKIE => no value => no value
+xdebug.dump.ENV => no value => no value
+xdebug.dump.FILES => no value => no value
+xdebug.dump.GET => no value => no value
+xdebug.dump.POST => no value => no value
+xdebug.dump.REQUEST => no value => no value
+xdebug.dump.SERVER => no value => no value
+xdebug.dump.SESSION => no value => no value
+xdebug.dump_globals => On => On
+xdebug.dump_once => On => On
+xdebug.dump_undefined => Off => Off
+xdebug.file_link_format => no value => no value
+xdebug.filename_format => no value => no value
+xdebug.force_display_errors => Off => Off
+xdebug.force_error_reporting => 0 => 0
+xdebug.gc_stats_enable => Off => Off
+xdebug.gc_stats_output_dir => /tmp => /tmp
+xdebug.gc_stats_output_name => gcstats.%p => gcstats.%p
+xdebug.halt_level => 0 => 0
+xdebug.idekey => no value => no value
+xdebug.max_nesting_level => 50 => 50
+xdebug.max_stack_frames => -1 => -1
+xdebug.overload_var_dump => 2 => 2
+xdebug.profiler_append => Off => Off
+xdebug.profiler_enable => Off => Off
+xdebug.profiler_enable_trigger => Off => Off
+xdebug.profiler_enable_trigger_value => no value => no value
+xdebug.profiler_output_dir => /tmp => /tmp
+xdebug.profiler_output_name => cachegrind.out.%p => cachegrind.out.%p
+xdebug.remote_addr_header => no value => no value
+xdebug.remote_autostart => Off => Off
+xdebug.remote_connect_back => Off => Off
+xdebug.remote_cookie_expire_time => 3600 => 3600
+xdebug.remote_enable => Off => Off
+xdebug.remote_host => localhost => localhost
+xdebug.remote_log => no value => no value
+xdebug.remote_log_level => 7 => 7
+xdebug.remote_mode => req => req
+xdebug.remote_port => 9000 => 9000
+xdebug.remote_timeout => 200 => 200
+xdebug.scream => Off => Off
+xdebug.show_error_trace => Off => Off
+xdebug.show_exception_trace => Off => Off
+xdebug.show_local_vars => Off => Off
+xdebug.show_mem_delta => Off => Off
+xdebug.trace_enable_trigger => Off => Off
+xdebug.trace_enable_trigger_value => no value => no value
+xdebug.trace_format => 0 => 0
+xdebug.trace_options => 0 => 0
+xdebug.trace_output_dir => /tmp => /tmp
+xdebug.trace_output_name => trace.%c => trace.%c
+xdebug.var_display_max_children => 128 => 128
+xdebug.var_display_max_data => 512 => 512
+xdebug.var_display_max_depth => 3 => 3
+
+[admin@web log]$ php72 -i | grep show_mem_delta
+xdebug.show_mem_delta => On => On
+
+[admin@web log]$ php72 -i | grep xdebug
+Additional .ini files parsed => /etc/opt/remi/php72/php.d/15-xdebug.ini,
+xdebug
+xdebug support => enabled
+Support Xdebug on Patreon, GitHub, or as a business: https://xdebug.org/support
+xdebug.auto_trace => On => On
+xdebug.cli_color => 0 => 0
+xdebug.collect_assignments => Off => Off
+xdebug.collect_includes => On => On
+xdebug.collect_params => 1 => 1
+xdebug.collect_return => On => On
+xdebug.collect_vars => On => On
+xdebug.coverage_enable => On => On
+xdebug.default_enable => On => On
+xdebug.dump.COOKIE => no value => no value
+xdebug.dump.ENV => no value => no value
+xdebug.dump.FILES => no value => no value
+xdebug.dump.GET => no value => no value
+xdebug.dump.POST => no value => no value
+xdebug.dump.REQUEST => * => *
+xdebug.dump.SERVER => REQUEST_METHOD,REQUEST_URI,HTTP_USER_AGENT => REQUEST_METHOD,REQUEST_URI,HTTP_USER_AGENT
+xdebug.dump.SESSION => no value => no value
+xdebug.dump_globals => On => On
+xdebug.dump_once => On => On
+xdebug.dump_undefined => On => On
+xdebug.file_link_format => no value => no value
+xdebug.filename_format => no value => no value
+xdebug.force_display_errors => Off => Off
+xdebug.force_error_reporting => 0 => 0
+xdebug.gc_stats_enable => Off => Off
+xdebug.gc_stats_output_dir => /tmp => /tmp
+xdebug.gc_stats_output_name => gcstats.%p => gcstats.%p
+xdebug.halt_level => 0 => 0
+xdebug.idekey => no value => no value
+xdebug.max_nesting_level => 50 => 50
+xdebug.max_stack_frames => -1 => -1
+xdebug.overload_var_dump => 2 => 2
+xdebug.profiler_append => Off => Off
+xdebug.profiler_enable => Off => Off
+xdebug.profiler_enable_trigger => Off => Off
+xdebug.profiler_enable_trigger_value => no value => no value
+xdebug.profiler_output_dir => /tmp => /tmp
+xdebug.profiler_output_name => cachegrind.out.%p => cachegrind.out.%p
+xdebug.remote_addr_header => no value => no value
+xdebug.remote_autostart => Off => Off
+xdebug.remote_connect_back => Off => Off
+xdebug.remote_cookie_expire_time => 3600 => 3600
+xdebug.remote_enable => Off => Off
+xdebug.remote_host => localhost => localhost
+xdebug.remote_log => no value => no value
+xdebug.remote_log_level => 7 => 7
+xdebug.remote_mode => req => req
+xdebug.remote_port => 9000 => 9000
+xdebug.remote_timeout => 200 => 200
+xdebug.scream => Off => Off
+xdebug.show_error_trace => Off => Off
+xdebug.show_exception_trace => On => On
+xdebug.show_local_vars => On => On
+xdebug.show_mem_delta => On => On
+xdebug.trace_enable_trigger => Off => Off
+xdebug.trace_enable_trigger_value => no value => no value
+xdebug.trace_format => 0 => 0
+xdebug.trace_options => 0 => 0
+xdebug.trace_output_dir => /var/www/mysite.local/traces => /var/www/mysite.local/traces
+xdebug.trace_output_name => trace.%c.%p => trace.%c.%p
+xdebug.var_display_max_children => 128 => 128
+xdebug.var_display_max_data => 512 => 512
+xdebug.var_display_max_depth => 3 => 3
+[admin@web log]$ php72 -i | grep trace_output_dir
+xdebug.trace_output_dir => /var/www/mysite.local/traces => /var/www/mysite.local/traces
+[admin@web log]$ sudo mkdir /var/www/mysite.local/traces
+[admin@web log]$ sudo chmod a+rwx /var/www/mysite.local/traces
+[admin@web log]$ ll /var/www/mysite.local/traces
+итого 0
+[admin@web log]$ ll /var/www/mysite.local/traces
+итого 832
+-rw-r--r-- 1 nginx nginx 850317 авг 25 05:46 trace.2991569888.17070.xt
+
+konstantinlevchenko@Konstantin ~ % scp -r /Users/konstantinlevchenko/Documents/programing/web_developer/php2/App/ admin@192.168.56.80:/var/www/mysite.local/App/ 
+admin@192.168.56.80's password: 
+App.php                                       100% 2393     3.2MB/s   00:00    
+.DS_Store                                     100% 8196     5.7MB/s   00:00    
+SingletonTrait.php                            100%  411   196.8KB/s   00:00    
+Templater.php                                 100%  444   624.8KB/s   00:00    
+DB.php                                        100%  893     1.1MB/s   00:00    
+MathClass.php                                 100%  202   194.2KB/s   00:00    
+Cart.php                                      100% 3481     2.8MB/s   00:00    
+Authentication.php                            100%  555   439.6KB/s   00:00    
+OrdersProducts.php                            100% 3302     3.1MB/s   00:00    
+Account.php                                   100%  101   109.6KB/s   00:00    
+Model.php                                     100%   10KB   8.9MB/s   00:00    
+Products.php                                  100% 1252     1.4MB/s   00:00    
+Orders.php                                    100% 2152     2.2MB/s   00:00    
+DB.php                                        100% 4143     4.2MB/s   00:00    
+Singleton.php                                 100%  955     1.1MB/s   00:00    
+DigitalGoods.php                              100% 2022     2.5MB/s   00:00    
+PieceGoods.php                                100% 2227     2.2MB/s   00:00    
+Goods.php                                     100% 2753     2.8MB/s   00:00    
+WeightGoods.php                               100%  909     1.1MB/s   00:00    
+Controller.php                                100% 1399     1.9MB/s   00:00    
+.DS_Store                                     100% 6148     5.8MB/s   00:00    
+AccountController.php                         100% 1348     1.5MB/s   00:00    
+IndexController.php                           100%  763     1.1MB/s   00:00    
+ProductsController.php                        100% 5792     5.7MB/s   00:00    
+CartController.php                            100% 3640     3.4MB/s   00:00    
+OrdersController.php                          100% 4587     4.0MB/s   00:00    
+AuthenticationController.php                  100% 2166     2.2MB/s   00:00    
+konstantinlevchenko@Konstantin ~ % scp -r /Users/konstantinlevchenko/Documents/programing/web_developer/php2/config/ admin@192.168.56.80:/var/www/mysite.local/config/
+admin@192.168.56.80's password: 
+.DS_Store                                     100% 6148     4.3MB/s   00:00    
+config.php                                    100%  509   443.4KB/s   00:00    
+konstantinlevchenko@Konstantin ~ % scp -r /Users/konstantinlevchenko/Documents/programing/web_developer/php2/engine/ admin@192.168.56.80:/var/www/mysite.local/engine/
+admin@192.168.56.80's password: 
+functions.php                                 100% 5937     5.8MB/s   00:00    
+news.php                                      100% 1555     1.8MB/s   00:00    
+.DS_Store                                     100% 6148     4.5MB/s   00:00    
+cart.php                                      100% 3726     3.9MB/s   00:00    
+db.php                                        100% 3799     3.2MB/s   00:00    
+reviews.php                                   100%  808   958.8KB/s   00:00    
+konstantinlevchenko@Konstantin ~ % scp -r /Users/konstantinlevchenko/Documents/programing/web_developer/php2/public/ admin@192.168.56.80:/var/www/mysite.local/public/
+admin@192.168.56.80's password: 
+index.php                                     100% 7051     7.8MB/s   00:00    
+favicon.ico                                   100%   15KB  10.2MB/s   00:00    
+.DS_Store                                     100%   14KB  10.0MB/s   00:00    
+index.php                                     100%  213   333.9KB/s   00:00    
+jquery-3.3.1.min.js                           100%   85KB  26.6MB/s   00:00    
+.DS_Store                                     100% 6148     4.9MB/s   00:00    
+main.js                                       100% 4214     4.1MB/s   00:00    
+style.css                                     100%   12KB   8.5MB/s   00:00    
+index.php                                     100%  616   861.8KB/s   00:00    
+viewImg.php                                   100%  659   613.5KB/s   00:00    
+.DS_Store                                     100% 8196     6.7MB/s   00:00    
+8.jpg                                         100%  160KB  33.4MB/s   00:00    
+no-image.jpeg                                 100% 1713     1.6MB/s   00:00    
+no-image.png                                  100%  215KB  41.5MB/s   00:00    
+product_1.jpg                                 100%   76KB  32.4MB/s   00:00    
+product_2.jpg                                 100%   67KB  29.9MB/s   00:00    
+product_3.jpg                                 100%   64KB  32.9MB/s   00:00    
+product_7.jpg                                 100%   49KB  19.1MB/s   00:00    
+8.jpg                                         100%  160KB  42.6MB/s   00:00    
+4.jpg                                         100%  248KB  47.6MB/s   00:00    
+5.jpg                                         100%  261KB  53.9MB/s   00:00    
+7.jpg                                         100%  310KB  63.6MB/s   00:00    
+6.jpg                                         100%  190KB  40.6MB/s   00:00    
+3991.jpg                                      100%   89KB  42.3MB/s   00:00    
+3.jpg                                         100%  211KB  45.9MB/s   00:00    
+53433765.jpg                                  100%  265KB  43.6MB/s   00:00    
+product_6.jpg                                 100%   51KB  30.5MB/s   00:00    
+product_4.jpg                                 100%   77KB  34.7MB/s   00:00    
+product_5.jpg                                 100%   70KB  29.7MB/s   00:00    
+product_8.jpg                                 100%   49KB  31.9MB/s   00:00    
+cart_white.svg                                100% 1136     1.3MB/s   00:00    
+4.jpg                                         100%  248KB  61.5MB/s   00:00    
+5.jpg                                         100%  261KB  56.4MB/s   00:00    
+7.jpg                                         100%  310KB  54.4MB/s   00:00    
+6.jpg                                         100%  190KB  54.1MB/s   00:00    
+2.jpg                                         100%  404KB  49.4MB/s   00:00    
+3.jpg                                         100%  211KB  62.9MB/s   00:00    
+1.jpg                                         100%  320KB  58.9MB/s   00:00    
+index.php                                     100% 2177     2.0MB/s   00:00    
+contacts.php                                  100%  390   508.5KB/s   00:00    
+.htaccess                                     100%  217   362.3KB/s   00:00    
+konstantinlevchenko@Konstantin ~ % scp -r /Users/konstantinlevchenko/Documents/programing/web_developer/php2/templates/ admin@192.168.56.80:/var/www/mysite.local/templates/
+admin@192.168.56.80's password: 
+contacts.html                                 100%  119   132.7KB/s   00:00    
+index.html                                    100% 1707     1.5MB/s   00:00    
+.DS_Store                                     100% 6148     4.1MB/s   00:00    
+updateProduct.html                            100% 2408     1.6MB/s   00:00    
+createProduct.html                            100% 1907     2.2MB/s   00:00    
+viewImg.html                                  100%  461   448.9KB/s   00:00    
+cartItems.html                                100% 1559     1.6MB/s   00:00    
+login.html                                    100%  883   954.9KB/s   00:00    
+galleryItem.html                              100%  206   284.1KB/s   00:00    
+productsPage.html                             100% 1197     1.4MB/s   00:00    
+newsItem.tpl                                  100%  134   137.0KB/s   00:00    
+orderTable.html                               100% 3200     3.7MB/s   00:00    
+showProduct.html                              100%  704     1.1MB/s   00:00    
+cart.html                                     100%  996     1.4MB/s   00:00    
+productsList.html                             100% 1063   771.2KB/s   00:00    
+error.html                                    100%  205   260.0KB/s   00:00    
+userAccount.html                              100%  803     1.0MB/s   00:00 
+[admin@web mysite.local]$ composer require twig/twig
+Using version ^1.42 for twig/twig
+./composer.json has been updated
+Loading composer repositories with package information
+Updating dependencies (including require-dev)
+Package operations: 2 installs, 0 updates, 0 removals
+  - Installing symfony/polyfill-ctype (v1.18.1): Downloading (100%)         
+  - Installing twig/twig (v1.42.2): Downloading (100%)         
+Writing lock file
+Generating autoload files
+2 packages you are using are looking for funding.
+Use the `composer fund` command to find out more!
+[admin@web Classes]$ sudo nano /var/www/mysite.local/App/Classes/DB.php
+[sudo] пароль для admin: 
+[admin@web Controllers]$ sudo nano /var/www/mysite.local/App/Controllers/ProductsController.php

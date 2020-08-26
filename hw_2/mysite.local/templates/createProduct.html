@@ -1,0 +1,49 @@
+{% extends 'index.html' %}
+{% block content %}
+<form class="my_form" action="" method="POST">
+    <div>
+        <div>
+            <label class="product_label">product name:
+                <input class="product_input" type="text" name="name" placeholder="name (varchar(255))" required>
+            </label>
+        </div>
+        <div>
+            <label class="product_label">product price:
+                <input class="product_input" type="text" name="price" placeholder="price (decimal(10,2))" required>
+            </label>
+        </div>
+        <div>
+            <label class="product_label">product discount:
+                <input class="product_input" type="text" name="discount" placeholder="discount (float(0.1 ... 1))"
+                       required>
+            </label>
+        </div>
+        <div>
+            <label class="product_label">product image:
+                <input class="product_input" type="text" name="image" placeholder="src (img/product_1.jpg)">
+            </label>
+        </div>
+        <div>
+            <label class="product_label">product active:
+                <input class="product_input" type="text" name="isActive" placeholder="active (int(1 = true, 0 = false))"
+                       required>
+            </label>
+        </div>
+        <div>
+            <label class="product_label">product category ID:
+                <input class="product_input" type="text" name="categoryId" placeholder="category ID (int)"
+                       required>
+            </label>
+        </div>
+        <div>
+            <input class="update_submit" type="submit">
+        </div>
+    </div>
+    <div>
+        <label class="product_label">product description:
+            <textarea class="product_description" name="description" cols="100" rows="30"
+                      placeholder="description text" required></textarea>
+        </label>
+    </div>
+</form>
+{% endblock %}

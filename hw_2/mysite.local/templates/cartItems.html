@@ -1,0 +1,35 @@
+{% for item in products %}
+<div class="product-box-details">
+    <img src="/{{item.product.image}}" class="product-box-img" alt="product_photo">
+    <div class="product-details-box_parameter">
+        <a class="product-details-link" href="#">{{item.product.name}}</a>
+        <div class="box-details-comment">
+            <span class="product-details-comment">☆☆☆☆☆</span>
+        </div>
+        <div class="product-details-color">
+            <span class="product-details-parameter">Color:</span>
+            <span class="product-details-value">red</span>
+        </div>
+        <div class="product-details-size">
+            <span class="product-details-parameter">Size:</span>
+            <span class="product-details-value">XXL</span>
+        </div>
+    </div>
+    <div class="cart-product-price">
+        <span class="cart-product-value_text">$ {{item.product.price}}</span>
+    </div>
+    <label class="cart-product-quantity">
+        <input class="cart-quantity-value" type="number" min="1" value="{{item.quantity}}"
+               data-id={{item.product.id}} data-price={{item.product.price}} data-discount={{item.product.discount}}>
+    </label>
+    <div class="cart-product-shipping">
+        <span class="cart-product-value_text">FREE</span>
+    </div>
+    <div class="cart-product-subtotal">
+        <span class="cart-product-subtotal_value">$ {{item.subtotal}}</span>
+    </div>
+    <div class="cart-product-action">
+        <a href="#" class="cart-product-remBtn" data-id={{item.product.id}}>&#10005;</a>
+    </div>
+</div>
+{% endfor %}

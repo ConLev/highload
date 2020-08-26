@@ -1,0 +1,61 @@
+{% extends 'index.html' %}
+{% block content %}
+<form class="my_form" action="" method="POST">
+    <div>
+        <div>
+            <label class="product_label">product id:
+                <input class="product_input" type="text" name="id" required value="{{product.id}}">
+            </label>
+        </div>
+        <div>
+            <label class="product_label">product name:
+                <input class="product_input" type="text" name="name" required value="{{product.name}}">
+            </label>
+        </div>
+        <div>
+            <label class="product_label">product price:
+                <input class="product_input" type="text" name="price" required value="{{product.price}}">
+            </label>
+        </div>
+        <div>
+            <label class="product_label">product discount:
+                <input class="product_input" type="text" name="discount" required value="{{product.discount}}">
+            </label>
+        </div>
+        <div>
+            <label class="product_label">product image:
+                <input class="product_input" type="text" name="image" required value="{{product.image}}">
+            </label>
+        </div>
+        <div>
+            <label class="product_label">create:
+                <input class="product_input" type="text" name="dateCreate" readonly value="{{product.dateCreate}}">
+            </label>
+        </div>
+        <div>
+            <label class="product_label">update:
+                <input class="product_input" type="text" name="dateChange" readonly value="{{product.dateChange}}">
+            </label>
+        </div>
+        <div>
+            <label class="product_label">product active:
+                <input class="product_input" type="text" name="isActive" required value="{{product.isActive}}">
+            </label>
+        </div>
+        <div>
+            <label class="product_label">product category ID:
+                <input class="product_input" type="text" name="categoryId" required value="{{product.categoryId}}">
+            </label>
+        </div>
+        <div>
+            <input class="update_submit" type="submit">
+        </div>
+    </div>
+    <div>
+        <label class="product_label">product description:
+            <textarea class="product_description" name="description" cols="100" rows="30"
+                      required>{{product.description}}</textarea>
+        </label>
+    </div>
+</form>
+{% endblock %}
