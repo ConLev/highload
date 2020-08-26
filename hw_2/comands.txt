@@ -63,3 +63,13 @@ php72 -i | grep trace_output_dir
 sudo mkdir /var/www/mysite.local/traces
 sudo chmod a+rwx /var/www/mysite.local/traces
 ll /var/www/mysite.local/traces
+
+% scp -r /Users/konstantinlevchenko/Documents/programing/web_developer/php2/templates/ admin@192.168.56.80:/var/www/mysite.local/templates/
+sudo chown -R admin:nginx /var/www/mysite.local/public/
+sudo nano /etc/nginx/conf.d/mysite.local.conf
+sudo systemctl restart php72-php-fpm
+composer require twig/twig
+sudo systemctl restart php72-php-fpm
+sudo systemctl restart php72-php-fpm
+sudo nano /var/www/mysite.local/App/Classes/DB.php
+sudo nano /var/www/mysite.local/App/Controllers/ProductsController.php
