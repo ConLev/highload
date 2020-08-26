@@ -1,0 +1,26 @@
+{% extends 'index.html' %}
+{% block container %}
+<h1>{{h1}}</h1>
+<div class="user_account_box">
+    <span class="text">Здравствуйте, </span><span class="user_account_text">{{name}}</span>
+</div>
+<div class="user_account_box">
+    <span class="text">Ваш логин: </span><span class="user_account_text">{{login}}</span>
+</div>
+{% block content %}
+<p class="message">{{ error }}</p>
+<div>
+    <h5 class="user_account_header">Вы недавно смотрели:</h5>
+    {% for page in pages %}
+    <p class="user_account_text">{{page}}</p>
+    {% endfor %}
+</div>
+<div style="padding-top: 20px">
+    {% include 'orderTable.html' %}
+</div>
+{% endblock %}
+{% endblock %}
+{% block script %}
+<script src="/js/jquery-3.3.1.min.js"></script>
+<script src="/js/main.js"></script>
+{% endblock %}
