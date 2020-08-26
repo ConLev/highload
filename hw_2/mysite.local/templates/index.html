@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+    <title>{{title}}</title>
+    {% endblock %}
+    <link rel="stylesheet" href="/style/style.css">
+</head>
+<body>
+<nav class="nav">
+    <ul class="top_menu">
+        {% block menu %}
+        <!--        <li class="top_menu_list"><a class="top_menu_link" href="/homework_3">Галлерея</a></li>-->
+        <!--        <li class="top_menu_list"><a class="top_menu_link" href="#">Новости</a></li>-->
+        <!--        <li class="top_menu_list"><a class="top_menu_link" href="#">Отзывы</a></li>-->
+        <li class="top_menu_list"><a class="top_menu_link" href="/products/">Товары</a></li>
+        <li class="top_menu_list"><a class="top_menu_link" href="/cart/">Корзина</a></li>
+        <!--        <li class="top_menu_list"><a class="top_menu_link" href="/contacts.php">Контакты</a></li>-->
+        {% if session.login is defined %}
+        <li class="top_menu_list"><a class="top_menu_link" href="/account/">Личный кабинет</a></li>
+        <li class="logout_list"><a class="logout_link" href="/authentication/logout/">Выйти</a></li>
+        {% else %}
+        <li class="login_list"><a class="login_link" href="/authentication/">Войти</a></li>
+        {% endif %}
+        {% endblock %}
+    </ul>
+</nav>
+<div class="container">
+    {% block container %}
+    <h1>{{h1}}</h1>
+    <div class="content">
+        <p class="message">{{ error }}</p>
+        {% block content %}{% endblock %}
+    </div>
+    {% endblock %}
+</div>
+<footer class="footer">Все права защищены &nbsp; {{year}}</footer>
+{% block script %}{% endblock %}
+</body>
+</html>

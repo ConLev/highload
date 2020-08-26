@@ -1230,3 +1230,122 @@ xdebug.trace_output_dir => /var/www/mysite.local/traces => /var/www/mysite.local
 [admin@web log]$ ll /var/www/mysite.local/traces
 итого 832
 -rw-r--r-- 1 nginx nginx 850317 авг 25 05:46 trace.2991569888.17070.xt
+
+konstantinlevchenko@Konstantin ~ % scp -r /Users/konstantinlevchenko/Documents/programing/web_developer/php2/App/ admin@192.168.56.80:/var/www/mysite.local/App/ 
+admin@192.168.56.80's password: 
+App.php                                       100% 2393     3.2MB/s   00:00    
+.DS_Store                                     100% 8196     5.7MB/s   00:00    
+SingletonTrait.php                            100%  411   196.8KB/s   00:00    
+Templater.php                                 100%  444   624.8KB/s   00:00    
+DB.php                                        100%  893     1.1MB/s   00:00    
+MathClass.php                                 100%  202   194.2KB/s   00:00    
+Cart.php                                      100% 3481     2.8MB/s   00:00    
+Authentication.php                            100%  555   439.6KB/s   00:00    
+OrdersProducts.php                            100% 3302     3.1MB/s   00:00    
+Account.php                                   100%  101   109.6KB/s   00:00    
+Model.php                                     100%   10KB   8.9MB/s   00:00    
+Products.php                                  100% 1252     1.4MB/s   00:00    
+Orders.php                                    100% 2152     2.2MB/s   00:00    
+DB.php                                        100% 4143     4.2MB/s   00:00    
+Singleton.php                                 100%  955     1.1MB/s   00:00    
+DigitalGoods.php                              100% 2022     2.5MB/s   00:00    
+PieceGoods.php                                100% 2227     2.2MB/s   00:00    
+Goods.php                                     100% 2753     2.8MB/s   00:00    
+WeightGoods.php                               100%  909     1.1MB/s   00:00    
+Controller.php                                100% 1399     1.9MB/s   00:00    
+.DS_Store                                     100% 6148     5.8MB/s   00:00    
+AccountController.php                         100% 1348     1.5MB/s   00:00    
+IndexController.php                           100%  763     1.1MB/s   00:00    
+ProductsController.php                        100% 5792     5.7MB/s   00:00    
+CartController.php                            100% 3640     3.4MB/s   00:00    
+OrdersController.php                          100% 4587     4.0MB/s   00:00    
+AuthenticationController.php                  100% 2166     2.2MB/s   00:00    
+konstantinlevchenko@Konstantin ~ % scp -r /Users/konstantinlevchenko/Documents/programing/web_developer/php2/config/ admin@192.168.56.80:/var/www/mysite.local/config/
+admin@192.168.56.80's password: 
+.DS_Store                                     100% 6148     4.3MB/s   00:00    
+config.php                                    100%  509   443.4KB/s   00:00    
+konstantinlevchenko@Konstantin ~ % scp -r /Users/konstantinlevchenko/Documents/programing/web_developer/php2/engine/ admin@192.168.56.80:/var/www/mysite.local/engine/
+admin@192.168.56.80's password: 
+functions.php                                 100% 5937     5.8MB/s   00:00    
+news.php                                      100% 1555     1.8MB/s   00:00    
+.DS_Store                                     100% 6148     4.5MB/s   00:00    
+cart.php                                      100% 3726     3.9MB/s   00:00    
+db.php                                        100% 3799     3.2MB/s   00:00    
+reviews.php                                   100%  808   958.8KB/s   00:00    
+konstantinlevchenko@Konstantin ~ % scp -r /Users/konstantinlevchenko/Documents/programing/web_developer/php2/public/ admin@192.168.56.80:/var/www/mysite.local/public/
+admin@192.168.56.80's password: 
+index.php                                     100% 7051     7.8MB/s   00:00    
+favicon.ico                                   100%   15KB  10.2MB/s   00:00    
+.DS_Store                                     100%   14KB  10.0MB/s   00:00    
+index.php                                     100%  213   333.9KB/s   00:00    
+jquery-3.3.1.min.js                           100%   85KB  26.6MB/s   00:00    
+.DS_Store                                     100% 6148     4.9MB/s   00:00    
+main.js                                       100% 4214     4.1MB/s   00:00    
+style.css                                     100%   12KB   8.5MB/s   00:00    
+index.php                                     100%  616   861.8KB/s   00:00    
+viewImg.php                                   100%  659   613.5KB/s   00:00    
+.DS_Store                                     100% 8196     6.7MB/s   00:00    
+8.jpg                                         100%  160KB  33.4MB/s   00:00    
+no-image.jpeg                                 100% 1713     1.6MB/s   00:00    
+no-image.png                                  100%  215KB  41.5MB/s   00:00    
+product_1.jpg                                 100%   76KB  32.4MB/s   00:00    
+product_2.jpg                                 100%   67KB  29.9MB/s   00:00    
+product_3.jpg                                 100%   64KB  32.9MB/s   00:00    
+product_7.jpg                                 100%   49KB  19.1MB/s   00:00    
+8.jpg                                         100%  160KB  42.6MB/s   00:00    
+4.jpg                                         100%  248KB  47.6MB/s   00:00    
+5.jpg                                         100%  261KB  53.9MB/s   00:00    
+7.jpg                                         100%  310KB  63.6MB/s   00:00    
+6.jpg                                         100%  190KB  40.6MB/s   00:00    
+3991.jpg                                      100%   89KB  42.3MB/s   00:00    
+3.jpg                                         100%  211KB  45.9MB/s   00:00    
+53433765.jpg                                  100%  265KB  43.6MB/s   00:00    
+product_6.jpg                                 100%   51KB  30.5MB/s   00:00    
+product_4.jpg                                 100%   77KB  34.7MB/s   00:00    
+product_5.jpg                                 100%   70KB  29.7MB/s   00:00    
+product_8.jpg                                 100%   49KB  31.9MB/s   00:00    
+cart_white.svg                                100% 1136     1.3MB/s   00:00    
+4.jpg                                         100%  248KB  61.5MB/s   00:00    
+5.jpg                                         100%  261KB  56.4MB/s   00:00    
+7.jpg                                         100%  310KB  54.4MB/s   00:00    
+6.jpg                                         100%  190KB  54.1MB/s   00:00    
+2.jpg                                         100%  404KB  49.4MB/s   00:00    
+3.jpg                                         100%  211KB  62.9MB/s   00:00    
+1.jpg                                         100%  320KB  58.9MB/s   00:00    
+index.php                                     100% 2177     2.0MB/s   00:00    
+contacts.php                                  100%  390   508.5KB/s   00:00    
+.htaccess                                     100%  217   362.3KB/s   00:00    
+konstantinlevchenko@Konstantin ~ % scp -r /Users/konstantinlevchenko/Documents/programing/web_developer/php2/templates/ admin@192.168.56.80:/var/www/mysite.local/templates/
+admin@192.168.56.80's password: 
+contacts.html                                 100%  119   132.7KB/s   00:00    
+index.html                                    100% 1707     1.5MB/s   00:00    
+.DS_Store                                     100% 6148     4.1MB/s   00:00    
+updateProduct.html                            100% 2408     1.6MB/s   00:00    
+createProduct.html                            100% 1907     2.2MB/s   00:00    
+viewImg.html                                  100%  461   448.9KB/s   00:00    
+cartItems.html                                100% 1559     1.6MB/s   00:00    
+login.html                                    100%  883   954.9KB/s   00:00    
+galleryItem.html                              100%  206   284.1KB/s   00:00    
+productsPage.html                             100% 1197     1.4MB/s   00:00    
+newsItem.tpl                                  100%  134   137.0KB/s   00:00    
+orderTable.html                               100% 3200     3.7MB/s   00:00    
+showProduct.html                              100%  704     1.1MB/s   00:00    
+cart.html                                     100%  996     1.4MB/s   00:00    
+productsList.html                             100% 1063   771.2KB/s   00:00    
+error.html                                    100%  205   260.0KB/s   00:00    
+userAccount.html                              100%  803     1.0MB/s   00:00 
+[admin@web mysite.local]$ composer require twig/twig
+Using version ^1.42 for twig/twig
+./composer.json has been updated
+Loading composer repositories with package information
+Updating dependencies (including require-dev)
+Package operations: 2 installs, 0 updates, 0 removals
+  - Installing symfony/polyfill-ctype (v1.18.1): Downloading (100%)         
+  - Installing twig/twig (v1.42.2): Downloading (100%)         
+Writing lock file
+Generating autoload files
+2 packages you are using are looking for funding.
+Use the `composer fund` command to find out more!
+[admin@web Classes]$ sudo nano /var/www/mysite.local/App/Classes/DB.php
+[sudo] пароль для admin: 
+[admin@web Controllers]$ sudo nano /var/www/mysite.local/App/Controllers/ProductsController.php
