@@ -31,5 +31,19 @@ sudo mkdir /var/www/mysite.local/dump
 sudo chown -R admin:admin /var/www/mysite.local/dump
 scp -r /Users/konstantinlevchenko/Downloads/assets admin@192.168.56.80:/var/www/mysite.local/dump/
 sudo nano employees.sql
-create database test;
-use test
+mysql -u root -p < /var/www/mysite.local/dump/assets/employees.sql
+show databases;
+use employees;
+show tables;
+EXPLAIN departments;
+EXPLAIN SELECT * FROM departments WHERE dept_no = 'd009';
+EXPLAIN SELECT * FROM departments WHERE dept_name LIKE '%ce%';
+EXPLAIN SELECT * FROM employees WHERE first_name = 'Mary';
+ALTER TABLE employees ADD INDEX (first_name);
+
+EXPLAIN SELECT d.*, e.first_name, e.last_name
+FROM departments d
+LEFT JOIN dept_manager m
+ON d.dept_no = m.dept_no
+LEFT JOIN employees e
+ON m.emp_no = e.emp_no;
