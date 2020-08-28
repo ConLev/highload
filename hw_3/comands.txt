@@ -1,0 +1,35 @@
+ssh admin@192.168.56.80
+sudo systemctl disable mariadb
+sudo systemctl stop mariadb
+sudo yum erase mariadb mariadb-server
+sudo yum install https://repo.percona.com/yum/percona-release-latest.noarch.rpm
+sudo percona-release setup ps80
+sudo yum install percona-server-server
+sudo service mysql start
+systemctl status mysqld.service
+sudo service mysql stop
+sudo service mysql restart
+sudo yum remove percona-server*
+sudo rm -rf /var/lib/mysql
+sudo rm -f /etc/my.cnf
+reboot
+ssh admin@192.168.56.80
+sudo yum install https://repo.percona.com/yum/percona-release-latest.noarch.rpm
+sudo percona-release setup ps80
+sudo yum install percona-server-server
+sudo service mysql start
+sudo service mysql status
+cat /var/log/mysqld.log | grep password
+mysql -u root -p
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'Rtn1D0*Jd2Tfc';
+SHOW VARIABLES LIKE "version%";
+mysql> SHOW STORAGE ENGINES\G
+sudo firewall-cmd --permanent --add-port=3306/tcp
+wget https://raw.githubusercontent.com/major/MySQLTuner-perl/master/mysqltuner.pl
+perl mysqltuner.pl
+sudo mkdir /var/www/mysite.local/dump
+sudo chown -R admin:admin /var/www/mysite.local/dump
+scp -r /Users/konstantinlevchenko/Downloads/assets admin@192.168.56.80:/var/www/mysite.local/dump/
+sudo nano employees.sql
+create database test;
+use test
