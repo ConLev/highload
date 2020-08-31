@@ -1,0 +1,1498 @@
+Last login: Sat Aug 29 13:00:05 on ttys001
+konstantinlevchenko@Konstantin ~ % ssh admin@192.168.56.81
+The authenticity of host '192.168.56.81 (192.168.56.81)' can't be established.
+
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '192.168.56.81' (ECDSA) to the list of known hosts.
+admin@192.168.56.81's password: 
+Last login: Sun Aug 30 23:48:43 2020
+[admin@web2 ~]$ sudo yum install epel-release
+[sudo] пароль для admin: 
+Загружены модули: fastestmirror
+Determining fastest mirrors
+ * base: mirror.yandex.ru
+ * extras: mirror.yandex.ru
+ * updates: mirror.yandex.ru
+base                                                     | 3.6 kB     00:00     
+extras                                                   | 2.9 kB     00:00     
+updates                                                  | 2.9 kB     00:00     
+(1/4): extras/7/x86_64/primary_db                          | 206 kB   00:00     
+(2/4): base/7/x86_64/group_gz                              | 153 kB   00:00     
+(3/4): updates/7/x86_64/primary_db                         | 4.5 MB   00:01     
+(4/4): base/7/x86_64/primary_db                            | 6.1 MB   00:15     
+Разрешение зависимостей
+--> Проверка сценария
+---> Пакет epel-release.noarch 0:7-11 помечен для установки
+--> Проверка зависимостей окончена
+
+Зависимости определены
+
+================================================================================
+ Package                Архитектура      Версия          Репозиторий      Размер
+================================================================================
+Установка:
+ epel-release           noarch           7-11            extras            15 k
+
+Итого за операцию
+================================================================================
+Установить  1 пакет
+
+Объем загрузки: 15 k
+Объем изменений: 24 k
+Is this ok [y/d/N]: y
+Downloading packages:
+предупреждение: /var/cache/yum/x86_64/7/extras/packages/epel-release-7-11.noarch.rpm: Заголовок V3 RSA/SHA256 Signature, key ID f4a80eb5: NOKEY
+Публичный ключ для epel-release-7-11.noarch.rpm не установлен
+epel-release-7-11.noarch.rpm                               |  15 kB   00:00     
+Получение ключа из file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+Импорт GPG ключа 0xF4A80EB5:
+ Владелец   : "CentOS-7 Key (CentOS 7 Official Signing Key) <security@centos.org>"
+ Отпечаток  : 6341 ab27 53d7 8a78 a7c2 7bb1 24c6 a8a7 f4a8 0eb5
+ Пакет      : centos-release-7-8.2003.0.el7.centos.x86_64 (@anaconda)
+ Источник   : /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+Продолжить? [y/N]: y
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Установка   : epel-release-7-11.noarch                                    1/1 
+  Проверка    : epel-release-7-11.noarch                                    1/1 
+
+Установлено:
+  epel-release.noarch 0:7-11                                                    
+
+Выполнено!
+[admin@web2 ~]$ date
+Вс авг 30 23:58:02 EDT 2020
+[admin@web2 ~]$ sudo yum -y update tzdata
+Загружены модули: fastestmirror
+Loading mirror speeds from cached hostfile
+epel/x86_64/metalink                                     |  31 kB     00:00     
+ * base: mirror.yandex.ru
+ * epel: mirror.yandex.ru
+ * extras: mirror.yandex.ru
+ * updates: mirror.yandex.ru
+epel                                                     | 4.7 kB     00:00     
+(1/3): epel/x86_64/group_gz                                |  95 kB   00:00     
+(2/3): epel/x86_64/updateinfo                              | 1.0 MB   00:00     
+(3/3): epel/x86_64/primary_db                              | 6.9 MB   00:01     
+Разрешение зависимостей
+--> Проверка сценария
+---> Пакет tzdata.noarch 0:2019c-1.el7 помечен для обновления
+---> Пакет tzdata.noarch 0:2020a-1.el7 помечен как обновление
+--> Проверка зависимостей окончена
+
+Зависимости определены
+
+================================================================================
+ Package         Архитектура     Версия                  Репозиторий      Размер
+================================================================================
+Обновление:
+ tzdata          noarch          2020a-1.el7             updates          495 k
+
+Итого за операцию
+================================================================================
+Обновить  1 пакет
+
+Объем загрузки: 495 k
+Downloading packages:
+Delta RPMs disabled because /usr/bin/applydeltarpm not installed.
+tzdata-2020a-1.el7.noarch.rpm                              | 495 kB   00:01     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Обновление  : tzdata-2020a-1.el7.noarch                                   1/2 
+  Очистка     : tzdata-2019c-1.el7.noarch                                   2/2 
+  Проверка    : tzdata-2020a-1.el7.noarch                                   1/2 
+  Проверка    : tzdata-2019c-1.el7.noarch                                   2/2 
+
+Обновлено:
+  tzdata.noarch 0:2020a-1.el7                                                   
+
+Выполнено!
+[admin@web2 ~]$ sudo rm -f /etc/localtime
+[admin@web2 ~]$ sudo ln -s /usr/share/zoneinfo/Europe/Moscow /etc/localtime
+[admin@web2 ~]$ sudo yum -y install chrony
+Загружены модули: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirror.yandex.ru
+ * epel: mirror.yandex.ru
+ * extras: mirror.yandex.ru
+ * updates: mirror.yandex.ru
+Пакет chrony-3.4-1.el7.x86_64 уже установлен, и это последняя версия.
+Выполнять нечего
+[admin@web2 ~]$ systemctl enable chronyd
+==== AUTHENTICATING FOR org.freedesktop.systemd1.manage-unit-files ===
+Для управления файлами конфигурации системных служб и юнитов, необходимо пройти аутентификацию.
+Authenticating as: admin
+Password: 
+==== AUTHENTICATION COMPLETE ===
+==== AUTHENTICATING FOR org.freedesktop.systemd1.reload-daemon ===
+Чтобы заставить systemd перечитать конфигурацию, необходимо пройти аутентификацию.
+Authenticating as: admin
+Password: 
+==== AUTHENTICATION COMPLETE ===
+[admin@web2 ~]$ systemctl start chronyd
+==== AUTHENTICATING FOR org.freedesktop.systemd1.manage-units ===
+Для управления системными службами и юнитами, необходимо пройти аутентификацию.
+Authenticating as: admin
+Password: 
+==== AUTHENTICATION COMPLETE ===
+[admin@web2 ~]$ systemctl status chronyd -l
+● chronyd.service - NTP client/server
+   Loaded: loaded (/usr/lib/systemd/system/chronyd.service; enabled; vendor preset: enabled)
+   Active: active (running) since Пн 2020-08-31 06:48:21 MSK; 15min ago
+     Docs: man:chronyd(8)
+           man:chrony.conf(5)
+ Main PID: 671 (chronyd)
+   CGroup: /system.slice/chronyd.service
+           └─671 /usr/sbin/chronyd
+
+авг 31 06:48:21 web2.local systemd[1]: Starting NTP client/server...
+авг 31 06:48:21 web2.local chronyd[671]: chronyd version 3.4 starting (+CMDMON +NTP +REFCLOCK +RTC +PRIVDROP +SCFILTER +SIGND +ASYNCDNS +SECHASH +IPV6 +DEBUG)
+авг 31 06:48:21 web2.local systemd[1]: Started NTP client/server.
+авг 31 06:48:37 web2.local chronyd[671]: Selected source 62.231.6.98
+авг 31 06:48:39 web2.local chronyd[671]: Source 188.44.104.135 replaced with 151.80.168.4
+авг 31 06:49:43 web2.local chronyd[671]: Selected source 192.36.143.130
+авг 31 06:51:52 web2.local chronyd[671]: Selected source 62.231.6.98
+авг 31 06:51:54 web2.local chronyd[671]: Can't synchronise: no selectable sources
+авг 31 06:59:25 web2.local chronyd[671]: Selected source 192.36.143.130
+авг 31 06:59:25 web2.local chronyd[671]: System clock wrong by 6266.993213 seconds, adjustment started
+[admin@web2 ~]$ date
+Пн авг 31 07:04:37 MSK 2020
+[admin@web2 ~]$ sudo rpm -Uvh http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+[sudo] пароль для admin: 
+Загружается http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+предупреждение: /var/tmp/rpm-tmp.hsOu7t: Заголовок V4 DSA/SHA1 Signature, key ID 00f97f56: NOKEY
+Подготовка...               ################################# [100%]
+Обновление / установка...
+   1:remi-release-7.8-1.el7.remi      ################################# [100%]
+[admin@web2 ~]$ sudo yum install nginx nano php72 php72-php-fpm
+Загружены модули: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirror.yandex.ru
+ * epel: mirror.yandex.ru
+ * extras: mirror.yandex.ru
+ * remi-safe: mirror.23media.com
+ * updates: mirror.yandex.ru
+remi-safe                                                | 3.0 kB     00:00     
+remi-safe/primary_db                                       | 1.8 MB   00:01     
+Разрешение зависимостей
+--> Проверка сценария
+---> Пакет nano.x86_64 0:2.3.1-10.el7 помечен для установки
+---> Пакет nginx.x86_64 1:1.16.1-1.el7 помечен для установки
+--> Обработка зависимостей: nginx-all-modules = 1:1.16.1-1.el7 пакета: 1:nginx-1.16.1-1.el7.x86_64
+--> Обработка зависимостей: nginx-filesystem = 1:1.16.1-1.el7 пакета: 1:nginx-1.16.1-1.el7.x86_64
+--> Обработка зависимостей: nginx-filesystem пакета: 1:nginx-1.16.1-1.el7.x86_64
+--> Обработка зависимостей: redhat-indexhtml пакета: 1:nginx-1.16.1-1.el7.x86_64
+--> Обработка зависимостей: libprofiler.so.0()(64bit) пакета: 1:nginx-1.16.1-1.el7.x86_64
+---> Пакет php72.x86_64 0:2.0-1.el7.remi помечен для установки
+--> Обработка зависимостей: php72-runtime(x86-64) = 2.0-1.el7.remi пакета: php72-2.0-1.el7.remi.x86_64
+--> Обработка зависимостей: php72-runtime пакета: php72-2.0-1.el7.remi.x86_64
+--> Обработка зависимостей: php72-php-common(x86-64) пакета: php72-2.0-1.el7.remi.x86_64
+--> Обработка зависимостей: php72-php-cli(x86-64) пакета: php72-2.0-1.el7.remi.x86_64
+---> Пакет php72-php-fpm.x86_64 0:7.2.33-1.el7.remi помечен для установки
+--> Обработка зависимостей: libargon2.so.0()(64bit) пакета: php72-php-fpm-7.2.33-1.el7.remi.x86_64
+--> Проверка сценария
+---> Пакет centos-indexhtml.noarch 0:7-9.el7.centos помечен для установки
+---> Пакет gperftools-libs.x86_64 0:2.6.1-1.el7 помечен для установки
+---> Пакет libargon2.x86_64 0:20161029-3.el7 помечен для установки
+---> Пакет nginx-all-modules.noarch 1:1.16.1-1.el7 помечен для установки
+--> Обработка зависимостей: nginx-mod-http-image-filter = 1:1.16.1-1.el7 пакета: 1:nginx-all-modules-1.16.1-1.el7.noarch
+--> Обработка зависимостей: nginx-mod-http-perl = 1:1.16.1-1.el7 пакета: 1:nginx-all-modules-1.16.1-1.el7.noarch
+--> Обработка зависимостей: nginx-mod-http-xslt-filter = 1:1.16.1-1.el7 пакета: 1:nginx-all-modules-1.16.1-1.el7.noarch
+--> Обработка зависимостей: nginx-mod-mail = 1:1.16.1-1.el7 пакета: 1:nginx-all-modules-1.16.1-1.el7.noarch
+--> Обработка зависимостей: nginx-mod-stream = 1:1.16.1-1.el7 пакета: 1:nginx-all-modules-1.16.1-1.el7.noarch
+---> Пакет nginx-filesystem.noarch 1:1.16.1-1.el7 помечен для установки
+---> Пакет php72-php-cli.x86_64 0:7.2.33-1.el7.remi помечен для установки
+---> Пакет php72-php-common.x86_64 0:7.2.33-1.el7.remi помечен для установки
+--> Обработка зависимостей: php72-php-json(x86-64) = 7.2.33-1.el7.remi пакета: php72-php-common-7.2.33-1.el7.remi.x86_64
+---> Пакет php72-runtime.x86_64 0:2.0-1.el7.remi помечен для установки
+--> Обработка зависимостей: /usr/sbin/semanage пакета: php72-runtime-2.0-1.el7.remi.x86_64
+--> Обработка зависимостей: environment-modules пакета: php72-runtime-2.0-1.el7.remi.x86_64
+--> Обработка зависимостей: scl-utils пакета: php72-runtime-2.0-1.el7.remi.x86_64
+--> Проверка сценария
+---> Пакет environment-modules.x86_64 0:3.2.10-10.el7 помечен для установки
+--> Обработка зависимостей: libtcl8.5.so()(64bit) пакета: environment-modules-3.2.10-10.el7.x86_64
+--> Обработка зависимостей: libX11.so.6()(64bit) пакета: environment-modules-3.2.10-10.el7.x86_64
+---> Пакет nginx-mod-http-image-filter.x86_64 1:1.16.1-1.el7 помечен для установки
+--> Обработка зависимостей: gd пакета: 1:nginx-mod-http-image-filter-1.16.1-1.el7.x86_64
+--> Обработка зависимостей: libgd.so.2()(64bit) пакета: 1:nginx-mod-http-image-filter-1.16.1-1.el7.x86_64
+---> Пакет nginx-mod-http-perl.x86_64 1:1.16.1-1.el7 помечен для установки
+--> Обработка зависимостей: perl >= 5.006001 пакета: 1:nginx-mod-http-perl-1.16.1-1.el7.x86_64
+--> Обработка зависимостей: perl(:MODULE_COMPAT_5.16.3) пакета: 1:nginx-mod-http-perl-1.16.1-1.el7.x86_64
+--> Обработка зависимостей: perl(Exporter) пакета: 1:nginx-mod-http-perl-1.16.1-1.el7.x86_64
+--> Обработка зависимостей: perl(XSLoader) пакета: 1:nginx-mod-http-perl-1.16.1-1.el7.x86_64
+--> Обработка зависимостей: perl(constant) пакета: 1:nginx-mod-http-perl-1.16.1-1.el7.x86_64
+--> Обработка зависимостей: perl(strict) пакета: 1:nginx-mod-http-perl-1.16.1-1.el7.x86_64
+--> Обработка зависимостей: perl(warnings) пакета: 1:nginx-mod-http-perl-1.16.1-1.el7.x86_64
+--> Обработка зависимостей: libperl.so()(64bit) пакета: 1:nginx-mod-http-perl-1.16.1-1.el7.x86_64
+---> Пакет nginx-mod-http-xslt-filter.x86_64 1:1.16.1-1.el7 помечен для установки
+--> Обработка зависимостей: libxslt.so.1(LIBXML2_1.0.11)(64bit) пакета: 1:nginx-mod-http-xslt-filter-1.16.1-1.el7.x86_64
+--> Обработка зависимостей: libxslt.so.1(LIBXML2_1.0.18)(64bit) пакета: 1:nginx-mod-http-xslt-filter-1.16.1-1.el7.x86_64
+--> Обработка зависимостей: libexslt.so.0()(64bit) пакета: 1:nginx-mod-http-xslt-filter-1.16.1-1.el7.x86_64
+--> Обработка зависимостей: libxslt.so.1()(64bit) пакета: 1:nginx-mod-http-xslt-filter-1.16.1-1.el7.x86_64
+---> Пакет nginx-mod-mail.x86_64 1:1.16.1-1.el7 помечен для установки
+---> Пакет nginx-mod-stream.x86_64 1:1.16.1-1.el7 помечен для установки
+---> Пакет php72-php-json.x86_64 0:7.2.33-1.el7.remi помечен для установки
+---> Пакет policycoreutils-python.x86_64 0:2.5-34.el7 помечен для установки
+--> Обработка зависимостей: setools-libs >= 3.3.8-4 пакета: policycoreutils-python-2.5-34.el7.x86_64
+--> Обработка зависимостей: libsemanage-python >= 2.5-14 пакета: policycoreutils-python-2.5-34.el7.x86_64
+--> Обработка зависимостей: audit-libs-python >= 2.1.3-4 пакета: policycoreutils-python-2.5-34.el7.x86_64
+--> Обработка зависимостей: python-IPy пакета: policycoreutils-python-2.5-34.el7.x86_64
+--> Обработка зависимостей: libqpol.so.1(VERS_1.4)(64bit) пакета: policycoreutils-python-2.5-34.el7.x86_64
+--> Обработка зависимостей: libqpol.so.1(VERS_1.2)(64bit) пакета: policycoreutils-python-2.5-34.el7.x86_64
+--> Обработка зависимостей: libcgroup пакета: policycoreutils-python-2.5-34.el7.x86_64
+--> Обработка зависимостей: libapol.so.4(VERS_4.0)(64bit) пакета: policycoreutils-python-2.5-34.el7.x86_64
+--> Обработка зависимостей: checkpolicy пакета: policycoreutils-python-2.5-34.el7.x86_64
+--> Обработка зависимостей: libqpol.so.1()(64bit) пакета: policycoreutils-python-2.5-34.el7.x86_64
+--> Обработка зависимостей: libapol.so.4()(64bit) пакета: policycoreutils-python-2.5-34.el7.x86_64
+---> Пакет scl-utils.x86_64 0:20130529-19.el7 помечен для установки
+--> Проверка сценария
+---> Пакет audit-libs-python.x86_64 0:2.8.5-4.el7 помечен для установки
+---> Пакет checkpolicy.x86_64 0:2.5-8.el7 помечен для установки
+---> Пакет gd.x86_64 0:2.0.35-26.el7 помечен для установки
+--> Обработка зависимостей: libjpeg.so.62(LIBJPEG_6.2)(64bit) пакета: gd-2.0.35-26.el7.x86_64
+--> Обработка зависимостей: libjpeg.so.62()(64bit) пакета: gd-2.0.35-26.el7.x86_64
+--> Обработка зависимостей: libfontconfig.so.1()(64bit) пакета: gd-2.0.35-26.el7.x86_64
+--> Обработка зависимостей: libXpm.so.4()(64bit) пакета: gd-2.0.35-26.el7.x86_64
+---> Пакет libX11.x86_64 0:1.6.7-2.el7 помечен для установки
+--> Обработка зависимостей: libX11-common >= 1.6.7-2.el7 пакета: libX11-1.6.7-2.el7.x86_64
+--> Обработка зависимостей: libxcb.so.1()(64bit) пакета: libX11-1.6.7-2.el7.x86_64
+---> Пакет libcgroup.x86_64 0:0.41-21.el7 помечен для установки
+---> Пакет libsemanage-python.x86_64 0:2.5-14.el7 помечен для установки
+---> Пакет libxslt.x86_64 0:1.1.28-5.el7 помечен для установки
+---> Пакет perl.x86_64 4:5.16.3-295.el7 помечен для установки
+--> Обработка зависимостей: perl(Socket) >= 1.3 пакета: 4:perl-5.16.3-295.el7.x86_64
+--> Обработка зависимостей: perl(Scalar::Util) >= 1.10 пакета: 4:perl-5.16.3-295.el7.x86_64
+--> Обработка зависимостей: perl-macros пакета: 4:perl-5.16.3-295.el7.x86_64
+--> Обработка зависимостей: perl(threads::shared) пакета: 4:perl-5.16.3-295.el7.x86_64
+--> Обработка зависимостей: perl(threads) пакета: 4:perl-5.16.3-295.el7.x86_64
+--> Обработка зависимостей: perl(Time::Local) пакета: 4:perl-5.16.3-295.el7.x86_64
+--> Обработка зависимостей: perl(Time::HiRes) пакета: 4:perl-5.16.3-295.el7.x86_64
+--> Обработка зависимостей: perl(Storable) пакета: 4:perl-5.16.3-295.el7.x86_64
+--> Обработка зависимостей: perl(Socket) пакета: 4:perl-5.16.3-295.el7.x86_64
+--> Обработка зависимостей: perl(Scalar::Util) пакета: 4:perl-5.16.3-295.el7.x86_64
+--> Обработка зависимостей: perl(Pod::Simple::XHTML) пакета: 4:perl-5.16.3-295.el7.x86_64
+--> Обработка зависимостей: perl(Pod::Simple::Search) пакета: 4:perl-5.16.3-295.el7.x86_64
+--> Обработка зависимостей: perl(Getopt::Long) пакета: 4:perl-5.16.3-295.el7.x86_64
+--> Обработка зависимостей: perl(Filter::Util::Call) пакета: 4:perl-5.16.3-295.el7.x86_64
+--> Обработка зависимостей: perl(File::Temp) пакета: 4:perl-5.16.3-295.el7.x86_64
+--> Обработка зависимостей: perl(File::Spec::Unix) пакета: 4:perl-5.16.3-295.el7.x86_64
+--> Обработка зависимостей: perl(File::Spec::Functions) пакета: 4:perl-5.16.3-295.el7.x86_64
+--> Обработка зависимостей: perl(File::Spec) пакета: 4:perl-5.16.3-295.el7.x86_64
+--> Обработка зависимостей: perl(File::Path) пакета: 4:perl-5.16.3-295.el7.x86_64
+--> Обработка зависимостей: perl(Cwd) пакета: 4:perl-5.16.3-295.el7.x86_64
+--> Обработка зависимостей: perl(Carp) пакета: 4:perl-5.16.3-295.el7.x86_64
+---> Пакет perl-Exporter.noarch 0:5.68-3.el7 помечен для установки
+---> Пакет perl-constant.noarch 0:1.27-2.el7 помечен для установки
+---> Пакет perl-libs.x86_64 4:5.16.3-295.el7 помечен для установки
+---> Пакет python-IPy.noarch 0:0.75-6.el7 помечен для установки
+---> Пакет setools-libs.x86_64 0:3.3.8-4.el7 помечен для установки
+---> Пакет tcl.x86_64 1:8.5.13-8.el7 помечен для установки
+--> Проверка сценария
+---> Пакет fontconfig.x86_64 0:2.13.0-4.3.el7 помечен для установки
+--> Обработка зависимостей: fontpackages-filesystem пакета: fontconfig-2.13.0-4.3.el7.x86_64
+--> Обработка зависимостей: dejavu-sans-fonts пакета: fontconfig-2.13.0-4.3.el7.x86_64
+---> Пакет libX11-common.noarch 0:1.6.7-2.el7 помечен для установки
+---> Пакет libXpm.x86_64 0:3.5.12-1.el7 помечен для установки
+---> Пакет libjpeg-turbo.x86_64 0:1.2.90-8.el7 помечен для установки
+---> Пакет libxcb.x86_64 0:1.13-1.el7 помечен для установки
+--> Обработка зависимостей: libXau.so.6()(64bit) пакета: libxcb-1.13-1.el7.x86_64
+---> Пакет perl-Carp.noarch 0:1.26-244.el7 помечен для установки
+---> Пакет perl-File-Path.noarch 0:2.09-2.el7 помечен для установки
+---> Пакет perl-File-Temp.noarch 0:0.23.01-3.el7 помечен для установки
+---> Пакет perl-Filter.x86_64 0:1.49-3.el7 помечен для установки
+---> Пакет perl-Getopt-Long.noarch 0:2.40-3.el7 помечен для установки
+--> Обработка зависимостей: perl(Pod::Usage) >= 1.14 пакета: perl-Getopt-Long-2.40-3.el7.noarch
+--> Обработка зависимостей: perl(Text::ParseWords) пакета: perl-Getopt-Long-2.40-3.el7.noarch
+---> Пакет perl-PathTools.x86_64 0:3.40-5.el7 помечен для установки
+---> Пакет perl-Pod-Simple.noarch 1:3.28-4.el7 помечен для установки
+--> Обработка зависимостей: perl(Pod::Escapes) >= 1.04 пакета: 1:perl-Pod-Simple-3.28-4.el7.noarch
+--> Обработка зависимостей: perl(Encode) пакета: 1:perl-Pod-Simple-3.28-4.el7.noarch
+---> Пакет perl-Scalar-List-Utils.x86_64 0:1.27-248.el7 помечен для установки
+---> Пакет perl-Socket.x86_64 0:2.010-5.el7 помечен для установки
+---> Пакет perl-Storable.x86_64 0:2.45-3.el7 помечен для установки
+---> Пакет perl-Time-HiRes.x86_64 4:1.9725-3.el7 помечен для установки
+---> Пакет perl-Time-Local.noarch 0:1.2300-2.el7 помечен для установки
+---> Пакет perl-macros.x86_64 4:5.16.3-295.el7 помечен для установки
+---> Пакет perl-threads.x86_64 0:1.87-4.el7 помечен для установки
+---> Пакет perl-threads-shared.x86_64 0:1.43-6.el7 помечен для установки
+--> Проверка сценария
+---> Пакет dejavu-sans-fonts.noarch 0:2.33-6.el7 помечен для установки
+--> Обработка зависимостей: dejavu-fonts-common = 2.33-6.el7 пакета: dejavu-sans-fonts-2.33-6.el7.noarch
+---> Пакет fontpackages-filesystem.noarch 0:1.44-8.el7 помечен для установки
+---> Пакет libXau.x86_64 0:1.0.8-2.1.el7 помечен для установки
+---> Пакет perl-Encode.x86_64 0:2.51-7.el7 помечен для установки
+---> Пакет perl-Pod-Escapes.noarch 1:1.04-295.el7 помечен для установки
+---> Пакет perl-Pod-Usage.noarch 0:1.63-3.el7 помечен для установки
+--> Обработка зависимостей: perl(Pod::Text) >= 3.15 пакета: perl-Pod-Usage-1.63-3.el7.noarch
+--> Обработка зависимостей: perl-Pod-Perldoc пакета: perl-Pod-Usage-1.63-3.el7.noarch
+---> Пакет perl-Text-ParseWords.noarch 0:3.29-4.el7 помечен для установки
+--> Проверка сценария
+---> Пакет dejavu-fonts-common.noarch 0:2.33-6.el7 помечен для установки
+---> Пакет perl-Pod-Perldoc.noarch 0:3.20-4.el7 помечен для установки
+--> Обработка зависимостей: perl(parent) пакета: perl-Pod-Perldoc-3.20-4.el7.noarch
+--> Обработка зависимостей: perl(HTTP::Tiny) пакета: perl-Pod-Perldoc-3.20-4.el7.noarch
+---> Пакет perl-podlators.noarch 0:2.5.1-3.el7 помечен для установки
+--> Проверка сценария
+---> Пакет perl-HTTP-Tiny.noarch 0:0.033-3.el7 помечен для установки
+---> Пакет perl-parent.noarch 1:0.225-244.el7 помечен для установки
+--> Проверка зависимостей окончена
+
+Зависимости определены
+
+================================================================================
+ Package                       Архитектура
+                                        Версия                Репозиторий 
+                                                                          Размер
+================================================================================
+Установка:
+ nano                          x86_64   2.3.1-10.el7          base        440 k
+ nginx                         x86_64   1:1.16.1-1.el7        epel        562 k
+ php72                         x86_64   2.0-1.el7.remi        remi-safe   2.4 k
+ php72-php-fpm                 x86_64   7.2.33-1.el7.remi     remi-safe   1.7 M
+Установка зависимостей:
+ audit-libs-python             x86_64   2.8.5-4.el7           base         76 k
+ centos-indexhtml              noarch   7-9.el7.centos        base         92 k
+ checkpolicy                   x86_64   2.5-8.el7             base        295 k
+ dejavu-fonts-common           noarch   2.33-6.el7            base         64 k
+ dejavu-sans-fonts             noarch   2.33-6.el7            base        1.4 M
+ environment-modules           x86_64   3.2.10-10.el7         base        107 k
+ fontconfig                    x86_64   2.13.0-4.3.el7        base        254 k
+ fontpackages-filesystem       noarch   1.44-8.el7            base        9.9 k
+ gd                            x86_64   2.0.35-26.el7         base        146 k
+ gperftools-libs               x86_64   2.6.1-1.el7           base        272 k
+ libX11                        x86_64   1.6.7-2.el7           base        607 k
+ libX11-common                 noarch   1.6.7-2.el7           base        164 k
+ libXau                        x86_64   1.0.8-2.1.el7         base         29 k
+ libXpm                        x86_64   3.5.12-1.el7          base         55 k
+ libargon2                     x86_64   20161029-3.el7        epel         23 k
+ libcgroup                     x86_64   0.41-21.el7           base         66 k
+ libjpeg-turbo                 x86_64   1.2.90-8.el7          base        135 k
+ libsemanage-python            x86_64   2.5-14.el7            base        113 k
+ libxcb                        x86_64   1.13-1.el7            base        214 k
+ libxslt                       x86_64   1.1.28-5.el7          base        242 k
+ nginx-all-modules             noarch   1:1.16.1-1.el7        epel         19 k
+ nginx-filesystem              noarch   1:1.16.1-1.el7        epel         21 k
+ nginx-mod-http-image-filter   x86_64   1:1.16.1-1.el7        epel         30 k
+ nginx-mod-http-perl           x86_64   1:1.16.1-1.el7        epel         39 k
+ nginx-mod-http-xslt-filter    x86_64   1:1.16.1-1.el7        epel         29 k
+ nginx-mod-mail                x86_64   1:1.16.1-1.el7        epel         57 k
+ nginx-mod-stream              x86_64   1:1.16.1-1.el7        epel         84 k
+ perl                          x86_64   4:5.16.3-295.el7      base        8.0 M
+ perl-Carp                     noarch   1.26-244.el7          base         19 k
+ perl-Encode                   x86_64   2.51-7.el7            base        1.5 M
+ perl-Exporter                 noarch   5.68-3.el7            base         28 k
+ perl-File-Path                noarch   2.09-2.el7            base         26 k
+ perl-File-Temp                noarch   0.23.01-3.el7         base         56 k
+ perl-Filter                   x86_64   1.49-3.el7            base         76 k
+ perl-Getopt-Long              noarch   2.40-3.el7            base         56 k
+ perl-HTTP-Tiny                noarch   0.033-3.el7           base         38 k
+ perl-PathTools                x86_64   3.40-5.el7            base         82 k
+ perl-Pod-Escapes              noarch   1:1.04-295.el7        base         51 k
+ perl-Pod-Perldoc              noarch   3.20-4.el7            base         87 k
+ perl-Pod-Simple               noarch   1:3.28-4.el7          base        216 k
+ perl-Pod-Usage                noarch   1.63-3.el7            base         27 k
+ perl-Scalar-List-Utils        x86_64   1.27-248.el7          base         36 k
+ perl-Socket                   x86_64   2.010-5.el7           base         49 k
+ perl-Storable                 x86_64   2.45-3.el7            base         77 k
+ perl-Text-ParseWords          noarch   3.29-4.el7            base         14 k
+ perl-Time-HiRes               x86_64   4:1.9725-3.el7        base         45 k
+ perl-Time-Local               noarch   1.2300-2.el7          base         24 k
+ perl-constant                 noarch   1.27-2.el7            base         19 k
+ perl-libs                     x86_64   4:5.16.3-295.el7      base        689 k
+ perl-macros                   x86_64   4:5.16.3-295.el7      base         44 k
+ perl-parent                   noarch   1:0.225-244.el7       base         12 k
+ perl-podlators                noarch   2.5.1-3.el7           base        112 k
+ perl-threads                  x86_64   1.87-4.el7            base         49 k
+ perl-threads-shared           x86_64   1.43-6.el7            base         39 k
+ php72-php-cli                 x86_64   7.2.33-1.el7.remi     remi-safe   3.2 M
+ php72-php-common              x86_64   7.2.33-1.el7.remi     remi-safe   643 k
+ php72-php-json                x86_64   7.2.33-1.el7.remi     remi-safe    70 k
+ php72-runtime                 x86_64   2.0-1.el7.remi        remi-safe   1.1 M
+ policycoreutils-python        x86_64   2.5-34.el7            base        457 k
+ python-IPy                    noarch   0.75-6.el7            base         32 k
+ scl-utils                     x86_64   20130529-19.el7       base         24 k
+ setools-libs                  x86_64   3.3.8-4.el7           base        620 k
+ tcl                           x86_64   1:8.5.13-8.el7        base        1.9 M
+
+Итого за операцию
+================================================================================
+Установить  4 пакета (+63 зависимых)
+
+Объем загрузки: 27 M
+Объем изменений: 83 M
+Is this ok [y/d/N]: y
+Downloading packages:
+(1/67): centos-indexhtml-7-9.el7.centos.noarch.rpm         |  92 kB   00:00     
+(2/67): checkpolicy-2.5-8.el7.x86_64.rpm                   | 295 kB   00:00     
+(3/67): audit-libs-python-2.8.5-4.el7.x86_64.rpm           |  76 kB   00:00     
+(4/67): dejavu-fonts-common-2.33-6.el7.noarch.rpm          |  64 kB   00:00     
+(5/67): dejavu-sans-fonts-2.33-6.el7.noarch.rpm            | 1.4 MB   00:00     
+(6/67): environment-modules-3.2.10-10.el7.x86_64.rpm       | 107 kB   00:00     
+(7/67): fontpackages-filesystem-1.44-8.el7.noarch.rpm      | 9.9 kB   00:00     
+(8/67): fontconfig-2.13.0-4.3.el7.x86_64.rpm               | 254 kB   00:00     
+(9/67): libXau-1.0.8-2.1.el7.x86_64.rpm                    |  29 kB   00:00     
+(10/67): libX11-common-1.6.7-2.el7.noarch.rpm              | 164 kB   00:00     
+(11/67): libXpm-3.5.12-1.el7.x86_64.rpm                    |  55 kB   00:00     
+(12/67): libcgroup-0.41-21.el7.x86_64.rpm                  |  66 kB   00:00     
+(13/67): libjpeg-turbo-1.2.90-8.el7.x86_64.rpm             | 135 kB   00:00     
+(14/67): libsemanage-python-2.5-14.el7.x86_64.rpm          | 113 kB   00:00     
+warning: /var/cache/yum/x86_64/7/epel/packages/libargon2-20161029-3.el7.x86_64.rpm: Header V3 RSA/SHA256 Signature, key ID 352c64e5: NOKEY
+Публичный ключ для libargon2-20161029-3.el7.x86_64.rpm не установлен
+(15/67): libargon2-20161029-3.el7.x86_64.rpm               |  23 kB   00:00     
+(16/67): libxslt-1.1.28-5.el7.x86_64.rpm                   | 242 kB   00:00     
+(17/67): gperftools-libs-2.6.1-1.el7.x86_64.rpm            | 272 kB   00:00     
+(18/67): libxcb-1.13-1.el7.x86_64.rpm                      | 214 kB   00:00     
+(19/67): nano-2.3.1-10.el7.x86_64.rpm                      | 440 kB   00:00     
+(20/67): libX11-1.6.7-2.el7.x86_64.rpm                     | 607 kB   00:01     
+(21/67): gd-2.0.35-26.el7.x86_64.rpm                       | 146 kB   00:01     
+(22/67): nginx-all-modules-1.16.1-1.el7.noarch.rpm         |  19 kB   00:00     
+(23/67): nginx-1.16.1-1.el7.x86_64.rpm                     | 562 kB   00:00     
+(24/67): nginx-filesystem-1.16.1-1.el7.noarch.rpm          |  21 kB   00:00     
+(25/67): nginx-mod-http-image-filter-1.16.1-1.el7.x86_64.r |  30 kB   00:00     
+(26/67): nginx-mod-http-perl-1.16.1-1.el7.x86_64.rpm       |  39 kB   00:00     
+(27/67): nginx-mod-http-xslt-filter-1.16.1-1.el7.x86_64.rp |  29 kB   00:00     
+(28/67): nginx-mod-stream-1.16.1-1.el7.x86_64.rpm          |  84 kB   00:00     
+(29/67): nginx-mod-mail-1.16.1-1.el7.x86_64.rpm            |  57 kB   00:00     
+(30/67): perl-Exporter-5.68-3.el7.noarch.rpm               |  28 kB   00:00     
+(31/67): perl-Carp-1.26-244.el7.noarch.rpm                 |  19 kB   00:00     
+(32/67): perl-File-Temp-0.23.01-3.el7.noarch.rpm           |  56 kB   00:00     
+(33/67): perl-File-Path-2.09-2.el7.noarch.rpm              |  26 kB   00:00     
+(34/67): perl-Getopt-Long-2.40-3.el7.noarch.rpm            |  56 kB   00:00     
+(35/67): perl-HTTP-Tiny-0.033-3.el7.noarch.rpm             |  38 kB   00:00     
+(36/67): perl-Filter-1.49-3.el7.x86_64.rpm                 |  76 kB   00:00     
+(37/67): perl-PathTools-3.40-5.el7.x86_64.rpm              |  82 kB   00:00     
+(38/67): perl-Pod-Escapes-1.04-295.el7.noarch.rpm          |  51 kB   00:00     
+(39/67): perl-Pod-Perldoc-3.20-4.el7.noarch.rpm            |  87 kB   00:00     
+(40/67): perl-Scalar-List-Utils-1.27-248.el7.x86_64.rpm    |  36 kB   00:00     
+(41/67): perl-Pod-Usage-1.63-3.el7.noarch.rpm              |  27 kB   00:00     
+(42/67): perl-Socket-2.010-5.el7.x86_64.rpm                |  49 kB   00:00     
+(43/67): perl-Storable-2.45-3.el7.x86_64.rpm               |  77 kB   00:00     
+(44/67): perl-Text-ParseWords-3.29-4.el7.noarch.rpm        |  14 kB   00:00     
+(45/67): perl-Pod-Simple-3.28-4.el7.noarch.rpm             | 216 kB   00:00     
+(46/67): perl-Time-HiRes-1.9725-3.el7.x86_64.rpm           |  45 kB   00:00     
+(47/67): perl-constant-1.27-2.el7.noarch.rpm               |  19 kB   00:00     
+(48/67): perl-Time-Local-1.2300-2.el7.noarch.rpm           |  24 kB   00:00     
+(49/67): perl-macros-5.16.3-295.el7.x86_64.rpm             |  44 kB   00:00     
+(50/67): perl-parent-0.225-244.el7.noarch.rpm              |  12 kB   00:00     
+(51/67): perl-threads-1.87-4.el7.x86_64.rpm                |  49 kB   00:00     
+(52/67): perl-threads-shared-1.43-6.el7.x86_64.rpm         |  39 kB   00:00     
+(53/67): perl-podlators-2.5.1-3.el7.noarch.rpm             | 112 kB   00:00     
+warning: /var/cache/yum/x86_64/7/remi-safe/packages/php72-2.0-1.el7.remi.x86_64.rpm: Header V4 DSA/SHA1 Signature, key ID 00f97f56: NOKEY
+Публичный ключ для php72-2.0-1.el7.remi.x86_64.rpm не установлен
+(54/67): php72-2.0-1.el7.remi.x86_64.rpm                   | 2.4 kB   00:00     
+(55/67): perl-libs-5.16.3-295.el7.x86_64.rpm               | 689 kB   00:00     
+(56/67): php72-php-common-7.2.33-1.el7.remi.x86_64.rpm     | 643 kB   00:00     
+(57/67): php72-php-json-7.2.33-1.el7.remi.x86_64.rpm       |  70 kB   00:00     
+(58/67): php72-runtime-2.0-1.el7.remi.x86_64.rpm           | 1.1 MB   00:00     
+(59/67): php72-php-cli-7.2.33-1.el7.remi.x86_64.rpm        | 3.2 MB   00:01     
+(60/67): python-IPy-0.75-6.el7.noarch.rpm                  |  32 kB   00:00     
+(61/67): scl-utils-20130529-19.el7.x86_64.rpm              |  24 kB   00:00     
+(62/67): policycoreutils-python-2.5-34.el7.x86_64.rpm      | 457 kB   00:00     
+(63/67): setools-libs-3.3.8-4.el7.x86_64.rpm               | 620 kB   00:00     
+(64/67): tcl-8.5.13-8.el7.x86_64.rpm                       | 1.9 MB   00:00     
+(65/67): perl-5.16.3-295.el7.x86_64.rpm                    | 8.0 MB   00:04     
+(66/67): perl-Encode-2.51-7.el7.x86_64.rpm                 | 1.5 MB   00:04     
+(67/67): php72-php-fpm-7.2.33-1.el7.remi.x86_64.rpm        | 1.7 MB   00:06     
+--------------------------------------------------------------------------------
+Общий размер                                       2.4 MB/s |  27 MB  00:11     
+Получение ключа из file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
+Импорт GPG ключа 0x352C64E5:
+ Владелец   : "Fedora EPEL (7) <epel@fedoraproject.org>"
+ Отпечаток  : 91e9 7d7c 4a5e 96f1 7f3e 888f 6a2f aea2 352c 64e5
+ Пакет      : epel-release-7-11.noarch (@extras)
+ Источник   : /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
+Продолжить? [y/N]: y
+Получение ключа из file:///etc/pki/rpm-gpg/RPM-GPG-KEY-remi
+Импорт GPG ключа 0x00F97F56:
+ Владелец   : "Remi Collet <RPMS@FamilleCollet.com>"
+ Отпечаток  : 1ee0 4cce 88a4 ae4a a29a 5df5 004e 6f47 00f9 7f56
+ Пакет      : remi-release-7.8-1.el7.remi.noarch (installed)
+ Источник   : /etc/pki/rpm-gpg/RPM-GPG-KEY-remi
+Продолжить? [y/N]: y
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+ПРЕДУПРЕЖДЕНИЕ: база данных RPM была изменена вне Yum.
+  Установка   : fontpackages-filesystem-1.44-8.el7.noarch                  1/67 
+  Установка   : libargon2-20161029-3.el7.x86_64                            2/67 
+  Установка   : dejavu-fonts-common-2.33-6.el7.noarch                      3/67 
+  Установка   : dejavu-sans-fonts-2.33-6.el7.noarch                        4/67 
+  Установка   : fontconfig-2.13.0-4.3.el7.x86_64                           5/67 
+  Установка   : 1:perl-parent-0.225-244.el7.noarch                         6/67 
+  Установка   : perl-HTTP-Tiny-0.033-3.el7.noarch                          7/67 
+  Установка   : perl-podlators-2.5.1-3.el7.noarch                          8/67 
+  Установка   : perl-Pod-Perldoc-3.20-4.el7.noarch                         9/67 
+  Установка   : 1:perl-Pod-Escapes-1.04-295.el7.noarch                    10/67 
+  Установка   : perl-Text-ParseWords-3.29-4.el7.noarch                    11/67 
+  Установка   : perl-Encode-2.51-7.el7.x86_64                             12/67 
+  Установка   : perl-Pod-Usage-1.63-3.el7.noarch                          13/67 
+  Установка   : 4:perl-libs-5.16.3-295.el7.x86_64                         14/67 
+  Установка   : 4:perl-macros-5.16.3-295.el7.x86_64                       15/67 
+  Установка   : 4:perl-Time-HiRes-1.9725-3.el7.x86_64                     16/67 
+  Установка   : perl-Exporter-5.68-3.el7.noarch                           17/67 
+  Установка   : perl-constant-1.27-2.el7.noarch                           18/67 
+  Установка   : perl-Socket-2.010-5.el7.x86_64                            19/67 
+  Установка   : perl-Filter-1.49-3.el7.x86_64                             20/67 
+  Установка   : perl-Time-Local-1.2300-2.el7.noarch                       21/67 
+  Установка   : perl-Carp-1.26-244.el7.noarch                             22/67 
+  Установка   : perl-Storable-2.45-3.el7.x86_64                           23/67 
+  Установка   : perl-PathTools-3.40-5.el7.x86_64                          24/67 
+  Установка   : perl-Scalar-List-Utils-1.27-248.el7.x86_64                25/67 
+  Установка   : perl-File-Temp-0.23.01-3.el7.noarch                       26/67 
+  Установка   : perl-File-Path-2.09-2.el7.noarch                          27/67 
+  Установка   : perl-threads-shared-1.43-6.el7.x86_64                     28/67 
+  Установка   : perl-threads-1.87-4.el7.x86_64                            29/67 
+  Установка   : 1:perl-Pod-Simple-3.28-4.el7.noarch                       30/67 
+  Установка   : perl-Getopt-Long-2.40-3.el7.noarch                        31/67 
+  Установка   : 4:perl-5.16.3-295.el7.x86_64                              32/67 
+  Установка   : libcgroup-0.41-21.el7.x86_64                              33/67 
+  Установка   : gperftools-libs-2.6.1-1.el7.x86_64                        34/67 
+  Установка   : libXau-1.0.8-2.1.el7.x86_64                               35/67 
+  Установка   : libxcb-1.13-1.el7.x86_64                                  36/67 
+  Установка   : centos-indexhtml-7-9.el7.centos.noarch                    37/67 
+  Установка   : libjpeg-turbo-1.2.90-8.el7.x86_64                         38/67 
+  Установка   : libxslt-1.1.28-5.el7.x86_64                               39/67 
+  Установка   : libsemanage-python-2.5-14.el7.x86_64                      40/67 
+  Установка   : setools-libs-3.3.8-4.el7.x86_64                           41/67 
+  Установка   : libX11-common-1.6.7-2.el7.noarch                          42/67 
+  Установка   : libX11-1.6.7-2.el7.x86_64                                 43/67 
+  Установка   : libXpm-3.5.12-1.el7.x86_64                                44/67 
+  Установка   : gd-2.0.35-26.el7.x86_64                                   45/67 
+  Установка   : python-IPy-0.75-6.el7.noarch                              46/67 
+  Установка   : scl-utils-20130529-19.el7.x86_64                          47/67 
+  Установка   : checkpolicy-2.5-8.el7.x86_64                              48/67 
+  Установка   : audit-libs-python-2.8.5-4.el7.x86_64                      49/67 
+  Установка   : policycoreutils-python-2.5-34.el7.x86_64                  50/67 
+  Установка   : 1:nginx-filesystem-1.16.1-1.el7.noarch                    51/67 
+  Установка   : 1:nginx-mod-mail-1.16.1-1.el7.x86_64                      52/67 
+  Установка   : 1:nginx-mod-stream-1.16.1-1.el7.x86_64                    53/67 
+  Установка   : 1:nginx-mod-http-xslt-filter-1.16.1-1.el7.x86_64          54/67 
+  Установка   : 1:nginx-mod-http-image-filter-1.16.1-1.el7.x86_64         55/67 
+  Установка   : 1:nginx-1.16.1-1.el7.x86_64                               56/67 
+  Установка   : 1:nginx-mod-http-perl-1.16.1-1.el7.x86_64                 57/67 
+  Установка   : 1:nginx-all-modules-1.16.1-1.el7.noarch                   58/67 
+  Установка   : 1:tcl-8.5.13-8.el7.x86_64                                 59/67 
+  Установка   : environment-modules-3.2.10-10.el7.x86_64                  60/67 
+  Установка   : php72-runtime-2.0-1.el7.remi.x86_64                       61/67 
+  Установка   : php72-php-json-7.2.33-1.el7.remi.x86_64                   62/67 
+  Установка   : php72-php-common-7.2.33-1.el7.remi.x86_64                 63/67 
+  Установка   : php72-php-cli-7.2.33-1.el7.remi.x86_64                    64/67 
+  Установка   : php72-2.0-1.el7.remi.x86_64                               65/67 
+  Установка   : php72-php-fpm-7.2.33-1.el7.remi.x86_64                    66/67 
+  Установка   : nano-2.3.1-10.el7.x86_64                                  67/67 
+  Проверка    : perl-HTTP-Tiny-0.033-3.el7.noarch                          1/67 
+  Проверка    : 1:tcl-8.5.13-8.el7.x86_64                                  2/67 
+  Проверка    : fontconfig-2.13.0-4.3.el7.x86_64                           3/67 
+  Проверка    : 1:nginx-filesystem-1.16.1-1.el7.noarch                     4/67 
+  Проверка    : perl-Pod-Perldoc-3.20-4.el7.noarch                         5/67 
+  Проверка    : perl-threads-shared-1.43-6.el7.x86_64                      6/67 
+  Проверка    : 4:perl-Time-HiRes-1.9725-3.el7.x86_64                      7/67 
+  Проверка    : environment-modules-3.2.10-10.el7.x86_64                   8/67 
+  Проверка    : perl-Exporter-5.68-3.el7.noarch                            9/67 
+  Проверка    : perl-constant-1.27-2.el7.noarch                           10/67 
+  Проверка    : perl-PathTools-3.40-5.el7.x86_64                          11/67 
+  Проверка    : 1:nginx-mod-mail-1.16.1-1.el7.x86_64                      12/67 
+  Проверка    : libargon2-20161029-3.el7.x86_64                           13/67 
+  Проверка    : 1:nginx-mod-http-perl-1.16.1-1.el7.x86_64                 14/67 
+  Проверка    : perl-Socket-2.010-5.el7.x86_64                            15/67 
+  Проверка    : fontpackages-filesystem-1.44-8.el7.noarch                 16/67 
+  Проверка    : audit-libs-python-2.8.5-4.el7.x86_64                      17/67 
+  Проверка    : 1:perl-Pod-Escapes-1.04-295.el7.noarch                    18/67 
+  Проверка    : 1:perl-parent-0.225-244.el7.noarch                        19/67 
+  Проверка    : checkpolicy-2.5-8.el7.x86_64                              20/67 
+  Проверка    : scl-utils-20130529-19.el7.x86_64                          21/67 
+  Проверка    : 1:perl-Pod-Simple-3.28-4.el7.noarch                       22/67 
+  Проверка    : perl-Pod-Usage-1.63-3.el7.noarch                          23/67 
+  Проверка    : perl-Text-ParseWords-3.29-4.el7.noarch                    24/67 
+  Проверка    : 4:perl-libs-5.16.3-295.el7.x86_64                         25/67 
+  Проверка    : perl-Filter-1.49-3.el7.x86_64                             26/67 
+  Проверка    : perl-File-Temp-0.23.01-3.el7.noarch                       27/67 
+  Проверка    : python-IPy-0.75-6.el7.noarch                              28/67 
+  Проверка    : libX11-1.6.7-2.el7.x86_64                                 29/67 
+  Проверка    : libX11-common-1.6.7-2.el7.noarch                          30/67 
+  Проверка    : libxcb-1.13-1.el7.x86_64                                  31/67 
+  Проверка    : policycoreutils-python-2.5-34.el7.x86_64                  32/67 
+  Проверка    : perl-Time-Local-1.2300-2.el7.noarch                       33/67 
+  Проверка    : 4:perl-macros-5.16.3-295.el7.x86_64                       34/67 
+  Проверка    : 4:perl-5.16.3-295.el7.x86_64                              35/67 
+  Проверка    : setools-libs-3.3.8-4.el7.x86_64                           36/67 
+  Проверка    : libXpm-3.5.12-1.el7.x86_64                                37/67 
+  Проверка    : php72-php-fpm-7.2.33-1.el7.remi.x86_64                    38/67 
+  Проверка    : perl-Carp-1.26-244.el7.noarch                             39/67 
+  Проверка    : perl-podlators-2.5.1-3.el7.noarch                         40/67 
+  Проверка    : libsemanage-python-2.5-14.el7.x86_64                      41/67 
+  Проверка    : libxslt-1.1.28-5.el7.x86_64                               42/67 
+  Проверка    : 1:nginx-mod-stream-1.16.1-1.el7.x86_64                    43/67 
+  Проверка    : perl-Storable-2.45-3.el7.x86_64                           44/67 
+  Проверка    : dejavu-sans-fonts-2.33-6.el7.noarch                       45/67 
+  Проверка    : perl-Scalar-List-Utils-1.27-248.el7.x86_64                46/67 
+  Проверка    : 1:nginx-1.16.1-1.el7.x86_64                               47/67 
+  Проверка    : libjpeg-turbo-1.2.90-8.el7.x86_64                         48/67 
+  Проверка    : 1:nginx-all-modules-1.16.1-1.el7.noarch                   49/67 
+  Проверка    : 1:nginx-mod-http-xslt-filter-1.16.1-1.el7.x86_64          50/67 
+  Проверка    : centos-indexhtml-7-9.el7.centos.noarch                    51/67 
+  Проверка    : 1:nginx-mod-http-image-filter-1.16.1-1.el7.x86_64         52/67 
+  Проверка    : perl-Encode-2.51-7.el7.x86_64                             53/67 
+  Проверка    : php72-runtime-2.0-1.el7.remi.x86_64                       54/67 
+  Проверка    : php72-php-common-7.2.33-1.el7.remi.x86_64                 55/67 
+  Проверка    : libXau-1.0.8-2.1.el7.x86_64                               56/67 
+  Проверка    : perl-File-Path-2.09-2.el7.noarch                          57/67 
+  Проверка    : perl-threads-1.87-4.el7.x86_64                            58/67 
+  Проверка    : gperftools-libs-2.6.1-1.el7.x86_64                        59/67 
+  Проверка    : php72-php-json-7.2.33-1.el7.remi.x86_64                   60/67 
+  Проверка    : php72-2.0-1.el7.remi.x86_64                               61/67 
+  Проверка    : perl-Getopt-Long-2.40-3.el7.noarch                        62/67 
+  Проверка    : php72-php-cli-7.2.33-1.el7.remi.x86_64                    63/67 
+  Проверка    : gd-2.0.35-26.el7.x86_64                                   64/67 
+  Проверка    : nano-2.3.1-10.el7.x86_64                                  65/67 
+  Проверка    : dejavu-fonts-common-2.33-6.el7.noarch                     66/67 
+  Проверка    : libcgroup-0.41-21.el7.x86_64                              67/67 
+
+Установлено:
+  nano.x86_64 0:2.3.1-10.el7        nginx.x86_64 1:1.16.1-1.el7                 
+  php72.x86_64 0:2.0-1.el7.remi     php72-php-fpm.x86_64 0:7.2.33-1.el7.remi    
+
+Установлены зависимости:
+  audit-libs-python.x86_64 0:2.8.5-4.el7                                        
+  centos-indexhtml.noarch 0:7-9.el7.centos                                      
+  checkpolicy.x86_64 0:2.5-8.el7                                                
+  dejavu-fonts-common.noarch 0:2.33-6.el7                                       
+  dejavu-sans-fonts.noarch 0:2.33-6.el7                                         
+  environment-modules.x86_64 0:3.2.10-10.el7                                    
+  fontconfig.x86_64 0:2.13.0-4.3.el7                                            
+  fontpackages-filesystem.noarch 0:1.44-8.el7                                   
+  gd.x86_64 0:2.0.35-26.el7                                                     
+  gperftools-libs.x86_64 0:2.6.1-1.el7                                          
+  libX11.x86_64 0:1.6.7-2.el7                                                   
+  libX11-common.noarch 0:1.6.7-2.el7                                            
+  libXau.x86_64 0:1.0.8-2.1.el7                                                 
+  libXpm.x86_64 0:3.5.12-1.el7                                                  
+  libargon2.x86_64 0:20161029-3.el7                                             
+  libcgroup.x86_64 0:0.41-21.el7                                                
+  libjpeg-turbo.x86_64 0:1.2.90-8.el7                                           
+  libsemanage-python.x86_64 0:2.5-14.el7                                        
+  libxcb.x86_64 0:1.13-1.el7                                                    
+  libxslt.x86_64 0:1.1.28-5.el7                                                 
+  nginx-all-modules.noarch 1:1.16.1-1.el7                                       
+  nginx-filesystem.noarch 1:1.16.1-1.el7                                        
+  nginx-mod-http-image-filter.x86_64 1:1.16.1-1.el7                             
+  nginx-mod-http-perl.x86_64 1:1.16.1-1.el7                                     
+  nginx-mod-http-xslt-filter.x86_64 1:1.16.1-1.el7                              
+  nginx-mod-mail.x86_64 1:1.16.1-1.el7                                          
+  nginx-mod-stream.x86_64 1:1.16.1-1.el7                                        
+  perl.x86_64 4:5.16.3-295.el7                                                  
+  perl-Carp.noarch 0:1.26-244.el7                                               
+  perl-Encode.x86_64 0:2.51-7.el7                                               
+  perl-Exporter.noarch 0:5.68-3.el7                                             
+  perl-File-Path.noarch 0:2.09-2.el7                                            
+  perl-File-Temp.noarch 0:0.23.01-3.el7                                         
+  perl-Filter.x86_64 0:1.49-3.el7                                               
+  perl-Getopt-Long.noarch 0:2.40-3.el7                                          
+  perl-HTTP-Tiny.noarch 0:0.033-3.el7                                           
+  perl-PathTools.x86_64 0:3.40-5.el7                                            
+  perl-Pod-Escapes.noarch 1:1.04-295.el7                                        
+  perl-Pod-Perldoc.noarch 0:3.20-4.el7                                          
+  perl-Pod-Simple.noarch 1:3.28-4.el7                                           
+  perl-Pod-Usage.noarch 0:1.63-3.el7                                            
+  perl-Scalar-List-Utils.x86_64 0:1.27-248.el7                                  
+  perl-Socket.x86_64 0:2.010-5.el7                                              
+  perl-Storable.x86_64 0:2.45-3.el7                                             
+  perl-Text-ParseWords.noarch 0:3.29-4.el7                                      
+  perl-Time-HiRes.x86_64 4:1.9725-3.el7                                         
+  perl-Time-Local.noarch 0:1.2300-2.el7                                         
+  perl-constant.noarch 0:1.27-2.el7                                             
+  perl-libs.x86_64 4:5.16.3-295.el7                                             
+  perl-macros.x86_64 4:5.16.3-295.el7                                           
+  perl-parent.noarch 1:0.225-244.el7                                            
+  perl-podlators.noarch 0:2.5.1-3.el7                                           
+  perl-threads.x86_64 0:1.87-4.el7                                              
+  perl-threads-shared.x86_64 0:1.43-6.el7                                       
+  php72-php-cli.x86_64 0:7.2.33-1.el7.remi                                      
+  php72-php-common.x86_64 0:7.2.33-1.el7.remi                                   
+  php72-php-json.x86_64 0:7.2.33-1.el7.remi                                     
+  php72-runtime.x86_64 0:2.0-1.el7.remi                                         
+  policycoreutils-python.x86_64 0:2.5-34.el7                                    
+  python-IPy.noarch 0:0.75-6.el7                                                
+  scl-utils.x86_64 0:20130529-19.el7                                            
+  setools-libs.x86_64 0:3.3.8-4.el7                                             
+  tcl.x86_64 1:8.5.13-8.el7                                                     
+
+Выполнено!
+
+[admin@web2 ~]$ sudo ln -s /usr/bin/php72 /usr/bin/php
+[admin@web2 ~]$ ls -lah /usr/bin | grep php
+lrwxrwxrwx.  1 root root      14 авг 31 07:10 php -> /usr/bin/php72
+lrwxrwxrwx.  1 root root      32 авг 31 07:09 php72 -> /opt/remi/php72/root/usr/bin/php
+lrwxrwxrwx.  1 root root      36 авг 31 07:09 php72-cgi -> /opt/remi/php72/root/usr/bin/php-cgi
+lrwxrwxrwx.  1 root root      38 авг 31 07:09 php72-phar -> /opt/remi/php72/root/usr/bin/phar.phar
+[admin@web2 ~]$ sudo nano /etc/opt/remi/php72/php-fpm.d/www.conf
+[admin@web2 ~]$ sudo nano /etc/selinux/config
+[admin@web2 ~]$ reboot
+==== AUTHENTICATING FOR org.freedesktop.login1.reboot ===
+Чтобы перезагрузить систему, необходимо пройти аутентификацию.
+Authenticating as: admin
+Password: 
+==== AUTHENTICATION COMPLETE ===
+[admin@web2 ~]$ Connection to 192.168.56.81 closed by remote host.
+Connection to 192.168.56.81 closed.
+konstantinlevchenko@Konstantin ~ % ssh admin@192.168.56.81
+admin@192.168.56.81's password: 
+Last login: Mon Aug 31 06:52:59 2020 from 192.168.56.1
+[admin@web2 ~]$ sudo mkdir /var/www/
+[sudo] пароль для admin: 
+[admin@web2 ~]$ sudo mkdir /var/www/slave.local/
+[admin@web2 ~]$ sudo chown -R admin:nginx /var/www/slave.local/
+[admin@web2 ~]$ ls -la /var/www/slave.local/
+итого 0
+drwxr-xr-x 2 admin nginx  6 авг 31 09:01 .
+drwxr-xr-x 3 root  root  25 авг 31 09:01 ..
+[admin@web2 ~]$ sudo nano /etc/nginx/conf.d/slave.local.conf
+[admin@web2 ~]$ sudo chown -R admin:nginx /etc/nginx/conf.d/
+[admin@web2 ~]$ chmod 0775 -R /etc/nginx/conf.d/
+[admin@web2 ~]$ ls -la /etc/nginx/conf.d/
+итого 8
+drwxrwxr-x. 2 admin nginx   30 авг 31 09:06 .
+drwxr-xr-x. 4 root  root  4096 авг 31 07:09 ..
+-rwxrwxr-x  1 admin nginx  773 авг 31 09:06 slave.local.conf
+[admin@web2 ~]$ sudo nano /etc/nginx/nginx.conf
+[admin@web2 ~]$ sudo systemctl restart nginx
+[admin@web2 ~]$ sudo nginx -t
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+[admin@web2 ~]$ sudo nano /var/www/slave.local/index.php
+[admin@web2 ~]$ systemctl restart php72-php-fpm
+==== AUTHENTICATING FOR org.freedesktop.systemd1.manage-units ===
+Для управления системными службами и юнитами, необходимо пройти аутентификацию.
+Authenticating as: admin
+Password: 
+==== AUTHENTICATION COMPLETE ===
+[admin@web2 ~]$ sudo systemctl enable php72-php-fpm
+Created symlink from /etc/systemd/system/multi-user.target.wants/php72-php-fpm.service to /usr/lib/systemd/system/php72-php-fpm.service.
+[admin@web2 ~]$ systemctl restart nginx
+==== AUTHENTICATING FOR org.freedesktop.systemd1.manage-units ===
+Для управления системными службами и юнитами, необходимо пройти аутентификацию.
+Authenticating as: admin
+Password: 
+==== AUTHENTICATION COMPLETE ===
+[admin@web2 ~]$ sudo systemctl enable nginx
+Created symlink from /etc/systemd/system/multi-user.target.wants/nginx.service to /usr/lib/systemd/system/nginx.service.
+[admin@web2 ~]$ systemctl status php72-php-fpm.service
+● php72-php-fpm.service - The PHP FastCGI Process Manager
+   Loaded: loaded (/usr/lib/systemd/system/php72-php-fpm.service; enabled; vendor preset: disabled)
+   Active: active (running) since Пн 2020-08-31 09:17:40 MSK; 1min 41s ago
+ Main PID: 1376 (php-fpm)
+   Status: "Processes active: 0, idle: 5, Requests: 0, slow: 0, Traffic: 0req/sec"
+   CGroup: /system.slice/php72-php-fpm.service
+           ├─1376 php-fpm: master process (/etc/opt/remi/php72/php-fpm.conf)
+           ├─1377 php-fpm: pool www
+           ├─1378 php-fpm: pool www
+           ├─1379 php-fpm: pool www
+           ├─1380 php-fpm: pool www
+           └─1381 php-fpm: pool www
+
+авг 31 09:17:40 web2.local systemd[1]: Starting The PHP FastCGI Process M....
+авг 31 09:17:40 web2.local systemd[1]: Started The PHP FastCGI Process Ma....
+Hint: Some lines were ellipsized, use -l to show in full.
+[admin@web2 ~]$ systemctl status nginx
+● nginx.service - The nginx HTTP and reverse proxy server
+   Loaded: loaded (/usr/lib/systemd/system/nginx.service; enabled; vendor preset: disabled)
+   Active: active (running) since Пн 2020-08-31 09:18:14 MSK; 1min 23s ago
+ Main PID: 1422 (nginx)
+   CGroup: /system.slice/nginx.service
+           ├─1422 nginx: master process /usr/sbin/nginx
+           └─1423 nginx: worker process
+
+авг 31 09:18:14 web2.local systemd[1]: Stopped The nginx HTTP and reverse....
+авг 31 09:18:14 web2.local systemd[1]: Starting The nginx HTTP and revers....
+авг 31 09:18:14 web2.local nginx[1418]: nginx: the configuration file /et...k
+авг 31 09:18:14 web2.local nginx[1418]: nginx: configuration file /etc/ng...l
+авг 31 09:18:14 web2.local systemd[1]: Failed to parse PID from file /run...t
+авг 31 09:18:14 web2.local systemd[1]: Started The nginx HTTP and reverse....
+Hint: Some lines were ellipsized, use -l to show in full.
+[admin@web2 ~]$ sudo firewall-cmd --zone=public --permanent --add-service=http
+success
+[admin@web2 ~]$ sudo firewall-cmd --zone=public --permanent --add-service=https
+success
+[admin@web2 ~]$ sudo firewall-cmd --reload
+success
+Last login: Mon Aug 31 06:53:04 on ttys001
+konstantinlevchenko@Konstantin ~ % sudo nano /private/etc/hosts
+Password:
+
+[admin@web2 ~]$ sudo yum install https://repo.percona.com/yum/percona-release-latest.noarch.rpm
+[sudo] пароль для admin: 
+Загружены модули: fastestmirror
+percona-release-latest.noarch.rpm                        |  19 kB     00:00     
+Проверка /var/tmp/yum-root-xHdv15/percona-release-latest.noarch.rpm: percona-release-1.0-24.noarch
+/var/tmp/yum-root-xHdv15/percona-release-latest.noarch.rpm отмечен для установки
+Разрешение зависимостей
+--> Проверка сценария
+---> Пакет percona-release.noarch 0:1.0-24 помечен для установки
+--> Проверка зависимостей окончена
+
+Зависимости определены
+
+================================================================================
+ Package            Архитектура
+                              Версия    Репозиторий                       Размер
+================================================================================
+Установка:
+ percona-release    noarch    1.0-24    /percona-release-latest.noarch     30 k
+
+Итого за операцию
+================================================================================
+Установить  1 пакет
+
+Общий размер: 30 k
+Объем изменений: 30 k
+Is this ok [y/d/N]: y
+Downloading packages:
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Установка   : percona-release-1.0-24.noarch                               1/1 
+* Enabling the Percona Original repository
+<*> All done!
+* Enabling the Percona Release repository
+<*> All done!
+The percona-release package now contains a percona-release script that can enable additional repositories for our newer products.
+
+For example, to enable the Percona Server 8.0 repository use:
+
+  percona-release setup ps80
+
+Note: To avoid conflicts with older product versions, the percona-release setup command may disable our original repository for some products.
+
+For more information, please visit:
+  https://www.percona.com/doc/percona-repo-config/percona-release.html
+
+  Проверка    : percona-release-1.0-24.noarch                               1/1 
+
+Установлено:
+  percona-release.noarch 0:1.0-24                                               
+
+Выполнено!
+[admin@web2 ~]$ sudo percona-release setup ps80
+* Disabling all Percona Repositories
+* Enabling the Percona Server 8.0 repository
+* Enabling the Percona Tools repository
+<*> All done!
+[admin@web2 ~]$ sudo yum install percona-server-server
+Загружены модули: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirror.yandex.ru
+ * epel: mirror.yandex.ru
+ * extras: mirror.yandex.ru
+ * remi-safe: remi.schlundtech.de
+ * updates: mirror.yandex.ru
+prel-release-x86_64                                      | 2.9 kB     00:00     
+ps-80-release-x86_64                                     | 2.9 kB     00:00     
+tools-release-x86_64                                     | 2.9 kB     00:00     
+(1/3): prel-release-x86_64/7/primary_db                    | 1.1 kB   00:00     
+(2/3): ps-80-release-x86_64/7/primary_db                   |  78 kB   00:00     
+(3/3): tools-release-x86_64/7/primary_db                   |  76 kB   00:00     
+Разрешение зависимостей
+--> Проверка сценария
+---> Пакет percona-server-server.x86_64 0:8.0.20-11.1.el7 помечен для установки
+--> Обработка зависимостей: percona-server-shared пакета: percona-server-server-8.0.20-11.1.el7.x86_64
+--> Обработка зависимостей: percona-server-client пакета: percona-server-server-8.0.20-11.1.el7.x86_64
+--> Обработка зависимостей: net-tools пакета: percona-server-server-8.0.20-11.1.el7.x86_64
+--> Проверка сценария
+---> Пакет net-tools.x86_64 0:2.0-0.25.20131004git.el7 помечен для установки
+---> Пакет percona-server-client.x86_64 0:8.0.20-11.1.el7 помечен для установки
+---> Пакет percona-server-shared.x86_64 0:8.0.20-11.1.el7 помечен для установки
+--> Обработка зависимостей: percona-server-shared-compat пакета: percona-server-shared-8.0.20-11.1.el7.x86_64
+--> Проверка сценария
+---> Пакет mariadb-libs.x86_64 1:5.5.65-1.el7 помечен как недействительный
+---> Пакет percona-server-shared-compat.x86_64 0:8.0.20-11.1.el7 помечен для исключения
+--> Проверка зависимостей окончена
+
+Зависимости определены
+
+================================================================================
+ Package                      Архитектура
+                                     Версия          Репозиторий          Размер
+================================================================================
+Установка:
+ percona-server-server        x86_64 8.0.20-11.1.el7 ps-80-release-x86_64  56 M
+ percona-server-shared-compat x86_64 8.0.20-11.1.el7 ps-80-release-x86_64 1.2 M
+     замена  mariadb-libs.x86_64 1:5.5.65-1.el7
+Установка зависимостей:
+ net-tools                    x86_64 2.0-0.25.20131004git.el7
+                                                     base                 306 k
+ percona-server-client        x86_64 8.0.20-11.1.el7 ps-80-release-x86_64  12 M
+ percona-server-shared        x86_64 8.0.20-11.1.el7 ps-80-release-x86_64 1.4 M
+
+Итого за операцию
+================================================================================
+Установить  2 пакета (+3 зависимых)
+
+Объем загрузки: 70 M
+Is this ok [y/d/N]: y
+Downloading packages:
+(1/5): net-tools-2.0-0.25.20131004git.el7.x86_64.rpm       | 306 kB   00:00     
+warning: /var/cache/yum/x86_64/7/ps-80-release-x86_64/packages/percona-server-client-8.0.20-11.1.el7.x86_64.rpm: Header V4 RSA/SHA256 Signature, key ID 8507efa5: NOKEY
+Публичный ключ для percona-server-client-8.0.20-11.1.el7.x86_64.rpm не установлен
+(2/5): percona-server-client-8.0.20-11.1.el7.x86_64.rpm    |  12 MB   00:06     
+(3/5): percona-server-shared-8.0.20-11.1.el7.x86_64.rpm    | 1.4 MB   00:01     
+(4/5): percona-server-shared-compat-8.0.20-11.1.el7.x86_64 | 1.2 MB   00:01     
+(5/5): percona-server-server-8.0.20-11.1.el7.x86_64.rpm    |  56 MB   00:18     
+--------------------------------------------------------------------------------
+Общий размер                                       3.8 MB/s |  70 MB  00:18     
+Получение ключа из file:///etc/pki/rpm-gpg/PERCONA-PACKAGING-KEY
+Импорт GPG ключа 0x8507EFA5:
+ Владелец   : "Percona MySQL Development Team (Packaging key) <mysql-dev@percona.com>"
+ Отпечаток  : 4d1b b29d 63d9 8e42 2b21 13b1 9334 a25f 8507 efa5
+ Пакет      : percona-release-1.0-24.noarch (@/percona-release-latest.noarch)
+ Источник   : /etc/pki/rpm-gpg/PERCONA-PACKAGING-KEY
+Продолжить? [y/N]: y
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Установка   : net-tools-2.0-0.25.20131004git.el7.x86_64                   1/6 
+  Установка   : percona-server-shared-compat-8.0.20-11.1.el7.x86_64         2/6 
+  Установка   : percona-server-shared-8.0.20-11.1.el7.x86_64                3/6 
+  Установка   : percona-server-client-8.0.20-11.1.el7.x86_64                4/6 
+  Установка   : percona-server-server-8.0.20-11.1.el7.x86_64                5/6 
+Percona Server is distributed with several useful UDF (User Defined Function) from Percona Toolkit.
+Run the following commands to create these functions:
+mysql -e "CREATE FUNCTION fnv1a_64 RETURNS INTEGER SONAME 'libfnv1a_udf.so'"
+mysql -e "CREATE FUNCTION fnv_64 RETURNS INTEGER SONAME 'libfnv_udf.so'"
+mysql -e "CREATE FUNCTION murmur_hash RETURNS INTEGER SONAME 'libmurmur_udf.so'"
+See http://www.percona.com/doc/percona-server/8.0/management/udf_percona_toolkit.html for more details
+  Удаление    : 1:mariadb-libs-5.5.65-1.el7.x86_64                          6/6 
+  Проверка    : percona-server-shared-8.0.20-11.1.el7.x86_64                1/6 
+  Проверка    : percona-server-shared-compat-8.0.20-11.1.el7.x86_64         2/6 
+  Проверка    : percona-server-server-8.0.20-11.1.el7.x86_64                3/6 
+  Проверка    : percona-server-client-8.0.20-11.1.el7.x86_64                4/6 
+  Проверка    : net-tools-2.0-0.25.20131004git.el7.x86_64                   5/6 
+  Проверка    : 1:mariadb-libs-5.5.65-1.el7.x86_64                          6/6 
+
+Установлено:
+  percona-server-server.x86_64 0:8.0.20-11.1.el7                                
+  percona-server-shared-compat.x86_64 0:8.0.20-11.1.el7                         
+
+Установлены зависимости:
+  net-tools.x86_64 0:2.0-0.25.20131004git.el7                                   
+  percona-server-client.x86_64 0:8.0.20-11.1.el7                                
+  percona-server-shared.x86_64 0:8.0.20-11.1.el7                                
+
+Заменено:
+  mariadb-libs.x86_64 1:5.5.65-1.el7                                            
+
+Выполнено!
+[admin@web2 ~]$ sudo service mysql start
+Redirecting to /bin/systemctl start mysql.service
+[admin@web2 ~]$ sudo service mysql status
+Redirecting to /bin/systemctl status mysql.service
+● mysqld.service - MySQL Server
+   Loaded: loaded (/usr/lib/systemd/system/mysqld.service; enabled; vendor preset: disabled)
+   Active: active (running) since Пн 2020-08-31 09:27:34 MSK; 23s ago
+     Docs: man:mysqld(8)
+           http://dev.mysql.com/doc/refman/en/using-systemd.html
+  Process: 1992 ExecStartPre=/usr/bin/mysqld_pre_systemd (code=exited, status=0/SUCCESS)
+ Main PID: 2076 (mysqld)
+   Status: "Server is operational"
+   CGroup: /system.slice/mysqld.service
+           └─2076 /usr/sbin/mysqld
+
+авг 31 09:27:26 web2.local systemd[1]: Starting MySQL Server...
+авг 31 09:27:34 web2.local systemd[1]: Started MySQL Server.
+[admin@web2 ~]$ cat /var/log/mysqld.log | grep password
+cat: /var/log/mysqld.log: Отказано в доступе
+[admin@web2 ~]$ sudo cat /var/log/mysqld.log | grep password
+2020-08-31T06:27:30.112570Z 6 [Note] [MY-010454] [Server] A temporary password is generated for root@localhost: Qe%ee+Lpw611
+[admin@web2 ~]$ mysql -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.20-11
+
+Copyright (c) 2009-2020 Percona LLC and/or its affiliates
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> ALTER USER 'root'@'localhost' IDENTIFIED BY 'Rtn1D0*Jd2Tfc';
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> exit
+Bye
+[admin@web2 ~]$ sudo firewall-cmd --permanent --add-port=3306/tcp
+success
+
+[admin@web2 ~]$ ping 192.168.56.80
+PING 192.168.56.80 (192.168.56.80) 56(84) bytes of data.
+64 bytes from 192.168.56.80: icmp_seq=1 ttl=64 time=0.859 ms
+64 bytes from 192.168.56.80: icmp_seq=2 ttl=64 time=0.821 ms
+64 bytes from 192.168.56.80: icmp_seq=3 ttl=64 time=0.523 ms
+64 bytes from 192.168.56.80: icmp_seq=4 ttl=64 time=0.696 ms
+64 bytes from 192.168.56.80: icmp_seq=5 ttl=64 time=0.627 ms
+64 bytes from 192.168.56.80: icmp_seq=6 ttl=64 time=0.732 ms
+64 bytes from 192.168.56.80: icmp_seq=7 ttl=64 time=0.578 ms
+^C
+[admin@web ~]$ ping 192.168.56.81
+PING 192.168.56.81 (192.168.56.81) 56(84) bytes of data.
+64 bytes from 192.168.56.81: icmp_seq=1 ttl=64 time=0.486 ms
+64 bytes from 192.168.56.81: icmp_seq=2 ttl=64 time=0.651 ms
+64 bytes from 192.168.56.81: icmp_seq=3 ttl=64 time=0.689 ms
+64 bytes from 192.168.56.81: icmp_seq=4 ttl=64 time=0.635 ms
+^C
+[admin@web ~]$ sudo nano /etc/my.cnf
+[admin@web ~]$ service mysql restart
+Redirecting to /bin/systemctl restart mysql.service
+==== AUTHENTICATING FOR org.freedesktop.systemd1.manage-units ===
+Для управления системными службами и юнитами, необходимо пройти аутентификацию.
+Authenticating as: admin
+Password: 
+==== AUTHENTICATION COMPLETE ===
+mysql> CREATE USER 'slave_user'@'%' IDENTIFIED BY '1qaz@WSX';
+Query OK, 0 rows affected (0.02 sec)
+mysql> GRANT replication slave ON *.* TO 'slave_user'@'%';
+Query OK, 0 rows affected (0.01 sec)
+mysql> FLUSH PRIVILEGES;
+Query OK, 0 rows affected (0.01 sec)
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| employees          |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.01 sec)
+
+mysql> use employees;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> FLUSH TABLES WITH READ LOCK;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> SHOW MASTER STATUS;
++------------------+----------+--------------+------------------+-------------------+
+| File             | Position | Binlog_Do_DB | Binlog_Ignore_DB | Executed_Gtid_Set |
++------------------+----------+--------------+------------------+-------------------+
+| mysql-bin.000001 |      867 | employees    |                  |                   |
++------------------+----------+--------------+------------------+-------------------+
+1 row in set (0.00 sec)
+mysql> UNLOCK TABLES;
+Query OK, 0 rows affected (0.00 sec)
+mysql> exit
+Bye
+[admin@web ~]$ cd /var/www/mysite.local/dump/
+[admin@web dump]$ mysqldump -u root -p employees > employees.sql
+Enter password: 
+[admin@web2 ~]$ sudo mkdir /var/www/slave.local/dump
+[admin@web2 ~]$ sudo chown -R admin:admin /var/www/slave.local/dump
+konstantinlevchenko@Konstantin ~ % scp -r /Users/konstantinlevchenko/Downloads/employees.sql admin@192.168.56.81:/var/www/slave.local/dump/
+admin@192.168.56.81's password: 
+employees.sql                                 100%  161MB  66.5MB/s   00:02 
+[admin@web2 ~]$ ls -la /var/www/slave.local/dump/
+итого 164428
+drwxr-xr-x 2 admin admin        27 авг 31 11:11 .
+drwxrwxr-x 3 admin nginx        35 авг 31 11:03 ..
+-rw------- 1 admin admin 168374166 авг 31 11:11 employees.sql
+mysql> create database employees;
+Query OK, 1 row affected (0.01 sec)
+[admin@web2 ~]$ mysql -u root -p -f employees < /var/www/slave.local/dump/employees.sql
+Enter password: 
+[admin@web2 ~]$ mysql -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 15
+Server version: 8.0.20-11 Percona Server (GPL), Release 11, Revision 5b5a5d2
+
+Copyright (c) 2009-2020 Percona LLC and/or its affiliates
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| employees          |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.02 sec)
+
+mysql> use employees;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++---------------------+
+| Tables_in_employees |
++---------------------+
+| departments         |
+| dept_emp            |
+| dept_manager        |
+| employees           |
+| salaries            |
+| titles              |
++---------------------+
+6 rows in set (0.00 sec)
+mysql> CHANGE MASTER TO MASTER_HOST='192.168.56.80', MASTER_USER='slave_user', MASTER_PASSWORD='1qaz@WSX', MASTER_LOG_FILE='mysql-bin.000001', MASTER_LOG_POS=867;
+Query OK, 0 rows affected, 2 warnings (0.08 sec)
+mysql> START SLAVE;
+Query OK, 0 rows affected (0.04 sec)
+mysql> show slave status \G;
+*************************** 1. row ***************************
+               Slave_IO_State: Connecting to master
+                  Master_Host: 192.168.56.80
+                  Master_User: slave_user
+                  Master_Port: 3306
+                Connect_Retry: 60
+              Master_Log_File: mysql-bin.000001
+          Read_Master_Log_Pos: 867
+               Relay_Log_File: web2-relay-bin.000001
+                Relay_Log_Pos: 4
+        Relay_Master_Log_File: mysql-bin.000001
+             Slave_IO_Running: Connecting
+            Slave_SQL_Running: Yes
+              Replicate_Do_DB: 
+          Replicate_Ignore_DB: 
+           Replicate_Do_Table: 
+       Replicate_Ignore_Table: 
+      Replicate_Wild_Do_Table: 
+  Replicate_Wild_Ignore_Table: 
+                   Last_Errno: 0
+                   Last_Error: 
+                 Skip_Counter: 0
+          Exec_Master_Log_Pos: 867
+              Relay_Log_Space: 156
+              Until_Condition: None
+               Until_Log_File: 
+                Until_Log_Pos: 0
+           Master_SSL_Allowed: No
+           Master_SSL_CA_File: 
+           Master_SSL_CA_Path: 
+              Master_SSL_Cert: 
+            Master_SSL_Cipher: 
+               Master_SSL_Key: 
+        Seconds_Behind_Master: NULL
+Master_SSL_Verify_Server_Cert: No
+                Last_IO_Errno: 2003
+                Last_IO_Error: error connecting to master 'slave_user@192.168.56.80:3306' - retry-time: 60 retries: 2 message: Can't connect to MySQL server on '192.168.56.80' (113)
+               Last_SQL_Errno: 0
+               Last_SQL_Error: 
+  Replicate_Ignore_Server_Ids: 
+             Master_Server_Id: 0
+                  Master_UUID: 
+             Master_Info_File: mysql.slave_master_info
+                    SQL_Delay: 0
+          SQL_Remaining_Delay: NULL
+      Slave_SQL_Running_State: Slave has read all relay log; waiting for more updates
+           Master_Retry_Count: 86400
+                  Master_Bind: 
+      Last_IO_Error_Timestamp: 200831 11:45:46
+     Last_SQL_Error_Timestamp: 
+               Master_SSL_Crl: 
+           Master_SSL_Crlpath: 
+           Retrieved_Gtid_Set: 
+            Executed_Gtid_Set: 
+                Auto_Position: 0
+         Replicate_Rewrite_DB: 
+                 Channel_Name: 
+           Master_TLS_Version: 
+       Master_public_key_path: 
+        Get_master_public_key: 0
+            Network_Namespace: 
+1 row in set (0.00 sec)
+
+ERROR: 
+No query specified
+
+mysql> show slave status \G;
+*************************** 1. row ***************************
+               Slave_IO_State: Connecting to master
+                  Master_Host: 192.168.56.80
+                  Master_User: slave_user
+                  Master_Port: 3306
+                Connect_Retry: 60
+              Master_Log_File: mysql-bin.000001
+          Read_Master_Log_Pos: 867
+               Relay_Log_File: web2-relay-bin.000001
+                Relay_Log_Pos: 4
+        Relay_Master_Log_File: mysql-bin.000001
+             Slave_IO_Running: Connecting
+            Slave_SQL_Running: Yes
+              Replicate_Do_DB: 
+          Replicate_Ignore_DB: 
+           Replicate_Do_Table: 
+       Replicate_Ignore_Table: 
+      Replicate_Wild_Do_Table: 
+  Replicate_Wild_Ignore_Table: 
+                   Last_Errno: 0
+                   Last_Error: 
+                 Skip_Counter: 0
+          Exec_Master_Log_Pos: 867
+              Relay_Log_Space: 156
+              Until_Condition: None
+               Until_Log_File: 
+                Until_Log_Pos: 0
+           Master_SSL_Allowed: No
+           Master_SSL_CA_File: 
+           Master_SSL_CA_Path: 
+              Master_SSL_Cert: 
+            Master_SSL_Cipher: 
+               Master_SSL_Key: 
+        Seconds_Behind_Master: NULL
+Master_SSL_Verify_Server_Cert: No
+                Last_IO_Errno: 2061
+                Last_IO_Error: error connecting to master 'slave_user@192.168.56.80:3306' - retry-time: 60 retries: 24 message: Authentication plugin 'caching_sha2_password' reported error: Authentication requires secure connection.
+               Last_SQL_Errno: 0
+               Last_SQL_Error: 
+  Replicate_Ignore_Server_Ids: 
+             Master_Server_Id: 0
+                  Master_UUID: 
+             Master_Info_File: mysql.slave_master_info
+                    SQL_Delay: 0
+          SQL_Remaining_Delay: NULL
+      Slave_SQL_Running_State: Slave has read all relay log; waiting for more updates
+           Master_Retry_Count: 86400
+                  Master_Bind: 
+      Last_IO_Error_Timestamp: 200831 12:07:46
+     Last_SQL_Error_Timestamp: 
+               Master_SSL_Crl: 
+           Master_SSL_Crlpath: 
+           Retrieved_Gtid_Set: 
+            Executed_Gtid_Set: 
+                Auto_Position: 0
+         Replicate_Rewrite_DB: 
+                 Channel_Name: 
+           Master_TLS_Version: 
+       Master_public_key_path: 
+        Get_master_public_key: 0
+            Network_Namespace: 
+1 row in set (0.00 sec)
+
+ERROR: 
+No query specified
+
+mysql> ALTER USER 'slave_user'@'%' IDENTIFIED WITH mysql_native_password BY '1qaz@WSX';
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> show slave status \G;
+*************************** 1. row ***************************
+               Slave_IO_State: 
+                  Master_Host: 192.168.56.80
+                  Master_User: slave_user
+                  Master_Port: 3306
+                Connect_Retry: 60
+              Master_Log_File: mysql-bin.000001
+          Read_Master_Log_Pos: 156
+               Relay_Log_File: web2-relay-bin.000001
+                Relay_Log_Pos: 4
+        Relay_Master_Log_File: mysql-bin.000001
+             Slave_IO_Running: No
+            Slave_SQL_Running: Yes
+              Replicate_Do_DB: 
+          Replicate_Ignore_DB: 
+           Replicate_Do_Table: 
+       Replicate_Ignore_Table: 
+      Replicate_Wild_Do_Table: 
+  Replicate_Wild_Ignore_Table: 
+                   Last_Errno: 0
+                   Last_Error: 
+                 Skip_Counter: 0
+          Exec_Master_Log_Pos: 156
+              Relay_Log_Space: 156
+              Until_Condition: None
+               Until_Log_File: 
+                Until_Log_Pos: 0
+           Master_SSL_Allowed: No
+           Master_SSL_CA_File: 
+           Master_SSL_CA_Path: 
+              Master_SSL_Cert: 
+            Master_SSL_Cipher: 
+               Master_SSL_Key: 
+        Seconds_Behind_Master: NULL
+Master_SSL_Verify_Server_Cert: No
+                Last_IO_Errno: 13117
+                Last_IO_Error: Fatal error: The slave I/O thread stops because master and slave have equal MySQL server ids; these ids must be different for replication to work (or the --replicate-same-server-id option must be used on slave but this does not always make sense; please check the manual before using it).
+               Last_SQL_Errno: 0
+               Last_SQL_Error: 
+  Replicate_Ignore_Server_Ids: 
+             Master_Server_Id: 1
+                  Master_UUID: 
+             Master_Info_File: mysql.slave_master_info
+                    SQL_Delay: 0
+          SQL_Remaining_Delay: NULL
+      Slave_SQL_Running_State: Slave has read all relay log; waiting for more updates
+           Master_Retry_Count: 86400
+                  Master_Bind: 
+      Last_IO_Error_Timestamp: 200831 12:50:21
+     Last_SQL_Error_Timestamp: 
+               Master_SSL_Crl: 
+           Master_SSL_Crlpath: 
+           Retrieved_Gtid_Set: 
+            Executed_Gtid_Set: 
+                Auto_Position: 0
+         Replicate_Rewrite_DB: 
+                 Channel_Name: 
+           Master_TLS_Version: 
+       Master_public_key_path: 
+        Get_master_public_key: 0
+            Network_Namespace: 
+1 row in set (0.00 sec)
+
+ERROR: 
+No query specified
+
+mysql> stop slave;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> SHOW MASTER STATUS\G;
+*************************** 1. row ***************************
+             File: mysql-bin.000001
+         Position: 156
+     Binlog_Do_DB: employees
+ Binlog_Ignore_DB: 
+Executed_Gtid_Set: 
+1 row in set (0.00 sec)
+
+ERROR: 
+No query specified
+
+mysql> show variables like 'server_id';
++---------------+-------+
+| Variable_name | Value |
++---------------+-------+
+| server_id     | 1     |
++---------------+-------+
+1 row in set (0.02 sec)
+
+mysql> set global server_id=2;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show variables like 'server_id';
++---------------+-------+
+| Variable_name | Value |
++---------------+-------+
+| server_id     | 2     |
++---------------+-------+
+1 row in set (0.00 sec)
+
+mysql> CHANGE MASTER TO MASTER_HOST='192.168.56.80', MASTER_USER='slave_user', MASTER_PASSWORD='1qaz@WSX', MASTER_LOG_FILE='mysql-bin.000001', MASTER_LOG_POS=156;
+Query OK, 0 rows affected, 2 warnings (0.02 sec)
+
+mysql> START SLAVE;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show slave status \G;
+*************************** 1. row ***************************
+               Slave_IO_State: Waiting for master to send event
+                  Master_Host: 192.168.56.80
+                  Master_User: slave_user
+                  Master_Port: 3306
+                Connect_Retry: 60
+              Master_Log_File: mysql-bin.000001
+          Read_Master_Log_Pos: 156
+               Relay_Log_File: web2-relay-bin.000002
+                Relay_Log_Pos: 324
+        Relay_Master_Log_File: mysql-bin.000001
+             Slave_IO_Running: Yes
+            Slave_SQL_Running: Yes
+              Replicate_Do_DB: 
+          Replicate_Ignore_DB: 
+           Replicate_Do_Table: 
+       Replicate_Ignore_Table: 
+      Replicate_Wild_Do_Table: 
+  Replicate_Wild_Ignore_Table: 
+                   Last_Errno: 0
+                   Last_Error: 
+                 Skip_Counter: 0
+          Exec_Master_Log_Pos: 156
+              Relay_Log_Space: 532
+              Until_Condition: None
+               Until_Log_File: 
+                Until_Log_Pos: 0
+           Master_SSL_Allowed: No
+           Master_SSL_CA_File: 
+           Master_SSL_CA_Path: 
+              Master_SSL_Cert: 
+            Master_SSL_Cipher: 
+               Master_SSL_Key: 
+        Seconds_Behind_Master: 0
+Master_SSL_Verify_Server_Cert: No
+                Last_IO_Errno: 0
+                Last_IO_Error: 
+               Last_SQL_Errno: 0
+               Last_SQL_Error: 
+  Replicate_Ignore_Server_Ids: 
+             Master_Server_Id: 1
+                  Master_UUID: 53009be4-e900-11ea-9a4f-080027a4619b
+             Master_Info_File: mysql.slave_master_info
+                    SQL_Delay: 0
+          SQL_Remaining_Delay: NULL
+      Slave_SQL_Running_State: Slave has read all relay log; waiting for more updates
+           Master_Retry_Count: 86400
+                  Master_Bind: 
+      Last_IO_Error_Timestamp: 
+     Last_SQL_Error_Timestamp: 
+               Master_SSL_Crl: 
+           Master_SSL_Crlpath: 
+           Retrieved_Gtid_Set: 
+            Executed_Gtid_Set: 
+                Auto_Position: 0
+         Replicate_Rewrite_DB: 
+                 Channel_Name: 
+           Master_TLS_Version: 
+       Master_public_key_path: 
+        Get_master_public_key: 0
+            Network_Namespace: 
+1 row in set (0.00 sec)
+
+ERROR: 
+No query specified
+
+mysql> SHOW COLUMNS FROM employees;
++------------+---------------+------+-----+---------+-------+
+| Field      | Type          | Null | Key | Default | Extra |
++------------+---------------+------+-----+---------+-------+
+| emp_no     | int           | NO   | PRI | NULL    |       |
+| birth_date | date          | NO   |     | NULL    |       |
+| first_name | varchar(14)   | NO   | MUL | NULL    |       |
+| last_name  | varchar(16)   | NO   |     | NULL    |       |
+| gender     | enum('M','F') | NO   |     | NULL    |       |
+| hire_date  | date          | NO   |     | NULL    |       |
++------------+---------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+| 498646 |
++--------+
+300024 rows in set (0.22 sec)
+
+| 498646 |
++--------+
+300024 rows in set (0.08 sec)
+
+mysql> delete from employees where emp_no = 498646;
+Query OK, 1 row affected (0.11 sec)
+
+mysql> select * from employees where emp_no = 498646;
+Empty set (0.00 sec)
