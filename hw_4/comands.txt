@@ -1,0 +1,95 @@
+select Host,User FROM mysql.user;
+sudo vi /etc/ssh/sshd_config
+shift i -> esc :w :q
+ssh admin@192.168.56.81
+sudo yum install epel-release
+date
+sudo yum -y update tzdata
+sudo rm -f /etc/localtime
+sudo ln -s /usr/share/zoneinfo/Europe/Moscow /etc/localtime
+sudo yum -y install chrony
+systemctl enable chronyd
+systemctl start chronyd
+systemctl status chronyd -l
+date
+sudo rpm -Uvh http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+sudo yum install nginx nano php72 php72-php-fpm
+sudo ln -s /usr/bin/php72 /usr/bin/php
+ls -lah /usr/bin | grep php
+sudo nano /etc/opt/remi/php72/php-fpm.d/www.conf
+sudo nano /etc/selinux/config
+sudo mkdir /var/www/
+sudo mkdir /var/www/slave.local/
+sudo chown -R admin:nginx /var/www/slave.local/
+ls -la /var/www/slave.local/
+chmod 0775 -R /var/www/slave.local/
+sudo nano /etc/nginx/conf.d/slave.local.conf
+sudo chown -R admin:nginx /etc/nginx/conf.d/
+chmod 0775 -R /etc/nginx/conf.d/
+ls -la /etc/nginx/conf.d/
+sudo nano /etc/nginx/nginx.conf
+sudo nginx -t
+sudo nano /var/www/slave.local/index.php
+systemctl restart php72-php-fpm
+sudo systemctl enable php72-php-fpm
+systemctl restart nginx
+sudo systemctl enable nginx
+systemctl status php72-php-fpm.service
+systemctl status nginx
+sudo firewall-cmd --zone=public --permanent --add-service=http
+sudo firewall-cmd --zone=public --permanent --add-service=https
+sudo nano /private/etc/hosts
+sudo yum install https://repo.percona.com/yum/percona-release-latest.noarch.rpm
+sudo percona-release setup ps80
+sudo yum install percona-server-server
+sudo service mysql start
+sudo service mysql status
+sudo cat /var/log/mysqld.log | grep password
+mysql -u root -p
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'Rtn1D0*Jd2Tfc';
+sudo firewall-cmd --permanent --add-port=3306/tcp
+ping 192.168.56.80
+ping 192.168.56.81
+sudo nano /etc/my.cnf
+service mysql restart
+CREATE USER 'slave_user'@'%' IDENTIFIED BY '1qaz@WSX';
+GRANT replication slave ON *.* TO 'slave_user'@'%';
+FLUSH PRIVILEGES;
+show databases;
+use employees;
+FLUSH TABLES WITH READ LOCK;
+SHOW MASTER STATUS;
+UNLOCK TABLES;
+cd /var/www/mysite.local/dump/
+mysqldump -u root -p employees > employees.sql
+sudo mkdir /var/www/slave.local/dump
+sudo chown -R admin:admin /var/www/slave.local/dump
+scp -r /Users/konstantinlevchenko/Downloads/employees.sql admin@192.168.56.81:/var/www/slave.local/dump/
+ls -la /var/www/slave.local/dump/
+create database employees;
+mysql -u root -p -f employees < /var/www/slave.local/dump/employees.sql
+show databases;
+use employees;
+show tables;
+CHANGE MASTER TO MASTER_HOST='192.168.56.80', MASTER_USER='slave_user', MASTER_PASSWORD='1qaz@WSX', MASTER_LOG_FILE='mysql-bin.000001', MASTER_LOG_POS=867;
+START SLAVE;
+show slave status \G;
+sudo yum install telnet telnet-server -y
+telnet 192.168.56.80 3306
+sudo iptables -I OUTPUT -p tcp -m tcp --dport 3306 -j ACCEPT
+sudo iptables -I INPUT -p tcp -m tcp --dport 3306 -j ACCEPT
+ALTER USER 'slave_user'@'%' IDENTIFIED WITH mysql_native_password BY '1qaz@WSX';
+show slave status \G;
+stop slave;
+SHOW MASTER STATUS\G;
+show variables like 'server_id';
+set global server_id=2;
+CHANGE MASTER TO MASTER_HOST='192.168.56.80', MASTER_USER='slave_user', MASTER_PASSWORD='1qaz@WSX', MASTER_LOG_FILE='mysql-bin.000001', MASTER_LOG_POS=156;
+START SLAVE;
+show slave status \G;
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password;
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'Rtn1D0*Jd2Tfc';
+SHOW COLUMNS FROM employees;
+select emp_no from employees;
+delete from employees where emp_no = 498646;
+select * from employees where emp_no = 498646;
