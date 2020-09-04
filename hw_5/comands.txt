@@ -1,0 +1,27 @@
+ssh admin@192.168.56.80
+sudo yum install memcached php72-php-pecl-memcached
+systemctl enable memcached
+systemctl start memcached
+sudo systemctl restart php72-php-fpm
+sudo netstat -tap | grep memcached
+sudo netstat -tulpn | grep memcached
+nano /var/www/mysite.local/index.php
+rm -rf /var/www/mysite.local/log/*
+ll /var/www/mysite.local/log
+rm -rf /var/www/mysite.local/traces/*
+ll /var/www/mysite.local/traces
+ll /var/www/mysite.local/log
+cat /var/www/mysite.local/log/debug.log
+sudo yum install redis php72-php-pecl-redis -y
+sudo systemctl enable redis
+sudo systemctl restart redis
+sudo systemctl restart php72-php-fpm
+sudo netstat -tulpn | grep redis
+systemctl status memcached
+sudo systemctl status redis.service
+redis-cli ping
+sudo nano /etc/redis.conf
+redis-cli
+set key1 10
+get key1
+echo -n > /var/www/mysite.local/index.php

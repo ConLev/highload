@@ -1,0 +1,247 @@
+Last login: Thu Sep  3 18:32:40 on console
+konstantinlevchenko@Konstantin ~ % ssh admin@192.168.56.80
+admin@192.168.56.80's password: 
+Last login: Sat Aug 29 07:59:58 2020 from 192.168.56.1
+[admin@web ~]$  sudo yum install memcached php72-php-pecl-memcached
+[sudo] пароль для admin: 
+Загружены модули: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirror.corbina.net
+ * epel: mirror.logol.ru
+ * extras: mirror.logol.ru
+ * remi-safe: mirror.awanti.com
+ * updates: mirror.logol.ru
+Разрешение зависимостей
+--> Проверка сценария
+---> Пакет memcached.x86_64 0:1.4.15-10.el7_3.1 помечен для установки
+--> Обработка зависимостей: libevent-2.0.so.5()(64bit) пакета: memcached-1.4.15-10.el7_3.1.x86_64
+---> Пакет php72-php-pecl-memcached.x86_64 0:3.1.5-1.el7.remi помечен для установки
+--> Обработка зависимостей: fastlz(x86-64) пакета: php72-php-pecl-memcached-3.1.5-1.el7.remi.x86_64
+--> Обработка зависимостей: libmemcached-opt-libs(x86-64) пакета: php72-php-pecl-memcached-3.1.5-1.el7.remi.x86_64
+--> Обработка зависимостей: php72-php-pecl-igbinary(x86-64) пакета: php72-php-pecl-memcached-3.1.5-1.el7.remi.x86_64
+--> Обработка зависимостей: php72-php-pecl-msgpack(x86-64) пакета: php72-php-pecl-memcached-3.1.5-1.el7.remi.x86_64
+--> Проверка сценария
+---> Пакет fastlz.x86_64 0:0.1.0-0.1.20070619svnrev12.el7 помечен для установки
+---> Пакет libevent.x86_64 0:2.0.21-4.el7 помечен для установки
+---> Пакет libmemcached-opt-libs.x86_64 0:1.0.18-2.el7.remi помечен для установки
+---> Пакет php72-php-pecl-igbinary.x86_64 0:3.1.4-1.el7.remi помечен для установки
+---> Пакет php72-php-pecl-msgpack.x86_64 0:2.1.1-1.el7.remi помечен для установки
+--> Проверка зависимостей окончена
+
+Зависимости определены
+
+================================================================================
+ Package                  Архитектура
+                                 Версия                         Репозиторий 
+                                                                          Размер
+================================================================================
+Установка:
+ memcached                x86_64 1.4.15-10.el7_3.1              base       85 k
+ php72-php-pecl-memcached x86_64 3.1.5-1.el7.remi               remi-safe  69 k
+Установка зависимостей:
+ fastlz                   x86_64 0.1.0-0.1.20070619svnrev12.el7 epel      9.8 k
+ libevent                 x86_64 2.0.21-4.el7                   base      214 k
+ libmemcached-opt-libs    x86_64 1.0.18-2.el7.remi              remi-safe 127 k
+ php72-php-pecl-igbinary  x86_64 3.1.4-1.el7.remi               remi-safe  67 k
+ php72-php-pecl-msgpack   x86_64 2.1.1-1.el7.remi               remi-safe  43 k
+
+Итого за операцию
+================================================================================
+Установить  2 пакета (+5 зависимых)
+
+Объем загрузки: 614 k
+Объем изменений: 1.7 M
+Is this ok [y/d/N]: y
+Downloading packages:
+(1/7): php72-php-pecl-igbinary-3.1.4-1.el7.remi.x86_64.rpm |  67 kB   00:00     
+(2/7): libevent-2.0.21-4.el7.x86_64.rpm                    | 214 kB   00:00     
+(3/7): fastlz-0.1.0-0.1.20070619svnrev12.el7.x86_64.rpm    | 9.8 kB   00:01     
+(4/7): php72-php-pecl-memcached-3.1.5-1.el7.remi.x86_64.rp |  69 kB   00:00     
+(5/7): memcached-1.4.15-10.el7_3.1.x86_64.rpm              |  85 kB   00:00     
+(6/7): libmemcached-opt-libs-1.0.18-2.el7.remi.x86_64.rpm  | 127 kB   00:00     
+(7/7): php72-php-pecl-msgpack-2.1.1-1.el7.remi.x86_64.rpm  |  43 kB   00:00     
+--------------------------------------------------------------------------------
+Общий размер                                       449 kB/s | 614 kB  00:01     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Установка   : libevent-2.0.21-4.el7.x86_64                                1/7 
+  Установка   : libmemcached-opt-libs-1.0.18-2.el7.remi.x86_64              2/7 
+  Установка   : fastlz-0.1.0-0.1.20070619svnrev12.el7.x86_64                3/7 
+  Установка   : php72-php-pecl-msgpack-2.1.1-1.el7.remi.x86_64              4/7 
+  Установка   : php72-php-pecl-igbinary-3.1.4-1.el7.remi.x86_64             5/7 
+  Установка   : php72-php-pecl-memcached-3.1.5-1.el7.remi.x86_64            6/7 
+  Установка   : memcached-1.4.15-10.el7_3.1.x86_64                          7/7 
+  Проверка    : libmemcached-opt-libs-1.0.18-2.el7.remi.x86_64              1/7 
+  Проверка    : php72-php-pecl-igbinary-3.1.4-1.el7.remi.x86_64             2/7 
+  Проверка    : memcached-1.4.15-10.el7_3.1.x86_64                          3/7 
+  Проверка    : libevent-2.0.21-4.el7.x86_64                                4/7 
+  Проверка    : php72-php-pecl-msgpack-2.1.1-1.el7.remi.x86_64              5/7 
+  Проверка    : fastlz-0.1.0-0.1.20070619svnrev12.el7.x86_64                6/7 
+  Проверка    : php72-php-pecl-memcached-3.1.5-1.el7.remi.x86_64            7/7 
+
+Установлено:
+  memcached.x86_64 0:1.4.15-10.el7_3.1                                          
+  php72-php-pecl-memcached.x86_64 0:3.1.5-1.el7.remi                            
+
+Установлены зависимости:
+  fastlz.x86_64 0:0.1.0-0.1.20070619svnrev12.el7                                
+  libevent.x86_64 0:2.0.21-4.el7                                                
+  libmemcached-opt-libs.x86_64 0:1.0.18-2.el7.remi                              
+  php72-php-pecl-igbinary.x86_64 0:3.1.4-1.el7.remi                             
+  php72-php-pecl-msgpack.x86_64 0:2.1.1-1.el7.remi                              
+
+Выполнено!
+
+[admin@web ~]$ systemctl enable memcached
+==== AUTHENTICATING FOR org.freedesktop.systemd1.manage-unit-files ===
+Для управления файлами конфигурации системных служб и юнитов, необходимо пройти аутентификацию.
+Authenticating as: admin
+Password: 
+==== AUTHENTICATION COMPLETE ===
+==== AUTHENTICATING FOR org.freedesktop.systemd1.reload-daemon ===
+Чтобы заставить systemd перечитать конфигурацию, необходимо пройти аутентификацию.
+Authenticating as: admin
+Password: 
+==== AUTHENTICATION COMPLETE ===
+[admin@web ~]$ systemctl start memcached
+==== AUTHENTICATING FOR org.freedesktop.systemd1.manage-units ===
+Для управления системными службами и юнитами, необходимо пройти аутентификацию.
+Authenticating as: admin
+Password: 
+==== AUTHENTICATION COMPLETE ===
+[admin@web ~]$ sudo systemctl restart php72-php-fpm
+[sudo] пароль для admin: 
+[admin@web ~]$ sudo netstat -tap | grep memcached
+tcp        0      0 0.0.0.0:memcache        0.0.0.0:*               LISTEN      1052/memcached      
+tcp6       0      0 [::]:memcache           [::]:*                  LISTEN      1052/memcached    
+[admin@web ~]$ sudo netstat -tulpn | grep memcached
+tcp        0      0 0.0.0.0:11211           0.0.0.0:*               LISTEN      1052/memcached      
+tcp6       0      0 :::11211                :::*                    LISTEN      1052/memcached      
+udp        0      0 0.0.0.0:11211           0.0.0.0:*                           1052/memcached      
+udp6       0      0 :::11211                :::*                                1052/memcached
+
+[admin@web log]$ ll /var/www/mysite.local/traces
+итого 868
+-rw-r--r-- 1 nginx nginx 888611 сен  4 08:16 trace.2991569888.1403.xt
+[admin@web log]$ ll /var/www/mysite.local/log
+итого 28
+-rw-r--r-- 1 nginx nginx 100 сен  4 08:16 alert.log
+-rw-r--r-- 1 nginx nginx 439 сен  4 08:16 debug.log
+-rw-r--r-- 1 nginx nginx  54 сен  4 08:16 emergency.log
+-rw-r--r-- 1 nginx nginx 146 сен  4 08:16 error.log
+-rw-r--r-- 1 nginx nginx 288 сен  4 08:16 info.log
+-rw-r--r-- 1 nginx nginx 244 сен  4 08:16 notice.log
+-rw-r--r-- 1 nginx nginx 196 сен  4 08:16 warning.log
+[admin@web log]$ cat /var/www/mysite.local/log/debug.log
+[2020-09-04 08:16:06] name.INFO: info [] []
+[2020-09-04 08:16:06] name.DEBUG: debug [] []
+[2020-09-04 08:16:06] name.ERROR: error [] []
+[2020-09-04 08:16:06] name.WARNING: warning [] []
+[2020-09-04 08:16:06] name.EMERGENCY: emergency [] []
+[2020-09-04 08:16:06] name.NOTICE: notice [] []
+[2020-09-04 08:16:06] name.ALERT: alert [] []
+[2020-09-04 08:16:06] name.DEBUG: 737392 [] []
+[2020-09-04 08:16:06] name.DEBUG: 0.077111005783081 [] []
+
+[admin@web log]$ sudo yum install redis php72-php-pecl-redis -y
+[sudo] пароль для admin: 
+Загружены модули: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirror.docker.ru
+ * epel: mirror.cherryservers.com
+ * extras: mirror.reconn.ru
+ * remi-safe: mirror.reconn.ru
+ * updates: mirror.reconn.ru
+Разрешение зависимостей
+--> Проверка сценария
+---> Пакет php72-php-pecl-redis.x86_64 0:3.1.6-1.el7.remi помечен для установки
+---> Пакет redis.x86_64 0:3.2.12-2.el7 помечен для установки
+--> Обработка зависимостей: libjemalloc.so.1()(64bit) пакета: redis-3.2.12-2.el7.x86_64
+--> Проверка сценария
+---> Пакет jemalloc.x86_64 0:3.6.0-3.el7 помечен для установки
+--> Проверка зависимостей окончена
+
+Зависимости определены
+
+================================================================================
+ Package               Архитектура
+                               Версия               Репозиторий           Размер
+================================================================================
+Установка:
+ php72-php-pecl-redis  x86_64  3.1.6-1.el7.remi     remi-safe             156 k
+ redis                 x86_64  3.2.12-2.el7         epel                  544 k
+Установка зависимостей:
+ jemalloc              x86_64  3.6.0-3.el7          tools-release-x86_64  110 k
+
+Итого за операцию
+================================================================================
+Установить  2 пакета (+1 зависимый)
+
+Объем загрузки: 810 k
+Объем изменений: 2.0 M
+Downloading packages:
+(1/3): php72-php-pecl-redis-3.1.6-1.el7.remi.x86_64.rpm    | 156 kB   00:00     
+(2/3): jemalloc-3.6.0-3.el7.x86_64.rpm                     | 110 kB   00:00     
+(3/3): redis-3.2.12-2.el7.x86_64.rpm                       | 544 kB   00:02     
+--------------------------------------------------------------------------------
+Общий размер                                       348 kB/s | 810 kB  00:02     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Установка   : jemalloc-3.6.0-3.el7.x86_64                                 1/3 
+  Установка   : redis-3.2.12-2.el7.x86_64                                   2/3 
+  Установка   : php72-php-pecl-redis-3.1.6-1.el7.remi.x86_64                3/3 
+  Проверка    : jemalloc-3.6.0-3.el7.x86_64                                 1/3 
+  Проверка    : redis-3.2.12-2.el7.x86_64                                   2/3 
+  Проверка    : php72-php-pecl-redis-3.1.6-1.el7.remi.x86_64                3/3 
+
+Установлено:
+  php72-php-pecl-redis.x86_64 0:3.1.6-1.el7.remi   redis.x86_64 0:3.2.12-2.el7  
+
+Установлены зависимости:
+  jemalloc.x86_64 0:3.6.0-3.el7                                                 
+
+Выполнено!
+[admin@web log]$ sudo systemctl enable redis
+Created symlink from /etc/systemd/system/multi-user.target.wants/redis.service to /usr/lib/systemd/system/redis.service.
+[admin@web log]$ sudo systemctl restart redis
+[admin@web log]$ sudo systemctl restart php72-php-fpm
+
+[admin@web log]$ sudo netstat -tulpn | grep redis
+tcp        0      0 127.0.0.1:6379          0.0.0.0:*               LISTEN      1866/redis-server 1 
+
+[admin@web log]$ systemctl status memcached
+● memcached.service - Memcached
+   Loaded: loaded (/usr/lib/systemd/system/memcached.service; enabled; vendor preset: disabled)
+   Active: active (running) since Пн 2020-08-24 18:26:55 MSK; 1 weeks 3 days ago
+ Main PID: 1052 (memcached)
+   CGroup: /system.slice/memcached.service
+           └─1052 /usr/bin/memcached -u memcached -p 11211 -m 64 -c 1024
+
+авг 24 18:26:55 web.local systemd[1]: Started Memcached.
+[admin@web log]$ sudo systemctl status redis.service
+[sudo] пароль для admin: 
+● redis.service - Redis persistent key-value database
+   Loaded: loaded (/usr/lib/systemd/system/redis.service; enabled; vendor preset: disabled)
+  Drop-In: /etc/systemd/system/redis.service.d
+           └─limit.conf
+   Active: active (running) since Пт 2020-09-04 08:25:21 MSK; 36min ago
+ Main PID: 1866 (redis-server)
+   CGroup: /system.slice/redis.service
+           └─1866 /usr/bin/redis-server 127.0.0.1:6379
+
+сен 04 08:25:21 web.local systemd[1]: Starting Redis persistent key-value....
+сен 04 08:25:21 web.local systemd[1]: Started Redis persistent key-value ....
+Hint: Some lines were ellipsized, use -l to show in full.
+[admin@web log]$ redis-cli ping
+PONG
+
+[admin@web log]$ sudo nano /etc/redis.conf
+admin@web log]$ redis-cli
+127.0.0.1:6379> set key1 10
+OK
+127.0.0.1:6379> get key1
+"10"
