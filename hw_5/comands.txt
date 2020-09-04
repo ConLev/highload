@@ -25,3 +25,18 @@ redis-cli
 set key1 10
 get key1
 echo -n > /var/www/mysite.local/index.php
+
+rm -rf /var/www/mysite.local/log/*
+rm -rf /var/www/mysite.local/traces/*
+sudo nano /etc/nginx/conf.d/mysite.local.conf
+nano /var/www/mysite.local/App/Classes/DB.php
+scp /Users/konstantinlevchenko/Documents/programing/web_developer/php2/data/geek_brains_shop.sql admin@192.168.56.80:/var/www/mysite.local/dump/
+nano /var/www/mysite.local/dump/geek_brains_shop.sql
+mysql -u root -p < /var/www/mysite.local/dump/geek_brains_shop.sql
+cd App/Controllers/
+nano ProductsController.php
+
+redis-cli
+KEYS '*'
+ll log/
+cat log/debug.log

@@ -245,3 +245,24 @@ admin@web log]$ redis-cli
 OK
 127.0.0.1:6379> get key1
 "10"
+
+[admin@web ~]$ redis-cli
+127.0.0.1:6379> KEYS '*'
+(empty list or set)
+127.0.0.1:6379> KEYS '*'
+1) "4"
+127.0.0.1:6379> 
+
+[admin@web mysite.local]$ ll log/
+итого 0
+[admin@web mysite.local]$ ll log/
+итого 4
+-rw-r--r-- 1 nginx nginx 306 сен  4 18:33 debug.log
+[admin@web mysite.local]$ cat log/debug.log
+[2020-09-04 18:32:58] name.DEBUG: debug [] []
+[2020-09-04 18:32:58] name.DEBUG: 1603400 [] []
+[2020-09-04 18:32:58] name.DEBUG: 0.0051529407501221 [] []
+[2020-09-04 18:33:15] name.DEBUG: debug [] []
+[2020-09-04 18:33:15] name.DEBUG: 1519760 [] []
+[2020-09-04 18:33:15] name.DEBUG: 0.0034041404724121 [] []
+[admin@web mysite.local]$ 

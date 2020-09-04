@@ -1,0 +1,38 @@
+{% extends 'index.html' %}
+{% block content %}
+<article>
+    <h3 class="heading-items">Featured Items</h3>
+    <p class="tac">Shop for items based on what we featured in this week</p>
+    <div class="box-product">
+        {% include 'productsList.html' %}
+    </div>
+    <input class="next_page" type="button" name="next_page" value="Next page" data-page="{{page}}">
+</article>
+{% endblock %}
+{% block script %}
+<script src="/js/jquery-3.3.1.min.js"></script>
+<script src="/js/main.js"></script>
+<script>
+    $(document).ready(() => {
+
+        //Функция AJAX загрузки товаров
+        function getProducts() {
+            $.ajax({
+                url: "/products/index/?rawProducts=1&page=" + ++currentPage,
+                success: function (data) {
+                    if (data.length) {
+                        $productsList.append(data);
+                    } else {
+                        $nextPage.hide();
+                    }
+                }
+            })
+        }
+
+        const $productsList = $('.box-product');
+        const $nextPage = $('.next_page');
+        let currentPage = 0;
+        $nextPage.on('click', getProducts);
+    });
+</script>
+{% endblock %}
