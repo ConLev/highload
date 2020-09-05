@@ -1,0 +1,25 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="shopping-cart_wrapper">
+    <div class="products-box-header">
+        <span>Product Details</span>
+        <span class="unite-price-header">unite Price</span>
+        <span class="quantity-header">Quantity</span>
+        <span class="shipping-header">shipping</span>
+        <span class="subtotal-header">Subtotal</span>
+        <span class="action-header">ACTION</span>
+    </div>
+    <div class="products-box">
+        {% include 'cartItems.html' %}
+    </div>
+    <div class="shopping-cart-button">
+        <span><a href="#" class="shopping-cart-button_clear">CLEAR SHOPPING CART</a></span>
+        <span><a href="#" class="shopping-cart-button_createOrder">Create order</a></span>
+        <span><a href="/products/" class="shopping-cart-button_continue">CONTINUE SHOPPING</a></span>
+    </div>
+</div>
+{% endblock %}
+{% block script %}
+<script src="/js/jquery-3.3.1.min.js"></script>
+<script src="/js/main.js"></script>
+{% endblock %}
