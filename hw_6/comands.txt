@@ -1,0 +1,89 @@
+sudo yum install siege
+cd /etc/siege
+ls
+sudo nano siegerc
+siege -b -c10 -t60S http://constlev.ru/family
+siege -b -c10 -t60S 192.168.56.80/products
+siege -b -c100 -t60S 192.168.56.80/products
+siege -b -c1000 -t60S 192.168.56.80/products
+siege -b -c100 -t60S http://constlev.ru/family
+siege -b -c1000 -t60S http://constlev.ru/family
+
+cd /etc/nginx/conf.d/
+ls -la
+nano upstream.conf
+ls -la
+chmod 0775 -R upstream.conf
+
+sudo nano /etc/hosts
+
+scp admin@192.168.56.80:/etc/nginx/conf.d/upstream.conf /Users/konstantinlevchenko/Documents/programing/web_developer/highload/hw_6/
+
+scp admin@192.168.56.80:/etc/hosts /Users/konstantinlevchenko/Documents/programing/web_developer/highload/hw_6/
+
+nano mysite.local.conf
+nano slave.local.conf
+
+scp admin@192.168.56.80:/etc/nginx/conf.d/mysite.local.conf /Users/konstantinlevchenko/Documents/programing/web_developer/highload/hw_6/
+
+scp admin@192.168.56.81:/etc/nginx/conf.d/slave.local.conf /Users/konstantinlevchenko/Documents/programing/web_developer/highload/hw_6/
+
+nginx -V 2>&1|xargs -n1|grep module
+
+sudo yum clean packages
+sudo yum autoremove
+
+sudo firewall-cmd --permanent --add-port=8080/tcp
+sudo firewall-cmd --reload
+
+scp /var/www/mysite.local/dump/geek_brains_shop.sql admin@192.168.56.81:/var/www/slave.local/dump/geek_brains_shop.sql
+
+scp -r /var/www/mysite.local/App admin@192.168.56.81:/var/www/slave.local/
+scp -r /var/www/mysite.local/public admin@192.168.56.81:/var/www/slave.local/
+scp /var/www/mysite.local/composer.json admin@192.168.56.81:/var/www/slave.local/
+scp -r /var/www/mysite.local/config admin@192.168.56.81:/var/www/slave.local/
+scp -r /var/www/mysite.local/engine admin@192.168.56.81:/var/www/slave.local/
+scp -r /var/www/mysite.local/templates admin@192.168.56.81:/var/www/slave.local/
+scp -r /var/www/mysite.local/vendor admin@192.168.56.81:/var/www/slave.local/
+
+mysql -u root -p < /var/www/slave.local/dump/geek_brains_shop.sql
+sudo yum install php72-php-mysqlnd
+
+sudo yum install php72-php-mysqlnd
+systemctl restart nginx
+sudo systemctl restart php72-php-fpm
+
+nano upstream.conf
+echo -n > /var/log/nginx/access.log
+systemctl restart nginx
+
+siege -b -c1000 -t60S mysite.local/products
+
+ifconfig
+sudo tail /var/log/nginx/access.log
+
+php72 -i | grep "Loaded Configuration File"
+
+sudo nano /etc/opt/remi/php72/php.ini
+session.save_handler = memcached
+session.save_path = "127.0.0.1:11211"
+
+sudo nano /etc/opt/remi/php72/php.d/50-memcached.ini
+sudo nano /etc/opt/remi/php72/php-fpm.d/www.conf
+
+systemctl restart php72-php-fpm
+systemctl restart nginx
+
+memcached-tool localhost:11211 dump | less
+
+telnet 127.0.0.1 11211
+stats items
+flush_all
+
+ln -s /var/www/mysite.local/public/ /home/admin/
+ln -s /var/www/slave.local/public/ /home/admin/
+nano /etc/nginx/conf.d/mysite.local.conf
+nano /etc/nginx/conf.d/slave.local.conf
+sudo chmod -R 0775 /home/admin/
+sudo chown -h admin:nginx public
+systemctl restart nginx

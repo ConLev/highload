@@ -1,0 +1,415 @@
+Last login: Fri Sep  4 21:38:24 on ttys002
+konstantinlevchenko@Konstantin ~ % ssh admin@192.168.56.80
+admin@192.168.56.80's password: 
+Last login: Fri Sep  4 18:14:57 2020 from 192.168.56.1
+[admin@web ~]$ sudo yum install siege
+[sudo] пароль для admin: 
+Загружены модули: fastestmirror
+Loading mirror speeds from cached hostfile
+epel/x86_64/metalink                                     |  15 kB     00:00     
+ * base: mirror.docker.ru
+ * epel: mirror.cherryservers.com
+ * extras: mirror.reconn.ru
+ * remi-safe: mirror.reconn.ru
+ * updates: mirror.reconn.ru
+base                                                     | 3.6 kB     00:00     
+epel                                                     | 4.7 kB     00:00     
+extras                                                   | 2.9 kB     00:00     
+prel-release-x86_64                                      | 2.9 kB     00:00     
+ps-80-release-x86_64                                     | 2.9 kB     00:00     
+remi-safe                                                | 3.0 kB     00:00     
+tools-release-x86_64                                     | 2.9 kB     00:00     
+updates                                                  | 2.9 kB     00:00     
+(1/3): remi-safe/primary_db                                | 1.8 MB   00:00     
+(2/3): epel/x86_64/updateinfo                              | 1.0 MB   00:01     
+(3/3): epel/x86_64/primary_db                              | 6.9 MB   00:04     
+Разрешение зависимостей
+--> Проверка сценария
+---> Пакет siege.x86_64 0:4.0.5-1.el7 помечен для установки
+--> Обработка зависимостей: libjoedog >= 0.1.2 пакета: siege-4.0.5-1.el7.x86_64
+--> Проверка сценария
+---> Пакет libjoedog.x86_64 0:0.1.2-1.el7 помечен для установки
+--> Проверка зависимостей окончена
+
+Зависимости определены
+
+================================================================================
+ Package            Архитектура     Версия                  Репозиторий   Размер
+================================================================================
+Установка:
+ siege              x86_64          4.0.5-1.el7             epel          112 k
+Установка зависимостей:
+ libjoedog          x86_64          0.1.2-1.el7             epel           19 k
+
+Итого за операцию
+================================================================================
+Установить  1 пакет (+1 зависимый)
+
+Объем загрузки: 131 k
+Объем изменений: 287 k
+Is this ok [y/d/N]: y
+Downloading packages:
+(1/2): siege-4.0.5-1.el7.x86_64.rpm                        | 112 kB   00:00     
+(2/2): libjoedog-0.1.2-1.el7.x86_64.rpm                    |  19 kB   00:00     
+--------------------------------------------------------------------------------
+Общий размер                                       173 kB/s | 131 kB  00:00     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Установка   : libjoedog-0.1.2-1.el7.x86_64                                1/2 
+  Установка   : siege-4.0.5-1.el7.x86_64                                    2/2 
+  Проверка    : siege-4.0.5-1.el7.x86_64                                    1/2 
+  Проверка    : libjoedog-0.1.2-1.el7.x86_64                                2/2 
+
+Установлено:
+  siege.x86_64 0:4.0.5-1.el7                                                    
+
+Установлены зависимости:
+  libjoedog.x86_64 0:0.1.2-1.el7                                                
+
+Выполнено!
+
+[admin@web ~]$ cd /etc/siege
+[admin@web siege]$ ls
+siegerc  urls.txt
+[admin@web siege]$ sudo nano siegerc
+[sudo] пароль для admin:
+ 
+logfile = /var/www/mysite.local/log/siege.log
+limit = 10000
+
+[admin@web siege]$ siege -b -c10 -t60S http://constlev.ru/family/
+
+{	"transactions":			        1725,
+	"availability":			      100.00,
+	"elapsed_time":			       59.01,
+	"data_transferred":		     1074.03,
+	"response_time":		        0.34,
+	"transaction_rate":		       29.23,
+	"throughput":			       18.20,
+	"concurrency":			        9.94,
+	"successful_transactions":	        1725,
+	"failed_transactions":		           0,
+	"longest_transaction":		        5.57,
+	"shortest_transaction":		        0.01
+}
+
+[admin@web siege]$ siege -b -c10 -t60S 192.168.56.80/products
+
+{	"transactions":			        9400,
+	"availability":			      100.00,
+	"elapsed_time":			       59.65,
+	"data_transferred":		      402.98,
+	"response_time":		        0.06,
+	"transaction_rate":		      157.59,
+	"throughput":			        6.76,
+	"concurrency":			        9.95,
+	"successful_transactions":	        9400,
+	"failed_transactions":		           0,
+	"longest_transaction":		        0.69,
+	"shortest_transaction":		        0.00
+}
+
+[admin@web siege]$ siege -b -c100 -t60S 192.168.56.80/products
+
+{	"transactions":			        9256,
+	"availability":			      100.00,
+	"elapsed_time":			       59.84,
+	"data_transferred":		      396.81,
+	"response_time":		        0.62,
+	"transaction_rate":		      154.68,
+	"throughput":			        6.63,
+	"concurrency":			       95.71,
+	"successful_transactions":	        9256,
+	"failed_transactions":		           0,
+	"longest_transaction":		        6.98,
+	"shortest_transaction":		        0.00
+}
+
+[admin@web siege]$ siege -b -c1000 -t60S 192.168.56.80/products
+
+================================================================
+WARNING: The number of users is capped at 255.  To increase this
+         limit, search your .siegerc file for 'limit' and change
+         its value. Make sure you read the instructions there...
+================================================================
+
+{	"transactions":			        1672,
+	"availability":			       60.23,
+	"elapsed_time":			       10.98,
+	"data_transferred":		       71.84,
+	"response_time":		        0.97,
+	"transaction_rate":		      152.28,
+	"throughput":			        6.54,
+	"concurrency":			      147.43,
+	"successful_transactions":	        1672,
+	"failed_transactions":		        1104,
+	"longest_transaction":		        9.56,
+	"shortest_transaction":		        0.00
+}
+
+[admin@web siege]$ siege -b -c100 -t60S http://constlev.ru/family/
+
+{	"transactions":			        1666,
+	"availability":			      100.00,
+	"elapsed_time":			       59.29,
+	"data_transferred":		     1044.99,
+	"response_time":		        3.37,
+	"transaction_rate":		       28.10,
+	"throughput":			       17.63,
+	"concurrency":			       94.70,
+	"successful_transactions":	        1666,
+	"failed_transactions":		           0,
+	"longest_transaction":		       13.15,
+	"shortest_transaction":		        0.06
+}
+
+[admin@web siege]$ siege -b -c1000 -t60S http://constlev.ru/family/
+
+================================================================
+WARNING: The number of users is capped at 255.  To increase this
+         limit, search your .siegerc file for 'limit' and change
+         its value. Make sure you read the instructions there...
+================================================================
+[error] Address resolution failed at sock.c:158 with the following error:: No such file or directory
+[error] Name or service not known: No such file or directory
+
+{	"transactions":			        2509,
+	"availability":			       95.44,
+	"elapsed_time":			       59.84,
+	"data_transferred":		      902.70,
+	"response_time":		        4.59,
+	"transaction_rate":		       41.93,
+	"throughput":			       15.09,
+	"concurrency":			      192.51,
+	"successful_transactions":	        2509,
+	"failed_transactions":		         120,
+	"longest_transaction":		       24.95,
+	"shortest_transaction":		        0.02
+}
+
+[admin@web ~]$ cd /etc/nginx/conf.d/
+[admin@web conf.d]$ ls -la
+итого 12
+drwxrwxr-x. 2 admin nginx   54 авг 24 18:43 .
+drwxrwxr-x. 4 admin nginx 4096 сен  5 09:22 ..
+-rwxrwxr-x  1 admin nginx  849 сен  5 09:20 mysite.local.conf
+-rwxrwxr-x  1 admin nginx  626 сен  5 08:30 phpMyAdmin.conf
+
+[admin@web nginx]$ nano upstream.conf
+
+[admin@web conf.d]$ ls -la
+итого 16
+drwxrwxr-x. 2 admin nginx   75 сен  5 09:27 .
+drwxrwxr-x. 4 admin nginx 4096 сен  5 09:22 ..
+-rwxrwxr-x  1 admin nginx  849 сен  5 09:20 mysite.local.conf
+-rwxrwxr-x  1 admin nginx  626 сен  5 08:30 phpMyAdmin.conf
+-rw-rw-r--  1 admin admin  183 сен  5 09:27 upstream.conf
+
+[admin@web conf.d]$ chmod 0775 -R upstream.conf
+
+[admin@web conf.d]$ ls -la
+итого 16
+drwxrwxr-x. 2 admin nginx   75 сен  5 09:27 .
+drwxrwxr-x. 4 admin nginx 4096 сен  5 09:22 ..
+-rwxrwxr-x  1 admin nginx  849 сен  5 09:20 mysite.local.conf
+-rwxrwxr-x  1 admin nginx  626 сен  5 08:30 phpMyAdmin.conf
+-rwxrwxr-x  1 admin admin  183 сен  5 09:27 upstream.conf
+
+[admin@web log]$ sudo nano /etc/hosts
+
+konstantinlevchenko@Konstantin ~ % scp admin@192.168.56.80:/etc/nginx/conf.d/upstream.conf /Users/konstantinlevchenko/Documents/programing/web_developer/highload/hw_6/
+admin@192.168.56.80's password: 
+upstream.conf                                 100%  183   259.0KB/s   00:00
+
+konstantinlevchenko@Konstantin ~ % scp admin@192.168.56.80:/etc/hosts /Users/konstantinlevchenko/Documents/programing/web_developer/highload/hw_6/
+admin@192.168.56.80's password: 
+hosts                                         100%  218   436.3KB/s   00:00
+
+[admin@web conf.d]$ nano mysite.local.conf
+
+[admin@web2 ~]$ cd /etc/nginx/conf.d/
+[admin@web2 conf.d]$ ls -la
+итого 8
+drwxrwxr-x. 2 admin nginx   30 авг 31 09:06 .
+drwxr-xr-x. 4 root  root  4096 авг 31 07:09 ..
+-rwxrwxr-x  1 admin nginx  773 авг 31 09:06 slave.local.conf
+[admin@web2 conf.d]$ nano slave.local.conf
+
+konstantinlevchenko@Konstantin ~ % scp admin@192.168.56.80:/etc/nginx/conf.d/mysite.local.conf /Users/konstantinlevchenko/Documents/programing/web_developer/highload/hw_6/
+admin@192.168.56.80's password: 
+mysite.local.conf                             100%  849   995.3KB/s   00:00
+
+konstantinlevchenko@Konstantin ~ % scp admin@192.168.56.81:/etc/nginx/conf.d/slave.local.conf /Users/konstantinlevchenko/Documents/programing/web_developer/highload/hw_6/
+admin@192.168.56.81's password: 
+slave.local.conf                              100%  775    41.4KB/s   00:00
+
+[admin@web dump]$ scp /var/www/mysite.local/dump/geek_brains_shop.sql admin@192.168.56.81:/var/www/slave.local/dump/geek_brains_shop.sql
+The authenticity of host '192.168.56.81 (192.168.56.81)' can't be established.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '192.168.56.81' (ECDSA) to the list of known hosts.
+admin@192.168.56.81's password: 
+geek_brains_shop.sql                          100%   33KB   3.7MB/s   00:00
+
+[admin@web2 conf.d]$ sudo yum install php72-php-mysqlnd
+Загружены модули: fastestmirror
+Loading mirror speeds from cached hostfile
+epel/x86_64/metalink                                     |  30 kB     00:00     
+ * base: mirror.yandex.ru
+ * epel: mirror.yandex.ru
+ * extras: mirror.yandex.ru
+ * remi-safe: remi.mirror.karneval.cz
+ * updates: mirror.yandex.ru
+base                                                     | 3.6 kB     00:00     
+epel                                                     | 4.7 kB     00:00     
+extras                                                   | 2.9 kB     00:00     
+prel-release-x86_64                                      | 2.9 kB     00:00     
+ps-80-release-x86_64                                     | 2.9 kB     00:00     
+remi-safe                                                | 3.0 kB     00:00     
+tools-release-x86_64                                     | 2.9 kB     00:00     
+updates                                                  | 2.9 kB     00:00     
+(1/6): prel-release-x86_64/7/primary_db                    | 1.9 kB   00:00     
+(2/6): tools-release-x86_64/7/primary_db                   |  78 kB   00:00     
+(3/6): updates/7/x86_64/primary_db                         | 4.5 MB   00:01     
+(4/6): epel/x86_64/primary_db                              | 6.9 MB   00:02     
+(5/6): remi-safe/primary_db                                | 1.8 MB   00:03     
+(6/6): epel/x86_64/updateinfo                              | 1.0 MB   00:03     
+Разрешение зависимостей
+--> Проверка сценария
+---> Пакет php72-php-mysqlnd.x86_64 0:7.2.33-1.el7.remi помечен для установки
+--> Обработка зависимостей: php72-php-pdo(x86-64) = 7.2.33-1.el7.remi пакета: php72-php-mysqlnd-7.2.33-1.el7.remi.x86_64
+--> Проверка сценария
+---> Пакет php72-php-pdo.x86_64 0:7.2.33-1.el7.remi помечен для установки
+--> Проверка зависимостей окончена
+
+Зависимости определены
+
+================================================================================
+ Package                Архитектура Версия                 Репозиторий    Размер
+================================================================================
+Установка:
+ php72-php-mysqlnd      x86_64      7.2.33-1.el7.remi      remi-safe      182 k
+Установка зависимостей:
+ php72-php-pdo          x86_64      7.2.33-1.el7.remi      remi-safe      116 k
+
+Итого за операцию
+================================================================================
+Установить  1 пакет (+1 зависимый)
+
+Объем загрузки: 298 k
+Объем изменений: 620 k
+Is this ok [y/d/N]: y
+Downloading packages:
+(1/2): php72-php-pdo-7.2.33-1.el7.remi.x86_64.rpm          | 116 kB   00:00     
+(2/2): php72-php-mysqlnd-7.2.33-1.el7.remi.x86_64.rpm      | 182 kB   00:00     
+--------------------------------------------------------------------------------
+Общий размер                                       273 kB/s | 298 kB  00:01     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Установка   : php72-php-pdo-7.2.33-1.el7.remi.x86_64                      1/2 
+  Установка   : php72-php-mysqlnd-7.2.33-1.el7.remi.x86_64                  2/2 
+  Проверка    : php72-php-pdo-7.2.33-1.el7.remi.x86_64                      1/2 
+  Проверка    : php72-php-mysqlnd-7.2.33-1.el7.remi.x86_64                  2/2 
+
+Установлено:
+  php72-php-mysqlnd.x86_64 0:7.2.33-1.el7.remi                                  
+
+Установлены зависимости:
+  php72-php-pdo.x86_64 0:7.2.33-1.el7.remi                                      
+
+Выполнено!
+
+[admin@web conf.d]$ siege -b -c1000 -t60S mysite.local/products/
+
+================================================================
+WARNING: The number of users is capped at 255.  To increase this
+         limit, search your .siegerc file for 'limit' and change
+         its value. Make sure you read the instructions there...
+================================================================
+[alert] socket: select and discovered it's not ready sock.c:384: Connection timed out
+[alert] socket: read check timed out(30) sock.c:273: Connection timed out
+
+{	"transactions":			       14128,
+	"availability":			       99.68,
+	"elapsed_time":			       59.79,
+	"data_transferred":		      597.18,
+	"response_time":		        0.93,
+	"transaction_rate":		      236.29,
+	"throughput":			        9.99,
+	"concurrency":			      218.76,
+	"successful_transactions":	       14128,
+	"failed_transactions":		          46,
+	"longest_transaction":		       17.26,
+	"shortest_transaction":		        0.12
+}
+
+[admin@web ~]$ ifconfig
+enp0s8: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.56.80  netmask 255.255.255.0  broadcast 192.168.56.255
+        inet6 fe80::a00:27ff:fe33:e753  prefixlen 64  scopeid 0x20<link>
+        ether 08:00:27:33:e7:53  txqueuelen 1000  (Ethernet)
+        RX packets 670279  bytes 852269971 (812.7 MiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 191987  bytes 53580500 (51.0 MiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+
+[admin@web2 conf.d]$ ifconfig
+enp0s8: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.56.81  netmask 255.255.255.0  broadcast 192.168.56.255
+        inet6 fe80::a00:27ff:fe36:49ab  prefixlen 64  scopeid 0x20<link>
+        ether 08:00:27:36:49:ab  txqueuelen 1000  (Ethernet)
+        RX packets 303096  bytes 204134746 (194.6 MiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 654205  bytes 1005697482 (959.1 MiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+[admin@web2 conf.d]$ sudo tail /var/log/nginx/access.log
+[sudo] пароль для admin: 
+192.168.56.80 - - [01/Sep/2020:02:49:33 +0300] "GET /products/ HTTP/1.0" 200 3965 "-" "Mozilla/5.0 (redhat-x86_64-linux-gnu) Siege/4.0.5" "-"
+192.168.56.80 - - [01/Sep/2020:02:49:33 +0300] "GET /img/product_6.jpg HTTP/1.0" 200 52071 "-" "Mozilla/5.0 (redhat-x86_64-linux-gnu) Siege/4.0.5" "-"
+192.168.56.80 - - [01/Sep/2020:02:49:33 +0300] "GET /img/product_5.jpg HTTP/1.0" 200 71323 "-" "Mozilla/5.0 (redhat-x86_64-linux-gnu) Siege/4.0.5" "-"
+192.168.56.80 - - [01/Sep/2020:02:49:33 +0300] "GET /img/product_6.jpg HTTP/1.0" 200 52071 "-" "Mozilla/5.0 (redhat-x86_64-linux-gnu) Siege/4.0.5" "-"
+192.168.56.80 - - [01/Sep/2020:02:49:33 +0300] "GET /js/main.js HTTP/1.0" 200 4214 "-" "Mozilla/5.0 (redhat-x86_64-linux-gnu) Siege/4.0.5" "-"
+192.168.56.80 - - [01/Sep/2020:02:49:33 +0300] "GET /img/product_5.jpg HTTP/1.0" 200 71323 "-" "Mozilla/5.0 (redhat-x86_64-linux-gnu) Siege/4.0.5" "-"
+192.168.56.80 - - [01/Sep/2020:02:49:33 +0300] "GET /img/product_6.jpg HTTP/1.0" 200 52071 "-" "Mozilla/5.0 (redhat-x86_64-linux-gnu) Siege/4.0.5" "-"
+192.168.56.80 - - [01/Sep/2020:02:49:33 +0300] "GET /js/jquery-3.3.1.min.js HTTP/1.0" 200 86927 "-" "Mozilla/5.0 (redhat-x86_64-linux-gnu) Siege/4.0.5" "-"
+192.168.56.80 - - [01/Sep/2020:02:49:33 +0300] "GET /products/ HTTP/1.0" 200 3965 "-" "Mozilla/5.0 (redhat-x86_64-linux-gnu) Siege/4.0.5" "-"
+192.168.56.80 - - [01/Sep/2020:02:49:33 +0300] "GET /products/ HTTP/1.0" 200 3965 "-" "Mozilla/5.0 (redhat-x86_64-linux-gnu) Siege/4.0.5" "-"
+
+[admin@web php-fpm.d]$ php72 -i | grep "Loaded Configuration File"
+Loaded Configuration File => /etc/opt/remi/php72/php.ini
+
+[admin@web php-fpm.d]$ nano /etc/nginx/conf.d/upstream.conf
+upstream backend {
+  hash $scheme$request_uri;
+  server mysite.local:8080;
+  server slave.local:8080;
+}
+
+server {
+  listen 80;
+  server_name mysite.local;
+
+  location / {
+    proxy_pass  http://backend;
+  }
+}
+
+[admin@web php-fpm.d]$ memcached-tool localhost:11211 dump | less
+Dumping memcache contents
+  Number of buckets: 1
+  Number of items  : 1
+Dumping bucket 2 - 1 total items
+add memc.sess.key.v2in2r8fi7qfslhdhfe1he272l 0 1598431339 0
+
+[admin@web2 conf.d]$ memcached-tool localhost:11211 dump | less
+Dumping memcache contents
+  Number of buckets: 1
+  Number of items  : 1
+Dumping bucket 2 - 1 total items
+add memc.sess.key.v2in2r8fi7qfslhdhfe1he272l 0 1598945345 0
+
