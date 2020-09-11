@@ -1,0 +1,49 @@
+rm public
+mkdir public
+sudo chown -R admin:nginx public
+ls -l
+sudo yum install composer
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
+sudo mv composer.phar /usr/bin/composer
+composer require cboden/ratchet
+nano server.php
+nano chat.php
+php server.php
+telnet 127.0.0.1 8181
+sudo yum install screen
+screen
+php server.php
+crl a d
+screen -ls
+pkill screen
+nohup php server.php &
+ps -ef | grep 2726
+cat nohup.out
+telnet 127.0.0.1 8181
+kill 2726
+sudo yum install rabbitmq-server
+sudo rabbitmq-plugins enable rabbitmq_management
+sudo service rabbitmq-server restart
+sudo systemctl status rabbitmq-server
+sudo netstat -tulpn
+sudo netstat -tulpn | grep beam
+sudo firewall-cmd --permanent --add-port=15672/tcp
+sudo firewall-cmd --reload
+
+php -v
+which php
+rpm -qc php-common
+sudo find / -name php.ini
+sudo yum install php54-php-bcmath.x86_64 -y
+sudo ln -s /opt/remi/php54/root/usr/lib64/php/modules/bcmath.so /usr/lib64/php/modules/bcmath.so
+find / -name bcmath.ini
+sudo ln -s /opt/remi/php54/root/etc/php.d/bcmath.ini /etc/php.d/bcmath.ini
+composer require php-amqplib/php-amqplib
+nano index.php
+
+scp -r admin@192.168.56.80:/home/ /Users/konstantinlevchenko/Documents/programing/web_developer/highload/hw_7/
+
+sudo yum clean packages
+sudo yum autoremove
