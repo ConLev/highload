@@ -824,3 +824,18 @@ Zend Engine v3.2.0, Copyright (c) 1998-2018 Zend Technologies
 [admin@web public]$ sudo find / -name 20-bcmath.ini
 /etc/opt/remi/php72/php.d/20-bcmath.ini
 
+[admin@web public]$ php receive_order.php
+ [*] Waiting for messages. To exit press CTRL+C
+ [x] Received new order id = 1
+
+[admin@web public]$ php receive_payment.php
+ [*] Waiting for messages. To exit press CTRL+C
+ [x] Received order id = 1 has been paid
+
+[admin@web public]$ php receive_delivery.php
+ [*] Waiting for messages. To exit press CTRL+C
+ [x] Received the order id = 1 has been sent for delivery
+
+[admin@web public]$ php receive_review.php
+ [*] Waiting for messages. To exit press CTRL+C
+ [x] Received order id = 1 received, awaiting feedback from the client

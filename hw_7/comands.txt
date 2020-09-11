@@ -42,8 +42,23 @@ find / -name bcmath.ini
 sudo ln -s /opt/remi/php54/root/etc/php.d/bcmath.ini /etc/php.d/bcmath.ini
 composer require php-amqplib/php-amqplib
 nano index.php
+nano send_order.php
+nano receive_order.php
+php send_order.php
+php receive_order.php
+nano send_payment.php
+php send_payment.php
+nano receive_payment.php
+php receive_payment.php
+nano send_delivery.php
+php send_delivery.php
+nano receive_delivery.php
+php receive_delivery.php
+nano send_review.php
+php send_review.php
+nano receive_review.php
+php receive_review.php
 
 scp -r admin@192.168.56.80:/home/ /Users/konstantinlevchenko/Documents/programing/web_developer/highload/hw_7/
 
-sudo yum clean packages
-sudo yum autoremove
+scp -r admin@192.168.56.80:/home/admin/public/ /Users/konstantinlevchenko/Documents/programing/web_developer/highload/hw_7/home/admin/public/
