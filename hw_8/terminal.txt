@@ -1,0 +1,854 @@
+[admin@web ~]$ top
+top - 11:04:09 up  3:42,  1 user,  load average: 0,03, 0,02, 0,05
+Tasks: 104 total,   3 running, 101 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0,3 us,  0,0 sy,  0,0 ni, 99,7 id,  0,0 wa,  0,0 hi,  0,0 si,  0,0 st
+KiB Mem :  1014764 total,   180872 free,   545548 used,   288344 buff/cache
+KiB Swap:   839676 total,   839676 free,        0 used.   321928 avail Mem 
+
+  PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND     
+ 1262 mysql     20   0 1351432 389584  15704 S  0,7 38,4   1:32.49 mysqld      
+ 1055 redis     20   0  143076   5808   1452 S  0,3  0,6   0:13.16 redis-server
+    1 root      20   0  125344   3868   2572 S  0,0  0,4   0:01.42 systemd     
+    2 root      20   0       0      0      0 S  0,0  0,0   0:00.00 kthreadd    
+    4 root       0 -20       0      0      0 S  0,0  0,0   0:00.00 kworker/0:0H
+    5 root      20   0       0      0      0 S  0,0  0,0   0:00.00 kworker/u2:0
+    6 root      20   0       0      0      0 S  0,0  0,0   0:00.20 ksoftirqd/0 
+    7 root      rt   0       0      0      0 S  0,0  0,0   0:00.00 migration/0 
+    8 root      20   0       0      0      0 S  0,0  0,0   0:00.00 rcu_bh      
+    9 root      20   0       0      0      0 R  0,0  0,0   0:04.83 rcu_sched   
+   10 root       0 -20       0      0      0 S  0,0  0,0   0:00.00 lru-add-dra+
+   11 root      rt   0       0      0      0 S  0,0  0,0   0:00.10 watchdog/0  
+   13 root      20   0       0      0      0 S  0,0  0,0   0:00.00 kdevtmpfs   
+   14 root       0 -20       0      0      0 S  0,0  0,0   0:00.00 netns       
+   15 root      20   0       0      0      0 S  0,0  0,0   0:00.00 khungtaskd  
+   16 root       0 -20       0      0      0 S  0,0  0,0   0:00.00 writeback   
+   17 root       0 -20       0      0      0 S  0,0  0,0   0:00.00 kintegrityd
+
+[admin@web2 ~]$ top
+top - 11:10:07 up  3:48,  1 user,  load average: 0,02, 0,07, 0,07
+Tasks: 105 total,   2 running, 103 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0,0 us,  0,0 sy,  0,0 ni,100,0 id,  0,0 wa,  0,0 hi,  0,0 si,  0,0 st
+KiB Mem :  1014764 total,   127852 free,   564368 used,   322544 buff/cache
+KiB Swap:   839676 total,   839676 free,        0 used.   303124 avail Mem 
+
+  PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND     
+ 1333 mysql     20   0 1351456 407556  15828 S  0,7 40,2   1:34.48 mysqld      
+ 1596 root      20   0       0      0      0 R  0,3  0,0   0:00.30 kworker/0:3 
+    1 root      20   0  125348   3872   2572 S  0,0  0,4   0:01.75 systemd     
+    2 root      20   0       0      0      0 S  0,0  0,0   0:00.00 kthreadd    
+    4 root       0 -20       0      0      0 S  0,0  0,0   0:00.00 kworker/0:0H
+    6 root      20   0       0      0      0 S  0,0  0,0   0:00.18 ksoftirqd/0 
+    7 root      rt   0       0      0      0 S  0,0  0,0   0:00.00 migration/0 
+    8 root      20   0       0      0      0 S  0,0  0,0   0:00.00 rcu_bh      
+    9 root      20   0       0      0      0 S  0,0  0,0   0:05.14 rcu_sched   
+   10 root       0 -20       0      0      0 S  0,0  0,0   0:00.00 lru-add-dra+
+   11 root      rt   0       0      0      0 S  0,0  0,0   0:00.10 watchdog/0  
+   13 root      20   0       0      0      0 S  0,0  0,0   0:00.00 kdevtmpfs   
+   14 root       0 -20       0      0      0 S  0,0  0,0   0:00.00 netns       
+   15 root      20   0       0      0      0 S  0,0  0,0   0:00.00 khungtaskd  
+   16 root       0 -20       0      0      0 S  0,0  0,0   0:00.00 writeback   
+   17 root       0 -20       0      0      0 S  0,0  0,0   0:00.00 kintegrityd 
+   18 root       0 -20       0      0      0 S  0,0  0,0   0:00.00 bioset  
+
+[admin@web ~]$ sudo yum install htop
+[sudo] пароль для admin: 
+Загружены модули: fastestmirror
+Loading mirror speeds from cached hostfile
+epel/x86_64/metalink                                     |  28 kB     00:00     
+ * base: mirror.yandex.ru
+ * epel: mirror.yandex.ru
+ * extras: mirror.reconn.ru
+ * remi-safe: mirror.reconn.ru
+ * updates: mirror.reconn.ru
+base                                                     | 3.6 kB     00:00     
+epel                                                     | 4.7 kB     00:00     
+extras                                                   | 2.9 kB     00:00     
+prel-release-x86_64                                      | 2.9 kB     00:00     
+ps-80-release-x86_64                                     | 2.9 kB     00:00     
+remi-safe                                                | 3.0 kB     00:00     
+tools-release-x86_64                                     | 2.9 kB     00:00     
+updates                                                  | 2.9 kB     00:00     
+(1/3): epel/x86_64/updateinfo                              | 1.0 MB   00:00     
+(2/3): remi-safe/primary_db                                | 1.8 MB   00:01     
+(3/3): epel/x86_64/primary_db                              | 6.9 MB   00:02     
+Разрешение зависимостей
+--> Проверка сценария
+---> Пакет htop.x86_64 0:2.2.0-3.el7 помечен для установки
+--> Проверка зависимостей окончена
+
+Зависимости определены
+
+================================================================================
+ Package         Архитектура       Версия                 Репозиторий     Размер
+================================================================================
+Установка:
+ htop            x86_64            2.2.0-3.el7            epel            103 k
+
+Итого за операцию
+================================================================================
+Установить  1 пакет
+
+Объем загрузки: 103 k
+Объем изменений: 218 k
+Is this ok [y/d/N]: y
+Downloading packages:
+htop-2.2.0-3.el7.x86_64.rpm                                | 103 kB   00:00     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Установка   : htop-2.2.0-3.el7.x86_64                                     1/1 
+  Проверка    : htop-2.2.0-3.el7.x86_64                                     1/1 
+
+Установлено:
+  htop.x86_64 0:2.2.0-3.el7                                                     
+
+Выполнено!
+
+ htop            x86_64            2.2.0-3.el7            epel            103 k
+
+Итого за операцию
+================================================================================
+Установить  1 пакет
+
+Объем загрузки: 103 k
+Объем изменений: 218 k
+Is this ok [y/d/N]: y
+Downloading packages:
+htop-2.2.0-3.el7.x86_64.rpm                                | 103 kB   00:00     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Установка   : htop-2.2.0-3.el7.x86_64                                     1/1 
+  Проверка    : htop-2.2.0-3.el7.x86_64                                     1/1 
+
+Установлено:
+  htop.x86_64 0:2.2.0-3.el7                                                     
+
+[admin@web ~]$ htop
+  CPU[|                         0.7%]   Tasks: 34, 62 thr; 1 running
+  Mem[|||||||||||||||||||||541M/991M]   Load average: 0.01 0.04 0.05 
+  Swp[|                    264K/820M]   Uptime: 04:01:42
+
+  PID USER      PRI  NI  VIRT   RES   SHR S CPU% MEM%   TIME+  Command
+ 1262 mysql      20   0 1319M  380M 15704 S  0.7 38.4  1:39.47 /usr/sbin/mysqld
+ 1648 admin      20   0  119M  2044  1488 R  0.7  0.2  0:00.22 htop
+ 1055 redis      20   0  139M  5808  1452 S  0.0  0.6  0:14.16 /usr/bin/redis-se
+ 1279 mysql      20   0 1319M  380M 15704 R  0.0 38.4  1:08.71 /usr/sbin/mysqld
+ 1276 mysql      20   0 1319M  380M 15704 S  0.0 38.4  0:01.91 /usr/sbin/mysqld
+ 1057 root       20   0  209M  3676  2836 S  0.0  0.4  0:01.24 /usr/sbin/rsyslog
+ 1280 mysql      20   0 1319M  380M 15704 S  0.0 38.4  0:02.67 /usr/sbin/mysqld
+ 1054 memcached  20   0  337M  2724  1192 S  0.0  0.3  0:00.60 /usr/bin/memcache
+ 1079 root       20   0  209M  3676  2836 S  0.0  0.4  0:01.17 /usr/sbin/rsyslog
+ 1298 mysql      20   0 1319M  380M 15704 S  0.0 38.4  0:03.57 /usr/sbin/mysqld
+ 1271 mysql      20   0 1319M  380M 15704 S  0.0 38.4  0:00.69 /usr/sbin/mysqld
+ 1283 mysql      20   0 1319M  380M 15704 S  0.0 38.4  0:02.75 /usr/sbin/mysqld
+ 1315 admin	 20   0  157M  2336   960 S  0.0  0.2  0:00.07 sshd: admin@pts/0
+    1 root       20   0  122M  3868  2572 S  0.0  0.4  0:01.45 /usr/lib/systemd/
+  486 root       20   0 37232  2748  2436 S  0.0  0.3  0:00.50 /usr/lib/systemd/
+  501 root       20   0  121M  1304   956 S  0.0  0.1  0:00.00 /usr/sbin/lvmetad
+  513 root       20   0 44976  1896  1320 S  0.0  0.2  0:00.07 /usr/lib/systemd/
+                                                  
+[admin@web2 ~]$ htop
+
+  CPU[|                         0.7%]   Tasks: 35, 62 thr; 1 running
+  Mem[|||||||||||||||||||||560M/991M]   Load average: 0.39 0.13 0.08 
+  Swp[                       0K/820M]   Uptime: 04:03:20
+
+  PID USER      PRI  NI  VIRT   RES   SHR S CPU% MEM%   TIME+  Command
+ 1333 mysql      20   0 1319M  398M 15828 S  0.7 40.2  1:39.99 /usr/sbin/mysqld
+ 1809 admin	 20   0  119M  2040  1488 R  0.7  0.2  0:00.07 htop
+ 1353 mysql      20   0 1319M  398M 15828 S  0.0 40.2  0:02.65 /usr/sbin/mysqld
+ 1350 mysql      20   0 1319M  398M 15828 R  0.7 40.2  1:10.69 /usr/sbin/mysqld
+ 1355 mysql      20   0 1319M  398M 15828 S  0.0 40.2  0:03.14 /usr/sbin/mysqld
+    1 root       20   0  122M  3872  2572 S  0.0  0.4  0:01.78 /usr/lib/systemd/
+  479 root       20   0 37232  2716  2400 S  0.0  0.3  0:00.50 /usr/lib/systemd/
+  495 root       20   0  185M  1340   956 S  0.0  0.1  0:00.00 /usr/sbin/lvmetad
+  513 root       20   0 44976  1896  1320 S  0.0  0.2  0:00.16 /usr/lib/systemd/
+  613 root       16  -4 55532   848   448 S  0.0  0.1  0:00.00 /sbin/auditd
+  612 root       16  -4 55532   848   448 S  0.0  0.1  0:00.01 /sbin/auditd
+  658 polkitd    20   0  598M 11968  4908 S  0.0  1.2  0:00.00 /usr/lib/polkit-1
+  660 polkitd    20   0  598M 11968  4908 S  0.0  1.2  0:00.00 /usr/lib/polkit-1
+  662 polkitd    20   0  598M 11968  4908 S  0.0  1.2  0:00.00 /usr/lib/polkit-1
+  663 polkitd    20   0  598M 11968  4908 S  0.0  1.2  0:00.00 /usr/lib/polkit-1
+  667 polkitd    20   0  598M 11968  4908 S  0.0  1.2  0:00.00 /usr/lib/polkit-1
+  668 polkitd    20   0  598M 11968  4908 S  0.0  1.2  0:00.00 /usr/lib/polkit-1
+
+ [admin@web ~]$ vmstat
+procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
+ r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st
+ 1  0    264 135472    164 332004    0    0    26     8  176  395  0  0 100  0  0
+
+[admin@web2 ~]$ vmstat
+procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
+ r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st
+ 3  0      0 139512    164 309200    0    0    28     8  175  393  0  0 100  0  0
+
+[admin@web2 ~]$ sudo rpm -Uvh https://repo.zabbix.com/zabbix/4.0/rhel/7/x86_64/zabbix-release-4.0-2.el7.noarch.rpm
+[sudo] пароль для admin: 
+Загружается https://repo.zabbix.com/zabbix/4.0/rhel/7/x86_64/zabbix-release-4.0-2.el7.noarch.rpm
+предупреждение: /var/tmp/rpm-tmp.sBHzXy: Заголовок V4 RSA/SHA512 Signature, key ID a14fe591: NOKEY
+Подготовка...               ################################# [100%]
+Обновление / установка...
+   1:zabbix-release-4.0-2.el7         ################################# [100%]
+[admin@web2 ~]$ sudo yum clean all
+Загружены модули: fastestmirror
+Сброс источников:base epel extras prel-release-x86_64 ps-80-release-x86_64
+               : remi-safe tools-release-x86_64 updates zabbix
+               : zabbix-non-supported
+Cleaning up list of fastest mirrors
+
+[admin@web2 ~]$ sudo yum install zabbix-server-mysql zabbix-web-mysql zabbix-apache-conf zabbix-agent
+Загружены модули: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirror.corbina.net
+ * epel: mirrors.powernet.com.ru
+ * extras: mirror.corbina.net
+ * remi-safe: mirror.awanti.com
+ * updates: mirror.corbina.net
+Пакета с названием zabbix-apache-conf не найдено.
+Разрешение зависимостей
+--> Проверка сценария
+---> Пакет zabbix-agent.x86_64 0:4.0.24-1.el7 помечен для установки
+---> Пакет zabbix-server-mysql.x86_64 0:4.0.24-1.el7 помечен для установки
+--> Обработка зависимостей: fping пакета: zabbix-server-mysql-4.0.24-1.el7.x86_64
+--> Обработка зависимостей: libnetsnmp.so.31()(64bit) пакета: zabbix-server-mysql-4.0.24-1.el7.x86_64
+--> Обработка зависимостей: libOpenIPMIposix.so.0()(64bit) пакета: zabbix-server-mysql-4.0.24-1.el7.x86_64
+--> Обработка зависимостей: libiksemel.so.3()(64bit) пакета: zabbix-server-mysql-4.0.24-1.el7.x86_64
+--> Обработка зависимостей: libOpenIPMI.so.0()(64bit) пакета: zabbix-server-mysql-4.0.24-1.el7.x86_64
+--> Обработка зависимостей: libodbc.so.2()(64bit) пакета: zabbix-server-mysql-4.0.24-1.el7.x86_64
+---> Пакет zabbix-web-mysql.noarch 0:4.0.24-1.el7 помечен для установки
+--> Обработка зависимостей: zabbix-web = 4.0.24-1.el7 пакета: zabbix-web-mysql-4.0.24-1.el7.noarch
+--> Обработка зависимостей: php-mysql пакета: zabbix-web-mysql-4.0.24-1.el7.noarch
+--> Проверка сценария
+---> Пакет OpenIPMI-libs.x86_64 0:2.0.27-1.el7 помечен для установки
+--> Обработка зависимостей: OpenIPMI-modalias = 2.0.27-1.el7 пакета: OpenIPMI-libs-2.0.27-1.el7.x86_64
+---> Пакет fping.x86_64 0:3.10-4.el7 помечен для установки
+---> Пакет iksemel.x86_64 0:1.4-2.el7.centos помечен для установки
+--> Обработка зависимостей: libgnutls.so.28(GNUTLS_1_4)(64bit) пакета: iksemel-1.4-2.el7.centos.x86_64
+--> Обработка зависимостей: libgnutls.so.28()(64bit) пакета: iksemel-1.4-2.el7.centos.x86_64
+---> Пакет net-snmp-libs.x86_64 1:5.7.2-48.el7_8.1 помечен для установки
+---> Пакет php-mysql.x86_64 0:5.4.16-48.el7 помечен для установки
+--> Обработка зависимостей: php-pdo(x86-64) = 5.4.16-48.el7 пакета: php-mysql-5.4.16-48.el7.x86_64
+---> Пакет unixODBC.x86_64 0:2.3.1-14.el7 помечен для установки
+--> Обработка зависимостей: libltdl.so.7()(64bit) пакета: unixODBC-2.3.1-14.el7.x86_64
+---> Пакет zabbix-web.noarch 0:4.0.24-1.el7 помечен для установки
+--> Обработка зависимостей: php >= 5.4 пакета: zabbix-web-4.0.24-1.el7.noarch
+--> Обработка зависимостей: httpd пакета: zabbix-web-4.0.24-1.el7.noarch
+--> Обработка зависимостей: php-gd пакета: zabbix-web-4.0.24-1.el7.noarch
+--> Обработка зависимостей: php-mbstring пакета: zabbix-web-4.0.24-1.el7.noarch
+--> Обработка зависимостей: php-bcmath пакета: zabbix-web-4.0.24-1.el7.noarch
+--> Обработка зависимостей: php-ldap пакета: zabbix-web-4.0.24-1.el7.noarch
+--> Обработка зависимостей: php-xml пакета: zabbix-web-4.0.24-1.el7.noarch
+--> Проверка сценария
+---> Пакет OpenIPMI-modalias.x86_64 0:2.0.27-1.el7 помечен для установки
+--> Обработка зависимостей: OpenIPMI пакета: OpenIPMI-modalias-2.0.27-1.el7.x86_64
+---> Пакет gnutls.x86_64 0:3.3.29-9.el7_6 помечен для установки
+--> Обработка зависимостей: trousers >= 0.3.11.2 пакета: gnutls-3.3.29-9.el7_6.x86_64
+--> Обработка зависимостей: libnettle.so.4()(64bit) пакета: gnutls-3.3.29-9.el7_6.x86_64
+--> Обработка зависимостей: libhogweed.so.2()(64bit) пакета: gnutls-3.3.29-9.el7_6.x86_64
+---> Пакет httpd.x86_64 0:2.4.6-93.el7.centos помечен для установки
+--> Обработка зависимостей: httpd-tools = 2.4.6-93.el7.centos пакета: httpd-2.4.6-93.el7.centos.x86_64
+--> Обработка зависимостей: /etc/mime.types пакета: httpd-2.4.6-93.el7.centos.x86_64
+--> Обработка зависимостей: libaprutil-1.so.0()(64bit) пакета: httpd-2.4.6-93.el7.centos.x86_64
+--> Обработка зависимостей: libapr-1.so.0()(64bit) пакета: httpd-2.4.6-93.el7.centos.x86_64
+---> Пакет libtool-ltdl.x86_64 0:2.4.2-22.el7_3 помечен для установки
+---> Пакет php.x86_64 0:5.4.16-48.el7 помечен для установки
+--> Обработка зависимостей: php-common(x86-64) = 5.4.16-48.el7 пакета: php-5.4.16-48.el7.x86_64
+--> Обработка зависимостей: php-cli(x86-64) = 5.4.16-48.el7 пакета: php-5.4.16-48.el7.x86_64
+---> Пакет php-bcmath.x86_64 0:5.4.16-48.el7 помечен для установки
+---> Пакет php-gd.x86_64 0:5.4.16-48.el7 помечен для установки
+--> Обработка зависимостей: libt1.so.5()(64bit) пакета: php-gd-5.4.16-48.el7.x86_64
+---> Пакет php-ldap.x86_64 0:5.4.16-48.el7 помечен для установки
+---> Пакет php-mbstring.x86_64 0:5.4.16-48.el7 помечен для установки
+---> Пакет php-pdo.x86_64 0:5.4.16-48.el7 помечен для установки
+---> Пакет php-xml.x86_64 0:5.4.16-48.el7 помечен для установки
+--> Проверка сценария
+---> Пакет OpenIPMI.x86_64 0:2.0.27-1.el7 помечен для установки
+---> Пакет apr.x86_64 0:1.4.8-5.el7 помечен для установки
+---> Пакет apr-util.x86_64 0:1.5.2-6.el7 помечен для установки
+---> Пакет httpd-tools.x86_64 0:2.4.6-93.el7.centos помечен для установки
+---> Пакет mailcap.noarch 0:2.1.41-2.el7 помечен для установки
+---> Пакет nettle.x86_64 0:2.7.1-8.el7 помечен для установки
+---> Пакет php-cli.x86_64 0:5.4.16-48.el7 помечен для установки
+---> Пакет php-common.x86_64 0:5.4.16-48.el7 помечен для установки
+--> Обработка зависимостей: libzip.so.2()(64bit) пакета: php-common-5.4.16-48.el7.x86_64
+---> Пакет t1lib.x86_64 0:5.1.2-14.el7 помечен для установки
+---> Пакет trousers.x86_64 0:0.3.14-2.el7 помечен для установки
+--> Проверка сценария
+---> Пакет libzip.x86_64 0:0.10.1-8.el7 помечен для установки
+--> Проверка зависимостей окончена
+
+Зависимости определены
+
+================================================================================
+ Package              Архитектура
+                              Версия                Репозиторий           Размер
+================================================================================
+Установка:
+ zabbix-agent         x86_64  4.0.24-1.el7          zabbix                426 k
+ zabbix-server-mysql  x86_64  4.0.24-1.el7          zabbix                2.2 M
+ zabbix-web-mysql     noarch  4.0.24-1.el7          zabbix                 11 k
+Установка зависимостей:
+ OpenIPMI             x86_64  2.0.27-1.el7          base                  243 k
+ OpenIPMI-libs        x86_64  2.0.27-1.el7          base                  523 k
+ OpenIPMI-modalias    x86_64  2.0.27-1.el7          base                   16 k
+ apr                  x86_64  1.4.8-5.el7           base                  103 k
+ apr-util             x86_64  1.5.2-6.el7           base                   92 k
+ fping                x86_64  3.10-4.el7            epel                   46 k
+ gnutls               x86_64  3.3.29-9.el7_6        base                  680 k
+ httpd                x86_64  2.4.6-93.el7.centos   base                  2.7 M
+ httpd-tools          x86_64  2.4.6-93.el7.centos   base                   92 k
+ iksemel              x86_64  1.4-2.el7.centos      zabbix-non-supported   49 k
+ libtool-ltdl         x86_64  2.4.2-22.el7_3        base                   49 k
+ libzip               x86_64  0.10.1-8.el7          base                   48 k
+ mailcap              noarch  2.1.41-2.el7          base                   31 k
+ net-snmp-libs        x86_64  1:5.7.2-48.el7_8.1    updates               751 k
+ nettle               x86_64  2.7.1-8.el7           base                  327 k
+ php                  x86_64  5.4.16-48.el7         base                  1.4 M
+ php-bcmath           x86_64  5.4.16-48.el7         base                   58 k
+ php-cli              x86_64  5.4.16-48.el7         base                  2.7 M
+ php-common           x86_64  5.4.16-48.el7         base                  565 k
+ php-gd               x86_64  5.4.16-48.el7         base                  128 k
+ php-ldap             x86_64  5.4.16-48.el7         base                   53 k
+ php-mbstring         x86_64  5.4.16-48.el7         base                  506 k
+ php-mysql            x86_64  5.4.16-48.el7         base                  102 k
+ php-pdo              x86_64  5.4.16-48.el7         base                   99 k
+ php-xml              x86_64  5.4.16-48.el7         base                  126 k
+ t1lib                x86_64  5.1.2-14.el7          base                  166 k
+ trousers             x86_64  0.3.14-2.el7          base                  289 k
+ unixODBC             x86_64  2.3.1-14.el7          base                  413 k
+ zabbix-web           noarch  4.0.24-1.el7          zabbix                2.9 M
+
+Итого за операцию
+================================================================================
+Установить  3 пакета (+29 зависимых)
+
+Общий размер: 18 M
+Объем загрузки: 2.9 M
+Объем изменений: 64 M
+Is this ok [y/d/N]: y
+Downloading packages:
+Delta RPMs disabled because /usr/bin/applydeltarpm not installed.
+предупреждение: /var/cache/yum/x86_64/7/zabbix/packages/zabbix-web-4.0.24-1.el7.noarch.rpm: Заголовок V4 RSA/SHA512 Signature, key ID a14fe591: NOKEY
+Публичный ключ для zabbix-web-4.0.24-1.el7.noarch.rpm не установлен
+zabbix-web-4.0.24-1.el7.noarch.rpm                         | 2.9 MB   00:02     
+warning: /var/cache/yum/x86_64/7/zabbix-non-supported/packages/iksemel-1.4-2.el7.centos.x86_64.rpm: Header V4 DSA/SHA1 Signature, key ID 79ea5ed4: NOKEY
+Получение ключа из file:///etc/pki/rpm-gpg/RPM-GPG-KEY-ZABBIX
+Импорт GPG ключа 0x79EA5ED4:
+ Владелец   : "Zabbix SIA <packager@zabbix.com>"
+ Отпечаток  : fbab d5fb 2025 5eca b22e e194 d13d 58e4 79ea 5ed4
+ Пакет      : zabbix-release-4.0-2.el7.noarch (installed)
+ Источник   : /etc/pki/rpm-gpg/RPM-GPG-KEY-ZABBIX
+Продолжить? [y/N]: y
+Получение ключа из file:///etc/pki/rpm-gpg/RPM-GPG-KEY-ZABBIX-A14FE591
+Импорт GPG ключа 0xA14FE591:
+ Владелец   : "Zabbix LLC <packager@zabbix.com>"
+ Отпечаток  : a184 8f53 52d0 22b9 471d 83d0 082a b56b a14f e591
+ Пакет      : zabbix-release-4.0-2.el7.noarch (installed)
+ Источник   : /etc/pki/rpm-gpg/RPM-GPG-KEY-ZABBIX-A14FE591
+Продолжить? [y/N]: y
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+ПРЕДУПРЕЖДЕНИЕ: база данных RPM была изменена вне Yum.
+  Установка   : apr-1.4.8-5.el7.x86_64                                     1/32 
+  Установка   : apr-util-1.5.2-6.el7.x86_64                                2/32 
+  Установка   : 1:net-snmp-libs-5.7.2-48.el7_8.1.x86_64                    3/32 
+  Установка   : OpenIPMI-libs-2.0.27-1.el7.x86_64                          4/32 
+  Установка   : OpenIPMI-2.0.27-1.el7.x86_64                               5/32 
+  Установка   : OpenIPMI-modalias-2.0.27-1.el7.x86_64                      6/32 
+  Установка   : httpd-tools-2.4.6-93.el7.centos.x86_64                     7/32 
+  Установка   : libzip-0.10.1-8.el7.x86_64                                 8/32 
+  Установка   : php-common-5.4.16-48.el7.x86_64                            9/32 
+  Установка   : php-xml-5.4.16-48.el7.x86_64                              10/32 
+  Установка   : php-ldap-5.4.16-48.el7.x86_64                             11/32 
+  Установка   : php-pdo-5.4.16-48.el7.x86_64                              12/32 
+  Установка   : php-mysql-5.4.16-48.el7.x86_64                            13/32 
+  Установка   : php-cli-5.4.16-48.el7.x86_64                              14/32 
+  Установка   : php-mbstring-5.4.16-48.el7.x86_64                         15/32 
+  Установка   : php-bcmath-5.4.16-48.el7.x86_64                           16/32 
+  Установка   : t1lib-5.1.2-14.el7.x86_64                                 17/32 
+  Установка   : php-gd-5.4.16-48.el7.x86_64                               18/32 
+  Установка   : libtool-ltdl-2.4.2-22.el7_3.x86_64                        19/32 
+  Установка   : unixODBC-2.3.1-14.el7.x86_64                              20/32 
+  Установка   : fping-3.10-4.el7.x86_64                                   21/32 
+  Установка   : nettle-2.7.1-8.el7.x86_64                                 22/32 
+  Установка   : mailcap-2.1.41-2.el7.noarch                               23/32 
+  Установка   : httpd-2.4.6-93.el7.centos.x86_64                          24/32 
+  Установка   : php-5.4.16-48.el7.x86_64                                  25/32 
+  Установка   : zabbix-web-mysql-4.0.24-1.el7.noarch                      26/32 
+  Установка   : zabbix-web-4.0.24-1.el7.noarch                            27/32 
+  Установка   : trousers-0.3.14-2.el7.x86_64                              28/32 
+  Установка   : gnutls-3.3.29-9.el7_6.x86_64                              29/32 
+  Установка   : iksemel-1.4-2.el7.centos.x86_64                           30/32 
+  Установка   : zabbix-server-mysql-4.0.24-1.el7.x86_64                   31/32 
+  Установка   : zabbix-agent-4.0.24-1.el7.x86_64                          32/32 
+WARNING: ipmi_devintf module isn't available.
+WARNING: ipmi_msghandler module isn't available.
+  Проверка    : trousers-0.3.14-2.el7.x86_64                               1/32 
+  Проверка    : mailcap-2.1.41-2.el7.noarch                                2/32 
+  Проверка    : OpenIPMI-2.0.27-1.el7.x86_64                               3/32 
+  Проверка    : httpd-2.4.6-93.el7.centos.x86_64                           4/32 
+  Проверка    : apr-1.4.8-5.el7.x86_64                                     5/32 
+  Проверка    : unixODBC-2.3.1-14.el7.x86_64                               6/32 
+  Проверка    : iksemel-1.4-2.el7.centos.x86_64                            7/32 
+  Проверка    : nettle-2.7.1-8.el7.x86_64                                  8/32 
+  Проверка    : fping-3.10-4.el7.x86_64                                    9/32 
+  Проверка    : OpenIPMI-modalias-2.0.27-1.el7.x86_64                     10/32 
+  Проверка    : php-xml-5.4.16-48.el7.x86_64                              11/32 
+  Проверка    : php-ldap-5.4.16-48.el7.x86_64                             12/32 
+  Проверка    : zabbix-agent-4.0.24-1.el7.x86_64                          13/32 
+  Проверка    : zabbix-web-4.0.24-1.el7.noarch                            14/32 
+  Проверка    : libtool-ltdl-2.4.2-22.el7_3.x86_64                        15/32 
+  Проверка    : php-mysql-5.4.16-48.el7.x86_64                            16/32 
+  Проверка    : php-5.4.16-48.el7.x86_64                                  17/32 
+  Проверка    : gnutls-3.3.29-9.el7_6.x86_64                              18/32 
+  Проверка    : 1:net-snmp-libs-5.7.2-48.el7_8.1.x86_64                   19/32 
+  Проверка    : t1lib-5.1.2-14.el7.x86_64                                 20/32 
+  Проверка    : php-pdo-5.4.16-48.el7.x86_64                              21/32 
+  Проверка    : zabbix-web-mysql-4.0.24-1.el7.noarch                      22/32 
+  Проверка    : apr-util-1.5.2-6.el7.x86_64                               23/32 
+  Проверка    : php-cli-5.4.16-48.el7.x86_64                              24/32 
+  Проверка    : php-common-5.4.16-48.el7.x86_64                           25/32 
+  Проверка    : zabbix-server-mysql-4.0.24-1.el7.x86_64                   26/32 
+  Проверка    : php-mbstring-5.4.16-48.el7.x86_64                         27/32 
+  Проверка    : php-gd-5.4.16-48.el7.x86_64                               28/32 
+  Проверка    : php-bcmath-5.4.16-48.el7.x86_64                           29/32 
+  Проверка    : libzip-0.10.1-8.el7.x86_64                                30/32 
+  Проверка    : OpenIPMI-libs-2.0.27-1.el7.x86_64                         31/32 
+  Проверка    : httpd-tools-2.4.6-93.el7.centos.x86_64                    32/32 
+
+Установлено:
+  zabbix-agent.x86_64 0:4.0.24-1.el7                                            
+  zabbix-server-mysql.x86_64 0:4.0.24-1.el7                                     
+  zabbix-web-mysql.noarch 0:4.0.24-1.el7                                        
+
+Установлены зависимости:
+  OpenIPMI.x86_64 0:2.0.27-1.el7                                                
+  OpenIPMI-libs.x86_64 0:2.0.27-1.el7                                           
+  OpenIPMI-modalias.x86_64 0:2.0.27-1.el7                                       
+  apr.x86_64 0:1.4.8-5.el7                                                      
+  apr-util.x86_64 0:1.5.2-6.el7                                                 
+  fping.x86_64 0:3.10-4.el7                                                     
+  gnutls.x86_64 0:3.3.29-9.el7_6                                                
+  httpd.x86_64 0:2.4.6-93.el7.centos                                            
+  httpd-tools.x86_64 0:2.4.6-93.el7.centos                                      
+  iksemel.x86_64 0:1.4-2.el7.centos                                             
+  libtool-ltdl.x86_64 0:2.4.2-22.el7_3                                          
+  libzip.x86_64 0:0.10.1-8.el7                                                  
+  mailcap.noarch 0:2.1.41-2.el7                                                 
+  net-snmp-libs.x86_64 1:5.7.2-48.el7_8.1                                       
+  nettle.x86_64 0:2.7.1-8.el7                                                   
+  php.x86_64 0:5.4.16-48.el7                                                    
+  php-bcmath.x86_64 0:5.4.16-48.el7                                             
+  php-cli.x86_64 0:5.4.16-48.el7                                                
+  php-common.x86_64 0:5.4.16-48.el7                                             
+  php-gd.x86_64 0:5.4.16-48.el7                                                 
+  php-ldap.x86_64 0:5.4.16-48.el7                                               
+  php-mbstring.x86_64 0:5.4.16-48.el7                                           
+  php-mysql.x86_64 0:5.4.16-48.el7                                              
+  php-pdo.x86_64 0:5.4.16-48.el7                                                
+  php-xml.x86_64 0:5.4.16-48.el7                                                
+  t1lib.x86_64 0:5.1.2-14.el7                                                   
+  trousers.x86_64 0:0.3.14-2.el7                                                
+  unixODBC.x86_64 0:2.3.1-14.el7                                                
+  zabbix-web.noarch 0:4.0.24-1.el7                                              
+
+Выполнено!
+
+[admin@web2 ~]$ mysql -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 31
+Server version: 8.0.20-11 Percona Server (GPL), Release 11, Revision 5b5a5d2
+
+Copyright (c) 2009-2020 Percona LLC and/or its affiliates
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create database zabbix character set utf8 collate utf8_bin;
+Query OK, 1 row affected, 2 warnings (0.03 sec)
+
+mysql> create user zabbix@localhost identified by '2qaz@WSX';
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> grant all privileges on zabbix.* to zabbix@localhost;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> ALTER USER 'zabbix'@'localhost' IDENTIFIED WITH mysql_native_password BY '2qaz@WSX';
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> quit
+Bye
+
+[admin@web2 ~]$ zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | mysql zabbix -u zabbix -p
+Enter password: 
+[admin@web2 ~]$ sudo nano /etc/zabbix/zabbix_server.conf
+[sudo] пароль для admin: 
+[admin@web2 ~]$ sudo nano /etc/nginx/conf.d/zabbix.local.conf
+
+konstantinlevchenko@Konstantin ~ % scp admin@192.168.56.81:/etc/nginx/conf.d/zabbix.local.conf /Users/konstantinlevchenko/Documents/programing/web_developer/highload/hw_8/
+
+admin@192.168.56.81's password: 
+zabbix.local.conf                             100% 1092     1.6MB/s   00:00 
+
+[admin@web2 ~]$ sudo chown -R admin:nginx /etc/zabbix/web
+[admin@web2 ~]$ ll /etc/zabbix/web
+итого 4
+-rw-r--r-- 1 admin nginx 1036 авг 24 11:09 maintenance.inc.php
+[admin@web2 ~]$ sudo chown -R admin:nginx /usr/share/zabbix
+[admin@web2 ~]$ ll /usr/share/zabbix
+итого 1032
+-rw-r--r--  1 admin nginx 31685 авг 24 11:09 actionconf.php
+-rw-r--r--  1 admin nginx  3565 авг 24 11:09 adm.gui.php
+-rw-r--r--  1 admin nginx  7018 авг 24 11:09 adm.housekeeper.php
+-rw-r--r--  1 admin nginx  4331 авг 24 11:09 adm.iconmapping.php
+-rw-r--r--  1 admin nginx  4451 авг 24 11:09 adm.images.php
+-rw-r--r--  1 admin nginx  3361 авг 24 11:09 adm.macros.php
+-rw-r--r--  1 admin nginx  3637 авг 24 11:09 adm.other.php
+-rw-r--r--  1 admin nginx  7990 авг 24 11:09 adm.regexps.php
+-rw-r--r--  1 admin nginx  5054 авг 24 11:09 adm.triggerdisplayoptions.php
+-rw-r--r--  1 admin nginx  5089 авг 24 11:09 adm.triggerseverities.php
+-rw-r--r--  1 admin nginx  5947 авг 24 11:09 adm.valuemapping.php
+-rw-r--r--  1 admin nginx  1882 авг 24 11:09 adm.workingtime.php
+-rw-r--r--  1 admin nginx  2327 авг 24 11:09 api_jsonrpc.php
+drwxr-xr-x  4 admin nginx    38 сен 12 15:55 app
+-rw-r--r--  1 admin nginx 10407 авг 24 11:09 applications.php
+drwxr-xr-x  5 admin nginx    44 сен 12 15:55 assets
+drwxr-xr-x  2 admin nginx   173 сен 12 15:55 audio
+-rw-r--r--  1 admin nginx  4743 авг 24 11:09 auditacts.php
+-rw-r--r--  1 admin nginx  6285 авг 24 11:09 auditlogs.php
+-rw-r--r--  1 admin nginx  1411 авг 24 11:09 browserwarning.php
+-rw-r--r--  1 admin nginx  5095 авг 24 11:09 chart2.php
+-rw-r--r--  1 admin nginx  6972 авг 24 11:09 chart3.php
+-rw-r--r--  1 admin nginx  5591 авг 24 11:09 chart4.php
+-rw-r--r--  1 admin nginx  5709 авг 24 11:09 chart5.php
+-rw-r--r--  1 admin nginx  3596 авг 24 11:09 chart6.php
+-rw-r--r--  1 admin nginx  3901 авг 24 11:09 chart7.php
+-rw-r--r--  1 admin nginx  4505 авг 24 11:09 chart.php
+-rw-r--r--  1 admin nginx  3439 авг 24 11:09 charts.php
+drwxr-xr-x  2 admin nginx    37 сен 12 15:55 conf
+-rw-r--r--  1 admin nginx  6991 авг 24 11:09 conf.import.php
+-rw-r--r--  1 admin nginx 17421 авг 24 11:09 correlation.php
+-rw-r--r--  1 admin nginx 12372 авг 24 11:09 discoveryconf.php
+-rw-r--r--  1 admin nginx 32102 авг 24 11:09 disc_prototypes.php
+-rw-r--r--  1 admin nginx 32988 авг 24 11:09 favicon.ico
+-rw-r--r--  1 admin nginx 22529 авг 24 11:09 graphs.php
+-rw-r--r--  1 admin nginx  4490 авг 24 11:09 history.php
+-rw-r--r--  1 admin nginx 25157 авг 24 11:09 host_discovery.php
+-rw-r--r--  1 admin nginx  9084 авг 24 11:09 hostgroups.php
+-rw-r--r--  1 admin nginx  5181 авг 24 11:09 hostinventoriesoverview.php
+-rw-r--r--  1 admin nginx  8594 авг 24 11:09 hostinventories.php
+-rw-r--r--  1 admin nginx 15470 авг 24 11:09 host_prototypes.php
+-rw-r--r--  1 admin nginx  3953 авг 24 11:09 host_screen.php
+-rw-r--r--  1 admin nginx 43403 авг 24 11:09 hosts.php
+-rw-r--r--  1 admin nginx 27906 авг 24 11:09 httpconf.php
+-rw-r--r--  1 admin nginx  6592 авг 24 11:09 httpdetails.php
+-rw-r--r--  1 admin nginx  1857 авг 24 11:09 image.php
+-rw-r--r--  1 admin nginx  3315 авг 24 11:09 imgstore.php
+drwxr-xr-x  4 admin nginx  4096 сен 12 15:55 include
+-rw-r--r--  1 admin nginx  2835 авг 24 11:09 index_http.php
+-rw-r--r--  1 admin nginx  3546 авг 24 11:09 index.php
+-rw-r--r--  1 admin nginx 79159 авг 24 11:09 items.php
+drwxr-xr-x  5 admin nginx  4096 сен 12 15:55 js
+-rw-r--r--  1 admin nginx 14764 авг 24 11:09 jsLoader.php
+-rw-r--r--  1 admin nginx 12754 авг 24 11:09 jsrpc.php
+-rw-r--r--  1 admin nginx 25422 авг 24 11:09 latest.php
+drwxr-xr-x  4 admin nginx    43 сен 12 15:55 local
+drwxr-xr-x 35 admin nginx  4096 сен 12 15:55 locale
+-rw-r--r--  1 admin nginx 19924 авг 24 11:09 maintenance.php
+-rw-r--r--  1 admin nginx  6989 авг 24 11:09 map.import.php
+-rw-r--r--  1 admin nginx  2142 авг 24 11:09 map.php
+-rw-r--r--  1 admin nginx  8606 авг 24 11:09 overview.php
+-rw-r--r--  1 admin nginx  6707 авг 24 11:09 profile.php
+-rw-r--r--  1 admin nginx  8430 авг 24 11:09 queue.php
+-rw-r--r--  1 admin nginx 15597 авг 24 11:09 report2.php
+-rw-r--r--  1 admin nginx  8337 авг 24 11:09 report4.php
+-rw-r--r--  1 admin nginx   974 авг 24 11:09 robots.txt
+-rw-r--r--  1 admin nginx 13147 авг 24 11:09 screenconf.php
+-rw-r--r--  1 admin nginx 10448 авг 24 11:09 screenedit.php
+-rw-r--r--  1 admin nginx  6993 авг 24 11:09 screen.import.php
+-rw-r--r--  1 admin nginx  4339 авг 24 11:09 screens.php
+-rw-r--r--  1 admin nginx 13933 авг 24 11:09 search.php
+-rw-r--r--  1 admin nginx 12292 авг 24 11:09 services.php
+-rw-r--r--  1 admin nginx  4336 авг 24 11:09 setup.php
+-rw-r--r--  1 admin nginx 12757 авг 24 11:09 slideconf.php
+-rw-r--r--  1 admin nginx  6486 авг 24 11:09 slides.php
+-rw-r--r--  1 admin nginx  5413 авг 24 11:09 srv_status.php
+-rw-r--r--  1 admin nginx  9243 авг 24 11:09 sysmap.php
+-rw-r--r--  1 admin nginx 16188 авг 24 11:09 sysmaps.php
+-rw-r--r--  1 admin nginx 19479 авг 24 11:09 templates.php
+-rw-r--r--  1 admin nginx  6418 авг 24 11:09 toptriggers.php
+-rw-r--r--  1 admin nginx  5466 авг 24 11:09 tr_events.php
+-rw-r--r--  1 admin nginx 23536 авг 24 11:09 trigger_prototypes.php
+-rw-r--r--  1 admin nginx 31338 авг 24 11:09 triggers.php
+-rw-r--r--  1 admin nginx 15475 авг 24 11:09 usergrps.php
+-rw-r--r--  1 admin nginx 13245 авг 24 11:09 users.php
+-rw-r--r--  1 admin nginx   841 авг 24 11:09 zabbix.php
+[admin@web2 ~]$ systemctl restart nginx
+==== AUTHENTICATING FOR org.freedesktop.systemd1.manage-units ===
+Для управления системными службами и юнитами, необходимо пройти аутентификацию.
+Authenticating as: admin
+Password: 
+==== AUTHENTICATION COMPLETE ===
+
+konstantinlevchenko@Konstantin ~ % sudo nano /private/etc/hosts
+Password:
+konstantinlevchenko@Konstantin ~ % cat /private/etc/hosts
+##
+# Host Database
+#
+# localhost is used to configure the loopback interface
+# when the system is booting.  Do not change this entry.
+##
+127.0.0.1	localhost
+255.255.255.255	broadcasthost
+::1             localhost
+
+# VirtualBox
+192.168.56.80	mysite.local
+192.168.56.80	phpmyadmin.dmosk.local
+192.168.56.81	slave.local
+192.168.56.81   zabbix.local
+
+# Added by Docker Desktop
+# To allow the same kube context to work on the host and the container:
+127.0.0.1 kubernetes.docker.internal
+# End of section
+
+[admin@web2 ~]$ sudo systemctl restart zabbix-server zabbix-agent
+[sudo] пароль для admin: 
+[admin@web2 ~]$ sudo systemctl enable zabbix-server zabbix-agent
+Created symlink from /etc/systemd/system/multi-user.target.wants/zabbix-server.service to /usr/lib/systemd/system/zabbix-server.service.
+Created symlink from /etc/systemd/system/multi-user.target.wants/zabbix-agent.service to /usr/lib/systemd/system/zabbix-agent.service.
+
+[admin@web ~]$ sudo yum install zabbix-agent
+[sudo] пароль для admin: 
+Загружены модули: fastestmirror
+Determining fastest mirrors
+epel/x86_64/metalink                                     |  31 kB     00:00     
+ * base: mirror.yandex.ru
+ * centos-sclo-rh: mirror.reconn.ru
+ * centos-sclo-sclo: mirror.yandex.ru
+ * epel: mirror.yandex.ru
+ * extras: mirror.reconn.ru
+ * remi-safe: mirror.reconn.ru
+ * updates: mirror.yandex.ru
+base                                                     | 3.6 kB     00:00     
+centos-sclo-rh                                           | 3.0 kB     00:00     
+centos-sclo-sclo                                         | 3.0 kB     00:00     
+epel                                                     | 4.7 kB     00:00     
+extras                                                   | 2.9 kB     00:00     
+prel-release-x86_64                                      | 2.9 kB     00:00     
+ps-80-release-x86_64                                     | 2.9 kB     00:00     
+remi-safe                                                | 3.0 kB     00:00     
+tools-release-x86_64                                     | 2.9 kB     00:00     
+updates                                                  | 2.9 kB     00:00     
+zabbix                                                   | 2.9 kB     00:00     
+zabbix-non-supported                                     |  951 B     00:00     
+(1/14): epel/x86_64/group_gz                               |  95 kB   00:00     
+(2/14): base/7/x86_64/primary_db                           | 6.1 MB   00:01     
+(3/14): epel/x86_64/updateinfo                             | 1.0 MB   00:00     
+(4/14): base/7/x86_64/group_gz                             | 153 kB   00:02     
+(5/14): prel-release-x86_64/7/primary_db                   | 1.9 kB   00:00     
+(6/14): centos-sclo-sclo/x86_64/primary_db                 | 292 kB   00:02     
+(7/14): ps-80-release-x86_64/7/primary_db                  |  78 kB   00:00     
+(8/14): tools-release-x86_64/7/primary_db                  |  78 kB   00:00     
+(9/14): centos-sclo-rh/x86_64/primary_db                   | 2.9 MB   00:02     
+(10/14): extras/7/x86_64/primary_db                        | 206 kB   00:01     
+(11/14): zabbix/x86_64/primary_db                          |  32 kB   00:00     
+(12/14): updates/7/x86_64/primary_db                       | 4.5 MB   00:01     
+(13/14): remi-safe/primary_db                              | 1.8 MB   00:01     
+(14/14): epel/x86_64/primary_db                            | 6.9 MB   00:04     
+zabbix-non-supported/x86_64/primary                        | 1.6 kB   00:00     
+zabbix-non-supported                                                        4/4
+Разрешение зависимостей
+--> Проверка сценария
+---> Пакет zabbix-agent.x86_64 0:5.0.3-1.el7 помечен для установки
+--> Проверка зависимостей окончена
+
+Зависимости определены
+
+================================================================================
+ Package              Архитектура    Версия                Репозиторий    Размер
+================================================================================
+Установка:
+ zabbix-agent         x86_64         5.0.3-1.el7           zabbix         448 k
+
+Итого за операцию
+================================================================================
+Установить  1 пакет
+
+Объем загрузки: 448 k
+Объем изменений: 1.8 M
+Is this ok [y/d/N]: y
+Downloading packages:
+zabbix-agent-5.0.3-1.el7.x86_64.rpm                        | 448 kB   00:02     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Установка   : zabbix-agent-5.0.3-1.el7.x86_64                             1/1 
+  Проверка    : zabbix-agent-5.0.3-1.el7.x86_64                             1/1 
+
+Установлено:
+  zabbix-agent.x86_64 0:5.0.3-1.el7                                             
+
+Выполнено!
+
+[admin@web ~]$ sudo nano /etc/zabbix/zabbix_agentd.conf
+[sudo] пароль для admin: 
+[admin@web ~]$ sudo firewall-cmd --permanent --add-port=10050/tcp
+success
+[admin@web ~]$ sudo firewall-cmd --reload
+success
+
+[admin@web2 ~]$ sudo firewall-cmd --permanent --add-port=10050/tcp
+success
+[admin@web2 ~]$ sudo firewall-cmd --permanent --add-port=10051/tcp
+[sudo] пароль для admin: 
+success
+[admin@web2 ~]$ sudo firewall-cmd --reload
+success
+
+[admin@web2 ~]$ sudo nano /etc/nginx/nginx.conf
+[admin@web2 ~]$ sudo nginx -t
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+[admin@web2 ~]$ sudo systemctl restart nginx
+
+[admin@web2 ~]$ sudo nano /etc/hosts
+[admin@web2 ~]$ cat /etc/hosts
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+#::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+
+[admin@web2 ~]$ sudo mkdir /etc/zabbix/scripts/
+[sudo] пароль для admin: 
+[admin@web2 ~]$ sudo nano /etc/zabbix/scripts/nginx-stats.sh
+[admin@web2 ~]$ sudo chown zabbix:zabbix -R /etc/zabbix/scripts/
+[admin@web2 ~]$ sudo chmod 750 /etc/zabbix/scripts/
+[admin@web2 ~]$ sudo chmod 700 /etc/zabbix/scripts/nginx-stats.sh
+[admin@web2 ~]$ sudo /etc/zabbix/scripts/nginx-stats.sh none active http://slave.local/nginx_status
+
+[admin@web2 ~]$ sudo nano /etc/zabbix/zabbix_agentd.conf
+
+[admin@web2 ~]$ curl http://localhost/nginx-status
+Active connections: 6 
+server accepts handled requests
+ 299 299 1046 
+Reading: 0 Writing: 1 Waiting: 5 
+
+[admin@web2 ~]$ zabbix_agentd -t web.page.get[localhost,nginx-status,80]
+web.page.get[localhost,nginx-status,80]       [t|HTTP/1.1 200 OK
+Server: nginx/1.16.1
+Date: Sat, 12 Sep 2020 20:26:28 GMT
+Content-Type: text/plain
+Content-Length: 104
+Connection: close
+
+Active connections: 6 
+server accepts handled requests
+ 306 306 1058 
+Reading: 0 Writing: 1 Waiting: 5 ]
+
+scp admin@192.168.56.81:/etc/nginx/nginx.conf /Users/konstantinlevchenko/Documents/programing/web_developer/highload/hw_8/
+admin@192.168.56.81's password: 
+nginx.conf                                    100% 2722     3.7MB/s   00:00 
+
+[admin@web2 ~]$ tail /var/log/zabbix/zabbix_agentd.log
+ 11877:20200912:193714.248 IPv6 support:          YES
+ 11877:20200912:193714.248 TLS support:           YES
+ 11877:20200912:193714.248 **************************
+ 11877:20200912:193714.248 using configuration file: /etc/zabbix/zabbix_agentd.conf
+ 11877:20200912:193714.248 agent #0 started [main process]
+ 11882:20200912:193714.254 agent #5 started [active checks #1]
+ 11878:20200912:193714.256 agent #1 started [collector]
+ 11879:20200912:193714.256 agent #2 started [listener #1]
+ 11880:20200912:193714.258 agent #3 started [listener #2]
+ 11881:20200912:193714.259 agent #4 started [listener #3]
+
+konstantinlevchenko@Konstantin hw_8 % scp root@192.168.56.81:/etc/zabbix/scripts/nginx-stats.sh /Users/konstantinlevchenko/Documents/programing/web_developer/highload/hw_8/
+
+root@192.168.56.81's password: 
+nginx-stats.sh                                100% 1234   984.5KB/s   00:00  
+
+[admin@web ~]$ sudo nano /etc/nginx/nginx.conf
+[admin@web ~]$ sudo nginx -t
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+[admin@web ~]$ sudo systemctl restart nginx
+
+[admin@web ~]$ sudo nano /etc/hosts
+
+[admin@web ~]$ sudo mkdir /etc/zabbix/scripts/
+[admin@web ~]$ sudo nano /etc/zabbix/scripts/nginx-stats.sh
+[admin@web ~]$ sudo chown zabbix:zabbix -R /etc/zabbix/scripts/
+[admin@web ~]$ sudo chmod 750 /etc/zabbix/scripts/
+[admin@web ~]$ sudo chmod 700 /etc/zabbix/scripts/nginx-stats.sh
+[admin@web ~]$ sudo /etc/zabbix/scripts/nginx-stats.sh none active http://mysite.local/nginx_status
+
+[admin@web ~]$ sudo nano /etc/zabbix/zabbix_agentd.conf
+[admin@web ~]$ sudo systemctl restart zabbix-agent
+
+[admin@web ~]$ curl http://localhost/nginx-status
+Active connections: 1 
+server accepts handled requests
+ 17 17 12 
+Reading: 0 Writing: 1 Waiting: 0 
+
+[admin@web ~]$ zabbix_agentd -t web.page.get[localhost,nginx-status,80]
+web.page.get[localhost,nginx-status,80]       [t|HTTP/1.1 200 OK
+Server: nginx/1.16.1
+Date: Sat, 12 Sep 2020 23:44:50 GMT
+Content-Type: text/plain
+Content-Length: 100
+Connection: close
+
+Active connections: 1 
+server accepts handled requests
+ 19 19 14 
+Reading: 0 Writing: 1 Waiting: 0 ]
+
+[admin@web ~]$ tail /var/log/zabbix/zabbix_agentd.log
+  4013:20200913:024351.439 IPv6 support:          YES
+  4013:20200913:024351.439 TLS support:           YES
+  4013:20200913:024351.439 **************************
+  4013:20200913:024351.439 using configuration file: /etc/zabbix/zabbix_agentd.conf
+  4013:20200913:024351.439 agent #0 started [main process]
+  4018:20200913:024351.445 agent #5 started [active checks #1]
+  4014:20200913:024351.447 agent #1 started [collector]
+  4015:20200913:024351.448 agent #2 started [listener #1]
+  4016:20200913:024351.449 agent #3 started [listener #2]
+  4017:20200913:024351.451 agent #4 started [listener #3]
+
+[admin@web ~]$ siege -b -c1000 -t60S mysite.local/products
+
+================================================================
+WARNING: The number of users is capped at 255.  To increase this
+         limit, search your .siegerc file for 'limit' and change
+         its value. Make sure you read the instructions there...
+================================================================
+[alert] socket: select and discovered it's not ready sock.c:384: Connection timed out
+[alert] socket: read check timed out(30) sock.c:273: Connection timed out
+
+{	"transactions":			        7217,
+	"availability":			       94.82,
+	"elapsed_time":			       59.65,
+	"data_transferred":		      303.14,
+	"response_time":		        1.79,
+	"transaction_rate":		      120.99,
+	"throughput":			        5.08,
+	"concurrency":			      216.52,
+	"successful_transactions":	        7217,
+	"failed_transactions":		         394,
+	"longest_transaction":		       27.84,
+	"shortest_transaction":		        0.10
+}
