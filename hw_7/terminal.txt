@@ -1,0 +1,841 @@
+[admin@web ~]$ ls -l
+итого 224
+-rwxrwxr-x 1 admin admin 226096 авг 28 12:31 mysqltuner.pl
+lrwxrwxrwx 1 admin nginx     29 сен  8 10:24 public -> /var/www/mysite.local/public/
+[admin@web ~]$ rm public
+[admin@web ~]$ mkdir public
+[admin@web ~]$ ls -l
+итого 224
+-rwxrwxr-x 1 admin admin 226096 авг 28 12:31 mysqltuner.pl
+drwxrwxr-x 2 admin admin      6 сен  9 16:39 public
+[admin@web ~]$ sudo chown -R admin:nginx public
+[sudo] пароль для admin: 
+[admin@web ~]$ ls -l
+итого 224
+-rwxrwxr-x 1 admin admin 226096 авг 28 12:31 mysqltuner.pl
+drwxrwxr-x 2 admin nginx      6 сен  9 16:39 public
+
+[admin@web mysite.local]$ sudo yum install composer
+[sudo] пароль для admin: 
+Загружены модули: fastestmirror
+Loading mirror speeds from cached hostfile
+epel/x86_64/metalink                                     |  32 kB     00:00     
+ * base: mirror.awanti.com
+ * epel: mirror.yandex.ru
+ * extras: mirror.yandex.ru
+ * remi-safe: mirror.reconn.ru
+ * updates: mirror.docker.ru
+base                                                     | 3.6 kB     00:00     
+epel                                                     | 4.7 kB     00:00     
+extras                                                   | 2.9 kB     00:00     
+prel-release-x86_64                                      | 2.9 kB     00:00     
+ps-80-release-x86_64                                     | 2.9 kB     00:00     
+remi-safe                                                | 3.0 kB     00:00     
+tools-release-x86_64                                     | 2.9 kB     00:00     
+updates                                                  | 2.9 kB     00:00     
+(1/3): remi-safe/primary_db                                | 1.8 MB   00:01     
+(2/3): epel/x86_64/updateinfo                              | 1.0 MB   00:01     
+(3/3): epel/x86_64/primary_db                              | 6.9 MB   00:06     
+Разрешение зависимостей
+--> Проверка сценария
+---> Пакет composer.noarch 0:1.10.10-1.el7 помечен для установки
+--> Обработка зависимостей: php(language) >= 5.3.2 пакета: composer-1.10.10-1.el7.noarch
+--> Обработка зависимостей: php-PsrLog >= 1.0.0-8 пакета: composer-1.10.10-1.el7.noarch
+--> Обработка зависимостей: php-composer-spdx-licenses >= 1.2 пакета: composer-1.10.10-1.el7.noarch
+--> Обработка зависимостей: php-composer-xdebug-handler >= 1.1 пакета: composer-1.10.10-1.el7.noarch
+--> Обработка зависимостей: php-jsonlint >= 1.4 пакета: composer-1.10.10-1.el7.noarch
+--> Обработка зависимостей: php-justinrainbow-json-schema5 >= 5.2.10 пакета: composer-1.10.10-1.el7.noarch
+--> Обработка зависимостей: php-seld-phar-utils >= 1.0.1 пакета: composer-1.10.10-1.el7.noarch
+--> Обработка зависимостей: php-PsrLog пакета: composer-1.10.10-1.el7.noarch
+--> Обработка зависимостей: php-cli пакета: composer-1.10.10-1.el7.noarch
+--> Обработка зависимостей: php-composer(fedora/autoloader) пакета: composer-1.10.10-1.el7.noarch
+--> Обработка зависимостей: php-composer-ca-bundle пакета: composer-1.10.10-1.el7.noarch
+--> Обработка зависимостей: php-composer-semver пакета: composer-1.10.10-1.el7.noarch
+--> Обработка зависимостей: php-curl пакета: composer-1.10.10-1.el7.noarch
+--> Обработка зависимостей: php-date пакета: composer-1.10.10-1.el7.noarch
+--> Обработка зависимостей: php-dom пакета: composer-1.10.10-1.el7.noarch
+--> Обработка зависимостей: php-filter пакета: composer-1.10.10-1.el7.noarch
+--> Обработка зависимостей: php-hash пакета: composer-1.10.10-1.el7.noarch
+--> Обработка зависимостей: php-iconv пакета: composer-1.10.10-1.el7.noarch
+--> Обработка зависимостей: php-intl пакета: composer-1.10.10-1.el7.noarch
+--> Обработка зависимостей: php-json пакета: composer-1.10.10-1.el7.noarch
+--> Обработка зависимостей: php-libxml пакета: composer-1.10.10-1.el7.noarch
+--> Обработка зависимостей: php-mbstring пакета: composer-1.10.10-1.el7.noarch
+--> Обработка зависимостей: php-openssl пакета: composer-1.10.10-1.el7.noarch
+--> Обработка зависимостей: php-pcre пакета: composer-1.10.10-1.el7.noarch
+--> Обработка зависимостей: php-phar пакета: composer-1.10.10-1.el7.noarch
+--> Обработка зависимостей: php-reflection пакета: composer-1.10.10-1.el7.noarch
+--> Обработка зависимостей: php-seld-phar-utils пакета: composer-1.10.10-1.el7.noarch
+--> Обработка зависимостей: php-simplexml пакета: composer-1.10.10-1.el7.noarch
+--> Обработка зависимостей: php-spl пакета: composer-1.10.10-1.el7.noarch
+--> Обработка зависимостей: php-symfony-console пакета: composer-1.10.10-1.el7.noarch
+--> Обработка зависимостей: php-symfony-filesystem пакета: composer-1.10.10-1.el7.noarch
+--> Обработка зависимостей: php-symfony-finder пакета: composer-1.10.10-1.el7.noarch
+--> Обработка зависимостей: php-symfony-process пакета: composer-1.10.10-1.el7.noarch
+--> Обработка зависимостей: php-tokenizer пакета: composer-1.10.10-1.el7.noarch
+--> Обработка зависимостей: php-xsl пакета: composer-1.10.10-1.el7.noarch
+--> Обработка зависимостей: php-zip пакета: composer-1.10.10-1.el7.noarch
+--> Обработка зависимостей: php-zlib пакета: composer-1.10.10-1.el7.noarch
+--> Проверка сценария
+---> Пакет php-PsrLog.noarch 0:1.1.3-1.el7 помечен для установки
+---> Пакет php-cli.x86_64 0:5.4.16-48.el7 помечен для установки
+---> Пакет php-common.x86_64 0:5.4.16-48.el7 помечен для установки
+--> Обработка зависимостей: libzip.so.2()(64bit) пакета: php-common-5.4.16-48.el7.x86_64
+---> Пакет php-composer-ca-bundle.noarch 0:1.2.7-1.el7 помечен для установки
+---> Пакет php-composer-semver.noarch 0:1.5.1-1.el7 помечен для установки
+---> Пакет php-composer-spdx-licenses.noarch 0:1.5.4-1.el7 помечен для установки
+---> Пакет php-composer-xdebug-handler.noarch 0:1.4.3-1.el7 помечен для установки
+--> Обработка зависимостей: php-posix пакета: php-composer-xdebug-handler-1.4.3-1.el7.noarch
+---> Пакет php-fedora-autoloader.noarch 0:1.0.1-2.el7 помечен для установки
+---> Пакет php-intl.x86_64 0:5.4.16-48.el7 помечен для установки
+--> Обработка зависимостей: libicuuc.so.50()(64bit) пакета: php-intl-5.4.16-48.el7.x86_64
+--> Обработка зависимостей: libicuio.so.50()(64bit) пакета: php-intl-5.4.16-48.el7.x86_64
+--> Обработка зависимостей: libicui18n.so.50()(64bit) пакета: php-intl-5.4.16-48.el7.x86_64
+--> Обработка зависимостей: libicudata.so.50()(64bit) пакета: php-intl-5.4.16-48.el7.x86_64
+---> Пакет php-jsonlint.noarch 0:1.6.1-1.el7 помечен для установки
+---> Пакет php-justinrainbow-json-schema5.noarch 0:5.2.10-1.el7 помечен для установки
+---> Пакет php-mbstring.x86_64 0:5.4.16-48.el7 помечен для установки
+---> Пакет php-seld-phar-utils.noarch 0:1.1.0-1.el7 помечен для установки
+---> Пакет php-symfony-console.noarch 0:2.8.12-2.el7 помечен для установки
+--> Обработка зависимостей: php-composer(symfony/event-dispatcher) = 2.8.12 пакета: php-symfony-console-2.8.12-2.el7.noarch
+---> Пакет php-symfony-filesystem.noarch 0:2.8.12-2.el7 помечен для установки
+--> Обработка зависимостей: php-symfony-common = 2.8.12-2.el7 пакета: php-symfony-filesystem-2.8.12-2.el7.noarch
+---> Пакет php-symfony-finder.noarch 0:2.8.12-2.el7 помечен для установки
+---> Пакет php-symfony-process.noarch 0:2.8.12-2.el7 помечен для установки
+---> Пакет php-xml.x86_64 0:5.4.16-48.el7 помечен для установки
+--> Проверка сценария
+---> Пакет libicu.x86_64 0:50.2-4.el7_7 помечен для установки
+---> Пакет libzip.x86_64 0:0.10.1-8.el7 помечен для установки
+---> Пакет php-process.x86_64 0:5.4.16-48.el7 помечен для установки
+---> Пакет php-symfony-common.noarch 0:2.8.12-2.el7 помечен для установки
+--> Обработка зависимостей: php-symfony-class-loader = 2.8.12-2.el7 пакета: php-symfony-common-2.8.12-2.el7.noarch
+---> Пакет php-symfony-event-dispatcher.noarch 0:2.8.12-2.el7 помечен для установки
+--> Обработка зависимостей: php-composer(symfony/dependency-injection) = 2.8.12 пакета: php-symfony-event-dispatcher-2.8.12-2.el7.noarch
+--> Обработка зависимостей: php-composer(symfony/http-kernel) = 2.8.12 пакета: php-symfony-event-dispatcher-2.8.12-2.el7.noarch
+--> Проверка сценария
+---> Пакет php-symfony-class-loader.noarch 0:2.8.12-2.el7 помечен для установки
+---> Пакет php-symfony-dependency-injection.noarch 0:2.8.12-2.el7 помечен для установки
+--> Обработка зависимостей: php-composer(symfony/config) = 2.8.12 пакета: php-symfony-dependency-injection-2.8.12-2.el7.noarch
+--> Обработка зависимостей: php-composer(symfony/expression-language) = 2.8.12 пакета: php-symfony-dependency-injection-2.8.12-2.el7.noarch
+--> Обработка зависимостей: php-composer(symfony/yaml) = 2.8.12 пакета: php-symfony-dependency-injection-2.8.12-2.el7.noarch
+---> Пакет php-symfony-http-kernel.noarch 0:2.8.12-2.el7 помечен для установки
+--> Обработка зависимостей: php-composer(symfony/browser-kit) = 2.8.12 пакета: php-symfony-http-kernel-2.8.12-2.el7.noarch
+--> Обработка зависимостей: php-composer(symfony/debug) = 2.8.12 пакета: php-symfony-http-kernel-2.8.12-2.el7.noarch
+--> Обработка зависимостей: php-composer(symfony/http-foundation) = 2.8.12 пакета: php-symfony-http-kernel-2.8.12-2.el7.noarch
+--> Обработка зависимостей: php-composer(symfony/var-dumper) = 2.8.12 пакета: php-symfony-http-kernel-2.8.12-2.el7.noarch
+--> Обработка зависимостей: php-pdo пакета: php-symfony-http-kernel-2.8.12-2.el7.noarch
+--> Обработка зависимостей: php-sqlite3 пакета: php-symfony-http-kernel-2.8.12-2.el7.noarch
+--> Проверка сценария
+---> Пакет php-pdo.x86_64 0:5.4.16-48.el7 помечен для установки
+---> Пакет php-symfony-browser-kit.noarch 0:2.8.12-2.el7 помечен для установки
+--> Обработка зависимостей: php-composer(symfony/dom-crawler) = 2.8.12 пакета: php-symfony-browser-kit-2.8.12-2.el7.noarch
+---> Пакет php-symfony-config.noarch 0:2.8.12-2.el7 помечен для установки
+---> Пакет php-symfony-debug.noarch 0:2.8.12-2.el7 помечен для установки
+---> Пакет php-symfony-expression-language.noarch 0:2.8.12-2.el7 помечен для установки
+---> Пакет php-symfony-http-foundation.noarch 0:2.8.12-2.el7 помечен для установки
+--> Обработка зависимостей: php-composer(symfony/polyfill-php54) < 2.0 пакета: php-symfony-http-foundation-2.8.12-2.el7.noarch
+--> Обработка зависимостей: php-composer(symfony/polyfill-php55) < 2.0 пакета: php-symfony-http-foundation-2.8.12-2.el7.noarch
+--> Обработка зависимостей: php-composer(symfony/polyfill-php54) >= 1.0 пакета: php-symfony-http-foundation-2.8.12-2.el7.noarch
+--> Обработка зависимостей: php-composer(symfony/polyfill-php55) >= 1.0 пакета: php-symfony-http-foundation-2.8.12-2.el7.noarch
+---> Пакет php-symfony-var-dumper.noarch 0:2.8.12-2.el7 помечен для установки
+--> Обработка зависимостей: php-gd пакета: php-symfony-var-dumper-2.8.12-2.el7.noarch
+---> Пакет php-symfony-yaml.noarch 0:2.8.12-2.el7 помечен для установки
+--> Проверка сценария
+---> Пакет php-gd.x86_64 0:5.4.16-48.el7 помечен для установки
+--> Обработка зависимостей: libt1.so.5()(64bit) пакета: php-gd-5.4.16-48.el7.x86_64
+---> Пакет php-symfony-dom-crawler.noarch 0:2.8.12-2.el7 помечен для установки
+--> Обработка зависимостей: php-composer(symfony/css-selector) = 2.8.12 пакета: php-symfony-dom-crawler-2.8.12-2.el7.noarch
+---> Пакет php-symfony-polyfill.noarch 0:1.5.0-1.el7 помечен для установки
+--> Обработка зависимостей: php-composer(ircmaxell/password-compat) < 2.0 пакета: php-symfony-polyfill-1.5.0-1.el7.noarch
+--> Обработка зависимостей: php-composer(paragonie/random_compat) < 3.0 пакета: php-symfony-polyfill-1.5.0-1.el7.noarch
+--> Обработка зависимостей: php-composer(ircmaxell/password-compat) >= 1.0 пакета: php-symfony-polyfill-1.5.0-1.el7.noarch
+--> Обработка зависимостей: php-composer(paragonie/random_compat) >= 1.0 пакета: php-symfony-polyfill-1.5.0-1.el7.noarch
+--> Проверка сценария
+---> Пакет php-paragonie-random-compat.noarch 0:2.0.18-1.el7 помечен для установки
+---> Пакет php-password-compat.noarch 0:1.0.4-1.el7 помечен для установки
+---> Пакет php-symfony-css-selector.noarch 0:2.8.12-2.el7 помечен для установки
+---> Пакет t1lib.x86_64 0:5.1.2-14.el7 помечен для установки
+--> Проверка зависимостей окончена
+
+Зависимости определены
+
+================================================================================
+ Package                            Архитектура
+                                             Версия             Репозиторий 
+                                                                          Размер
+================================================================================
+Установка:
+ composer                           noarch   1.10.10-1.el7      epel      408 k
+Установка зависимостей:
+ libicu                             x86_64   50.2-4.el7_7       updates   6.9 M
+ libzip                             x86_64   0.10.1-8.el7       base       48 k
+ php-PsrLog                         noarch   1.1.3-1.el7        epel       14 k
+ php-cli                            x86_64   5.4.16-48.el7      base      2.7 M
+ php-common                         x86_64   5.4.16-48.el7      base      565 k
+ php-composer-ca-bundle             noarch   1.2.7-1.el7        epel       12 k
+ php-composer-semver                noarch   1.5.1-1.el7        epel       17 k
+ php-composer-spdx-licenses         noarch   1.5.4-1.el7        epel       18 k
+ php-composer-xdebug-handler        noarch   1.4.3-1.el7        epel       19 k
+ php-fedora-autoloader              noarch   1.0.1-2.el7        epel       11 k
+ php-gd                             x86_64   5.4.16-48.el7      base      128 k
+ php-intl                           x86_64   5.4.16-48.el7      base       98 k
+ php-jsonlint                       noarch   1.6.1-1.el7        epel       17 k
+ php-justinrainbow-json-schema5     noarch   5.2.10-1.el7       epel       41 k
+ php-mbstring                       x86_64   5.4.16-48.el7      base      506 k
+ php-paragonie-random-compat        noarch   2.0.18-1.el7       epel       28 k
+ php-password-compat                noarch   1.0.4-1.el7        epel       10 k
+ php-pdo                            x86_64   5.4.16-48.el7      base       99 k
+ php-process                        x86_64   5.4.16-48.el7      base       56 k
+ php-seld-phar-utils                noarch   1.1.0-1.el7        epel      8.4 k
+ php-symfony-browser-kit            noarch   2.8.12-2.el7       epel       23 k
+ php-symfony-class-loader           noarch   2.8.12-2.el7       epel       26 k
+ php-symfony-common                 noarch   2.8.12-2.el7       epel      124 k
+ php-symfony-config                 noarch   2.8.12-2.el7       epel       51 k
+ php-symfony-console                noarch   2.8.12-2.el7       epel       88 k
+ php-symfony-css-selector           noarch   2.8.12-2.el7       epel       37 k
+ php-symfony-debug                  noarch   2.8.12-2.el7       epel       36 k
+ php-symfony-dependency-injection   noarch   2.8.12-2.el7       epel       83 k
+ php-symfony-dom-crawler            noarch   2.8.12-2.el7       epel       30 k
+ php-symfony-event-dispatcher       noarch   2.8.12-2.el7       epel       24 k
+ php-symfony-expression-language    noarch   2.8.12-2.el7       epel       27 k
+ php-symfony-filesystem             noarch   2.8.12-2.el7       epel       22 k
+ php-symfony-finder                 noarch   2.8.12-2.el7       epel       38 k
+ php-symfony-http-foundation        noarch   2.8.12-2.el7       epel       93 k
+ php-symfony-http-kernel            noarch   2.8.12-2.el7       epel       99 k
+ php-symfony-polyfill               noarch   1.5.0-1.el7        epel       26 k
+ php-symfony-process                noarch   2.8.12-2.el7       epel       32 k
+ php-symfony-var-dumper             noarch   2.8.12-2.el7       epel       48 k
+ php-symfony-yaml                   noarch   2.8.12-2.el7       epel       28 k
+ php-xml                            x86_64   5.4.16-48.el7      base      126 k
+ t1lib                              x86_64   5.1.2-14.el7       base      166 k
+
+Итого за операцию
+================================================================================
+Установить  1 пакет (+41 зависимый)
+
+Объем загрузки: 13 M
+Объем изменений: 45 M
+Is this ok [y/d/N]: y
+Downloading packages:
+(1/42): libzip-0.10.1-8.el7.x86_64.rpm                     |  48 kB   00:00     
+(2/42): composer-1.10.10-1.el7.noarch.rpm                  | 408 kB   00:01     
+(3/42): php-common-5.4.16-48.el7.x86_64.rpm                | 565 kB   00:00     
+(4/42): php-composer-ca-bundle-1.2.7-1.el7.noarch.rpm      |  12 kB   00:00     
+(5/42): php-composer-spdx-licenses-1.5.4-1.el7.noarch.rpm  |  18 kB   00:00     
+(6/42): php-PsrLog-1.1.3-1.el7.noarch.rpm                  |  14 kB   00:01     
+(7/42): php-cli-5.4.16-48.el7.x86_64.rpm                   | 2.7 MB   00:01     
+(8/42): php-composer-xdebug-handler-1.4.3-1.el7.noarch.rpm |  19 kB   00:00     
+(9/42): php-composer-semver-1.5.1-1.el7.noarch.rpm         |  17 kB   00:00     
+(10/42): php-jsonlint-1.6.1-1.el7.noarch.rpm               |  17 kB   00:00     
+(11/42): php-intl-5.4.16-48.el7.x86_64.rpm                 |  98 kB   00:00     
+(12/42): php-fedora-autoloader-1.0.1-2.el7.noarch.rpm      |  11 kB   00:00     
+(13/42): php-gd-5.4.16-48.el7.x86_64.rpm                   | 128 kB   00:00     
+(14/42): php-justinrainbow-json-schema5-5.2.10-1.el7.noarc |  41 kB   00:00     
+(15/42): php-paragonie-random-compat-2.0.18-1.el7.noarch.r |  28 kB   00:00     
+(16/42): libicu-50.2-4.el7_7.x86_64.rpm                    | 6.9 MB   00:02     
+(17/42): php-pdo-5.4.16-48.el7.x86_64.rpm                  |  99 kB   00:00     
+(18/42): php-password-compat-1.0.4-1.el7.noarch.rpm        |  10 kB   00:00     
+(19/42): php-symfony-browser-kit-2.8.12-2.el7.noarch.rpm   |  23 kB   00:00     
+(20/42): php-seld-phar-utils-1.1.0-1.el7.noarch.rpm        | 8.4 kB   00:00     
+(21/42): php-symfony-config-2.8.12-2.el7.noarch.rpm        |  51 kB   00:00     
+(22/42): php-symfony-common-2.8.12-2.el7.noarch.rpm        | 124 kB   00:00     
+(23/42): php-process-5.4.16-48.el7.x86_64.rpm              |  56 kB   00:00     
+(24/42): php-mbstring-5.4.16-48.el7.x86_64.rpm             | 506 kB   00:00     
+(25/42): php-symfony-css-selector-2.8.12-2.el7.noarch.rpm  |  37 kB   00:00     
+(26/42): php-symfony-class-loader-2.8.12-2.el7.noarch.rpm  |  26 kB   00:00     
+(27/42): php-symfony-console-2.8.12-2.el7.noarch.rpm       |  88 kB   00:00     
+(28/42): php-symfony-event-dispatcher-2.8.12-2.el7.noarch. |  24 kB   00:00     
+(29/42): php-symfony-dependency-injection-2.8.12-2.el7.noa |  83 kB   00:00     
+(30/42): php-symfony-debug-2.8.12-2.el7.noarch.rpm         |  36 kB   00:00     
+(31/42): php-symfony-finder-2.8.12-2.el7.noarch.rpm        |  38 kB   00:00     
+(32/42): php-symfony-filesystem-2.8.12-2.el7.noarch.rpm    |  22 kB   00:00     
+(33/42): php-symfony-expression-language-2.8.12-2.el7.noar |  27 kB   00:00     
+(34/42): php-symfony-dom-crawler-2.8.12-2.el7.noarch.rpm   |  30 kB   00:00     
+(35/42): php-symfony-polyfill-1.5.0-1.el7.noarch.rpm       |  26 kB   00:00     
+(36/42): php-symfony-http-kernel-2.8.12-2.el7.noarch.rpm   |  99 kB   00:00     
+(37/42): php-symfony-http-foundation-2.8.12-2.el7.noarch.r |  93 kB   00:00     
+(38/42): php-symfony-var-dumper-2.8.12-2.el7.noarch.rpm    |  48 kB   00:00     
+(39/42): t1lib-5.1.2-14.el7.x86_64.rpm                     | 166 kB   00:00     
+(40/42): php-symfony-process-2.8.12-2.el7.noarch.rpm       |  32 kB   00:00     
+(41/42): php-symfony-yaml-2.8.12-2.el7.noarch.rpm          |  28 kB   00:00     
+(42/42): php-xml-5.4.16-48.el7.x86_64.rpm                  | 126 kB   00:00     
+--------------------------------------------------------------------------------
+Общий размер                                       3.6 MB/s |  13 MB  00:03     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Установка   : t1lib-5.1.2-14.el7.x86_64                                  1/42 
+  Установка   : libzip-0.10.1-8.el7.x86_64                                 2/42 
+  Установка   : php-common-5.4.16-48.el7.x86_64                            3/42 
+  Установка   : php-fedora-autoloader-1.0.1-2.el7.noarch                   4/42 
+  Установка   : php-mbstring-5.4.16-48.el7.x86_64                          5/42 
+  Установка   : php-xml-5.4.16-48.el7.x86_64                               6/42 
+  Установка   : php-PsrLog-1.1.3-1.el7.noarch                              7/42 
+  Установка   : php-process-5.4.16-48.el7.x86_64                           8/42 
+  Установка   : php-cli-5.4.16-48.el7.x86_64                               9/42 
+  Установка   : php-pdo-5.4.16-48.el7.x86_64                              10/42 
+  Установка   : php-symfony-class-loader-2.8.12-2.el7.noarch              11/42 
+  Установка   : php-symfony-common-2.8.12-2.el7.noarch                    12/42 
+  Установка   : php-symfony-process-2.8.12-2.el7.noarch                   13/42 
+  Установка   : php-symfony-yaml-2.8.12-2.el7.noarch                      14/42 
+  Установка   : php-symfony-finder-2.8.12-2.el7.noarch                    15/42 
+  Установка   : php-symfony-filesystem-2.8.12-2.el7.noarch                16/42 
+  Установка   : php-symfony-config-2.8.12-2.el7.noarch                    17/42 
+  Установка   : php-symfony-css-selector-2.8.12-2.el7.noarch              18/42 
+  Установка   : php-symfony-dom-crawler-2.8.12-2.el7.noarch               19/42 
+  Установка   : php-symfony-browser-kit-2.8.12-2.el7.noarch               20/42 
+  Установка   : php-symfony-expression-language-2.8.12-2.el7.noarch       21/42 
+  Установка   : php-symfony-dependency-injection-2.8.12-2.el7.noarch      22/42 
+  Установка   : php-justinrainbow-json-schema5-5.2.10-1.el7.noarch        23/42 
+  Установка   : php-jsonlint-1.6.1-1.el7.noarch                           24/42 
+  Установка   : php-composer-xdebug-handler-1.4.3-1.el7.noarch            25/42 
+  Установка   : php-symfony-debug-2.8.12-2.el7.noarch                     26/42 
+  Установка   : php-password-compat-1.0.4-1.el7.noarch                    27/42 
+  Установка   : php-paragonie-random-compat-2.0.18-1.el7.noarch           28/42 
+  Установка   : php-symfony-polyfill-1.5.0-1.el7.noarch                   29/42 
+  Установка   : php-composer-ca-bundle-1.2.7-1.el7.noarch                 30/42 
+  Установка   : php-composer-semver-1.5.1-1.el7.noarch                    31/42 
+  Установка   : php-seld-phar-utils-1.1.0-1.el7.noarch                    32/42 
+  Установка   : php-composer-spdx-licenses-1.5.4-1.el7.noarch             33/42 
+  Установка   : php-gd-5.4.16-48.el7.x86_64                               34/42 
+  Установка   : php-symfony-var-dumper-2.8.12-2.el7.noarch                35/42 
+  Установка   : libicu-50.2-4.el7_7.x86_64                                36/42 
+  Установка   : php-intl-5.4.16-48.el7.x86_64                             37/42 
+  Установка   : php-symfony-http-foundation-2.8.12-2.el7.noarch           38/42 
+  Установка   : php-symfony-console-2.8.12-2.el7.noarch                   39/42 
+  Установка   : php-symfony-event-dispatcher-2.8.12-2.el7.noarch          40/42 
+  Установка   : php-symfony-http-kernel-2.8.12-2.el7.noarch               41/42 
+  Установка   : composer-1.10.10-1.el7.noarch                             42/42 
+  Проверка    : php-composer-ca-bundle-1.2.7-1.el7.noarch                  1/42 
+  Проверка    : php-intl-5.4.16-48.el7.x86_64                              2/42 
+  Проверка    : php-password-compat-1.0.4-1.el7.noarch                     3/42 
+  Проверка    : php-symfony-process-2.8.12-2.el7.noarch                    4/42 
+  Проверка    : php-symfony-yaml-2.8.12-2.el7.noarch                       5/42 
+  Проверка    : php-symfony-finder-2.8.12-2.el7.noarch                     6/42 
+  Проверка    : php-symfony-css-selector-2.8.12-2.el7.noarch               7/42 
+  Проверка    : php-symfony-browser-kit-2.8.12-2.el7.noarch                8/42 
+  Проверка    : php-xml-5.4.16-48.el7.x86_64                               9/42 
+  Проверка    : php-pdo-5.4.16-48.el7.x86_64                              10/42 
+  Проверка    : php-justinrainbow-json-schema5-5.2.10-1.el7.noarch        11/42 
+  Проверка    : php-symfony-debug-2.8.12-2.el7.noarch                     12/42 
+  Проверка    : php-symfony-var-dumper-2.8.12-2.el7.noarch                13/42 
+  Проверка    : libicu-50.2-4.el7_7.x86_64                                14/42 
+  Проверка    : libzip-0.10.1-8.el7.x86_64                                15/42 
+  Проверка    : php-symfony-http-foundation-2.8.12-2.el7.noarch           16/42 
+  Проверка    : php-symfony-class-loader-2.8.12-2.el7.noarch              17/42 
+  Проверка    : php-symfony-common-2.8.12-2.el7.noarch                    18/42 
+  Проверка    : php-symfony-filesystem-2.8.12-2.el7.noarch                19/42 
+  Проверка    : php-composer-semver-1.5.1-1.el7.noarch                    20/42 
+  Проверка    : php-PsrLog-1.1.3-1.el7.noarch                             21/42 
+  Проверка    : php-paragonie-random-compat-2.0.18-1.el7.noarch           22/42 
+  Проверка    : t1lib-5.1.2-14.el7.x86_64                                 23/42 
+  Проверка    : php-symfony-dom-crawler-2.8.12-2.el7.noarch               24/42 
+  Проверка    : php-composer-xdebug-handler-1.4.3-1.el7.noarch            25/42 
+  Проверка    : php-cli-5.4.16-48.el7.x86_64                              26/42 
+  Проверка    : php-symfony-http-kernel-2.8.12-2.el7.noarch               27/42 
+  Проверка    : php-symfony-event-dispatcher-2.8.12-2.el7.noarch          28/42 
+  Проверка    : php-common-5.4.16-48.el7.x86_64                           29/42 
+  Проверка    : php-fedora-autoloader-1.0.1-2.el7.noarch                  30/42 
+  Проверка    : php-symfony-dependency-injection-2.8.12-2.el7.noarch      31/42 
+  Проверка    : php-symfony-console-2.8.12-2.el7.noarch                   32/42 
+  Проверка    : php-symfony-polyfill-1.5.0-1.el7.noarch                   33/42 
+  Проверка    : php-seld-phar-utils-1.1.0-1.el7.noarch                    34/42 
+  Проверка    : php-process-5.4.16-48.el7.x86_64                          35/42 
+  Проверка    : php-symfony-expression-language-2.8.12-2.el7.noarch       36/42 
+  Проверка    : php-mbstring-5.4.16-48.el7.x86_64                         37/42 
+  Проверка    : php-gd-5.4.16-48.el7.x86_64                               38/42 
+  Проверка    : php-composer-spdx-licenses-1.5.4-1.el7.noarch             39/42 
+  Проверка    : php-jsonlint-1.6.1-1.el7.noarch                           40/42 
+  Проверка    : composer-1.10.10-1.el7.noarch                             41/42 
+  Проверка    : php-symfony-config-2.8.12-2.el7.noarch                    42/42 
+
+Установлено:
+  composer.noarch 0:1.10.10-1.el7                                               
+
+Установлены зависимости:
+  libicu.x86_64 0:50.2-4.el7_7                                                  
+  libzip.x86_64 0:0.10.1-8.el7                                                  
+  php-PsrLog.noarch 0:1.1.3-1.el7                                               
+  php-cli.x86_64 0:5.4.16-48.el7                                                
+  php-common.x86_64 0:5.4.16-48.el7                                             
+  php-composer-ca-bundle.noarch 0:1.2.7-1.el7                                   
+  php-composer-semver.noarch 0:1.5.1-1.el7                                      
+  php-composer-spdx-licenses.noarch 0:1.5.4-1.el7                               
+  php-composer-xdebug-handler.noarch 0:1.4.3-1.el7                              
+  php-fedora-autoloader.noarch 0:1.0.1-2.el7                                    
+  php-gd.x86_64 0:5.4.16-48.el7                                                 
+  php-intl.x86_64 0:5.4.16-48.el7                                               
+  php-jsonlint.noarch 0:1.6.1-1.el7                                             
+  php-justinrainbow-json-schema5.noarch 0:5.2.10-1.el7                          
+  php-mbstring.x86_64 0:5.4.16-48.el7                                           
+  php-paragonie-random-compat.noarch 0:2.0.18-1.el7                             
+  php-password-compat.noarch 0:1.0.4-1.el7                                      
+  php-pdo.x86_64 0:5.4.16-48.el7                                                
+  php-process.x86_64 0:5.4.16-48.el7                                            
+  php-seld-phar-utils.noarch 0:1.1.0-1.el7                                      
+  php-symfony-browser-kit.noarch 0:2.8.12-2.el7                                 
+  php-symfony-class-loader.noarch 0:2.8.12-2.el7                                
+  php-symfony-common.noarch 0:2.8.12-2.el7                                      
+  php-symfony-config.noarch 0:2.8.12-2.el7                                      
+  php-symfony-console.noarch 0:2.8.12-2.el7                                     
+  php-symfony-css-selector.noarch 0:2.8.12-2.el7                                
+  php-symfony-debug.noarch 0:2.8.12-2.el7                                       
+  php-symfony-dependency-injection.noarch 0:2.8.12-2.el7                        
+  php-symfony-dom-crawler.noarch 0:2.8.12-2.el7                                 
+  php-symfony-event-dispatcher.noarch 0:2.8.12-2.el7                            
+  php-symfony-expression-language.noarch 0:2.8.12-2.el7                         
+  php-symfony-filesystem.noarch 0:2.8.12-2.el7                                  
+  php-symfony-finder.noarch 0:2.8.12-2.el7                                      
+  php-symfony-http-foundation.noarch 0:2.8.12-2.el7                             
+  php-symfony-http-kernel.noarch 0:2.8.12-2.el7                                 
+  php-symfony-polyfill.noarch 0:1.5.0-1.el7                                     
+  php-symfony-process.noarch 0:2.8.12-2.el7                                     
+  php-symfony-var-dumper.noarch 0:2.8.12-2.el7                                  
+  php-symfony-yaml.noarch 0:2.8.12-2.el7                                        
+  php-xml.x86_64 0:5.4.16-48.el7                                                
+  t1lib.x86_64 0:5.1.2-14.el7                                                   
+
+Выполнено!
+
+[admin@web public]$ php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+[admin@web public]$ php composer-setup.php
+All settings correct for using Composer
+Downloading...
+
+Composer (version 1.10.13) successfully installed to: /home/admin/public/composer.phar
+Use it: php composer.phar
+
+[admin@web public]$ php -r "unlink('composer-setup.php');"
+[admin@web public]$ sudo mv composer.phar /usr/bin/composer
+
+[admin@web ~]$ composer require cboden/ratchet
+Using version ^0.4.3 for cboden/ratchet
+./composer.json has been created
+Loading composer repositories with package information
+Updating dependencies (including require-dev)
+Package operations: 19 installs, 0 updates, 0 removals
+  - Installing symfony/routing (v2.8.52): Downloading (100%)         
+  - Installing symfony/polyfill-mbstring (v1.18.1): Downloading (100%)         
+  - Installing ircmaxell/password-compat (v1.0.4): Downloading (100%)         
+  - Installing symfony/polyfill-php55 (v1.18.1): Downloading (100%)         
+  - Installing symfony/polyfill-php54 (v1.18.1): Downloading (100%)         
+  - Installing symfony/http-foundation (v2.8.52): Downloading (100%)         
+  - Installing ralouphie/getallheaders (2.0.5): Downloading (100%)         
+  - Installing psr/http-message (1.0.1): Downloading (100%)         
+  - Installing guzzlehttp/psr7 (1.6.1): Downloading (100%)         
+  - Installing evenement/evenement (v2.1.0): Downloading (100%)         
+  - Installing react/event-loop (v1.1.1): Downloading (100%)         
+  - Installing react/stream (v1.1.1): Downloading (100%)         
+  - Installing react/promise (v2.8.0): Downloading (100%)         
+  - Installing react/promise-timer (v1.6.0): Downloading (100%)         
+  - Installing react/cache (v1.0.0): Downloading (100%)         
+  - Installing react/dns (v1.3.0): Downloading (100%)         
+  - Installing react/socket (v1.6.0): Downloading (100%)         
+  - Installing ratchet/rfc6455 (v0.3): Downloading (100%)         
+  - Installing cboden/ratchet (v0.4.3): Downloading (100%)         
+symfony/routing suggests installing symfony/config (For using the all-in-one router or any loader)
+symfony/routing suggests installing symfony/yaml (For using the YAML loader)
+symfony/routing suggests installing symfony/expression-language (For using expression matching)
+symfony/routing suggests installing doctrine/annotations (For using the annotation loader)
+symfony/routing suggests installing symfony/dependency-injection (For loading routes from a service)
+guzzlehttp/psr7 suggests installing zendframework/zend-httphandlerrunner (Emit PSR-7 responses)
+react/event-loop suggests installing ext-event (~1.0 for ExtEventLoop)
+react/event-loop suggests installing ext-uv (* for ExtUvLoop)
+Writing lock file
+Generating autoload files
+4 packages you are using are looking for funding.
+Use the `composer fund` command to find out more!
+
+[admin@web public]$ nano server.php
+[admin@web public]$ nano chat.php
+[admin@web public]$ ls -l
+итого 12
+-rw-rw-r-- 1 admin admin 1415 сен  9 17:54 chat.php
+-rw-rw-r-- 1 admin admin   18 сен  9 16:42 index.php
+-rw-rw-r-- 1 admin admin  201 сен  9 17:53 server.php
+[admin@web public]$ php server.php
+
+[admin@web ~]$ telnet 127.0.0.1 8181
+Trying 127.0.0.1...
+Connected to 127.0.0.1.
+Escape character is '^]'.
+hello
+hello world
+Connection closed by foreign host.
+
+New connection! (41)
+Connection 41 sending message "hello
+" to 0 other connections
+Connection 41 sending message "hello world
+" to 0 other connections
+^C
+
+[admin@web public]$ sudo yum install screen
+[sudo] пароль для admin: 
+Загружены модули: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirror.awanti.com
+ * epel: mirror.yandex.ru
+ * extras: mirror.yandex.ru
+ * remi-safe: mirror.reconn.ru
+ * updates: mirror.docker.ru
+Разрешение зависимостей
+--> Проверка сценария
+---> Пакет screen.x86_64 0:4.1.0-0.25.20120314git3c2946.el7 помечен для установки
+--> Проверка зависимостей окончена
+
+Зависимости определены
+
+================================================================================
+ Package     Архитектура Версия                                 Репозиторий 
+                                                                          Размер
+================================================================================
+Установка:
+ screen      x86_64      4.1.0-0.25.20120314git3c2946.el7       base      552 k
+
+Итого за операцию
+================================================================================
+Установить  1 пакет
+
+Объем загрузки: 552 k
+Объем изменений: 914 k
+Is this ok [y/d/N]: y
+Downloading packages:
+screen-4.1.0-0.25.20120314git3c2946.el7.x86_64.rpm         | 552 kB   00:00     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Установка   : screen-4.1.0-0.25.20120314git3c2946.el7.x86_64              1/1 
+  Проверка    : screen-4.1.0-0.25.20120314git3c2946.el7.x86_64              1/1 
+
+Установлено:
+  screen.x86_64 0:4.1.0-0.25.20120314git3c2946.el7                              
+
+Выполнено!
+
+[admin@web public]$ screen
+[detached from 2700.pts-0.web]
+[admin@web public]$ screen -ls
+There is a screen on:
+	2700.pts-0.web	(Detached)
+1 Socket in /var/run/screen/S-admin.
+
+[admin@web public]$ pkill screen
+[admin@web public]$ screen -ls
+No Sockets found in /var/run/screen/S-admin.
+
+[admin@web public]$ nohup php server.php &
+[1] 2726
+[admin@web public]$ nohup: ввод игнорируется, вывод добавляется в «nohup.out»
+^C
+[admin@web public]$ ps -ef | grep 2726
+admin     2726  1309  0 18:46 pts/0    00:00:00 php server.php
+admin     2728  1309  0 18:48 pts/0    00:00:00 grep --color=auto 2726
+
+[admin@web public]$ cat nohup.out
+[admin@web public]$ telnet 127.0.0.1 8181
+Trying 127.0.0.1...
+Connected to 127.0.0.1.
+Escape character is '^]'.
+hello world
+[admin@web public]$ cat nohup.out
+New connection! (41)
+Connection 41 sending message "hello world
+" to 0 other connections
+
+[admin@web public]$ kill 2726
+[admin@web public]$ ps -ef | grep 2726
+admin     2770  2736  0 18:59 pts/1    00:00:00 grep --color=auto 2726
+[1]+  Завершено      nohup php server.php
+
+[admin@web public]$ sudo yum install rabbitmq-server
+[sudo] пароль для admin: 
+Загружены модули: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirror.awanti.com
+ * epel: mirror.yandex.ru
+ * extras: mirror.yandex.ru
+ * remi-safe: mirror.reconn.ru
+ * updates: mirror.docker.ru
+Разрешение зависимостей
+--> Проверка сценария
+---> Пакет rabbitmq-server.noarch 0:3.3.5-34.el7 помечен для установки
+--> Обработка зависимостей: erlang-erts >= R12B-3 пакета: rabbitmq-server-3.3.5-34.el7.noarch
+--> Обработка зависимостей: erlang-kernel >= R12B-3 пакета: rabbitmq-server-3.3.5-34.el7.noarch
+--> Обработка зависимостей: erlang-mnesia >= R12B-3 пакета: rabbitmq-server-3.3.5-34.el7.noarch
+--> Обработка зависимостей: erlang-os_mon >= R12B-3 пакета: rabbitmq-server-3.3.5-34.el7.noarch
+--> Обработка зависимостей: erlang-public_key >= R12B-3 пакета: rabbitmq-server-3.3.5-34.el7.noarch
+--> Обработка зависимостей: erlang-sasl >= R12B-3 пакета: rabbitmq-server-3.3.5-34.el7.noarch
+--> Обработка зависимостей: erlang-ssl >= R12B-3 пакета: rabbitmq-server-3.3.5-34.el7.noarch
+--> Обработка зависимостей: erlang-stdlib >= R12B-3 пакета: rabbitmq-server-3.3.5-34.el7.noarch
+--> Обработка зависимостей: erlang-tools >= R12B-3 пакета: rabbitmq-server-3.3.5-34.el7.noarch
+--> Обработка зависимостей: erlang-xmerl >= R12B-3 пакета: rabbitmq-server-3.3.5-34.el7.noarch
+--> Обработка зависимостей: erlang-sd_notify пакета: rabbitmq-server-3.3.5-34.el7.noarch
+--> Проверка сценария
+---> Пакет erlang-erts.x86_64 0:R16B-03.18.el7 помечен для установки
+--> Обработка зависимостей: lksctp-tools пакета: erlang-erts-R16B-03.18.el7.x86_64
+---> Пакет erlang-kernel.x86_64 0:R16B-03.18.el7 помечен для установки
+---> Пакет erlang-mnesia.x86_64 0:R16B-03.18.el7 помечен для установки
+---> Пакет erlang-os_mon.x86_64 0:R16B-03.18.el7 помечен для установки
+--> Обработка зависимостей: erlang-otp_mibs(x86-64) = R16B-03.18.el7 пакета: erlang-os_mon-R16B-03.18.el7.x86_64
+--> Обработка зависимостей: erlang-snmp(x86-64) = R16B-03.18.el7 пакета: erlang-os_mon-R16B-03.18.el7.x86_64
+---> Пакет erlang-public_key.x86_64 0:R16B-03.18.el7 помечен для установки
+--> Обработка зависимостей: erlang-asn1(x86-64) = R16B-03.18.el7 пакета: erlang-public_key-R16B-03.18.el7.x86_64
+--> Обработка зависимостей: erlang-crypto(x86-64) = R16B-03.18.el7 пакета: erlang-public_key-R16B-03.18.el7.x86_64
+---> Пакет erlang-sasl.x86_64 0:R16B-03.18.el7 помечен для установки
+---> Пакет erlang-sd_notify.x86_64 0:0.1-1.el7 помечен для установки
+---> Пакет erlang-ssl.x86_64 0:R16B-03.18.el7 помечен для установки
+---> Пакет erlang-stdlib.x86_64 0:R16B-03.18.el7 помечен для установки
+--> Обработка зависимостей: erlang-compiler(x86-64) = R16B-03.18.el7 пакета: erlang-stdlib-R16B-03.18.el7.x86_64
+---> Пакет erlang-tools.x86_64 0:R16B-03.18.el7 помечен для установки
+--> Обработка зависимостей: erlang-inets(x86-64) = R16B-03.18.el7 пакета: erlang-tools-R16B-03.18.el7.x86_64
+--> Обработка зависимостей: erlang-runtime_tools(x86-64) = R16B-03.18.el7 пакета: erlang-tools-R16B-03.18.el7.x86_64
+---> Пакет erlang-xmerl.x86_64 0:R16B-03.18.el7 помечен для установки
+--> Проверка сценария
+---> Пакет erlang-asn1.x86_64 0:R16B-03.18.el7 помечен для установки
+---> Пакет erlang-compiler.x86_64 0:R16B-03.18.el7 помечен для установки
+--> Обработка зависимостей: erlang-hipe(x86-64) = R16B-03.18.el7 пакета: erlang-compiler-R16B-03.18.el7.x86_64
+---> Пакет erlang-crypto.x86_64 0:R16B-03.18.el7 помечен для установки
+---> Пакет erlang-inets.x86_64 0:R16B-03.18.el7 помечен для установки
+---> Пакет erlang-otp_mibs.x86_64 0:R16B-03.18.el7 помечен для установки
+---> Пакет erlang-runtime_tools.x86_64 0:R16B-03.18.el7 помечен для установки
+---> Пакет erlang-snmp.x86_64 0:R16B-03.18.el7 помечен для установки
+---> Пакет lksctp-tools.x86_64 0:1.0.17-2.el7 помечен для установки
+--> Проверка сценария
+---> Пакет erlang-hipe.x86_64 0:R16B-03.18.el7 помечен для установки
+--> Обработка зависимостей: erlang-syntax_tools(x86-64) = R16B-03.18.el7 пакета: erlang-hipe-R16B-03.18.el7.x86_64
+--> Проверка сценария
+---> Пакет erlang-syntax_tools.x86_64 0:R16B-03.18.el7 помечен для установки
+--> Проверка зависимостей окончена
+
+Зависимости определены
+
+================================================================================
+ Package                    Архитектура  Версия                Репозиторий 
+                                                                          Размер
+================================================================================
+Установка:
+ rabbitmq-server            noarch       3.3.5-34.el7          epel       4.0 M
+Установка зависимостей:
+ erlang-asn1                x86_64       R16B-03.18.el7        epel       758 k
+ erlang-compiler            x86_64       R16B-03.18.el7        epel       1.0 M
+ erlang-crypto              x86_64       R16B-03.18.el7        epel        86 k
+ erlang-erts                x86_64       R16B-03.18.el7        epel       2.5 M
+ erlang-hipe                x86_64       R16B-03.18.el7        epel       2.4 M
+ erlang-inets               x86_64       R16B-03.18.el7        epel       800 k
+ erlang-kernel              x86_64       R16B-03.18.el7        epel       1.1 M
+ erlang-mnesia              x86_64       R16B-03.18.el7        epel       700 k
+ erlang-os_mon              x86_64       R16B-03.18.el7        epel       115 k
+ erlang-otp_mibs            x86_64       R16B-03.18.el7        epel        32 k
+ erlang-public_key          x86_64       R16B-03.18.el7        epel       538 k
+ erlang-runtime_tools       x86_64       R16B-03.18.el7        epel       179 k
+ erlang-sasl                x86_64       R16B-03.18.el7        epel       293 k
+ erlang-sd_notify           x86_64       0.1-1.el7             epel       9.1 k
+ erlang-snmp                x86_64       R16B-03.18.el7        epel       1.5 M
+ erlang-ssl                 x86_64       R16B-03.18.el7        epel       588 k
+ erlang-stdlib              x86_64       R16B-03.18.el7        epel       2.2 M
+ erlang-syntax_tools        x86_64       R16B-03.18.el7        epel       336 k
+ erlang-tools               x86_64       R16B-03.18.el7        epel       566 k
+ erlang-xmerl               x86_64       R16B-03.18.el7        epel       998 k
+ lksctp-tools               x86_64       1.0.17-2.el7          base        88 k
+
+Итого за операцию
+================================================================================
+Установить  1 пакет (+21 зависимый)
+
+Объем загрузки: 21 M
+Объем изменений: 36 M
+Is this ok [y/d/N]: y
+Downloading packages:
+(1/22): erlang-erts-R16B-03.18.el7.x86_64.rpm              | 2.5 MB   00:00     
+(2/22): erlang-crypto-R16B-03.18.el7.x86_64.rpm            |  86 kB   00:00     
+(3/22): erlang-compiler-R16B-03.18.el7.x86_64.rpm          | 1.0 MB   00:01     
+(4/22): erlang-asn1-R16B-03.18.el7.x86_64.rpm              | 758 kB   00:03     
+(5/22): erlang-mnesia-R16B-03.18.el7.x86_64.rpm            | 700 kB   00:00     
+(6/22): erlang-kernel-R16B-03.18.el7.x86_64.rpm            | 1.1 MB   00:00     
+(7/22): erlang-inets-R16B-03.18.el7.x86_64.rpm             | 800 kB   00:00     
+(8/22): erlang-hipe-R16B-03.18.el7.x86_64.rpm              | 2.4 MB   00:05     
+(9/22): erlang-otp_mibs-R16B-03.18.el7.x86_64.rpm          |  32 kB   00:00     
+(10/22): erlang-sd_notify-0.1-1.el7.x86_64.rpm             | 9.1 kB   00:00     
+(11/22): erlang-os_mon-R16B-03.18.el7.x86_64.rpm           | 115 kB   00:00     
+(12/22): erlang-public_key-R16B-03.18.el7.x86_64.rpm       | 538 kB   00:00     
+(13/22): erlang-runtime_tools-R16B-03.18.el7.x86_64.rpm    | 179 kB   00:00     
+(14/22): erlang-syntax_tools-R16B-03.18.el7.x86_64.rpm     | 336 kB   00:00     
+(15/22): erlang-snmp-R16B-03.18.el7.x86_64.rpm             | 1.5 MB   00:00     
+(16/22): erlang-tools-R16B-03.18.el7.x86_64.rpm            | 566 kB   00:00     
+(17/22): erlang-xmerl-R16B-03.18.el7.x86_64.rpm            | 998 kB   00:00     
+(18/22): erlang-sasl-R16B-03.18.el7.x86_64.rpm             | 293 kB   00:01     
+(19/22): erlang-stdlib-R16B-03.18.el7.x86_64.rpm           | 2.2 MB   00:00     
+(20/22): erlang-ssl-R16B-03.18.el7.x86_64.rpm              | 588 kB   00:01     
+(21/22): lksctp-tools-1.0.17-2.el7.x86_64.rpm              |  88 kB   00:00     
+(22/22): rabbitmq-server-3.3.5-34.el7.noarch.rpm           | 4.0 MB   00:01     
+--------------------------------------------------------------------------------
+Общий размер                                       1.8 MB/s |  21 MB  00:11     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Установка   : lksctp-tools-1.0.17-2.el7.x86_64                           1/22 
+  Установка   : erlang-crypto-R16B-03.18.el7.x86_64                        2/22 
+  Установка   : erlang-kernel-R16B-03.18.el7.x86_64                        3/22 
+  Установка   : erlang-stdlib-R16B-03.18.el7.x86_64                        4/22 
+  Установка   : erlang-erts-R16B-03.18.el7.x86_64                          5/22 
+  Установка   : erlang-syntax_tools-R16B-03.18.el7.x86_64                  6/22 
+  Установка   : erlang-compiler-R16B-03.18.el7.x86_64                      7/22 
+  Установка   : erlang-hipe-R16B-03.18.el7.x86_64                          8/22 
+  Установка   : erlang-mnesia-R16B-03.18.el7.x86_64                        9/22 
+  Установка   : erlang-runtime_tools-R16B-03.18.el7.x86_64                10/22 
+  Установка   : erlang-snmp-R16B-03.18.el7.x86_64                         11/22 
+  Установка   : erlang-otp_mibs-R16B-03.18.el7.x86_64                     12/22 
+  Установка   : erlang-sd_notify-0.1-1.el7.x86_64                         13/22 
+  Установка   : erlang-xmerl-R16B-03.18.el7.x86_64                        14/22 
+  Установка   : erlang-asn1-R16B-03.18.el7.x86_64                         15/22 
+  Установка   : erlang-public_key-R16B-03.18.el7.x86_64                   16/22 
+  Установка   : erlang-ssl-R16B-03.18.el7.x86_64                          17/22 
+  Установка   : erlang-inets-R16B-03.18.el7.x86_64                        18/22 
+  Установка   : erlang-tools-R16B-03.18.el7.x86_64                        19/22 
+  Установка   : erlang-sasl-R16B-03.18.el7.x86_64                         20/22 
+  Установка   : erlang-os_mon-R16B-03.18.el7.x86_64                       21/22 
+  Установка   : rabbitmq-server-3.3.5-34.el7.noarch                       22/22 
+  Проверка    : erlang-sd_notify-0.1-1.el7.x86_64                          1/22 
+  Проверка    : rabbitmq-server-3.3.5-34.el7.noarch                        2/22 
+  Проверка    : erlang-erts-R16B-03.18.el7.x86_64                          3/22 
+  Проверка    : erlang-stdlib-R16B-03.18.el7.x86_64                        4/22 
+  Проверка    : erlang-compiler-R16B-03.18.el7.x86_64                      5/22 
+  Проверка    : erlang-mnesia-R16B-03.18.el7.x86_64                        6/22 
+  Проверка    : erlang-crypto-R16B-03.18.el7.x86_64                        7/22 
+  Проверка    : erlang-hipe-R16B-03.18.el7.x86_64                          8/22 
+  Проверка    : erlang-inets-R16B-03.18.el7.x86_64                         9/22 
+  Проверка    : erlang-runtime_tools-R16B-03.18.el7.x86_64                10/22 
+  Проверка    : erlang-public_key-R16B-03.18.el7.x86_64                   11/22 
+  Проверка    : erlang-sasl-R16B-03.18.el7.x86_64                         12/22 
+  Проверка    : erlang-kernel-R16B-03.18.el7.x86_64                       13/22 
+  Проверка    : lksctp-tools-1.0.17-2.el7.x86_64                          14/22 
+  Проверка    : erlang-ssl-R16B-03.18.el7.x86_64                          15/22 
+  Проверка    : erlang-xmerl-R16B-03.18.el7.x86_64                        16/22 
+  Проверка    : erlang-os_mon-R16B-03.18.el7.x86_64                       17/22 
+  Проверка    : erlang-otp_mibs-R16B-03.18.el7.x86_64                     18/22 
+  Проверка    : erlang-tools-R16B-03.18.el7.x86_64                        19/22 
+  Проверка    : erlang-snmp-R16B-03.18.el7.x86_64                         20/22 
+  Проверка    : erlang-syntax_tools-R16B-03.18.el7.x86_64                 21/22 
+  Проверка    : erlang-asn1-R16B-03.18.el7.x86_64                         22/22 
+
+Установлено:
+  rabbitmq-server.noarch 0:3.3.5-34.el7                                         
+
+Установлены зависимости:
+  erlang-asn1.x86_64 0:R16B-03.18.el7                                           
+  erlang-compiler.x86_64 0:R16B-03.18.el7                                       
+  erlang-crypto.x86_64 0:R16B-03.18.el7                                         
+  erlang-erts.x86_64 0:R16B-03.18.el7                                           
+  erlang-hipe.x86_64 0:R16B-03.18.el7                                           
+  erlang-inets.x86_64 0:R16B-03.18.el7                                          
+  erlang-kernel.x86_64 0:R16B-03.18.el7                                         
+  erlang-mnesia.x86_64 0:R16B-03.18.el7                                         
+  erlang-os_mon.x86_64 0:R16B-03.18.el7                                         
+  erlang-otp_mibs.x86_64 0:R16B-03.18.el7                                       
+  erlang-public_key.x86_64 0:R16B-03.18.el7                                     
+  erlang-runtime_tools.x86_64 0:R16B-03.18.el7                                  
+  erlang-sasl.x86_64 0:R16B-03.18.el7                                           
+  erlang-sd_notify.x86_64 0:0.1-1.el7                                           
+  erlang-snmp.x86_64 0:R16B-03.18.el7                                           
+  erlang-ssl.x86_64 0:R16B-03.18.el7                                            
+  erlang-stdlib.x86_64 0:R16B-03.18.el7                                         
+  erlang-syntax_tools.x86_64 0:R16B-03.18.el7                                   
+  erlang-tools.x86_64 0:R16B-03.18.el7                                          
+  erlang-xmerl.x86_64 0:R16B-03.18.el7                                          
+  lksctp-tools.x86_64 0:1.0.17-2.el7                                            
+
+Выполнено!
+
+[admin@web public]$ sudo rabbitmq-plugins enable rabbitmq_management
+The following plugins have been enabled:
+  mochiweb
+  webmachine
+  rabbitmq_web_dispatch
+  amqp_client
+  rabbitmq_management_agent
+  rabbitmq_management
+Plugin configuration has changed. Restart RabbitMQ for changes to take effect.
+[admin@web public]$ sudo service rabbitmq-server restart
+Redirecting to /bin/systemctl restart rabbitmq-server.service
+
+[admin@web public]$ sudo systemctl status rabbitmq-server
+[sudo] пароль для admin: 
+● rabbitmq-server.service - RabbitMQ broker
+   Loaded: loaded (/usr/lib/systemd/system/rabbitmq-server.service; disabled; vendor preset: disabled)
+   Active: active (running) since Ср 2020-09-09 19:08:05 MSK; 11min ago
+ Main PID: 2988 (beam)
+   CGroup: /system.slice/rabbitmq-server.service
+           ├─2988 /usr/lib64/erlang/erts-5.10.4/bin/beam -W w -K true -A30 -P...
+           ├─3056 inet_gethost 4
+           └─3057 inet_gethost 4
+
+сен 09 19:08:03 web.local systemd[1]: Starting RabbitMQ broker...
+сен 09 19:08:04 web.local rabbitmq-server[2988]: RabbitMQ 3.3.5. Copyright...
+сен 09 19:08:04 web.local rabbitmq-server[2988]: ##  ##      Licensed unde...
+сен 09 19:08:04 web.local rabbitmq-server[2988]: ##  ##
+сен 09 19:08:04 web.local rabbitmq-server[2988]: ##########  Logs: /var/lo...
+сен 09 19:08:04 web.local rabbitmq-server[2988]: ######  ##        /var/lo...
+сен 09 19:08:04 web.local rabbitmq-server[2988]: ##########
+сен 09 19:08:05 web.local systemd[1]: Started RabbitMQ broker.
+сен 09 19:08:05 web.local rabbitmq-server[2988]: Starting broker... comple...
+Hint: Some lines were ellipsized, use -l to show in full.
+
+
+[admin@web public]$ sudo netstat -tulpn | grep beam
+tcp        0      0 0.0.0.0:15672           0.0.0.0:*               LISTEN      2988/beam           
+tcp        0      0 0.0.0.0:25672           0.0.0.0:*               LISTEN      2988/beam           
+tcp6       0      0 :::5672                 :::*                    LISTEN      2988/beam           
+[admin@web public]$ sudo firewall-cmd --permanent --add-port=15672/tcp
+[sudo] пароль для admin: 
+success
+[admin@web public]$ sudo firewall-cmd --reload
+success
+
+[admin@web public]$ php -v
+PHP 5.4.16 (cli) (built: Apr  1 2020 04:07:17) 
+Copyright (c) 1997-2013 The PHP Group
+Zend Engine v2.4.0, Copyright (c) 1998-2013 Zend Technologies
+
+[admin@web public]$ php72 -v
+PHP 7.2.33 (cli) (built: Aug  4 2020 10:15:02) ( NTS )
+Copyright (c) 1997-2018 The PHP Group
+Zend Engine v3.2.0, Copyright (c) 1998-2018 Zend Technologies
+    with Xdebug v2.9.6, Copyright (c) 2002-2020, by Derick Rethans
+
+[admin@web public]$ which php
+/usr/bin/php
+
+[admin@web public]$ sudo find / -name php.ini
+/etc/opt/remi/php72/php.ini
+/etc/opt/remi/php71/php.ini
+/etc/opt/rh/rh-php72/php.ini
+/etc/php.ini
+/opt/rh/rh-php72/register.content/etc/opt/rh/rh-php72/php.ini
+/opt/remi/php54/root/etc/php.ini
+
+[admin@web public]$ sudo find / -name bcmath.ini
+/etc/php.d/bcmath.ini
+/opt/remi/php54/root/etc/php.d/bcmath.ini
+
+[admin@web public]$ sudo find / -name 20-bcmath.ini
+/etc/opt/remi/php72/php.d/20-bcmath.ini
+
+[admin@web public]$ php receive_order.php
+ [*] Waiting for messages. To exit press CTRL+C
+ [x] Received new order id = 1
+
+[admin@web public]$ php receive_payment.php
+ [*] Waiting for messages. To exit press CTRL+C
+ [x] Received order id = 1 has been paid
+
+[admin@web public]$ php receive_delivery.php
+ [*] Waiting for messages. To exit press CTRL+C
+ [x] Received the order id = 1 has been sent for delivery
+
+[admin@web public]$ php receive_review.php
+ [*] Waiting for messages. To exit press CTRL+C
+ [x] Received order id = 1 received, awaiting feedback from the client
